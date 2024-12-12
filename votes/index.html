@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استبيان حول مشروع اللائحة الليبية للتصميم الشامل</title>
+    <script>
+        function preventMultipleSubmissions() {
+            if (localStorage.getItem('surveySubmitted')) {
+                alert('لقد قمت بالفعل بإرسال هذا الاستبيان.');
+                return false;
+            }
+            localStorage.setItem('surveySubmitted', 'true');
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>استبيان حول مشروع اللائحة الليبية للتصميم الشامل</h1>
+    <form action="3bdusalam@gmail.com" method="post" enctype="text/plain" onsubmit="return preventMultipleSubmissions()">
+        <!-- السؤال 1 -->
+        <label for="awareness">1. هل كنت على علم بإطلاق مشروع اللائحة الليبية للتصميم الشامل؟</label><br>
+        <input type="radio" id="aware_yes" name="awareness" value="نعم">
+        <label for="aware_yes">نعم</label><br>
+        <input type="radio" id="aware_no" name="awareness" value="لا">
+        <label for="aware_no">لا</label><br><br>
+
+        <!-- السؤال 2 -->
+        <label for="importance">2. برأيك، هل المشروع خطوة مهمة لتحسين بيئة التخطيط العمراني؟</label><br>
+        <input type="radio" id="important_yes" name="importance" value="نعم">
+        <label for="important_yes">نعم</label><br>
+        <input type="radio" id="important_no" name="importance" value="لا">
+        <label for="important_no">لا</label><br>
+        <input type="radio" id="important_unsure" name="importance" value="غير متأكد">
+        <label for="important_unsure">غير متأكد</label><br><br>
+
+        <!-- السؤال 3 -->
+        <label for="execution_plan">3. هل تعتقد أن هناك خطة تنفيذية واضحة للمشروع؟</label><br>
+        <input type="radio" id="plan_yes" name="execution_plan" value="نعم">
+        <label for="plan_yes">نعم</label><br>
+        <input type="radio" id="plan_no" name="execution_plan" value="لا">
+        <label for="plan_no">لا</label><br>
+        <input type="radio" id="plan_unsure" name="execution_plan" value="غير متأكد">
+        <label for="plan_unsure">غير متأكد</label><br><br>
+
+        <!-- السؤال 4 -->
+        <label for="participation">4. ما تقييمك لمستوى مشاركة الأشخاص ذوي الإعاقة في هذا المشروع؟</label><br>
+        <input type="radio" id="participation_sufficient" name="participation" value="كافٍ">
+        <label for="participation_sufficient">كافٍ</label><br>
+        <input type="radio" id="participation_insufficient" name="participation" value="غير كافٍ">
+        <label for="participation_insufficient">غير كافٍ</label><br><br>
+
+        <!-- السؤال 5 -->
+        <label for="suggestions">5. هل لديك اقتراحات أو ملاحظات لتحسين تنفيذ المشروع؟</label><br>
+        <textarea id="suggestions" name="suggestions" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit">إرسال</button>
+    </form>
+</body>
+</html>
