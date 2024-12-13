@@ -4,20 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استبيان حول مشروع اللائحة الليبية للتصميم الشامل</title>
-    <script>
-        function preventMultipleSubmissions() {
-            if (localStorage.getItem('surveySubmitted')) {
-                alert('لقد قمت بالفعل بإرسال هذا الاستبيان.');
-                return false;
-            }
-            localStorage.setItem('surveySubmitted', 'true');
-            return true;
-        }
-    </script>
 </head>
 <body>
     <h1>استبيان حول مشروع اللائحة الليبية للتصميم الشامل</h1>
-    <form action="3bdusalam@gmail.com" method="post" enctype="text/plain" onsubmit="return preventMultipleSubmissions()">
+    <form action="https://formspree.io/f/3bdusalam@gmail.com" method="POST">
         <!-- السؤال 1 -->
         <label for="awareness">1. هل كنت على علم بإطلاق مشروع اللائحة الليبية للتصميم الشامل؟</label><br>
         <input type="radio" id="aware_yes" name="awareness" value="نعم">
