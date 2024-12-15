@@ -3,48 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استبيان حول مشروع اللائحة الليبية للتصميم الشامل</title>
+    <title>اتصل بنا</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>استبيان حول مشروع اللائحة الليبية للتصميم الشامل</h1>
-    <form action="https://formspree.io/f/mldekvkk"/3bdusalam@gmail.com" method="POST">
-        <!-- السؤال 1 -->
-        <label for="awareness">1. هل كنت على علم بإطلاق مشروع اللائحة الليبية للتصميم الشامل؟</label><br>
-        <input type="radio" id="aware_yes" name="awareness" value="نعم">
-        <label for="aware_yes">نعم</label><br>
-        <input type="radio" id="aware_no" name="awareness" value="لا">
-        <label for="aware_no">لا</label><br><br>
+    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
 
-        <!-- السؤال 2 -->
-        <label for="importance">2. برأيك، هل المشروع خطوة مهمة لتحسين بيئة التخطيط العمراني؟</label><br>
-        <input type="radio" id="important_yes" name="importance" value="نعم">
-        <label for="important_yes">نعم</label><br>
-        <input type="radio" id="important_no" name="importance" value="لا">
-        <label for="important_no">لا</label><br>
-        <input type="radio" id="important_unsure" name="importance" value="غير متأكد">
-        <label for="important_unsure">غير متأكد</label><br><br>
+        <label for="email">البريد الإلكتروني:</label>
+        <input type="email" id="email" name="email" required>
 
-        <!-- السؤال 3 -->
-        <label for="execution_plan">3. هل تعتقد أن هناك خطة تنفيذية واضحة للمشروع؟</label><br>
-        <input type="radio" id="plan_yes" name="execution_plan" value="نعم">
-        <label for="plan_yes">نعم</label><br>
-        <input type="radio" id="plan_no" name="execution_plan" value="لا">
-        <label for="plan_no">لا</label><br>
-        <input type="radio" id="plan_unsure" name="execution_plan" value="غير متأكد">
-        <label for="plan_unsure">غير متأكد</label><br><br>
+        <label for="subject">الموضوع:</label>
+        <input type="text" id="subject" name="subject" required>
 
-        <!-- السؤال 4 -->
-        <label for="participation">4. ما تقييمك لمستوى مشاركة الأشخاص ذوي الإعاقة في هذا المشروع؟</label><br>
-        <input type="radio" id="participation_sufficient" name="participation" value="كافٍ">
-        <label for="participation_sufficient">كافٍ</label><br>
-        <input type="radio" id="participation_insufficient" name="participation" value="غير كافٍ">
-        <label for="participation_insufficient">غير كافٍ</label><br><br>
+        <label for="message">الرسالة:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
 
-        <!-- السؤال 5 -->
-        <label for="suggestions">5. هل لديك اقتراحات أو ملاحظات لتحسين تنفيذ المشروع؟</label><br>
-        <textarea id="suggestions" name="suggestions" rows="4" cols="50"></textarea><br><br>
-
-        <button type="submit">إرسال</button>
+        <input type="submit" value="إرسال">
     </form>
 </body>
 </html>
