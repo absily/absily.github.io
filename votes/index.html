@@ -1,93 +1,75 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اتصل بنا</title>
+    <title>نموذج التسجيل</title>
     <style>
         body {
-            font-family: 'Arial', 'Tahoma', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
             direction: rtl;
             text-align: right;
+            margin: 20px;
         }
-        form {
-            background: white;
+        .form-container {
+            max-width: 500px;
+            margin: auto;
             padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+            background-color: #f9f9f9;
         }
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
-        input, textarea {
+        input, select, textarea {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
-        input[type="submit"] {
+        button {
             background-color: #4CAF50;
             color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
             cursor: pointer;
         }
-        input[type="submit"]:hover {
+        button:hover {
             background-color: #45a049;
-        }
-        .captcha {
-            margin: 10px 0;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
     </style>
 </head>
 <body>
-    <form action="mailto:3bdusalam@gmail.com" method="POST" enctype="text/plain" onsubmit="thankYouMessage()">
-        <label for="name">الاسم:</label>
-        <input type="text" id="name" name="name" required>
+    <div class="form-container">
+        <h2> المسح الشامل</h2>
+        <form action="https://formspree.io/your-email@example.com" method="POST">
+            <label for="name">الاسم الكامل:</label>
+            <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
 
-        <label for="email">البريد الإلكتروني:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="id_number">رقم الهوية:</label>
+            <input type="text" id="id_number" name="id_number" placeholder="أدخل رقم الهوية" required>
 
-        <label for="subject">الموضوع:</label>
-        <input type="text" id="subject" name="subject" required>
+            <label for="disability_type">نوع الإعاقة:</label>
+            <select id="disability_type" name="disability_type" required>
+                <option value="">اختر نوع الإعاقة</option>
+                <option value="حركية">حركية</option>
+                <option value="سمعية">سمعية</option>
+                <option value="بصرية">بصرية</option>
+                <option value="ذهنية">ذهنية</option>
+                <option value="طيف التوحد">طيف التوحد</option>
+            </select>
 
-        <label for="message">الرسالة:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+            <label for="documents">المستندات:</label>
+            <textarea id="documents" name="documents" rows="4" placeholder="أدخل وصفًا مختصرًا للمستندات المطلوبة" required></textarea>
 
-        <div class="captcha">
-            <label for="captcha">أدخل الكلمة الصورة:</label>
-            <img src="captcha.jpg" alt="كابتشا">
-            <input type="text" id="captcha" name="captcha" required>
-        </div>
-
-        <input type="submit" value="إرسال">
-    </form>
-
-    <footer>
-        <p>اسم الموقع - <a href="www.absi.cc">شليبك</a> - 2024</p>
-    </footer>
-
-    <script>
-        function thankYouMessage() {
-            alert("شكرًا لك على إرسال رسالتك!");
-        }
-    </script>
+            <button type="submit">إرسال</button>
+        </form>
+    </div>
 </body>
 </html>
