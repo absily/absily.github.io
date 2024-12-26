@@ -24,7 +24,7 @@
             margin-bottom: 8px;
             font-weight: bold;
         }
-        input, select, textarea {
+        input, select {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -48,7 +48,7 @@
 <body>
     <div class="form-container">
         <h2>المسح الشامل</h2>
-        <form action="https://formspree.io/f/mlddglrw" method="POST">
+        <form action="https://formspree.io/f/mlddglrw" method="POST" enctype="multipart/form-data">
             <label for="name">الاسم الكامل:</label>
             <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
 
@@ -65,8 +65,15 @@
                 <option value="طيف التوحد">طيف التوحد</option>
             </select>
 
-            <label for="documents">المستندات:</label>
-            <textarea id="documents" name="documents" rows="4" placeholder="أدخل وصفًا مختصرًا للمستندات المطلوبة" required></textarea>
+            <label for="fileUpload">المستندات المطلوبة:<br>
+                - تقرير طبي حديث.<br>
+                - وضع عائلي.<br>
+                - شهادة ميلاد حديثة.<br>
+                - ملف شخصي (4 صور شخصية).<br>
+                - إثبات الإقامة من المجلس المحلي.<br>
+                - إحضار البطاقة القديمة.<br>
+                - صورة من جواز السفر وفي حالة عدم وجود جواز السفر يرجى ترجمة الاسم باللغة الإنجليزية معتمد من مترجم.</label>
+            <input type="file" id="fileUpload" name="fileUpload" multiple accept=".pdf, .png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx" required>
 
             <button type="submit">إرسال</button>
         </form>
