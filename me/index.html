@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عبدالسلام شليبك - ناشط حقوق إعاقة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* تصميم الهيدر */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '⚙️';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            font-size: 120px;
+            opacity: 0.1;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            margin: 20px auto;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* أزرار التواصل */
+        .social-links {
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* أقسام المحتوى */
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(var(--accent-color), var(--secondary-color));
+            border-radius: 0 15px 15px 0;
+        }
+
+        .section h3 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            position: relative;
+        }
+
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        /* الخط الزمني */
+        .timeline {
+            border-right: 3px solid var(--secondary-color);
+            padding-right: 30px;
+            margin-right: 15px;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            margin-bottom: 30px;
+            background: #f8fafc;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            right: -36px;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        /* قائمة المؤتمرات */
+        .conference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .conference-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 4px solid var(--accent-color);
+            transition: all 0.3s;
+        }
+
+        .conference-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, #ffffff, #f1f3f5);
+        }
+
+        .conference-card span {
+            display: block;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    .auto-style1 {
+	color: #000000;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="https://www.absi.cc/">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg6GtnzKmh9eRgY2ky_HiiyljK9cvSLBjhjZasareB4eRKZg9MxTBkTCxExc5DFphJTGqCBzPsFfGZf7T-yGqwoubBd887xXUGSyitJ5bH_beg7-Msem0BltszpvQkHCfzlndV6hBc_-Z8dfPQDCJ6gGqe5z9uErkaJy1r6wMDMXr2pilymNfG5GmkMJA=w640-h360" alt="الصورة الشخصية" class="profile-img"></a>
+            <h1> عبدالسلام شليبك</h1>
+			<p> &nbsp;</p>
+            <h2>ناشط حقوقي | مدافع عن ذوي الإعاقة |<a href="https://www.absi.cc/">
+			<span class="auto-style1">مُدوّن إجتماعي</span></a></h2>
+            <div class="social-links">
+                <a href="https://x.com/absily" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/absily" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+        </header>
+
+        <!-- قسم السيرة الذاتية -->
+        <section class="section">
+            <h3>رحلة التحدي والإنجاز</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p><strong>1971:</strong> ولدت في 23 أكتوبر بمنطقة جنزور-المشاشطة في ضواحي طرابلس</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <p><strong>1971-1976:</strong> إصابة بمرض شلل الأطفال نتيجة حمى شديدة في الأشهر الستة الأولى</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>1976-1983:</strong> رحلة علاجية لمدة 6 سنوات في بلغراد مع دراسة المرحلة الابتدائية</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>1983:</strong> العودة إلى ليبيا ومن ثم علاج في فيينا لمدة 6 أشهر</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>2004:</strong> إطلاق أول موقع إلكتروني شخصي "جنزور ماي هوم"</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>2008:</strong> انضمام إلى مكتب إعلام اللجنة البارالمبية الليبية</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>الحاضر:</strong> الإقامة في برمينقهام البريطانية مع استمرار النشاط الحقوقي</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المؤتمرات -->
+        <section class="section">
+            <h3>
+			<a href="https://www.absi.cc/p/blog-page_22.html" target="_blank">المشاركات الدولية والدورات</a></h3>
+            <div class="conference-grid">
+                <div class="conference-card">
+                    <span>2009</span>
+                    المؤتمر الأول للمرأة ذات الإعاقة بالمغرب العربي - طرابلس
+                </div>
+                
+                <div class="conference-card">
+                    <span>2009</span>
+                    مؤتمر سياسات التعامل مع الإعاقات الذهنية - بنغازي
+                </div>
+
+                <div class="conference-card">
+                    <span>2010</span>
+                    بطولة العالم لكرة الجلوس - أوكلاهوما الأمريكية
+                </div>
+
+                <div class="conference-card">
+                    <span>2011</span>
+                    الملتقى الدولي لألعاب القوى - تونس
+                </div>
+
+                <div class="conference-card">
+                    <span>2012</span>
+                    <strong>
+					<a href="https://absily.wordpress.com/2012/10/18/paralympics2010/">ألعاب البارالمبية - لندن
+                	</a></strong>
+                </div>
+
+                <div class="conference-card">
+                    <span>2013</span>
+                    <strong>
+					<a href="https://absily.wordpress.com/2013/11/15/kulalampur/">بطولة آسيا المفتوحة - كوالالمبور</a></strong>
+                </div>
+
+                <div class="conference-card">
+                    <span>2015</span>
+                    <strong>
+					<a href="https://absily.wordpress.com/2015/02/15/2jakarta/">مؤتمر جاكارتا للإدماج الانتخابي</a></strong>
+                </div>
+
+                <div class="conference-card">
+                    <span>2020</span>
+                    <a href="https://www.absi.cc/2020/12/blog-post_23.html">
+					<strong>اليوم العربي للأشخاص ذوي الإعاقة - ليبيا</strong>
+                	</a>
+                </div>
+
+                <div class="conference-card">
+                    <span>2024</span>
+                    <a href="https://www.absi.cc/2024/09/2024_29.html"><strong>مدرسة ليبيا لحوكمة الإنترنت
+                	</strong>
+                	</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
