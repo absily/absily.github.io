@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Abdusalam Mustafa Shlebak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2d3748;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease, pulse 2s infinite alternate;
+            color: #ffffff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.04); }
+        }
+        h2 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 15px;
+            transition: color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        h2:hover {
+            color: #ffffff;
+        }
+        p {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        a {
+            color: #4299e1;
+            text-decoration: none;
+            transition: color 0.3s ease, text-decoration-color 0.3s ease;
+        }
+        a:hover {
+            color: #2b6cb0;
+            text-decoration: underline;
+            text-decoration-color: #2b6cb0;
+        }
+        .section {
+            margin-bottom: 70px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #2d3748;
+        }
+        .section h2 a{
+            color: #2d3748;
+            text-decoration: none;
+        }
+        .section h2 a:hover{
+            color: #4a5568;
+        }
+
+        p a {
+            color: #4299e1;
+            text-decoration: underline;
+        }
+        p a:hover {
+            color: #2b6cb0;
+        }
+
+        /* Creative Styles */
+        .highlight {
+            background-color: #f7fafc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #e53e3e;
+        }
+        .quote {
+            font-style: italic;
+            color: #a0aec0;
+            border-left: 4px solid #cbd5e0;
+            padding-left: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .image-circle {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .image-circle:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            .section {
+                padding: 20px;
+                margin-bottom: 50px;
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            background-image: url("https://blogger.googleusercontent.com/img/a/AVvXsEhBYhf2_36YyaPowSvQDlQ8bjI-w95UYOqwXyHPwTQUYz-xNPJC-0kPcgwJbB1AZ5EK91lBoUjuYn5mfedEAs9dRzNwRWVzmjMpmminOxs8hN_IDQgBnzsQiqTGZ0oeQejiNbB8USZs0MKv-KHTh8xzWBSOWAuqUN_9zYP29WjtPNa7Ku8pOtc6Ds6aHw=w640-h480");
+            background-size: cover;
+            background-position: center;
+            color: #f7fafc;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            margin-bottom: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+        }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .header h1 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation Styles */
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 30px;
+        }
+        .nav ul li {
+            margin: 0;
+        }
+        .nav ul li a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav ul li a:hover {
+            color: #ffffff;
+            text-decoration: none;
+            transform: translateY(-3px) scale(1.05);
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+        }
+        .nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .nav ul li a:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Social Media Links Styles */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        .social-links a {
+            color: #ffffff;
+            font-size: 2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .social-links a:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+        .social-links i {
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style for the container of the icons */
+        .social-icons-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #2d3748;
+            color: #f7fafc;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+            border-top: 2px solid #4a5568;
+            font-size: 1.1rem;
+        }
+        .footer a {
+            color: #a7f3d0;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+            color: #34d399;
+        }
+        .footer p{
+           color: #a7f3d0;
+        }
+
+        /* Scroll to Top Button Styles */
+        #scroll-to-top {
+            display: none;
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: rgba(74, 85, 104, 0.7);
+            color: #f7fafc;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 1.8rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #scroll-to-top:hover {
+            background-color: rgba(45, 55, 72, 0.9);
+            transform: translateY(-2px);
+        }
+
+        #scroll-to-top i {
+            display: block;
+            width: 1em;
+            height: 1em;
+            line-height: 1em;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media screen and (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .nav ul {
+                gap: 15px;
+            }
+            .nav ul li a {
+                font-size: 1.2rem;
+                padding: 8px 12px;
+            }
+            .social-links a {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 15px;
+            }
+            .section {
+                padding: 30px;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            .header {
+                padding: 20px 0;
+            }
+        }
+
+        /* Further adjustments for even smaller screens */
+        @media screen and (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .nav ul li a {
+                font-size: 1rem;
+                padding: 10px;
+            }
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .social-links a {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 10px;
+            }
+            .section {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .header {
+                padding: 15px 0;
+            }
+        }
+
+        /* Change color of nav links to turquoise */
+        .nav ul li a {
+            color: #00ced1; /* Turquoise color */
+        }
+        .nav ul li a:hover {
+            color: #ffffff;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <h1>Abdusalam Mustafa Shlebak</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#early-life">Early Life</a></li>
+                <li><a href="#embracing-technology">Technology</a></li>
+                <li><a href="#contributions-advocacy">Contributions</a></li>
+                <li><a href="#blogging-message">Message</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons-container">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/absily" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="https://twitter.com/absily" target="_blank" title="X">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/absily/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+    </header>
+    <div class="container">
+        <section class="section">
+            <h2 id="about-me">About Me</h2>
+            <p>
+                Hello! I'm <span class="highlight">Abdusalam Mustafa Shlebak</span>, a passionate disability rights advocate, blogger, and a person living with polio. I'm committed to breaking down barriers and promoting inclusivity for everyone.
+            </p>
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgPeV89U-6fzVKSAbXk8InqncZfjeEobgqfLmn6pQkytpcjNf3ZWS8XHkpVUa-AtcO4kUS5POi7TaROc_8JuvkFfEbrRAmOTJzMxgRifi_I-_A7llFDS_xq0qjtinA82Jxxf9l9YLhfAeEnClJ5DoPi7VcXl0IspHKG57xZe2XSyGLDarI109_GeDqMpw=w640-h426" alt="Abdusalam Mustafa Shlebak" class="image-circle">
+
+        </section>
+
+        <section class="section">
+            <h2 id="early-life">Early Life and Challenges</h2>
+            <p>
+                I was born in <span class="highlight">Janzour, Libya</span>, on October 23rd, 1971.
+            </p>
+            <p>
+                At six months old, I contracted polio.  My early years involved extensive travel for treatment, including a significant time in Belgrade, Serbia.
+            </p>
+            <p>
+                Eventually, I returned to Libya, but the lack of accessible infrastructure and societal challenges hindered my ability to attend school.  I persevered by learning through television programs and with the unwavering support of my family.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 id="embracing-technology">Embracing Technology</h2>
+            <p>
+                My journey into the world of technology began with exploring websites like <a href="https://www.bbc.com/" target="_blank">BBC</a>, <a href="https://www.arabia.com/" target="_blank">Arabia.com</a>, and <a href="https://www.yahoo.com/" target="_blank">Yahoo</a>. I designed my first website, "Janzour My Home," in 2004.
+            </p>
+            <p>
+                I also supervised Libyan forums and later embraced social media platforms like YouTube, where I shared videos about my experiences.
+            </p>
+            <p>
+                <span class="highlight">Technology became a powerful tool</span>, enabling me to connect with others and share my story.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 id="contributions-advocacy">Contributions and Advocacy</h2>
+            <p>
+                I designed the first official website for Tripoli’s club for people with disabilities in 2007.  I also joined the Libyan Paralympics and Special Libyan Olympics media offices.
+            </p>
+            <p>
+               This work allowed me to contribute to raising awareness and promoting the achievements of people with disabilities.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 id="blogging-message">Blogging and Personal Message</h2>
+            <p>
+                I started blogging in 2009 at <a href="https://absily.wordpress.com/" target="_blank">absily.wordpress.com</a>. My blog focuses on disability rights and my personal experiences, aiming to raise awareness and inspire others.
+            </p>
+            <p class="quote">
+                "My motivation in life is ‘to be or not to be’ and ‘Live Strong.’"
+            </p>
+            <p>
+                I share my story in the hope of helping others facing similar challenges.  Technology has truly transformed my life, giving me a voice and enabling me to reach a global audience.
+            </p>
+        </section>
+    </div>
+    <footer class="footer">
+        <div>
+            &copy; 2025 All rights reserved. Website:
+            <a href="http://www.absi.cc" target="_blank">www.absi.cc</a> | Email:
+            <a href="mailto:info@absi.ly">info@absi.ly</a>
+        </div>
+    </footer>
+    <button id="scroll-to-top"><i class="fas fa-arrow-up"></i></button>
+    <script>
+        // You can add JavaScript for interactive elements here if needed.
+        // For example, to add a smooth scrolling effect:
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Get the button
+        let scrollToTopButton = document.getElementById("scroll-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopButton.style.display = "block";
+            } else {
+                scrollToTopButton.style.display = "none";
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        scrollToTopButton.onclick = function() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        };
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
