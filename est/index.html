@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دراسة تكنولوجيا لوسيوس 6 - ليبيا</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f0f2f5, #e0e0e0); /* تدرج خلفية لطيف */
+            color: #333;
+        }
+        h1, h2 {
+            color: #4c0099; /* لون بنفسجي غامق */
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* ظل نصي */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* خلفية بيضاء شفافة */
+            border-radius: 12px; /* حواف دائرية أكثر */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل أكثر بروزاً */
+            backdrop-filter: blur(4px); /* تأثير ضبابي للخلفية */
+        }
+        .section {
+            background: linear-gradient(135deg, #ffffff, #f8f8f8); /* تدرج لوني داخل الأقسام */
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd; /* حدود خفيفة */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* تأثيرات التحويل والظل */
+        }
+        .section:hover {
+            transform: translateY(-4px); /* ارتفاع طفيف عند التحويم */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* ظل أكبر عند التحويم */
+        }
+        .section h2{
+             margin-top: 0;
+             color: #663399; /* لون بنفسجي أفتح */
+        }
+        input, select {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #c0c0c0; /* لون رمادي */
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease; /* انتقال لون الحد */
+            background-color: #f5f5f5; /* لون خلفية أفتح */
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4a148c; /* لون بنفسجي مركز */
+            box-shadow: 0 0 5px rgba(74, 20, 140, 0.3); /* ظل حول الحقل المركز */
+        }
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%237f8c8d" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 16px;
+            padding-right: 30px;
+        }
+        select::-ms-expand {
+            display: none;
+        }
+        button {
+            background: linear-gradient(to right, #8e24aa, #5e35b1); /* تدرج لوني للزر */
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 25px auto;
+            font-size: 1.2em;
+            transition: all 0.3s ease; /* انتقال شامل */
+            width: fit-content;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        button:hover {
+            background: linear-gradient(to right, #7b1fa2, #4a148c); /* تدرج أغمق عند التحويم */
+            transform: translateY(-2px) scale(1.05); /* ارتفاع وتكبير طفيف عند التحويم */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        button:active {
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .note {
+            color: #555;
+            font-size: 0.9em;
+            text-align: center;
+            font-style: italic; /* نمط مائل */
+            margin-top: 15px;
+        }
+        .note p {
+            margin-bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            input, select {
+                width: calc(100% - 16px);
+                padding: 10px;
+            }
+            button {
+                font-size: 1.1em;
+                padding: 12px 25px;
+            }
+        }
+        @media (max-width: 480px) {
+            input, select {
+                width: 100%;
+            }
+            .section {
+                padding: 20px;
+            }
+            h1{
+                font-size: 1.8em;
+            }
+            h2{
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>دراسة تكنولوجيا لوسيوس 6 - ليبيا</h1>
+        <div class="section">
+            <h2>تفاصيل الدراسة</h2>
+            <p>المكافأة: <strong>200 دينار ليبي</strong> مقابل مشاركة لمدة تصل إلى ساعتين.</p>
+            <p class="note">البيانات محمية وفق قوانين الخصوصية الليبية</p>
+        </div>
+        <form action="mailto:3bdusalam@gmail.com" method="post" enctype="text/plain">
+            <div class="section">
+                <h3>1. المعلومات الشخصية</h3>
+                <input type="text" name="full_name" placeholder="الاسم الكامل (كما في الهوية)" required>
+                <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+                <input type="tel" name="phone" placeholder="رقم الهاتف" pattern="[0-9]{10}" required>
+                <input type="number" name="age" placeholder="العمر" min="18" required>
+                <select name="gender" required>
+                    <option value="">اختر الجنس</option>
+                    <option value="male">ذكر</option>
+                    <option value="female">أنثى</option>
+                </select>
+                <input type="text" name="city_region" placeholder="المدينة والمنطقة" required>
+            </div>
+            <div class="section">
+                <h3>2. تاريخ الميلاد</h3>
+                <input type="date" name="birth_date" required>
+            </div>
+            <div class="section">
+                <h3>3. متطلبات الدراسة</h3>
+                <label>
+                    <input type="radio" name="terms" value="yes" required>
+                    نعم، أوافق على جميع البنود
+                </label><br>
+                <label>
+                    <input type="radio" name="terms" value="no">
+                    لا، لا أوافق
+                </label>
+            </div>
+            <button type="submit">إرسال الطلب</button>
+        </form>
+        <div class="section note">
+            <p>للتواصل: <a href="mailto:info@study.ly">info@absi.ly</a> | هاتف: 091-234500909678</p>
+        </div>
+    </div>
+</body>
+</html>
