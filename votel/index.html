@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استطلاع رأي حول إدارة ليبيا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        /* أنماط إضافية لتحسين التفاعل واتجاه النص */
+        #yes-button:hover,
+        #no-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .vote-animation {
+            animation: pulse 0.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .rtl {
+            direction: rtl;
+        }
+        .colored-title {
+            color: #4f46e5;
+        }
+        .colored-heading {
+            color: #6b7280;
+        }
+
+        /* Fix for footer overlapping */
+        .site-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .main-content {
+            flex: 1;
+        }
+        footer {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        /* Improve icon styling */
+        footer .fa-twitter,
+        footer .fa-facebook,
+        footer .fa-instagram,
+        footer .fa-telegram {
+            font-size: 1.5rem;
+            color: #4a5568;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        footer .fa-twitter:hover { color: #1da1f2; }
+        footer .fa-facebook:hover { color: #1877f2; }
+        footer .fa-instagram:hover { color: #e1306c; }
+        footer .fa-telegram:hover { color: #229ed9; }
+
+        /* Center footer content */
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        footer .container > div {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .container > div:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            footer .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+            footer .container > div {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Add this to ensure icons container is centered */
+        footer .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+
+        /* Styles for the logo */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .logo {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 site-container">
+    <header>
+        <div class="logo-container">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiwuWz2_cpNWHJZbvmm-3Vo89QHj7oNkjGMQZAZR7G7cpZvHP7vADF0FMmXbGa22KgM8__VtIX5xodgqIbeLvb08KUcEualf4zLkUFIO0NOXnQvEBbsnrpxTKpiE-zd_s8KNbwn5sFglwPuiIqd-1zydJUw6ZmaMUpAYfI6-1YuTwzJ-eJPq306Q701Zh3X=s200" alt="شعار صوت ليبيا" class="logo">
+        </div>
+    </header>
+    <main class="flex justify-center items-center py-8 main-content">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-2xl rtl">
+            <h1 class="text-2xl font-semibold colored-title mb-6 text-center">استطلاع رأي حول إدارة ليبيا</h1>
+            <p class="text-gray-700 mb-6">
+                في ظل غياب أي حلول واقعية في الأفق لمحاربة الفساد المستشري في ليبيا، أجد نفسي مضطرًا لطرح رأي قد يبدو للبعض جريئًا أو حتى صادمًا: لا يمكن إنقاذ هذا البلد دون إدارة أجنبية مهنية مؤقتة، تتولى مهمة بناء المؤسسات وضبط الفساد وإنهاء المحسوبية. التجارب العالمية أثبتت أن هذا النموذج، رغم حساسيته، نجح في دول انهارت مؤسساتها، وأعطاها فرصة جديدة للوقوف من جديد.
+            </p>
+
+            <h2 class="text-xl font-semibold colored-heading mt-8 mb-4">تجارب دولية ناجحة:</h2>
+            <ol class="list-decimal list-inside space-y-2 text-gray-600">
+                <li><strong>سيراليون – دعم بريطاني مباشر بعد الحرب</strong>
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                        <li>تحسن الوضع الأمني.</li>
+                        <li>إنشاء مؤسسات رقابية فعالة.</li>
+                        <li>تراجع واضح للفساد.</li>
+                    </ul>
+                    <p class="text-sm mt-1">المصدر: Chatham House – Sierra Leone: Rebuilding a Country (2012)</p>
+                </li>
+                <li><strong>كوسوفو – إدارة دولية من الأمم المتحدة والاتحاد الأوروبي</strong>
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                        <li>تأسيس نظام عدالة فعال.</li>
+                        <li>تقليص الفساد.</li>
+                        <li>بناء ثقة المواطن بالمؤسسات.</li>
+                    </ul>
+                    <p class="text-sm mt-1">المصادر: https://unmik.unmissions.org – https://www.eulex-kosovo.eu</p>
+                </li>
+                <li><strong>هونغ كونغ – نموذج هيئة مكافحة الفساد</strong>
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                        <li>انخفاض ملحوظ في الفساد.</li>
+                        <li>تحسين الشفافية الإدارية.</li>
+                    </ul>
+                    <p class="text-sm mt-1">المصدر: Transparency International – Hong Kong</p>
+                </li>
+                <li><strong>البوسنة والهرسك – إشراف دولي لبناء الدولة</strong>
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                        <li>إعادة بناء مؤسسات الدولة.</li>
+                        <li>نجاح نسبي في ضبط الفساد.</li>
+                    </ul>
+                    <p class="text-sm mt-1">المصدر: http://www.ohr.int</p>
+                </li>
+            </ol>
+
+            <h2 class="text-xl font-semibold colored-heading mt-8 mb-4">نموذج الخليج: انفتاح منظم على الإدارة الأجنبية</h2>
+            <p class="text-gray-600 mb-4">
+                رغم السيادة القوية في دول الخليج، إلا أن الاعتماد على الخبرات الأجنبية كان أساسيًا في تطوير مؤسسات الدولة، خصوصًا في الإمارات:
+            </p>
+            <ul class="list-disc list-inside ml-5 space-y-2 text-gray-600">
+                <li><strong>الإمارات – قضاء أجنبي وخبرات عالمية</strong>
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                        <li>دبي استعانت بقضاة أجانب في محاكم مركز دبي المالي العالمي (DIFC Courts).</li>
+                        <li>تم توظيف آلاف الخبراء الأجانب في التخطيط والإدارة.</li>
+                    </ul>
+                    <p class="text-sm mt-1">المصدر: https://www.difccourts.ae</p>
+                </li>
+                <li><strong>دور شركات استشارية عالمية: ماكنزي نموذجًا</strong>
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                        <li><strong>السعودية – رؤية 2030 بدعم ماكنزي</strong>
+                            <ul class="list-disc list-inside ml-5 space-y-1">
+                                <li>شركة McKinsey قدمت الإطار العام لرؤية 2030.</li>
+                                <li>ساعدت في صياغة استراتيجيات إصلاح في قطاعات الصحة والتعليم والاقتصاد.</li>
+                            </ul>
+                            <p class="text-sm mt-1">المصدر: Bloomberg – Saudi Arabia Turns to McKinsey to Guide Its Economic Overhaul</p>
+                        </li>
+                        <li><strong>قطر والإمارات</strong>
+                            <ul class="list-disc list-inside ml-5 space-y-1">
+                                <li>استعانت حكومات الخليج بشركات مثل McKinsey لتطوير الأداء الحكومي وتخطيط المدن وبناء النماذج الإدارية الحديثة.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2 class="text-xl font-semibold colored-heading mt-8 mb-4">ماذا عن ليبيا؟</h2>
+            <p class="text-gray-600 mb-4">
+                ليبيا تحتاج إلى نموذج مشابه، يجمع بين:
+            </p>
+            <ul class="list-disc list-inside ml-5 space-y-2 text-gray-600">
+                <li>إشراف دولي مؤقت في مفاصل الدولة الحساسة.</li>
+                <li>توظيف خبراء مستقلين لمكافحة الفساد.</li>
+                <li>التعاون مع شركات استشارية محترفة لوضع خطط قابلة للتنفيذ.</li>
+            </ul>
+            <p class="text-gray-600 mb-6 font-semibold">
+                هذا النموذج لا يعني التخلي عن السيادة، بل إنقاذها.
+            </p>
+
+            <h2 class="text-xl font-semibold colored-heading mt-8 mb-4 text-center">استطلاع رأي</h2>
+            <p class="text-gray-700 text-center mb-4">هل توافق على ضرورة إدارة أجنبية مهنية مؤقتة لليبيا؟</p>
+            <div class="flex justify-center space-x-4">
+                <button id="yes-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                    أوافق
+                </button>
+                <button id="no-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                    لا أوافق
+                </button>
+            </div>
+
+            <div id="results" class="mt-6 text-center font-semibold text-gray-800 hidden">
+                <p>النتائج: <span id="yes-count">0</span> أوافق، <span id="no-count">0</span> لا أوافق</p>
+                <p id="percentage-display"></p>
+            </div>
+            <div id="thank-you" class="mt-6 text-center font-semibold text-gray-800 hidden">
+                <p>شكراً لمشاركتك</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-700 py-4 mt-8 rounded-b-lg w-full">
+        <div class="container mx-auto">
+            <div class="text-sm">
+                &copy; 24 أبريل 2025
+            </div>
+            <div class="icon-container">
+                <a href="https://twitter.com/absily" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/absily" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/absily" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/absily" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+            </div>
+            <div class="text-sm">
+                @absily
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let yesCount = 0;
+        let noCount = 0;
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const resultsDiv = document.getElementById('results');
+        const yesCountSpan = document.getElementById('yes-count');
+        const noCountSpan = document.getElementById('no-count');
+        const percentageDisplay = document.getElementById('percentage-display');
+        const thankYouDiv = document.getElementById('thank-you');
+
+        function updateResults() {
+            yesCountSpan.textContent = yesCount;
+            noCountSpan.textContent = noCount;
+            resultsDiv.classList.remove('hidden');
+
+            const totalVotes = yesCount + noCount;
+            if (totalVotes > 0) {
+                const yesPercentage = (yesCount / totalVotes) * 100;
+                const noPercentage = (noCount / totalVotes) * 100;
+                percentageDisplay.textContent = `نسبة الموافقين: ${yesPercentage.toFixed(2)}% ، نسبة المعارضين: ${noPercentage.toFixed(2)}%`;
+            } else {
+                percentageDisplay.textContent = '';
+            }
+        }
+
+        yesButton.addEventListener('click', () => {
+            yesCount++;
+            updateResults();
+            disableButtons();
+            thankYouDiv.classList.remove('hidden');
+            yesButton.classList.add('vote-animation');
+             setTimeout(() => {
+                yesButton.classList.remove('vote-animation');
+            }, 500);
+            sendEmail(); // Call sendEmail function on button click
+        });
+
+        noButton.addEventListener('click', () => {
+            noCount++;
+            updateResults();
+            disableButtons();
+            thankYouDiv.classList.remove('hidden');
+            noButton.classList.add('vote-animation');
+            setTimeout(() => {
+                noButton.classList.remove('vote-animation');
+            }, 500);
+            sendEmail(); // Call sendEmail function on button click
+        });
+
+        function disableButtons() {
+            yesButton.disabled = true;
+            noButton.disabled = true;
+        }
+
+        function sendEmail() {
+            const recipient = '3bdusalam@gmail.com';
+            const subject = 'نتائج استطلاع الرأي حول إدارة ليبيا';
+            const body = `عدد الموافقين: ${yesCount}\nعدد المعارضين: ${noCount}`;
+
+            // Use a simple approach for demonstration.  For a real website, you would use a server-side script.
+            const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;  // This will open the user's default email client.
+
+            // Note:  This is client-side JavaScript.  For a production site, you would send the email
+            //        from your server, using a library like Nodemailer (for Node.js) or similar for other languages.
+            //        This is essential to protect your email address and for security.
+        }
+    </script>
+</body>
+</html>
