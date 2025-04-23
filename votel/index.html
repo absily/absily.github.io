@@ -278,35 +278,87 @@
         }
 
         yesButton.addEventListener('click', () => {
-            yesCount++;
-            updateResults();
-            disableButtons();
-            thankYouDiv.classList.remove('hidden');
-            yesButton.classList.add('vote-animation');
-             setTimeout(() => {
-                yesButton.classList.remove('vote-animation');
-            }, 500);
-            sendEmail();
-            // Save to localStorage
-            localStorage.setItem('yesCount', yesCount);
-            localStorage.setItem('noCount', noCount);
-
+            handleVote('yes');
         });
 
         noButton.addEventListener('click', () => {
-            noCount++;
-            updateResults();
-            disableButtons();
-            thankYouDiv.classList.remove('hidden');
-            noButton.classList.add('vote-animation');
-            setTimeout(() => {
-                noButton.classList.remove('vote-animation');
-            }, 500);
-            sendEmail();
-            // Save to localStorage
-            localStorage.setItem('yesCount', yesCount);
-            localStorage.setItem('noCount', noCount);
+            handleVote('no');
         });
+
+        function handleVote(vote) {
+            // Get the IP address using a free API
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const userIp = data.ip;
+                    const storageKey = `vote_${userIp}`;
+
+                    // Check if the user has already voted within the last 24 hours
+                    if (localStorage.getItem(storageKey)) {
+                        alert('لقد صوتت بالفعل خلال 24 ساعة الماضية.');
+                        return;
+                    }
+
+                    // Record the vote and the time
+                    localStorage.setItem(storageKey, 'voted');
+                    localStorage.setItem(`voteTime_${userIp}`, Date.now());
+
+
+                    if (vote === 'yes') {
+                        yesCount++;
+                         yesButton.classList.add('vote-animation');
+                          setTimeout(() => {
+                            yesButton.classList.remove('vote-animation');
+                        }, 500);
+                    } else {
+                        noCount++;
+                        noButton.classList.add('vote-animation');
+                        setTimeout(() => {
+                            noButton.classList.remove('vote-animation');
+                        }, 500);
+                    }
+                    updateResults();
+                    disableButtons();
+                    thankYouDiv.classList.remove('hidden');
+                    sendEmail();
+                    // Save to localStorage
+                    localStorage.setItem('yesCount', yesCount);
+                    localStorage.setItem('noCount', noCount);
+
+                     // Clear vote after 24 hours
+                    setTimeout(() => {
+                        localStorage.removeItem(storageKey);
+                        localStorage.removeItem(`voteTime_${userIp}`);
+                    }, 24 * 60 * 60 * 1000);
+
+
+                })
+                .catch(error => {
+                    console.error('Error getting IP address:', error);
+                    alert('تعذر الحصول على عنوان IP الخاص بك. يرجى المحاولة مرة أخرى.');
+                    // Still allow the vote, but without IP restriction
+                    if (vote === 'yes') {
+                        yesCount++;
+                         yesButton.classList.add('vote-animation');
+                          setTimeout(() => {
+                            yesButton.classList.remove('vote-animation');
+                        }, 500);
+                    } else {
+                        noCount++;
+                         noButton.classList.add('vote-animation');
+                          setTimeout(() => {
+                            noButton.classList.remove('vote-animation');
+                        }, 500);
+                    }
+                    updateResults();
+                    disableButtons();
+                    thankYouDiv.classList.remove('hidden');
+                    sendEmail();
+                    // Save to localStorage
+                    localStorage.setItem('yesCount', yesCount);
+                    localStorage.setItem('noCount', noCount);
+                });
+        }
 
         function disableButtons() {
             yesButton.disabled = true;
