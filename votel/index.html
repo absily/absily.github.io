@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
@@ -254,6 +254,14 @@
         const percentageDisplay = document.getElementById('percentage-display');
         const thankYouDiv = document.getElementById('thank-you');
 
+        // Load counts from localStorage
+        if (localStorage.getItem('yesCount')) {
+            yesCount = parseInt(localStorage.getItem('yesCount'));
+        }
+        if (localStorage.getItem('noCount')) {
+            noCount = parseInt(localStorage.getItem('noCount'));
+        }
+
         function updateResults() {
             yesCountSpan.textContent = yesCount;
             noCountSpan.textContent = noCount;
@@ -278,7 +286,11 @@
              setTimeout(() => {
                 yesButton.classList.remove('vote-animation');
             }, 500);
-            sendEmail(); // Call sendEmail function on button click
+            sendEmail();
+            // Save to localStorage
+            localStorage.setItem('yesCount', yesCount);
+            localStorage.setItem('noCount', noCount);
+
         });
 
         noButton.addEventListener('click', () => {
@@ -290,7 +302,10 @@
             setTimeout(() => {
                 noButton.classList.remove('vote-animation');
             }, 500);
-            sendEmail(); // Call sendEmail function on button click
+            sendEmail();
+            // Save to localStorage
+            localStorage.setItem('yesCount', yesCount);
+            localStorage.setItem('noCount', noCount);
         });
 
         function disableButtons() {
@@ -311,6 +326,9 @@
             //        from your server, using a library like Nodemailer (for Node.js) or similar for other languages.
             //        This is essential to protect your email address and for security.
         }
+
+        // Initial update of results on page load
+        updateResults();
     </script>
 </body>
 </html>
