@@ -113,6 +113,67 @@
             width: 200px;
             height: auto;
         }
+
+        /* Styles for results section */
+        #results {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f7fafc;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        #results h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+        #results p {
+            font-size: 1rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+        #results .progress-bar {
+            background-color: #edf2f7;
+            height: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        #results .progress-bar-fill {
+            background-color: #4f46e5;
+            height: 100%;
+            border-radius: 0.5rem;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        #results .vote-counts {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: #a0aec0;
+            margin-bottom: 0.25rem;
+        }
+        #results .total-votes {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Style for thank you message */
+        #thank-you {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f0fdf4;
+            border-radius: 0.75rem;
+            border: 1px solid #d3f1e1;
+            text-align: center;
+            color: #38a169;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 site-container">
@@ -217,8 +278,15 @@
             </div>
 
             <div id="results" class="mt-6 text-center font-semibold text-gray-800 hidden">
-                <p>النتائج: <span id="yes-count">0</span> أوافق، <span id="no-count">0</span> لا أوافق</p>
-                <p id="percentage-display"></p>
+                <h3>النتائج</h3>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="yes-progress"></div>
+                </div>
+                <div class="vote-counts">
+                    <span id="yes-count">0</span> أوافق
+                    <span id="no-count">0</span> لا أوافق
+                </div>
+                <p class="total-votes">إجمالي المصوتين: <span id="total-count">0</span></p>
             </div>
             <div id="thank-you" class="mt-6 text-center font-semibold text-gray-800 hidden">
                 <p>شكراً لمشاركتك</p>
@@ -251,8 +319,9 @@
         const resultsDiv = document.getElementById('results');
         const yesCountSpan = document.getElementById('yes-count');
         const noCountSpan = document.getElementById('no-count');
-        const percentageDisplay = document.getElementById('percentage-display');
+        const totalCountSpan = document.getElementById('total-count');
         const thankYouDiv = document.getElementById('thank-you');
+        const yesProgress = document.getElementById('yes-progress');
 
         // Load counts from localStorage
         if (localStorage.getItem('yesCount')) {
@@ -265,15 +334,18 @@
         function updateResults() {
             yesCountSpan.textContent = yesCount;
             noCountSpan.textContent = noCount;
+            const totalCount = yesCount + noCount;
+            totalCountSpan.textContent = totalCount;
             resultsDiv.classList.remove('hidden');
 
             const totalVotes = yesCount + noCount;
             if (totalVotes > 0) {
                 const yesPercentage = (yesCount / totalVotes) * 100;
-                const noPercentage = (noCount / totalVotes) * 100;
-                percentageDisplay.textContent = `نسبة الموافقين: ${yesPercentage.toFixed(2)}% ، نسبة المعارضين: ${noPercentage.toFixed(2)}%`;
+                yesProgress.style.width = `${yesPercentage}%`;
+                yesProgress.textContent = `${yesPercentage.toFixed(2)}%`; // Optional: Display percentage in the bar
             } else {
-                percentageDisplay.textContent = '';
+                yesProgress.style.width = '0%';
+                yesProgress.textContent = '';
             }
         }
 
