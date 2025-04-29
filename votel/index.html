@@ -357,7 +357,7 @@
             handleVote('no');
         });
 
-       function handleVote(vote) {
+        function handleVote(vote) {
             // Use a free third-party service to get the IP address
             fetch('https://api.ipify.org?format=json')  // You can also try https://ifconfig.me/ip
                 .then(response => response.json())
@@ -398,26 +398,24 @@
                     disableButtons();
                     thankYouDiv.classList.remove('hidden');
                     sendEmail();
-                    // Save to localStorage
-                    localStorage.setItem('yesCount', yesCount);
-                    localStorage.setItem('noCount', noCount);
+                    // Save to localStorage (using a single key for both counts)
+                    localStorage.setItem('voteCounts', JSON.stringify({ yesCount, noCount }));
 
                 })
                 .catch(error => {
                     console.error('Error getting IP address:', error);
                     alert('تعذر الحصول على عنوان IP الخاص بك. يرجى المحاولة مرة أخرى.');
-                    // Consider a fallback:  Allow vote, but without IP restriction, or show an error
-                    //  Here, we'll allow the vote to go through, but it won't be restricted.
-                     if (vote === 'yes') {
+                    // Still allow the vote, but without IP restriction
+                    if (vote === 'yes') {
                         yesCount++;
-                         yesButton.classList.add('vote-animation');
-                          setTimeout(() => {
+                        yesButton.classList.add('vote-animation');
+                        setTimeout(() => {
                             yesButton.classList.remove('vote-animation');
                         }, 500);
                     } else {
                         noCount++;
-                         noButton.classList.add('vote-animation');
-                          setTimeout(() => {
+                        noButton.classList.add('vote-animation');
+                        setTimeout(() => {
                             noButton.classList.remove('vote-animation');
                         }, 500);
                     }
@@ -425,9 +423,8 @@
                     disableButtons();
                     thankYouDiv.classList.remove('hidden');
                     sendEmail();
-                    // Save to localStorage
-                    localStorage.setItem('yesCount', yesCount);
-                    localStorage.setItem('noCount', noCount);
+                    // Save to localStorage (using a single key for both counts)
+                    localStorage.setItem('voteCounts', JSON.stringify({ yesCount, noCount }));
                 });
         }
 
@@ -451,6 +448,12 @@
         }
 
         // Initial update of results on page load
+        const storedVotes = localStorage.getItem('voteCounts');
+        if (storedVotes) {
+            const { yesCount: storedYes, noCount: storedNo } = JSON.parse(storedVotes);
+            yesCount = storedYes;
+            noCount = storedNo;
+        }
         updateResults();
     </script>
 </body>
