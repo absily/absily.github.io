@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل كتابة البرومبت الاحترافي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Visualization & Content Choices:
+        - Report Info: Introduction -> Goal: Inform & Engage -> Viz/Method: Welcoming text in a dedicated tab (HTML/Tailwind) -> Interaction: Tab selection -> Justification: Sets the stage for the application's content.
+        - Report Info: What is a Prompt? & Why is it Important? -> Goal: Inform & Define -> Viz/Method: Combined into 'أساسيات البرومبت' tab with structured text and bullet points (HTML/Tailwind) -> Interaction: Tab selection -> Justification: Consolidates foundational knowledge.
+        - Report Info: Image Prompt Elements (Subject, Setting, etc.) -> Goal: Organize & Detail -> Viz/Method: Accordion layout within 'برومبتات الصور' tab (HTML/Tailwind/JS). Each element (Subject, Setting, etc.) is an accordion item. -> Interaction: Click to expand/collapse details. -> Justification: Allows focused learning on each component without overwhelming the user.
+        - Report Info: Image Prompt Examples (Basic to Pro) -> Goal: Compare & Illustrate -> Viz/Method: Stacked display of prompts with their analyses within 'برومبتات الصور' tab, styled for clarity (HTML/Tailwind). -> Interaction: Visual comparison. -> Justification: Clearly shows the impact of prompt detail.
+        - Report Info: Video Prompt Components -> Goal: Organize & Detail -> Viz/Method: Accordion layout within 'برومبتات الفيديو' tab (HTML/Tailwind/JS). -> Interaction: Click to expand/collapse. -> Justification: Consistent with image prompts for ease of use.
+        - Report Info: Video Prompt Example -> Goal: Illustrate -> Viz/Method: Display of advanced video prompt and analysis within 'برومبتات الفيديو' tab (HTML/Tailwind). -> Interaction: Static display. -> Justification: Provides a concrete example for video.
+        - Report Info: Golden Tips -> Goal: Advise & Summarize -> Viz/Method: Styled list (numbered or custom bullets) in 'نصائح ذهبية' tab (HTML/Tailwind). -> Interaction: Static display. -> Justification: Presents actionable advice clearly.
+        - Report Info: Conclusion & Sources -> Goal: Conclude & Resource -> Viz/Method: Combined into 'مصادر وخلاصة' tab, with conclusion text and a list of sources (HTML/Tailwind). -> Interaction: Static display. -> Justification: Provides closure and further learning paths.
+        - Library/Method: Vanilla JS for tab switching and accordion functionality. No Chart.js/Plotly.js needed as the content is primarily textual and conceptual.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+        }
+        .tab-button.active {
+            background-color: #0ea5e9; /* Tailwind sky-500 */
+            color: white;
+        }
+        .tab-button {
+            background-color: #e2e8f0; /* Tailwind slate-200 */
+            color: #1e293b; /* Tailwind slate-800 */
+        }
+        .content-section {
+            background-color: white;
+            border-radius: 0.5rem; /* 8px */
+            padding: 1.5rem; /* 24px */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-top: 1rem; /* 16px */
+        }
+        .accordion-header {
+            cursor: pointer;
+            background-color: #f1f5f9; /* Tailwind slate-100 */
+            transition: background-color 0.2s ease-in-out;
+        }
+        .accordion-header:hover {
+            background-color: #e2e8f0; /* Tailwind slate-200 */
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Sufficiently large value */
+        }
+        .accordion-item.active .arrow {
+            transform: rotate(180deg);
+        }
+        .arrow {
+            transition: transform 0.3s ease-out;
+            font-size: 1.25rem; /* Larger arrow */
+        }
+        h1, h2, h3 {
+            color: #0f172a; /* Tailwind slate-900 */
+        }
+        p, li {
+            color: #334155; /* Tailwind slate-700 */
+            line-height: 1.75;
+        }
+        .prompt-example-container {
+            border-right: 4px solid #0ea5e9; /* Tailwind sky-500 */
+            background-color: #f0f9ff; /* Tailwind sky-50 */
+        }
+        code {
+            direction: ltr;
+            text-align: left;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-sky-600 text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">🎨 الدليل الكامل لكتابة برومبت احترافي 🖼️</h1>
+            <p class="mt-2 text-md md:text-lg">لتوليد الصور والفيديوهات بالذكاء الاصطناعي</p>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-2 sm:px-4">
+            <div class="flex flex-wrap justify-center items-center py-3 space-x-1 space-x-reverse sm:space-x-2 sm:space-x-reverse">
+                <button class="tab-button active text-xs sm:text-sm md:text-base font-medium py-2 px-2 sm:px-3 md:px-4 rounded-md transition-colors duration-150" onclick="showTab('intro')">مقدمة</button>
+                <button class="tab-button text-xs sm:text-sm md:text-base font-medium py-2 px-2 sm:px-3 md:px-4 rounded-md transition-colors duration-150" onclick="showTab('basics')">أساسيات البرومبت</button>
+                <button class="tab-button text-xs sm:text-sm md:text-base font-medium py-2 px-2 sm:px-3 md:px-4 rounded-md transition-colors duration-150" onclick="showTab('imagePrompts')">برومبتات الصور</button>
+                <button class="tab-button text-xs sm:text-sm md:text-base font-medium py-2 px-2 sm:px-3 md:px-4 rounded-md transition-colors duration-150" onclick="showTab('videoPrompts')">برومبتات الفيديو</button>
+                <button class="tab-button text-xs sm:text-sm md:text-base font-medium py-2 px-2 sm:px-3 md:px-4 rounded-md transition-colors duration-150" onclick="showTab('tips')">نصائح ذهبية</button>
+                <button class="tab-button text-xs sm:text-sm md:text-base font-medium py-2 px-2 sm:px-3 md:px-4 rounded-md transition-colors duration-150" onclick="showTab('sources')">مصادر وخلاصة</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-6">
+        <div id="intro" class="tab-content content-section">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">مرحباً بك في عالم هندسة البرومبت!</h2>
+            <p class="mb-4">هذا القسم يقدم لك لمحة عامة عن أهمية "هندسة البرومبت" (Prompt Engineering) في عصر الذكاء الاصطناعي. ستكتشف كيف أصبحت هذه المهارة ضرورية لكل من يعمل في المجالات الرقمية والإبداعية، وكيف يمكن لهذا الدليل التفاعلي أن يساعدك على إتقانها لتحويل أفكارك إلى صور وفيديوهات مذهلة.</p>
+            <p>في زمن أصبح فيه الذكاء الاصطناعي شريكًا أساسيًا في عمليات التصميم والإنتاج البصري، ظهرت أهمية "هندسة البرومبت" كمهارة لا غنى عنها لأي شخص يعمل في الإعلام الرقمي، التسويق، التصميم، أو حتى التعليم. هذه المهارة تُعد جسر التواصل بين الفكر البشري وقدرات الذكاء الاصطناعي التوليدي.</p>
+            <p class="mt-3">ولكن، كتابة برومبت فعّال ليست مجرد تجميع كلمات، بل هي فن وعلم يحتاج إلى فهم عميق للّغة، السياق، وأدوات الذكاء الاصطناعي المستخدمة، بالإضافة إلى المبادئ الفنية والبصرية.</p>
+        </div>
+
+        <div id="basics" class="tab-content content-section hidden">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">📌 أساسيات البرومبت: التعريف والأهمية</h2>
+            <p class="mb-6">هنا، ستتعمق في فهم ماهية "البرومبت" وكيف يعمل كأداة توجيه لنماذج الذكاء الاصطناعي. كما سنسلط الضوء على الأسباب الجوهرية التي تجعل من "هندسة البرومبت" مهارة حاسمة لتحقيق الدقة، تعزيز الإبداع، وتوفير الموارد في مشاريعك البصرية.</p>
+            <h3 class="text-xl md:text-2xl font-semibold mt-6 mb-3">ما هو البرومبت (Prompt)؟</h3>
+            <p class="mb-4">البرومبت هو الوصف النصي الذي تقدّمه لنظام الذكاء الاصطناعي التوليدي (Generative AI) ليولّد بناءً عليه صورة أو فيديو أو حتى صوت أو نص. فكر فيه وكأنك تشرح لفنان محترف بالضبط ما تريده، وكل تفصيل تضيفه يُغيّر في النتيجة النهائية. يُعد البرومبت بمثابة التعليمات البرمجية التي يتبعها النموذج لإنشاء مخرجات فريدة.</p>
+            
+            <h3 class="text-xl md:text-2xl font-semibold mt-6 mb-3">💡 لماذا تُعد هندسة البرومبت مهمة؟</h3>
+            <p class="mb-2">تكمن أهمية هندسة البرومبت في قدرتها على:</p>
+            <ul class="list-disc list-inside space-y-2 marker:text-sky-500">
+                <li><strong>تحقيق الدقة والتحكم:</strong> تمكنك من توجيه الذكاء الاصطناعي بدقة للحصول على النتائج المرجوة، مما يقلل من الحاجة إلى التعديلات اللاحقة.</li>
+                <li><strong>تعزيز الإبداع:</strong> تساعدك على استكشاف إمكانيات غير محدودة للذكاء الاصطناعي، وتحويل الأفكار المجردة إلى واقع بصري.</li>
+                <li><strong>توفير الوقت والموارد:</strong> ببرومبتات دقيقة، يمكن تقليل عدد المحاولات اللازمة للوصول إلى النتيجة المطلوبة.</li>
+                <li><strong>فهم آليات عمل نماذج الذكاء الاصطناعي:</strong> تتيح لك الممارسة المستمرة فهم كيفية "تفكير" النماذج اللغوية الكبيرة (LLMs) ونماذج الانتشار (Diffusion Models).</li>
+            </ul>
+        </div>
+
+        <div id="imagePrompts" class="tab-content content-section hidden">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">🖼️ أولًا: كتابة برومبت احترافي لتوليد الصور</h2>
+            <p class="mb-6">تعتمد جودة الصورة المُولّدة بشكل كبير على مدى تفصيل ووضوح البرومبت. هذا القسم مصمم ليزودك بفهم شامل للعناصر الأساسية التي تشكل برومبت صورة قوي. من خلال التفاعل مع عناصر الأكورديون، يمكنك استكشاف كل مكون على حدة، ثم رؤية كيف تتجمع هذه المكونات في أمثلة عملية متدرجة.</p>
+
+            <h3 class="text-xl md:text-2xl font-semibold mb-4">✅ العناصر الأساسية لبرومبت صورة قوي:</h3>
+            <div class="space-y-3 accordion-container">
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">العنصر الرئيسي (Subject)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تحديد العنصر أو الشخصية المحورية في الصورة.</p>
+                        <p><strong>أمثلة:</strong> "فتاة صغيرة"، "سيارة رياضية حمراء"، "مسجد تاريخي"، "كأس شاي بخاري"، "رجل مسن حكيم".</p>
+                        <p><strong>نصيحة:</strong> كن محددًا قدر الإمكان (مثلاً: "قطة سيامية" بدلاً من "قطة").</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الإعداد (Setting/Environment)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تحديد مكان وزمان المشهد.</p>
+                        <p><strong>أمثلة:</strong> "شارع مزدحم في طوكيو ليلاً"، "صحراء شاسعة عند الفجر"، "داخل قطار قديم يسير عبر الريف"، "على قمة جبل جليدي".</p>
+                        <p><strong>نصيحة:</strong> إضافة تفاصيل عن الحالة (مثلاً: "غرفة فوضوية" أو "مكتب أنيق").</p>
+                    </div>
+                </div>
+                 <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الإضاءة والمزاج (Lighting & Mood)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> وصف نوع الإضاءة والتأثير العاطفي أو الجوي العام للمشهد.</p>
+                        <p><strong>أمثلة:</strong> "إضاءة ذهبية دافئة"، "جو ضبابي كثيف"، "ساعة الغروب الساحرة"، "ليلي مع ضوء قمر خافت"، "إضاءة نيون ساطعة"، "ظل درامي".</p>
+                        <p><strong>نصيحة:</strong> الإضاءة هي مفتاح المزاج البصري.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الأسلوب البصري (Art Style/Visual Style)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تحديد النمط الفني الذي ترغب في أن يتبعه الذكاء الاصطناعي.</p>
+                        <p><strong>أمثلة:</strong> "تصوير فوتوغرافي واقعي فائق الدقة (Hyperrealistic Photography)", "رسوم متحركة كرتونية (Cartoon Style)", "أسلوب بيكسار (Pixar Style)", "لوحة زيتية كلاسيكية (Oil Painting)", "ستايل Cyberpunk المستقبلي", "سينمائي درامي (Cinematic Drama)", "رسم رقمي (Digital Painting)".</p>
+                        <p><strong>نصيحة:</strong> يمكن الجمع بين أنماط مختلفة أحيانًا، لكن كن حذرًا لضمان التناسق.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الزاوية أو العدسة (Angle/Lens/Composition) - اختياري</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تحديد كيفية تصوير المشهد من منظور الكاميرا.</p>
+                        <p><strong>أمثلة:</strong> "لقطة مقرّبة (Close-up) للوجه"، "زاوية منخفضة (Low Angle) تظهر القوة"، "عدسة 35mm لعمق ميدان ضحل"، "منظر جوي (Drone View) للمدينة"، "لقطة واسعة (Wide Shot)".</p>
+                        <p><strong>نصيحة:</strong> هذه التفاصيل تزيد من واقعية الصورة وتوجيه التركيز.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الجودة والخصائص الفنية (Quality & Technical Specifications) - اختياري</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> طلب تحسينات فنية محددة.</p>
+                        <p><strong>أمثلة:</strong> "Ultra 8k resolution", "highly detailed", "photorealistic", "award-winning photography", "Unreal Engine", "V-Ray render".</p>
+                        <p><strong>نصيحة:</strong> استخدام هذه الكلمات يمكن أن يحسن من جودة المخرجات بشكل ملحوظ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-4">🎯 مثال عملي متدرّج:</h3>
+            <div class="space-y-5">
+                <div class="prompt-example-container p-4 rounded-md shadow">
+                    <h4 class="text-lg md:text-xl font-semibold mb-2 text-sky-700">برومبت بسيط (Basic Prompt):</h4>
+                    <p class="font-mono bg-slate-100 p-2 rounded text-sm md:text-base"><code>A man walking in a street.</code></p>
+                    <p class="mt-2 text-sm md:text-base"><strong>التحليل:</strong> غامض جدًا، سيولد صورة عامة وغير محددة.</p>
+                </div>
+                <div class="prompt-example-container p-4 rounded-md shadow">
+                    <h4 class="text-lg md:text-xl font-semibold mb-2 text-sky-700">برومبت متوسط (Intermediate Prompt):</h4>
+                    <p class="font-mono bg-slate-100 p-2 rounded text-sm md:text-base"><code>A man in a black suit walking down a rainy street at night, cinematic lighting.</code></p>
+                    <p class="mt-2 text-sm md:text-base"><strong>التحليل:</strong> أضيفت تفاصيل عن الزي، الطقس، الوقت، ونمط الإضاءة. بدأت الصورة تكتسب شكلاً.</p>
+                </div>
+                <div class="prompt-example-container p-4 rounded-md shadow">
+                    <h4 class="text-lg md:text-xl font-semibold mb-2 text-sky-700">برومبت احترافي (Professional Prompt):</h4>
+                    <p class="font-mono bg-slate-100 p-2 rounded leading-relaxed text-sm md:text-base"><code>A tall man wearing a sleek black suit and red tie, walking purposefully down a wet cobblestone street at night, soft neon reflections from distant signs illuminating the puddles, dramatic cinematic lighting, shot on a 35mm lens, moody and atmospheric, in the style of Blade Runner, ultra-detailed, photorealistic.</code></p>
+                    <div class="mt-3 text-sm md:text-base">
+                        <p><strong>التحليل:</strong></p>
+                        <ul class="list-disc list-inside mt-1 space-y-1">
+                            <li><strong>العنصر الرئيسي:</strong> "A tall man wearing a sleek black suit and red tie, walking purposefully" (تحديد الهيئة والحركة).</li>
+                            <li><strong>الإعداد:</strong> "wet cobblestone street at night, soft neon reflections from distant signs illuminating the puddles" (تفاصيل دقيقة للمكان والتأثيرات).</li>
+                            <li><strong>الإضاءة والمزاج:</strong> "dramatic cinematic lighting, moody and atmospheric" (تحديد المزاج والإضاءة بدقة).</li>
+                            <li><strong>الزاوية/العدسة:</strong> "shot on a 35mm lens" (لمسة فنية احترافية).</li>
+                            <li><strong>الأسلوب البصري:</strong> "in the style of Blade Runner" (توجيه النمط الفني).</li>
+                            <li><strong>الجودة:</strong> "ultra-detailed, photorealistic" (طلب جودة عالية).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="videoPrompts" class="tab-content content-section hidden">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">🎥 ثانيًا: كيف تكتب برومبت احترافي لتوليد فيديو؟</h2>
+            <p class="mb-6">يختلف توليد الفيديو عن الصور بإضافة عنصري الحركة والزمن. هذا القسم مخصص لمساعدتك على فهم المكونات الأساسية لبرومبت فيديو فعال. استكشف عناصر الأكورديون للتعرف على كل مكون، ثم اطلع على مثال متقدم يوضح كيفية تطبيق هذه المفاهيم لإنشاء مشهد فيديو غني بالتفاصيل.</p>
+
+            <h3 class="text-xl md:text-2xl font-semibold mb-4">✅ مكونات البرومبت الاحترافي للفيديو:</h3>
+            <div class="space-y-3 accordion-container">
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">المشهد الأساسي + الحركة (Scene & Action)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تحديد العنصر الرئيسي وما يفعله أو كيف يتحرك.</p>
+                        <p><strong>أمثلة:</strong> "فتاة تركض برشاقة عبر حقل قمح"، "قارب صغير يطفو ببطء على بحيرة هادئة"، "نسر يطير في سماء صافية"، "رجل يفتح بابًا خشبيًا قديمًا ويكشف عن غرفة مضيئة".</p>
+                        <p><strong>نصيحة:</strong> يجب أن تكون الحركة واضحة ومحددة.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الزمن والبيئة (Time & Environment Context)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تفاصيل حول الوقت من اليوم، الموسم، أو الحقبة الزمنية.</p>
+                        <p><strong>أمثلة:</strong> "عند الغروب بلون برتقالي حار"، "صباح ضبابي في غابة صنوبر"، "في العصر الفيكتوري بملابس تلك الحقبة"، "بعد الحرب العالمية الثانية، في مدينة مدمرة".</p>
+                        <p><strong>نصيحة:</strong> هذه التفاصيل تضفي عمقًا واقعيًا أو تاريخيًا على المشهد.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الأسلوب البصري والسينمائي (Visual & Cinematic Style)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> النمط الفني الشامل للفيديو والجودة السينمائية.</p>
+                        <p><strong>أمثلة:</strong> "وثائقي طبيعي واقعي"، "رسوم متحركة ثلاثية الأبعاد بأسلوب ديزني"، "دراما واقعية مع إضاءة خافتة"، "خيال علمي مستقبلي"، "فيلم نوار (Film Noir) أبيض وأسود".</p>
+                        <p><strong>نصيحة:</strong> يمكن أن يشمل إشارة إلى مخرجين أو أفلام معروفة للنمط.</p>
+                    </div>
+                </div>
+                 <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">نوع التصوير وحركة الكاميرا (Camera Motion & Composition)</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> كيفية تحرك الكاميرا داخل المشهد، وهو أمر حيوي للفيديو.</p>
+                        <p><strong>أمثلة:</strong> "تتبّع الكاميرا من الخلف (Tracking shot from behind) مع حركة ناعمة"، "لقطة جوية بانورامية (Panoramic Drone Shot) للمدينة"، "زووم تدريجي (Slow Zoom-in) على وجه الشخصية"، "اهتزاز يدوي واقعي (Realistic Handheld look) يعطي إحساسًا بالتوثيق".</p>
+                        <p><strong>نصيحة:</strong> هذا العنصر يحدد الإحساس الديناميكي للمشهد.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">المدة الزمنية والمعدل (Duration & Pacing) - إن أمكن</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> تحديد مدة المشهد أو سرعة الحركة فيه.</p>
+                        <p><strong>أمثلة:</strong> "مشهد قصير مدته 5 ثوانٍ"، "لقطة ثابتة لمدة 3 ثوانٍ ثم حركة كاميرا مفاجئة"، "حركة سريعة ومتقطعة".</p>
+                        <p><strong>نصيحة:</strong> بعض النماذج قد لا تدعم تحديد المدة بدقة، ولكنها ميزة مرغوبة.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border border-slate-200 rounded-md">
+                    <div class="accordion-header flex justify-between items-center p-3 md:p-4">
+                        <span class="font-semibold text-md md:text-lg">الصوت (Audio) - إن أمكن</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content p-3 md:p-4 border-t border-slate-200">
+                        <p><strong>الوصف:</strong> بعض النماذج المتقدمة قد تبدأ في دعم توليد مؤثرات صوتية أو موسيقى خلفية.</p>
+                        <p><strong>أمثلة:</strong> "مع صوت أمواج البحر المتلاطمة"، "موسيقى بيانو حزينة في الخلفية".</p>
+                        <p><strong>نصيحة:</strong> هذه الميزة ما زالت في مراحلها الأولية في معظم نماذج توليد الفيديو.</p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-xl md:text-2xl font-semibold mt-8 mb-4">🎬 مثال برومبت فيديو متقدم:</h3>
+             <div class="prompt-example-container p-4 rounded-md shadow">
+                <p class="font-mono bg-slate-100 p-2 rounded leading-relaxed text-sm md:text-base"><code>A cinematic tracking shot of a young girl running barefoot through a dense, foggy forest at dawn, with soft golden lighting filtering through the ancient trees. The camera moves smoothly behind her, capturing the motion of her hair and the rustle of leaves underfoot. Ambient mist creates depth of field, giving an ethereal, atmospheric feel. The scene should evoke a sense of wonder and childlike freedom. Approximately 8 seconds duration, with a warm film look, rendered in high resolution.</code></p>
+                <div class="mt-3 text-sm md:text-base">
+                    <p><strong>التحليل:</strong></p>
+                    <ul class="list-disc list-inside mt-1 space-y-1">
+                        <li><strong>المشهد والحركة:</strong> "A young girl running barefoot through a dense, foggy forest at dawn, with soft golden lighting filtering through the ancient trees."</li>
+                        <li><strong>حركة الكاميرا:</strong> "The camera moves smoothly behind her, capturing the motion of her hair and the rustle of leaves underfoot."</li>
+                        <li><strong>البيئة والمزاج:</strong> "Ambient mist creates depth of field, giving an ethereal, atmospheric feel. The scene should evoke a sense of wonder and childlike freedom."</li>
+                        <li><strong>المدة والأسلوب:</strong> "Approximately 8 seconds duration, with a warm film look, rendered in high resolution."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="tips" class="tab-content content-section hidden">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">📚 نصائح ذهبية لبرومبتات الصور والفيديو:</h2>
+            <p class="mb-6">إتقان فن كتابة البرومبت يتطلب أكثر من مجرد معرفة العناصر الأساسية. هذا القسم يقدم لك مجموعة من النصائح الذهبية والتكتيكات المتقدمة التي ستساعدك على الارتقاء بمهاراتك في هندسة البرومبت، مما يمكنك من تحقيق نتائج أكثر دقة وإبداعًا في مشاريعك البصرية.</p>
+            <ul class="list-decimal list-inside space-y-3 marker:text-sky-500 marker:font-semibold">
+                <li><strong>استخدم أوصاف حسية (Sensory Details):</strong> لا تقتصر على الوصف البصري، بل فكر في كيف يمكنك إضافة تفاصيل حسية. أمثلة: "لامع (Glimmering)", "غامض (Mysterious)", "ناعم الملمس (Smooth Texture)", "مشرق (Vibrant)", "صامت (Silent)", "صاخب (Bustling)", "عطر الزهور (Scent of Flowers)".</li>
+                <li><strong>استخدم التنسيق الواضح:</strong> لا تكتب البرومبت كفقرة طويلة ومتصلة. استعمل الفواصل (<code>,</code>) أو الشرطات (<code>-</code>) أو حتى النقاط (<code>.</code>) لتقسيم الأفكار وجعلها سهلة الفهم للنموذج. مثال: <code>Cityscape, night, neon lights, rainy street, cinematic, 8k --ar 16:9</code></li>
+                <li><strong>حدد الأسلوب بدقة:</strong> كن محددًا جدًا في الأنماط الفنية. مثال: "أنمي كوري (Korean Anime)" يختلف تمامًا عن "أنمي ياباني تقليدي (Traditional Japanese Anime)". "رسوم متحركة ثلاثية الأبعاد (3D Animation)" تختلف عن "رسوم متحركة يدوية (Hand-drawn Animation)".</li>
+                <li><strong>التجربة والتكرار (Iterative Refinement):</strong> أعد التجربة أكثر من مرة مع تعديلات طفيفة (مثلاً، تغيير كلمة واحدة أو إضافة صفة) للحصول على نتائج أفضل. البرومبت الجيد غالبًا ما يكون نتيجة لعدة تجارب.</li>
+                <li><strong>راقب سرعة الحركة في الفيديو:</strong> بعض الأنظمة تولّد الحركة بطيئة جدًا ما لم تطلب غير ذلك بكلمات مثل "Fast-paced", "Rapid movement", "Dynamic action".</li>
+                <li><strong>أرفق مرجعًا مرئيًا (Image-to-Image/Video) - إن أمكن:</strong> عند استخدام أدوات تدعم "Image-to-video" أو "Image-to-Image"، فإن توفير صورة مرجعية يمكن أن يحسن بشكل كبير من دقة المخرجات ويحافظ على التناسق البصري.</li>
+                <li><strong>استخدم الكلمات المفتاحية السلبية (Negative Prompts):</strong> في بعض الأدوات (مثل Midjourney)، يمكنك تحديد ما لا ترغب في ظهوره في الصورة. مثال: <code>(ما لا أرغب به) --no text, blurry, distorted, extra limbs</code></li>
+                <li><strong>استخدم الأوزان (Weights):</strong> تسمح بعض الأدوات بتعيين أوزان لبعض الكلمات في البرومبت (مثلاً بزيادة الأقواس <code>((word))</code> أو الأرقام <code>word:1.5</code>) لزيادة تأثيرها على النتيجة.</li>
+            </ul>
+        </div>
+
+        <div id="sources" class="tab-content content-section hidden">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">📎 مصادر وخلاصة:</h2>
+            <p class="mb-6">في هذا القسم الأخير، نقدم لك خلاصة لأهم ما تعلمته حول هندسة البرومبت، بالإضافة إلى قائمة بمصادر موثوقة يمكنك الرجوع إليها لمواصلة رحلتك في استكشاف هذا المجال المثير وتطوير مهاراتك بشكل أكبر.</p>
+            <h3 class="text-xl md:text-2xl font-semibold mt-6 mb-3">🧠 خلاصة:</h3>
+            <p class="mb-4">البرومبت ليس مجرد وصف بسيط، بل هو لغة جديدة تتحدث بها مع الذكاء الاصطناعي. وكلما أتقنت هذه اللغة، زادت جودة المحتوى الذي تُنتجه ودقته. من صورة فوتوغرافية واقعية إلى مشهد سينمائي درامي معقد، السر كله يكمن في التفاصيل الدقيقة، والفهم العميق للعناصر البصرية والسينمائية، والتجربة المستمرة داخل البرومبت. اتقان هندسة البرومبت سيفتح لك آفاقًا إبداعية غير مسبوقة في عالم الذكاء الاصطناعي التوليدي.</p>
+            <h3 class="text-xl md:text-2xl font-semibold mt-6 mb-3">مصادر موثوقة للتعمّق:</h3>
+            <ul class="list-disc list-inside space-y-2 marker:text-sky-500">
+                <li>OpenAI – Sora Model for Video Generation: (تحديثات حول إمكانيات توليد الفيديو من النص).</li>
+                <li>Midjourney Prompt Guide: (دليل شامل لكتابة البرومبتات في Midjourney).</li>
+                <li>Runway ML Gen-3: Video Generation: (معلومات عن أحدث قدرات توليد الفيديو).</li>
+                <li>Prompt Engineering Guide by DAIR.AI: (مصدر أكاديمي وشامل لهندسة البرومبت).</li>
+                <li>Stability AI Documentation: (وثائق لنماذج Stable Diffusion وكيفية استخدام البرومبتات).</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="text-center py-6 mt-10 bg-sky-700 text-white">
+        <p><a href="https://www.absi.cc/">&copy; <span id="currentYear"></span> مدونة عبدالسلام شليببك. جميع الحقوق محفوظة.</a></p>
+    </footer>
+
+    <script>
+        let currentTab = 'intro';
+        const tabs = document.querySelectorAll('.tab-button');
+        const contentSections = document.querySelectorAll('.tab-content');
+
+        function showTab(tabId) {
+            contentSections.forEach(section => {
+                section.classList.add('hidden');
+            });
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const activeSection = document.getElementById(tabId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+            }
+            
+            const currentActiveTabButton = document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`);
+            if (currentActiveTabButton) {
+                 currentActiveTabButton.classList.add('active');
+            }
+            currentTab = tabId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('intro');
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            const accordionContainers = document.querySelectorAll('.accordion-container');
+            accordionContainers.forEach(container => {
+                const accordionItems = container.querySelectorAll('.accordion-item');
+                accordionItems.forEach(item => {
+                    const header = item.querySelector('.accordion-header');
+                    header.addEventListener('click', () => {
+                        const currentlyActiveItem = container.querySelector('.accordion-item.active');
+                        if (currentlyActiveItem && currentlyActiveItem !== item) {
+                            currentlyActiveItem.classList.remove('active');
+                        }
+                        item.classList.toggle('active');
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
