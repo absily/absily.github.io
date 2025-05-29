@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استبيان حول الدولة المدنية في ليبيا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for better Arabic display */
+        body {
+            font-family: 'Inter', sans-serif;
+            direction: rtl; /* Right-to-left for Arabic */
+        }
+        /* Basic styling for the message box */
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0fdf4; /* Light green for success */
+            border: 1px solid #dcfce7; /* Green border */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+            font-size: 1.125rem; /* text-lg */
+            color: #15803d; /* Dark green text */
+            max-width: 90%; /* Ensure it's responsive */
+            max-height: 80%; /* Limit height for long content */
+            overflow-y: auto; /* Enable scrolling for long content */
+        }
+        .message-box.error {
+            background-color: #fee2e2; /* Light red for error */
+            border-color: #fca5a5; /* Red border */
+            color: #dc2626; /* Dark red text */
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #3b82f6; /* Blue spinner */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl max-w-lg w-full text-center border border-blue-200">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-blue-800 mb-6 leading-tight">
+            استبيان: مستقبل ليبيا
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-4">
+            هل تؤيد إقامة دولة مدنية في ليبيا مع حل جميع الميليشيات والكيانات السياسية الحالية؟
+        </p>
+
+        <div class="flex justify-center gap-8 mb-8 text-xl font-semibold text-gray-800">
+            <div class="flex items-center">
+                <span class="text-green-600 ml-2">نعم:</span>
+                <span id="yesCount" class="text-green-800">0</span>
+            </div>
+            <div class="flex items-center">
+                <span class="text-red-600 ml-2">لا:</span>
+                <span id="noCount" class="text-red-800">0</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+            <button id="yesButton" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
+                نعم، أؤيد
+            </button>
+            <button id="noButton" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+                لا، لا أؤيد
+            </button>
+        </div>
+
+        <button id="geminiFeatureButton" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300 w-full sm:w-auto">
+            ✨ ما هي الدولة المدنية؟
+        </button>
+
+        <footer class="mt-10 pt-4 border-t border-gray-200 text-gray-500 text-sm">
+            <p>
+                <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors duration-200">
+                    حقوق مدونة عبدالسلام شليبك
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <div id="messageBox" class="message-box">
+        <p id="messageText"></p>
+        <button onclick="document.getElementById('messageBox').style.display='none'; document.getElementById('messageBox').classList.remove('error');" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200">
+            إغلاق
+        </button>
+    </div>
+
+    <script type="module">
+        // Import Supabase client
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        // =====================================================================
+        // === هام: قم بتحديث هذه المتغيرات باستخدام مفاتيح مشروعك في Supabase ===
+        // === يمكنك العثور عليها في لوحة تحكم مشروعك في Supabase (الإعدادات -> API) ===
+        // =====================================================================
+        const SUPABASE_URL = 'https://yibfwhohufsvqcwdxjlx.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlpYmZ3aG9odWZzdnFjd2R4amx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1MzgwNDcsImV4cCI6MjA2NDExNDA0N30.cOUn7Qz1PDmG2gOx0aybJRIATrR27cclTbcNuBNlNoo';
+
+        // Get references to the buttons, message box, and vote counters
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const geminiFeatureButton = document.getElementById('geminiFeatureButton');
+        const messageBox = document.getElementById('messageBox');
+        const messageText = document.getElementById('messageText');
+        const yesCountDisplay = document.getElementById('yesCount');
+        const noCountDisplay = document.getElementById('noCount');
+
+        let supabase = null; // Initialize supabase client as null
+
+        // Function to show a custom message box
+        function showMessageBox(message, isError = false) {
+            messageText.innerHTML = message; // Use innerHTML to allow for spinner
+            messageBox.style.display = 'block';
+            if (isError) {
+                messageBox.classList.add('error');
+            } else {
+                messageBox.classList.remove('error');
+            }
+        }
+
+        // Function to call Gemini API
+        async function callGeminiAPI(prompt) {
+            showMessageBox('<div class="loading-spinner"></div> جاري تحميل المعلومات...', false); // Show loading spinner
+            let chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    showMessageBox(text);
+                } else {
+                    showMessageBox('عذرًا، لم نتمكن من الحصول على معلومات في الوقت الحالي. يرجى المحاولة مرة أخرى.', true);
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                showMessageBox('حدث خطأ أثناء الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.', true);
+            }
+        }
+
+        // Function to fetch initial votes and set up real-time listener
+        async function setupVoteListener() {
+            if (!supabase) {
+                showMessageBox('خطأ في إعداد Supabase. يرجى التأكد من تحديث مفاتيح API.', true);
+                return;
+            }
+
+            // Fetch initial votes
+            let { data, error } = await supabase
+                .from('poll_votes') // اسم الجدول الذي ستنشئه في Supabase
+                .select('yes_votes, no_votes')
+                .eq('id', 1) // نستخدم ID ثابت لمستند العدادات
+                .single();
+
+            if (error && error.code === 'PGRST116') { // No rows found, likely first run
+                // Create the initial record if it doesn't exist
+                const { data: newData, error: newError } = await supabase
+                    .from('poll_votes')
+                    .insert([{ id: 1, yes_votes: 0, no_votes: 0 }]);
+                if (newError) {
+                    console.error('Error initializing poll_votes:', newError);
+                    showMessageBox('حدث خطأ أثناء تهيئة بيانات الاستبيان.', true);
+                } else {
+                    yesCountDisplay.textContent = 0;
+                    noCountDisplay.textContent = 0;
+                }
+            } else if (error) {
+                console.error('Error fetching initial votes:', error);
+                showMessageBox('حدث خطأ أثناء جلب الأصوات الأولية.', true);
+            } else {
+                yesCountDisplay.textContent = data.yes_votes;
+                noCountDisplay.textContent = data.no_votes;
+            }
+
+            // Set up real-time listener for changes
+            supabase
+                .channel('public:poll_votes')
+                .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'poll_votes', filter: 'id=eq.1' }, (payload) => {
+                    yesCountDisplay.textContent = payload.new.yes_votes;
+                    noCountDisplay.textContent = payload.new.no_votes;
+                })
+                .subscribe();
+        }
+
+        // Initialize Supabase client and setup listener if keys are provided
+        if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
+            supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            setupVoteListener();
+        } else {
+            showMessageBox(`
+                <p><strong>خطأ في إعداد Supabase:</strong></p>
+                <p>الرجاء تحديث متغيرات <code dir="ltr">SUPABASE_URL</code> و <code dir="ltr">SUPABASE_ANON_KEY</code> في الكود الخاص بك.</p>
+                <p>يمكنك العثور على هذه المفاتيح في لوحة تحكم مشروعك في Supabase (الإعدادات -> API).</p>
+                <p><strong>هذه الخطوة ضرورية لجعل العداد مشتركًا بين جميع المستخدمين.</strong></p>
+            `, true);
+            // Disable buttons if Supabase is not configured
+            yesButton.disabled = true;
+            noButton.disabled = true;
+            geminiFeatureButton.disabled = true;
+        }
+
+        // Add event listeners for button clicks
+        yesButton.addEventListener('click', async () => {
+            if (yesButton.disabled || !supabase) return; // Prevent multiple clicks or if Supabase not ready
+
+            try {
+                // Increment yes_votes using the stored procedure
+                const { data, error } = await supabase
+                    .rpc('increment_yes_vote'); // استدعاء دالة PostgreSQL لزيادة آمنة
+
+                if (error) {
+                    console.error('Error updating yes vote:', error);
+                    showMessageBox('حدث خطأ أثناء تسجيل صوتك. يرجى المحاولة مرة أخرى.', true);
+                } else {
+                    showMessageBox('شكرًا لك! تم تسجيل تصويتك بـ "نعم".');
+                    yesButton.disabled = true;
+                    noButton.disabled = true;
+                    yesButton.classList.add('opacity-50', 'cursor-not-allowed');
+                    noButton.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+            } catch (error) {
+                console.error("Error during yes vote:", error);
+                showMessageBox('حدث خطأ غير متوقع أثناء تسجيل صوتك.', true);
+            }
+        });
+
+        noButton.addEventListener('click', async () => {
+            if (noButton.disabled || !supabase) return; // Prevent multiple clicks or if Supabase not ready
+
+            try {
+                // Increment no_votes using the stored procedure
+                const { data, error } = await supabase
+                    .rpc('increment_no_vote'); // استدعاء دالة PostgreSQL لزيادة آمنة
+
+                if (error) {
+                    console.error('Error updating no vote:', error);
+                    showMessageBox('حدث خطأ أثناء تسجيل صوتك. يرجى المحاولة مرة أخرى.', true);
+                } else {
+                    showMessageBox('شكرًا لك! تم تسجيل تصويتك بـ "لا".');
+                    yesButton.disabled = true;
+                    noButton.disabled = true;
+                    yesButton.classList.add('opacity-50', 'cursor-not-allowed');
+                    noButton.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+            } catch (error) {
+                console.error("Error during no vote:", error);
+                showMessageBox('حدث خطأ غير متوقع أثناء تسجيل صوتك.', true);
+            }
+        });
+
+        geminiFeatureButton.addEventListener('click', () => {
+            const prompt = "اشرح مفهوم الدولة المدنية بشكل موجز ومحايد، مع ذكر أبرز سماتها.";
+            callGeminiAPI(prompt);
+        });
+    </script>
+</body>
+</html>
