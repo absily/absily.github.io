@@ -175,19 +175,6 @@
             background-color: #717171;
         }
 
-        /* LLM Response Area */
-        .llm-response-area {
-            background-color: #f0f9ff; /* Light blue background */
-            border-left: 4px solid #3b82f6; /* Blue border */
-            padding: 1rem;
-            margin-top: 1rem;
-            border-radius: 0.5rem;
-            font-style: italic;
-            color: #1e40af; /* Darker blue text */
-            font-size: 0.95rem;
-            display: none; /* Hidden by default */
-        }
-
         /* Specific styles for images within text to ensure wrapping */
         .content-image-right {
             width: 100%; /* Default to full width on small screens */
@@ -293,7 +280,7 @@
                         عبدالسلام مصطفى شليبك
                     </p>
                     <p class="text-lg md:text-xl mb-6 font-light italic opacity-90">
-                       قصتي من هنا 
+                        قصتي من هنــــــــــا 
                     </p>
                     </div>
             </div>
@@ -303,8 +290,6 @@
             <section class="mb-12 p-8 bg-gray-50 rounded-xl shadow-md content-section">
                 <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">
                     نبذة عني
-                    <button class="ml-4 px-3 py-1 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200" onclick="processSection('about-me-text', 'summarize')">✨ تلخيص الفقرة</button>
-                    <button class="ml-2 px-3 py-1 bg-green-500 text-white text-sm rounded-md hover:bg-green-600 transition-colors duration-200" onclick="processSection('about-me-text', 'explore')">✨ استكشف المزيد</button>
                 </h2>
                 <div id="about-me-text" class="clearfix">
                     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxgBy-Mf25LpGNb2O-KWKL49TSUbQyHes_CFWFPk3QFfcR24o6FcwAPRMDgYfeAHWTjRUog8Mjfd29slgXztnp47BNfUe9LljGqaz22LZ1xtR9VQUYhZa8ehql3HphOcMMhowR_GZmWQy2HAFMo5FCVljoBYxOwNwgjSPjNwjp4d27jzTtDxDm-ZvAcf-5/s16000/WhatsApp%20Image%202021-09-06%20at%2002.42.46%20(1).jpeg"
@@ -334,14 +319,11 @@
                         حضرت مؤتمرات وورش عمل دولية في مجال حقوق الأشخاص ذوي الإعاقة مما ساهم في تطوير مهاراتي ورفع الوعي بقضايا الإعاقة. اليوم، أعيش في مدينة برمنغهام البريطانية وما زلت ملتزماً بقضايا الإعاقة وحقوق الإنسان من خلال المنشورات المدونة والتوعوية التي أقوم بها من خلالها.
                     </p>
                 </div>
-                <div id="about-me-response" class="llm-response-area"></div>
             </section>
 
             <section class="p-8 bg-gray-50 rounded-xl shadow-md content-section">
                 <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">
                     الدورات والمؤتمرات
-                    <button class="ml-4 px-3 py-1 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200" onclick="processSection('courses-text', 'summarize')">✨ تلخيص الفقرة</button>
-                    <button class="ml-2 px-3 py-1 bg-green-500 text-white text-sm rounded-md hover:bg-green-600 transition-colors duration-200" onclick="processSection('courses-text', 'explore')">✨ استكشف المزيد</button>
                 </h2>
                 <ul class="list-disc list-inside space-y-3 text-lg text-gray-800" id="courses-text">
                     <li>المؤتمر الأول للمرأة ذات الإعاقة بالمغرب العربي سنة 2009م بمدينة طرابلس</li>
@@ -431,7 +413,6 @@
                         </a>
                     </li>
                 </ul>
-                <div id="courses-response" class="llm-response-area"></div>
             </section>
 
         </div>
@@ -537,81 +518,6 @@
         function resetAutoSlide() {
             clearInterval(autoSlideInterval); // Clear existing interval
             autoSlideInterval = setInterval(autoSlide, 5000); // Set new interval (5 seconds)
-        }
-
-        // --- Gemini API Integration ---
-
-        // Function to call Gemini API
-        async function callGeminiAPI(prompt, targetElementId) {
-            const responseArea = document.getElementById(targetElementId);
-            responseArea.style.display = 'block'; // Show the response area
-            responseArea.innerHTML = '<p>جاري المعالجة... <i class="fas fa-spinner fa-spin"></i></p>'; // Loading indicator
-
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // Canvas will automatically provide it in runtime
-
-            try {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(`API error: ${response.status} - ${errorData.error.message}`);
-                }
-
-                const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    responseArea.innerHTML = `<p>${text}</p>`;
-                } else {
-                    responseArea.innerHTML = '<p>عذرًا، لم يتم العثور على استجابة.</p>';
-                    console.error("Unexpected API response structure:", result);
-                }
-            } catch (error) {
-                responseArea.innerHTML = `<p>حدث خطأ: ${error.message}</p>`;
-                console.error("Error calling Gemini API:", error);
-            }
-        }
-
-        // Process section based on action (summarize/explore)
-        function processSection(sectionId, action) {
-            const sectionElement = document.getElementById(sectionId);
-            let textToProcess = '';
-
-            if (sectionId === 'about-me-text') {
-                // For 'about-me-text', get all paragraph texts and combine them
-                const paragraphs = sectionElement.querySelectorAll('p');
-                paragraphs.forEach(p => {
-                    textToProcess += p.innerText + ' ';
-                });
-            } else if (sectionId === 'courses-text') {
-                // For 'courses-text', get all list item texts and combine them
-                const listItems = sectionElement.querySelectorAll('li');
-                listItems.forEach(li => {
-                    // Exclude image alt text from the summary prompt
-                    const clonedLi = li.cloneNode(true);
-                    clonedLi.querySelectorAll('img').forEach(img => img.remove());
-                    textToProcess += clonedLi.innerText.trim() + '. ';
-                });
-            }
-
-            let prompt = '';
-            if (action === 'summarize') {
-                prompt = `لخص هذا النص بإيجاز: ${textToProcess.trim()}`;
-            } else if (action === 'explore') {
-                prompt = `بناءً على هذا النص، اطرح سؤالاً مثيراً للتفكير أو قدم فكرة إضافية تتعلق بالمحتوى: ${textToProcess.trim()}`;
-            }
-
-            const responseAreaId = sectionId.replace('-text', '-response');
-            callGeminiAPI(prompt, responseAreaId);
         }
 
         // Initialize slider and start auto-sliding when the window loads
