@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> عبدالسلام مصطفى شليبك </title>
+    <title>صفحة عبدالسلام مصطفى شليبك الشخصية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoIF2d0K0f1c4z5/3c0Q/tYg+a2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Custom styles for background image and font */
         body {
@@ -174,6 +174,19 @@
         .dot.active, .dot:hover {
             background-color: #717171;
         }
+
+        /* LLM Response Area */
+        .llm-response-area {
+            background-color: #f0f9ff; /* Light blue background */
+            border-left: 4px solid #3b82f6; /* Blue border */
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            font-style: italic;
+            color: #1e40af; /* Darker blue text */
+            font-size: 0.95rem;
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body class="bg-gray-100 antialiased">
@@ -181,17 +194,37 @@
         <div class="magazine-cover mb-12 p-6 md:p-8 bg-white rounded-2xl shadow-2xl relative overflow-hidden border-8 border-red-600">
             <div class="absolute inset-0 border-8 border-red-600 rounded-2xl pointer-events-none"></div>
 
+            <div class="flex justify-center md:justify-end gap-4 text-2xl mb-4 relative z-20">
+                <a href="https://twitter.com/absily" target="_blank" class="text-gray-800 hover:text-black transition-colors duration-300" title="تويتر (X) @absily">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://facebook.com/absily" target="_blank" class="text-blue-700 hover:text-blue-900 transition-colors duration-300" title="فيسبوك @absily">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://tiktok.com/@absily" target="_blank" class="text-gray-800 hover:text-black transition-colors duration-300" title="تيك توك @absily">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://instagram.com/absily" target="_blank" class="text-gray-800 hover:text-black transition-colors duration-300" title="إنستغرام @absily">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
             <div class="flex flex-col md:flex-row items-center justify-center gap-8 relative z-10">
                 <div class="relative w-full md:w-1/2 lg:w-2/5 h-80 md:h-96 rounded-xl overflow-hidden shadow-2xl border-4 border-gray-300">
                     <div class="slider-container">
                         <div class="mySlides active" onclick="openModalFromSlider(this)">
-                            <img src="https://absily.github.io/bum/images/fulls/04.jpg" alt="صورة لعبدالسلام مصطفى شليبك 1">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxgBy-Mf25LpGNb2O-KWKL49TSUbQyHes_CFWFPk3QFfcR24o6FcwAPRMDgYfeAHWTjRUog8Mjfd29slgXztnp47BNfUe9LljGqaz22LZ1xtR9VQUYhZa8ehql3HphOcMMhowR_GZmWQy2HAFMo5FCVljoBYxOwNwgjSPjNwjp4d27jzTtDxDm-ZvAcf-5/s16000/WhatsApp%20Image%202021-09-06%20at%2002.42.46%20(1).jpeg" alt="صورة لعبدالسلام مصطفى شليبك 1">
                         </div>
                         <div class="mySlides" onclick="openModalFromSlider(this)">
-                            <img src="https://absily.github.io/assets/images/fkobo1gwqaafwad-scaled.png" alt="صورة لعبدالسلام مصطفى شليبك 2">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpt8ewxP3DqKa7oNHMyKKsJRhIfTshJJLZvp_q7H6clxPE5P-2m9uA5FuhtZjFvj6rb-brELcqNbntLrOrcm2eM2IAzXZGqlKVmdhd-KWiKDHbHaPjNnXgMYNYmfiBQnUZs_uKDa7GnZeE9YnDUpN8bPUJpfcToRUONnUVaheebo4H1BDp0M_3Jh4DNlNR/s16000/image.png" alt="صورة لعبدالسلام مصطفى شليبك 2">
                         </div>
                         <div class="mySlides" onclick="openModalFromSlider(this)">
-                            <img src="https://absily.github.io/assets/images/20150814-133333-900x675.jpg" alt="صورة لعبدالسلام مصطفى شليبك 3">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjw4YjEZD0RVJ5od1X8wkXuQHV4-HEmWwSev3GI8fgObc6vYIOW_UcTynO_f96Bqq9JBxFYBzyG9C1R8DPX1ZW3NE3oPBErj4G5DMyyOB7a-LLdpdkhWowulCqWQ0A4qayteCoDJKywmDOLe0yriebHCQlv02v1YyzH93N0EMmVnD4Nh-fwW9s_E587MQHM/s16000/ita95700960969.png" alt="صورة لعبدالسلام مصطفى شليبك 3">
+                        </div>
+                         <div class="mySlides" onclick="openModalFromSlider(this)">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipxSTascOyv2hrJ_UBxnXaiZKPIG10QeZ_vYIn5hEWNom3y9_Br-Pob1576vrOFxDxiCrMBqw4z-POwEwWujFS2HM0AYsvrmtqWrSIRWP2BI6_KYsRBtB29P4wafJCqYzPd_DPjWk1KZRfIEArAF0RNwcCjT6jeXuM7gNQEU9-4ambTHieoATQ6Dlbd-cv/s16000/0001.jpg" alt="صورة لعبدالسلام مصطفى شليبك 4">
+                        </div>
+                         <div class="mySlides" onclick="openModalFromSlider(this)">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit01jRkbksrz7KEAZ3OdteMouRJTIoRFfrtHYTDwnvDZzEDMEVFX4lSds8WnYhC51ooWi7qkLAriZphEmWo4jWMvCPyUsuMQV5NyAhlZj8yRBbvR0aNQKKJVar0xtY0TtHv64YPiK14NG2rTIN3VdReiuMrml9fb3Yg6ntHAY5rvL9iAibrWECNC9MakEZ/s16000/AGENDA-RD3-Photos-141-1024x683.jpg" alt="صورة لعبدالسلام مصطفى شليبك 5">
                         </div>
 
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -201,16 +234,18 @@
                             <span class="dot active" onclick="currentSlide(1)"></span>
                             <span class="dot" onclick="currentSlide(2)"></span>
                             <span class="dot" onclick="currentSlide(3)"></span>
+                            <span class="dot" onclick="currentSlide(4)"></span>
+                            <span class="dot" onclick="currentSlide(5)"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="w-full md:w-1/2 lg:w-3/5 text-center md:text-right p-4 text-gray-900">
-                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight tracking-wide drop-shadow-lg font-time-headline text-red-700">
-                        صوت للشمولية الإنسانية
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-wide drop-shadow-lg font-time-headline text-red-700">
+                        عبدالسلام شليبك: قصة نضال وإلهام نحو الشمولية
                     </h2>
-                    <p class="text-lg md:text-2xl mb-6 font-light italic opacity-90">
-                        عبدالسلام مصطفى شليبك: ناشط في حقوق الأشخاص ذوي الإعاقة، شخص يعيش مع شلل الأطفال، ومدوِّن. ملتزم بتحطيم الحواجز وتعزيز الشمولية لذوي الإعاقة.
+                    <p class="text-lg md:text-xl mb-6 font-light italic opacity-90">
+                        ناشط في حقوق الأشخاص ذوي الإعاقة، شخص يعيش مع شلل الأطفال، ومدوِّن. ملتزم بتحطيم الحواجز وتعزيز الشمولية لذوي الإعاقة.
                     </p>
                     </div>
             </div>
@@ -218,71 +253,141 @@
         <div class="container mx-auto px-4 py-8 max-w-4xl bg-white shadow-lg rounded-xl">
 
             <section class="mb-12 p-8 bg-gray-50 rounded-xl shadow-md content-section">
-                <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">نبذة عني</h2>
-                <p class="text-lg leading-relaxed text-gray-800 mb-4">
-                    ولدت في 23 أكتوبر (جنزور-المشاشطة) 1971 في ضواحي طرابلس، لكن حياتي تأثرت بشكل كبير في الأشهر الستة الأولى منذ ولادتي. تعرضت لحمى شديدة نتج عنها إصابتي بمرض شلل الأطفال، مما شكل تحدياً صحياً كبيراً في حياتي المبكرة.
-                </p>
-                <p class="text-lg leading-relaxed text-gray-800 mb-4">
-                    عندما بلغت سن الخامسة في عام 1976، سافرت إلى بلغراد للحصول على العلاج، واستمرت رحلتي العلاجية لمدة ست سنوات. درست الابتدائية في إحدى المراكز الصحية هناك، مما جعل اللغة الصربية جزءًا من حياتي اليومية.
-                </p>
-                <p class="text-lg leading-relaxed text-gray-800 mb-4">
-                    بعد عودتي إلى ليبيا في عام 1983 بقيت بليبيا حوالي عام، ثم ذهبت إلى فيينا عاصمة النمسا وبقيت هناك للعلاج حوالي ستة أشهر، ومن ثم رجعت إلى الوطن. وجدت صعوبة في الاندماج مع المجتمع وفي الحصول على فرص التعليم بسبب غياب البنية التحتية المناسبة للأشخاص ذوي الإعاقة. كانت وسائل التواصل والتعلم المتاحة محدودة، لذا بدأت رحلتي في التعلم من خلال البرامج التلفزيونية، مثل برنامج "افتح يا سمسم" والبرامج الوثائقية والتثقيفية.
-                </p>
-                <p class="text-lg leading-relaxed text-gray-800 mb-4">
-                    عام 2004، أطلقت أول موقع إلكتروني بتصميمي بعنوان "جنزور ماي هوم" باستخدام خدمة الاستضافة المجانية، ومن ثم انتقلت إلى منصات التواصل الاجتماعي المحلية والعالمية. أصبحت جزءًا من منتديات ليبية، ثم انتقلت إلى اليوتيوب وتويتر وفيسبوك.
-                </p>
-                <p class="text-lg leading-relaxed text-gray-800 mb-4">
-                    تركت بصمات في مجال حقوق الإعاقة من خلال عملي كمصمم وناشط. انضممت إلى مكتب الإعلام باللجنة البارالمبية الليبية في عام 2008 وعملت كمصمم رسمي لموقع اللجنة. وفي نفس الفترة، انضممت أيضًا إلى مكتب الإعلام بالأولمبياد الخاص الليبي.
-                </p>
-                <p class="text-lg leading-relaxed text-gray-800">
-                    حضرت مؤتمرات وورش عمل دولية في مجال حقوق الأشخاص ذوي الإعاقة مما ساهم في تطوير مهاراتي ورفع الوعي بقضايا الإعاقة. اليوم، أعيش في مدينة برمنغهام البريطانية وما زلت ملتزماً بقضايا الإعاقة وحقوق الإنسان من خلال المنشورات المدونة والتوعوية التي أقوم بها من خلالها.
-                </p>
+                <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">
+                    نبذة عني
+                    <button class="ml-4 px-3 py-1 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200" onclick="processSection('about-me-text', 'summarize')">✨ تلخيص الفقرة</button>
+                    <button class="ml-2 px-3 py-1 bg-green-500 text-white text-sm rounded-md hover:bg-green-600 transition-colors duration-200" onclick="processSection('about-me-text', 'explore')">✨ استكشف المزيد</button>
+                </h2>
+                <div id="about-me-text">
+                    <div class="flex flex-col md:flex-row items-start gap-6 mb-4">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxgBy-Mf25LpGNb2O-KWKL49TSUbQyHes_CFWFPk3QFfcR24o6FcwAPRMDgYfeAHWTjRUog8Mjfd29slgXztnp47BNfUe9LljGqaz22LZ1xtR9VQUYhZa8ehql3HphOcMMhowR_GZmWQy2HAFMo5FCVljoBYxOwNwgjSPjNwjp4d27jzTtDxDm-ZvAcf-5/s16000/WhatsApp%20Image%202021-09-06%20at%2002.42.46%20(1).jpeg"
+                             alt="صورة لعبدالسلام مصطفى شليبك في شبابه"
+                             class="w-full md:w-1/3 lg:w-1/4 h-auto object-cover rounded-lg shadow-md border border-gray-300 float-right md:float-left ml-4 mb-4 md:mb-0 cursor-pointer"
+                             onclick="openModal(this)">
+                        <p class="text-lg leading-relaxed text-gray-800 flex-1">
+                            ولدت في 23 أكتوبر (جنزور-المشاشطة) 1971 في ضواحي طرابلس، لكن حياتي تأثرت بشكل كبير في الأشهر الستة الأولى منذ ولادتي. تعرضت لحمى شديدة نتج عنها إصابتي بمرض شلل الأطفال، مما شكل تحدياً صحياً كبيراً في حياتي المبكرة.
+                        </p>
+                    </div>
+                    <p class="text-lg leading-relaxed text-gray-800 mb-4">
+                        عندما بلغت سن الخامسة في عام 1976، سافرت إلى بلغراد للحصول على العلاج، واستمرت رحلتي العلاجية لمدة ست سنوات. درست الابتدائية في إحدى المراكز الصحية هناك، مما جعل اللغة الصربية جزءًا من حياتي اليومية.
+                    </p>
+                    <div class="flex flex-col md:flex-row items-start gap-6 mb-4">
+                        <p class="text-lg leading-relaxed text-gray-800 flex-1">
+                            بعد عودتي إلى ليبيا في عام 1983 بقيت بليبيا حوالي عام، ثم ذهبت إلى فيينا عاصمة النمسا وبقيت هناك للعلاج حوالي ستة أشهر، ومن ثم رجعت إلى الوطن. وجدت صعوبة في الاندماج مع المجتمع وفي الحصول على فرص التعليم بسبب غياب البنية التحتية المناسبة للأشخاص ذوي الإعاقة. كانت وسائل التواصل والتعلم المتاحة محدودة، لذا بدأت رحلتي في التعلم من خلال البرامج التلفزيونية، مثل برنامج "افتح يا سمسم" والبرامج الوثائقية والتثقيفية.
+                        </p>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpt8ewxP3DqKa7oNHMyKKsJRhIfTshJJLZvp_q7H6clxPE5P-2m9uA5FuhtZjFvj6rb-brELcqNbntLrOrcm2eM2IAzXZGqlKVmdhd-KWiKDHbHaPjNnXgMYNYmfiBQnUZs_uKDa7GnZeE9YnDUpN8bPUJpfcToRUONnUVaheebo4H1BDp0M_3Jh4DNlNR/s16000/image.png"
+                             alt="صورة لعبدالسلام مصطفى شليبك يعمل على الكمبيوتر"
+                             class="w-full md:w-1/3 lg:w-1/4 h-auto object-cover rounded-lg shadow-md border border-gray-300 float-left md:float-right mr-4 mb-4 md:mb-0 cursor-pointer"
+                             onclick="openModal(this)">
+                    </div>
+                    <p class="text-lg leading-relaxed text-gray-800 mb-4">
+                        عام 2004، أطلقت أول موقع إلكتروني بتصميمي بعنوان "جنزور ماي هوم" باستخدام خدمة الاستضافة المجانية، ومن ثم انتقلت إلى منصات التواصل الاجتماعي المحلية والعالمية. أصبحت جزءًا من منتديات ليبية، ثم انتقلت إلى اليوتيوب وتويتر وفيسبوك.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-800 mb-4">
+                        تركت بصمات في مجال حقوق الإعاقة من خلال عملي كمصمم وناشط. انضممت إلى مكتب الإعلام باللجنة البارالمبية الليبية في عام 2008 وعملت كمصمم رسمي لموقع اللجنة. وفي نفس الفترة، انضممت أيضًا إلى مكتب الإعلام بالأولمبياد الخاص الليبي.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-800">
+                        حضرت مؤتمرات وورش عمل دولية في مجال حقوق الأشخاص ذوي الإعاقة مما ساهم في تطوير مهاراتي ورفع الوعي بقضايا الإعاقة. اليوم، أعيش في مدينة برمنغهام البريطانية وما زلت ملتزماً بقضايا الإعاقة وحقوق الإنسان من خلال المنشورات المدونة والتوعوية التي أقوم بها من خلالها.
+                    </p>
+                </div>
+                <div id="about-me-response" class="llm-response-area"></div>
             </section>
 
             <section class="p-8 bg-gray-50 rounded-xl shadow-md content-section">
-                <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">الدورات والمؤتمرات</h2>
-                <ul class="list-disc list-inside space-y-3 text-lg text-gray-800">
+                <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">
+                    الدورات والمؤتمرات
+                    <button class="ml-4 px-3 py-1 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200" onclick="processSection('courses-text', 'summarize')">✨ تلخيص الفقرة</button>
+                    <button class="ml-2 px-3 py-1 bg-green-500 text-white text-sm rounded-md hover:bg-green-600 transition-colors duration-200" onclick="processSection('courses-text', 'explore')">✨ استكشف المزيد</button>
+                </h2>
+                <ul class="list-disc list-inside space-y-3 text-lg text-gray-800" id="courses-text">
                     <li>المؤتمر الأول للمرأة ذات الإعاقة بالمغرب العربي سنة 2009م بمدينة طرابلس</li>
                     <li>مؤتمر سياسات التعامل مع الإعاقات الذهنية بالوطن العربي سنة 2009م بمدينة بنغازي</li>
                     <li>مرافق إعلامي لموقع اللجنة البارالمبية في مدينة أوكلاهوما الأمريكية بطولة العالم لكرة الجلوس 2010</li>
                     <li>دورة في إدارة المحتوى (لوحة التحكم جملة) 2010م</li>
-                    <li><strong><a href="https://www.absi.ly/munich/" target="_blank" title="عرض تفاصيل رحلة ميونخ الثقافية" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">رحلة ميونخ الثقافية مع الشباب المتفوقين على مستوى ليبيا يناير 2011</a></strong></li>
+                    <li class="flex flex-col md:flex-row items-start gap-4">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjw4YjEZD0RVJ5od1X8wkXuQHV4-HEmWwSev3GI8fgObc6vYIOW_UcTynO_f96Bqq9JBxFYBzyG9C1R8DPX1ZW3NE3oPBErj4G5DMyyOB7a-LLdpdkhWowulCqWQ0A4qayteCoDJKywmDOLe0yriebHCQlv02v1YyzH93N0EMmVnD4Nh-fwW9s_E587MQHM/s16000/ita95700960969.png"
+                             alt="صورة شهادة أو وثيقة"
+                             class="w-full md:w-1/3 lg:w-1/4 h-auto object-cover rounded-lg shadow-md border border-gray-300 mb-2 md:mb-0 cursor-pointer"
+                             onclick="openModal(this)">
+                        <strong><a href="https://www.absi.ly/munich/" target="_blank" title="عرض تفاصيل رحلة ميونخ الثقافية" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">رحلة ميونخ الثقافية مع الشباب المتفوقين على مستوى ليبيا يناير 2011</a></strong>
+                    </li>
                     <li>مرافق إعلامي للجنة البارالمبية الليبية في الملتقى الدولي لألعاب القوى تونس 2011</li>
-                    <li><strong>
-					<a href="https://absily.wordpress.com/2012/06/02/in-sharjah/" target="_blank" title="عرض تفاصيل ملتقى المنال للإعاقة والإعلام الاجتماعي بالشارقة" class="text-red-700 hover:text-red-900 transition-colors duration-300">ملتقى المنال للإعاقة والإعلام الاجتماعي "الشارقة" 2012</a></strong></li>
+                    <li class="flex flex-col md:flex-row items-start gap-4">
+                        <strong>
+                            <a href="https://absily.wordpress.com/2012/06/02/in-sharjah/" target="_blank" title="عرض تفاصيل ملتقى المنال للإعاقة والإعلام الاجتماعي بالشارقة" class="text-red-700 hover:text-red-900 transition-colors duration-300">ملتقى المنال للإعاقة والإعلام الاجتماعي "الشارقة" 2012</a>
+                        </strong>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipxSTascOyv2hrJ_UBxnXaiZKPIG10QeZ_vYIn5hEWNom3y9_Br-Pob1576vrOFxDxiCrMBqw4z-POwEwWujFS2HM0AYsvrmtqWrSIRWP2BI6_KYsRBtB29P4wafJCqYzPd_DPjWk1KZRfIEArAF0RNwcCjT6jeXuM7gNQEU9-4ambTHieoATQ6Dlbd-cv/s16000/0001.jpg"
+                             alt="صورة من مؤتمر أو فعالية"
+                             class="w-full md:w-1/3 lg:w-1/4 h-auto object-cover rounded-lg shadow-md border border-gray-300 mb-2 md:mb-0 cursor-pointer"
+                             onclick="openModal(this)">
+                    </li>
                     <li>
-					<a href="https://absily.wordpress.com/2012/10/18/paralympics2010/" target="_blank" title="عرض تفاصيل مرافقة الألعاب البارالمبية بلندن" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
-					<strong>مرافق إعلامي لألعاب البارالمبية بلندن 2012</strong></a></li>
-                    <li>
-					<a href="https://www.facebook.com/pg/3bsily/photos/?tab=album&amp;album_id=683143818396519" target="_blank" title="عرض صور الدورة الأخيرة للصحافة الإلكترونية" class="text-red-700 hover:text-red-900 transition-colors duration-300">
-					<strong>الدورة الأخيرة للصحافة الإلكترونية تحت إشراف فرانس24 ..2013</strong></a></li>
+                        <a href="https://absily.wordpress.com/2012/10/18/paralympics2010/" target="_blank" title="عرض تفاصيل مرافقة الألعاب البارالمبية بلندن" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                            <strong>مرافق إعلامي لألعاب البارالمبية بلندن 2012</strong>
+                        </a>
+                    </li>
+                    <li class="flex flex-col md:flex-row items-start gap-4">
+                        <strong>
+                            <a href="https://www.facebook.com/pg/3bsily/photos/?tab=album&amp;album_id=683143818396519" target="_blank" title="عرض صور الدورة الأخيرة للصحافة الإلكترونية" class="text-red-700 hover:text-red-900 transition-colors duration-300">
+                                <strong>الدورة الأخيرة للصحافة الإلكترونية تحت إشراف فرانس24 ..2013</strong>
+                            </a>
+                        </strong>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit01jRkbksrz7KEAZ3OdteMouRJTIoRFfrtHYTDwnvDZzEDMEVFX4lSds8WnYhC51ooWi7qkLAriZphEmWo4jWMvCPyUsuMQV5NyAhlZj8yRBbvR0aNQKKJVar0xtY0TtHv64YPiK14NG2rTIN3VdReiuMrml9fb3Yg6ntHAY5rvL9iAibrWECNC9MakEZ/s16000/AGENDA-RD3-Photos-141-1024x683.jpg"
+                             alt="صورة من ورشة عمل أو دورة"
+                             class="w-full md:w-1/3 lg:w-1/4 h-auto object-cover rounded-lg shadow-md border border-gray-300 mb-2 md:mb-0 cursor-pointer"
+                             onclick="openModal(this)">
+                    </li>
                     <li>مشرف موقع ليبيا بلوق مدونات ليبية</li>
                     <li>
-					<a href="https://absily.wordpress.com/2013/11/15/kulalampur/" target="_blank" title="عرض تفاصيل بطولة آسيا المفتوحة لرفعات القوة بماليزيا" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
-					<strong>مرافق إعلامي باللجنة البارالمبية الليبية لبطولة آسيا المفتوحة لرفعات القوة في كوالالمبور ماليزيا 2013</strong></a></li>
+                        <a href="https://absily.wordpress.com/2013/11/15/kulalampur/" target="_blank" title="عرض تفاصيل بطولة آسيا المفتوحة لرفعات القوة بماليزيا" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                            <strong>مرافق إعلامي باللجنة البارالمبية الليبية لبطولة آسيا المفتوحة لرفعات القوة في كوالالمبور ماليزيا 2013</strong>
+                        </a>
+                    </li>
                     <li>حمامات 2014 في تونس الملتقى المغاربي حول مشروع القيادة للأشخاص ذوي الإعاقة</li>
                     <li>
-					<a href="https://absily.wordpress.com/2015/02/15/2jakarta/" target="_blank" title="عرض تفاصيل مؤتمر الحوار الإقليمي الثالث في جاكارتا" class="text-red-700 hover:text-red-900 transition-colors duration-300">
-					<strong>مؤتمر الحوار الإقليمي الثالث لإدماج الأشخاص ذوي الإعاقة في المشاركة الانتخابية في جاكارتا 2015</strong></a></li>
+                        <a href="https://absily.wordpress.com/2015/02/15/2jakarta/" target="_blank" title="عرض تفاصيل مؤتمر الحوار الإقليمي الثالث في جاكارتا" class="text-red-700 hover:text-red-900 transition-colors duration-300">
+                            <strong>مؤتمر الحوار الإقليمي الثالث لإدماج الأشخاص ذوي الإعاقة في المشاركة الانتخابية في جاكارتا 2015</strong>
+                        </a>
+                    </li>
                     <li>ورشة عمل حول السوشيال ميديا اسطنبول 2015</li>
-                    <li><a href="https://absily.wordpress.com/2015/11/11/iwbf/" target="_blank" title="عرض تفاصيل بطولة أفريقيا لكرة السلة على الكراسي" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
-					<strong>بطولة أفريقيا لكرة السلة على الكراسي في الجزائر 2015</strong></a></li>
+                    <li>
+                        <a href="https://absily.wordpress.com/2015/11/11/iwbf/" target="_blank" title="عرض تفاصيل بطولة أفريقيا لكرة السلة على الكراسي" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                            <strong>بطولة أفريقيا لكرة السلة على الكراسي في الجزائر 2015</strong>
+                        </a>
+                    </li>
                     <li>ورشة عمل حول دور وسائل الإعلام في صياغة الدستور 2016 تونس</li>
-                    <li><a href="http://absily.eu5.org/Techcamp/" target="_blank" title="عرض تفاصيل مخيم تيك كامب ليبيا" class="text-red-700 hover:text-red-900 transition-colors duration-300"><strong>مخيم تيك كامب ليبيا 2016 بتونس</strong></a></li>
                     <li>
-					<a href="https://absily.wordpress.com/2016/03/26/accessibilityweb/" target="_blank" title="عرض تفاصيل ورشة عمل تعزيز إمكانية الوصول للموقع الإلكتروني" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
-					<strong>ورشة عمل من أجل تعزيز إمكانية وسهولة الوصول للموقع الإلكتروني تونس 2016</strong></a></li>
+                        <a href="http://absily.eu5.org/Techcamp/" target="_blank" title="عرض تفاصيل مخيم تيك كامب ليبيا" class="text-red-700 hover:text-red-900 transition-colors duration-300">
+                            <strong>مخيم تيك كامب ليبيا 2016 بتونس</strong>
+                        </a>
+                    </li>
                     <li>
-					<a href="https://absily.wordpress.com/2017/04/26/mediabridge/" target="_blank" title="عرض تفاصيل دورة إعداد المدربين في حقوق الأشخاص ذوي الإعاقة" class="text-red-700 hover:text-red-900 transition-colors duration-300">
-					<strong>دورة تدريبية حول إعداد المدربين في مجال حقوق الأشخاص ذوي الإعاقة تونس 2016</strong></a></li>
+                        <a href="https://absily.wordpress.com/2016/03/26/accessibilityweb/" target="_blank" title="عرض تفاصيل ورشة عمل تعزيز إمكانية الوصول للموقع الإلكتروني" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                            <strong>ورشة عمل من أجل تعزيز إمكانية وسهولة الوصول للموقع الإلكتروني تونس 2016</strong>
+                        </a>
+                    </li>
                     <li>
-					<a href="https://absily.wordpress.com/2017/04/26/mediabridge/" target="_blank" title="عرض تفاصيل دور الإعلام في تعزيز مشاركة الأشخاص ذوي الإعاقة" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
-					<strong>دور الإعلام في تعزيز مشاركة الأشخاص ذوي الإعاقة 2017</strong></a></li>
-                    <li><a href="https://www.absi.cc/2020/12/blog-post_23.html" target="_blank" title="عرض تفاصيل مشاركتي في اليوم العربي للأشخاص ذوي الإعاقة" class="text-red-700 hover:text-red-900 transition-colors duration-300">
-					<strong>مشاركتي في اليوم العربي للأشخاص ذوي الإعاقة التي نظمتها مجمع ليبيا للدراسات المتقدمة ديسمبر 2020</strong></a></li>
-                    <li><a href="https://www.absi.cc/2024/09/2024_29.html" target="_blank" title="عرض تفاصيل مشاركتي في مدرسة ليبيا لحوكمة الإنترنت" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
-					<strong>مشاركتي في مدرسة ليبيا لحوكمة الإنترنت 2024: قضايا ذوي الإعاقة وإمكانية الوصول</strong></a></li>
+                        <a href="https://absily.wordpress.com/2017/04/26/mediabridge/" target="_blank" title="عرض تفاصيل دورة إعداد المدربين في حقوق الأشخاص ذوي الإعاقة" class="text-red-700 hover:text-red-900 transition-colors duration-300">
+                            <strong>دورة تدريبية حول إعداد المدربين في مجال حقوق الأشخاص ذوي الإعاقة تونس 2016</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://absily.wordpress.com/2017/04/26/mediabridge/" target="_blank" title="عرض تفاصيل دور الإعلام في تعزيز مشاركة الأشخاص ذوي الإعاقة" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                            <strong>دور الإعلام في تعزيز مشاركة الأشخاص ذوي الإعاقة 2017</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.absi.cc/2020/12/blog-post_23.html" target="_blank" title="عرض تفاصيل مشاركتي في اليوم العربي للأشخاص ذوي الإعاقة" class="text-red-700 hover:text-red-900 transition-colors duration-300">
+                            <strong>مشاركتي في اليوم العربي للأشخاص ذوي الإعاقة التي نظمتها مجمع ليبيا للدراسات المتقدمة ديسمبر 2020</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.absi.cc/2024/09/2024_29.html" target="_blank" title="عرض تفاصيل مشاركتي في مدرسة ليبيا لحوكمة الإنترنت" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                            <strong>مشاركتي في مدرسة ليبيا لحوكمة الإنترنت 2024: قضايا ذوي الإعاقة وإمكانية الوصول</strong>
+                        </a>
+                    </li>
                 </ul>
+                <div id="courses-response" class="llm-response-area"></div>
             </section>
 
         </div>
@@ -292,7 +397,24 @@
                 جميع الحقوق محفوظة &copy; <span id="current-year"></span> لمدونة
                 <a href="https://www.absi.cc" target="_blank" class="text-red-700 hover:text-red-900 transition-colors duration-300 font-bold" title="زيارة مدونة عبدالسلام شليبك">عبدالسلام شليبك</a>
             </p>
-            </footer>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-2xl md:text-3xl">
+                <a href="https://www.absi.cc" target="_blank" class="text-red-700 hover:text-red-900 transition-colors duration-300" title="مدونة عبدالسلام شليبك">
+                    <i class="fas fa-blog"></i>
+                </a>
+                <a href="https://twitter.com/absily" target="_blank" class="text-gray-800 hover:text-black transition-colors duration-300" title="تويتر (X) @absily">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://facebook.com/absily" target="_blank" class="text-blue-700 hover:text-blue-900 transition-colors duration-300" title="فيسبوك @absily">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://tiktok.com/@absily" target="_blank" class="text-gray-800 hover:text-black transition-colors duration-300" title="تيك توك @absily">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://instagram.com/absily" target="_blank" class="text-gray-800 hover:text-black transition-colors duration-300" title="إنستغرام @absily">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </footer>
         </div>
 
     <div id="imageModal" class="modal">
@@ -371,6 +493,81 @@
         function resetAutoSlide() {
             clearInterval(autoSlideInterval); // Clear existing interval
             autoSlideInterval = setInterval(autoSlide, 5000); // Set new interval (5 seconds)
+        }
+
+        // --- Gemini API Integration ---
+
+        // Function to call Gemini API
+        async function callGeminiAPI(prompt, targetElementId) {
+            const responseArea = document.getElementById(targetElementId);
+            responseArea.style.display = 'block'; // Show the response area
+            responseArea.innerHTML = '<p>جاري المعالجة... <i class="fas fa-spinner fa-spin"></i></p>'; // Loading indicator
+
+            let chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // Canvas will automatically provide it in runtime
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`API error: ${response.status} - ${errorData.error.message}`);
+                }
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    responseArea.innerHTML = `<p>${text}</p>`;
+                } else {
+                    responseArea.innerHTML = '<p>عذرًا، لم يتم العثور على استجابة.</p>';
+                    console.error("Unexpected API response structure:", result);
+                }
+            } catch (error) {
+                responseArea.innerHTML = `<p>حدث خطأ: ${error.message}</p>`;
+                console.error("Error calling Gemini API:", error);
+            }
+        }
+
+        // Process section based on action (summarize/explore)
+        function processSection(sectionId, action) {
+            const sectionElement = document.getElementById(sectionId);
+            let textToProcess = '';
+
+            if (sectionId === 'about-me-text') {
+                // For 'about-me-text', get all paragraph texts and combine them
+                const paragraphs = sectionElement.querySelectorAll('p');
+                paragraphs.forEach(p => {
+                    textToProcess += p.innerText + ' ';
+                });
+            } else if (sectionId === 'courses-text') {
+                // For 'courses-text', get all list item texts and combine them
+                const listItems = sectionElement.querySelectorAll('li');
+                listItems.forEach(li => {
+                    // Exclude image alt text from the summary prompt
+                    const clonedLi = li.cloneNode(true);
+                    clonedLi.querySelectorAll('img').forEach(img => img.remove());
+                    textToProcess += clonedLi.innerText.trim() + '. ';
+                });
+            }
+
+            let prompt = '';
+            if (action === 'summarize') {
+                prompt = `لخص هذا النص بإيجاز: ${textToProcess.trim()}`;
+            } else if (action === 'explore') {
+                prompt = `بناءً على هذا النص، اطرح سؤالاً مثيراً للتفكير أو قدم فكرة إضافية تتعلق بالمحتوى: ${textToProcess.trim()}`;
+            }
+
+            const responseAreaId = sectionId.replace('-text', '-response');
+            callGeminiAPI(prompt, responseAreaId);
         }
 
         // Initialize slider and start auto-sliding when the window loads
