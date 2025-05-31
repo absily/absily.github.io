@@ -1,0 +1,627 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف معلومات بياني: تحليل المشهد الإعلامي الليبي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0B132B;
+            color: #F0F8FF;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 45vh;
+        }
+        .small-chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        .card {
+            background-color: #1C2541;
+            border: 1px solid #3A506B;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(91, 192, 190, 0.1);
+        }
+        .brand-text {
+            color: #6FFFE9;
+        }
+        .flowchart-step {
+            background-color: rgba(91, 192, 190, 0.1);
+            border-right: 3px solid #5BC0BE;
+        }
+        .flowchart-arrow {
+            color: #5BC0BE;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .modal {
+            background-color: rgba(28, 37, 65, 0.95);
+        }
+        .gemini-button {
+            background-color: #5BC0BE;
+            color: #0B132B;
+            transition: background-color 0.3s ease;
+        }
+        .gemini-button:hover {
+            background-color: #6FFFE9;
+        }
+        .loader {
+            border: 4px solid #3A506B;
+            border-top: 4px solid #6FFFE9;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .key-stat {
+            background-color: #3A506B;
+            color: #6FFFE9;
+        }
+        footer {
+            border-top: 1px solid #3A506B;
+        }
+        footer a:hover {
+            color: #6FFFE9;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-6xl font-black brand-text">عندما يتحول الترفيه إلى أداة</h1>
+            <p class="text-xl md:text-2xl mt-4 max-w-3xl mx-auto text-gray-300">نظرة عميقة على استقطاب الإعلام الليبي ودور الأجندات الخفية في تشكيل الوعي</p>
+        </header>
+
+        <section id="landscape" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">غياب الإعلام الوطني: مشهد مجزأ</h2>
+                <p class="mt-2 text-gray-400 max-w-2xl mx-auto">على الرغم من الإرث التاريخي، يفتقر المشهد الليبي لصوت إعلامي وطني جامع، وتسيطر القنوات ذات التوجهات السياسية على الساحة، بينما يظل دور إعلام الدولة الرسمي باهتًا وأشبه بـ"الآثار التاريخية".</p>
+            </div>
+            <div class="card rounded-lg shadow-xl p-6">
+                <h3 class="text-xl font-bold text-center mb-4">توزيع التأثير في المشهد الإعلامي (تقديري)</h3>
+                <div class="chart-container">
+                    <canvas id="landscapeChart"></canvas>
+                </div>
+                 <p class="text-center mt-4 text-sm text-gray-400">يُظهر الرسم هيمنة القنوات المرتبطة بجهات سياسية داخلية أو تمويل خارجي، مما يقلص مساحة الإعلام المستقل أو الرسمي ويحد من تأثيره.</p>
+            </div>
+        </section>
+
+        <hr class="border-gray-700 my-16">
+
+        <section id="channels" class="my-12">
+             <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">قنوات تحت المجهر: نماذج وأساليب</h2>
+                <p class="mt-2 text-gray-400 max-w-2xl mx-auto">تتبع قنوات مختلفة استراتيجيات متباينة لتحقيق أهدافها، سواء عبر الترفيه كأداة ناعمة أو عبر الخطاب السياسي المباشر والمنحاز.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div class="card rounded-lg shadow-xl p-6 lg:col-span-2">
+                    <h3 class="text-xl font-bold text-center mb-4">استراتيجية القوة الناعمة: قناة ليبيا الأحرار نموذجًا</h3>
+                    <p class="text-center text-sm text-gray-400 mb-6">تعتمد القناة، الممولة من قطر، على نهج القوة الناعمة الذي لا يشترط التملق المباشر، بل يستخدم شعارات جذابة لبناء المصداقية وتمرير الأجندات ضمن خطوط حمراء محددة.</p>
+                    <div class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center">
+                        <div class="flowchart-step p-4 rounded-lg flex-1">
+                            <h4 class="font-bold">١. تجنيد الطاقات</h4>
+                            <p class="text-xs">استقطاب شخصيات متنوعة</p>
+                        </div>
+                        <div class="flowchart-arrow transform md:-rotate-90">↓</div>
+                        <div class="flowchart-step p-4 rounded-lg flex-1">
+                            <h4 class="font-bold">٢. بناء المصداقية</h4>
+                            <p class="text-xs">تبني شعارات شعبية (قضية فلسطين، حرية الشعوب)</p>
+                        </div>
+                        <div class="flowchart-arrow transform md:-rotate-90">↓</div>
+                        <div class="flowchart-step p-4 rounded-lg flex-1">
+                             <h4 class="font-bold">٣. توجيه الوعي</h4>
+                            <p class="text-xs">حجب معلومات حساسة (مثل القواعد الأمريكية) وتمرير رسائل موجهة</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-sm text-gray-300">
+                        <h5 class="font-semibold mb-1 brand-text">محاور التركيز الرئيسية (أمثلة):</h5>
+                        <ul class="list-disc list-inside pr-4">
+                            <li>التأكيد على شرعية حكومات معينة ودعم توجهاتها.</li>
+                            <li>تسليط الضوء على قضايا حقوق الإنسان بشكل انتقائي.</li>
+                            <li>التركيز على الانقسامات الداخلية وتأجيجها أحيانًا.</li>
+                        </ul>
+                    </div>
+                    <div class="text-center mt-6">
+                        <button id="analyzeBiasButton" class="gemini-button font-bold py-2 px-4 rounded-lg">
+                            ✨ تحليل التحيز (تجريبي) لخبر من القناة
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">جبهة الشرق: الانحياز الواضح</h3>
+                     <p class="text-center mt-2 mb-4 text-sm text-gray-400">تُعرف قنوات مثل "الحدث" و"المسار" بدعمها الواضح للمؤسسات في شرق البلاد، مما يجعلها أداة في الصراع السياسي أكثر من كونها وسيلة إعلامية محايدة.</p>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="eastChannelsChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-sm text-gray-300">
+                        <h5 class="font-semibold mb-1 brand-text">الروايات الشائعة (أمثلة):</h5>
+                        <ul class="list-disc list-inside pr-4">
+                            <li>تمجيد دور المؤسسة العسكرية في "محاربة الإرهاب".</li>
+                            <li>تشويه صورة الخصوم السياسيين واتهامهم بالعمالة.</li>
+                            <li>الترويج لمشاريع إعادة الإعمار تحت قيادة الشرق.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">خط أنابيب الترفيه: سلام و WTV</h3>
+                    <p class="text-center mt-2 mb-4 text-sm text-gray-400">تستخدم هذه القنوات الترفيه كنقطة انطلاق لكسب ثقة الجمهور، قبل أن تبدأ في تمرير رسائل سياسية مبطنة أو مباشرة.</p>
+                    <div class="flex items-center justify-around h-full text-3xl md:text-5xl text-center">
+                         <div class="flex flex-col items-center">
+                            <span>🎭</span>
+                            <p class="text-sm font-bold mt-2">ترفيه</p>
+                        </div>
+                        <span class="font-sans text-4xl text-gray-500 mx-2">→</span>
+                        <div class="flex flex-col items-center">
+                            <span>❤️</span>
+                            <p class="text-sm font-bold mt-2">كسب الثقة</p>
+                        </div>
+                         <span class="font-sans text-4xl text-gray-500 mx-2">→</span>
+                        <div class="flex flex-col items-center">
+                            <span>📢</span>
+                            <p class="text-sm font-bold mt-2">توجيه سياسي</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-700 my-16">
+
+        <section id="audienceBehavior" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">سلوك الجمهور: كيف يستهلك الليبيون الإعلام؟</h2>
+                <p class="mt-2 text-gray-400 max-w-2xl mx-auto">فهم عادات الجمهور وتفضيلاته أساسي لتحليل تأثير الإعلام. البيانات التالية تقدم لمحة (تقديرية) عن هذا السلوك.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="card rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">مصدر الأخبار الرئيسي حسب الفئة العمرية</h3>
+                    <div class="small-chart-container">
+                        <canvas id="newsSourceByAgeChart"></canvas>
+                    </div>
+                    <p class="text-center mt-4 text-sm text-gray-400">تظهر هيمنة وسائل التواصل الاجتماعي كمصدر رئيسي للأخبار بين الشباب، بينما يظل التلفزيون مؤثرًا لدى الفئات الأكبر سنًا.</p>
+                </div>
+                <div class="card rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">مستوى الثقة في أنواع الإعلام (تقديري)</h3>
+                    <div class="small-chart-container">
+                        <canvas id="mediaTrustChart"></canvas>
+                    </div>
+                    <p class="text-center mt-4 text-sm text-gray-400">يعكس الرسم تباينًا في مستويات الثقة، حيث تحظى بعض المصادر بثقة أكبر من غيرها، ويتأثر ذلك غالبًا بالانتماءات والتوجهات.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                <div class="key-stat p-6 rounded-lg text-center shadow-lg">
+                    <p class="text-4xl font-black">~65%</p>
+                    <p class="mt-1 text-gray-200">نسبة انتشار الإنترنت (تقديري)</p>
+                </div>
+                <div class="key-stat p-6 rounded-lg text-center shadow-lg">
+                    <p class="text-4xl font-black">~3.5 <span class="text-2xl">ساعات</span></p>
+                    <p class="mt-1 text-gray-200">متوسط مشاهدة التلفزيون يوميًا (تقديري)</p>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="border-gray-700 my-16">
+
+        <section id="funding" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">استراتيجيات التمويل: مقارنة بين نهجين</h2>
+                <p class="mt-2 text-gray-400 max-w-2xl mx-auto">يختلف نهج التمويل القطري القائم على "القوة الناعمة" عن نهج التمويل السعودي والإماراتي الذي يعتمد على "التملق المباشر"، ولكل منهما أدواته وأهدافه.</p>
+            </div>
+             <div class="overflow-x-auto">
+                <div class="card rounded-lg shadow-xl p-6 min-w-full inline-block">
+                    <table class="w-full text-center">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="py-3 px-2 text-lg brand-text">الميزة</th>
+                                <th class="py-3 px-2 text-lg">النموذج القطري (القوة الناعمة)</th>
+                                <th class="py-3 px-2 text-lg">النموذج السعودي/الإماراتي (المباشر)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-800">
+                                <td class="py-4 px-2 font-bold">الشرط الأساسي</td>
+                                <td class="py-4 px-2">الولاء للأجندة مع الحفاظ على مظهر الاستقلالية</td>
+                                <td class="py-4 px-2">التملق والمديح الصريح للنظام</td>
+                            </tr>
+                             <tr class="border-b border-gray-800">
+                                <td class="py-4 px-2 font-bold">مساحة النقد</td>
+                                <td class="py-4 px-2">مسموح به ضد خصوم (أمريكا، إسرائيل) لكسب المصداقية</td>
+                                <td class="py-4 px-2">محدود جدًا أو منعدم</td>
+                            </tr>
+                             <tr>
+                                <td class="py-4 px-2 font-bold">الهدف النهائي</td>
+                                <td class="py-4 px-2">السيطرة على الوعي وتحييد الخصوم فكريًا</td>
+                                <td class="py-4 px-2">السيطرة على الخطاب وتلميع الصورة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="border-gray-700 my-16">
+
+        <section id="conclusion" class="my-12 text-center">
+            <h2 class="text-3xl font-bold">نحو سيادة إعلامية حقيقية</h2>
+            <div class="max-w-3xl mx-auto mt-6 flex flex-col md:flex-row items-center gap-8">
+                <div class="card p-6 rounded-lg text-center flex-shrink-0">
+                    <p class="text-7xl font-black brand-text">1</p>
+                    <p class="font-bold mt-2">قناة واحدة فقط</p>
+                    <p class="text-sm text-gray-400">معروفة المصدر تمويلها بشفافية (تقديريًا)</p>
+                </div>
+                <div class="text-right md:text-left flex-grow">
+                     <p class="text-gray-300 mb-4">يظل الرهان الحقيقي على شفافية مصادر التمويل وهوية الأجندات. إن المطالبة بكشف هذه الحقائق ليست ترفًا، بل هي حق أصيل للمواطن وضرورة ملحة لبناء إعلام وطني مسؤول يسهم في تحقيق السيادة الإعلامية المنشودة بعيدًا عن أي تدخلات خارجية أو استقطابات داخلية.</p>
+                     <button id="askGeminiButton" class="gemini-button font-bold py-2 px-4 rounded-lg w-full md:w-auto">
+                        ✨ اطرح سؤالاً (تجريبي) على Gemini حول الإعلام الليبي
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container mx-auto text-center py-8 mt-8 text-gray-400 text-sm">
+        <p>
+            هذا الملف البياني هو جزء من تحليل أوسع للمشهد الإعلامي.
+            <br>
+            مصدر الإلهام والتحليل الأولي: <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-200">مدونة عبدالسلام شليبك</a>.
+        </p>
+         <p class="mt-2">جميع البيانات المعروضة هي تقديرية لأغراض التوضيح ما لم يُشر إلى خلاف ذلك.</p>
+    </footer>
+
+    <div id="biasAnalysisModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-lg w-full">
+            <h3 class="text-xl font-bold mb-4 brand-text">✨ تحليل التحيز (تجريبي)</h3>
+            <p class="text-sm text-gray-300 mb-2">خبر افتراضي من "قناة ليبيا الأحرار":</p>
+            <p class="bg-gray-700 p-3 rounded text-sm mb-4">"موجة غضب شعبية عارمة تجتاح المدن الكبرى تنديدًا بالسياسات الاقتصادية الأخيرة، ومطالبات واسعة بتغيير جذري."</p>
+            <button id="triggerBiasAnalysis" class="gemini-button font-bold py-2 px-4 rounded-lg w-full mb-4">تحليل بواسطة Gemini</button>
+            <div id="biasAnalysisResult" class="text-sm text-gray-300 min-h-[50px]"></div>
+            <button id="closeBiasModal" class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded-lg w-full">إغلاق</button>
+        </div>
+    </div>
+
+    <div id="askGeminiModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-lg w-full">
+            <h3 class="text-xl font-bold mb-4 brand-text">✨ اطرح سؤالاً (تجريبي)</h3>
+            <p class="text-sm text-gray-300 mb-2">اكتب سؤالك حول الإعلام الليبي ليقوم Gemini بتحليله (تجريبي):</p>
+            <textarea id="userQueryInput" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-gray-200 h-24 mb-4" placeholder="مثال: ما هو تأثير التمويل الأجنبي على استقلالية القنوات الليبية؟"></textarea>
+            <button id="submitUserQuery" class="gemini-button font-bold py-2 px-4 rounded-lg w-full mb-4">إرسال إلى Gemini</button>
+            <div id="geminiResponse" class="text-sm text-gray-300 min-h-[70px]"></div>
+            <button id="closeAskModal" class="mt-4 py-2 px-4 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded-lg w-full">إغلاق</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            function wrapText(label) {
+                const maxLength = 16;
+                if (typeof label !== 'string' || label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? currentLine + ' ' + word : word;
+                    }
+                });
+                if (currentLine) {
+                    lines.push(currentLine);
+                }
+                return lines.length > 0 ? lines : [label];
+            }
+
+            const chartColors = {
+                primary: '#5BC0BE',
+                secondary: '#3A506B',
+                accent: '#6FFFE9',
+                lightText: 'rgba(240, 248, 255, 0.8)',
+                pieSlice1: '#5BC0BE',
+                pieSlice2: '#6FFFE9',
+                pieSlice3: '#3A506B',
+                pieSlice4: 'rgba(91, 192, 190, 0.4)',
+            };
+            
+            const defaultChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: chartColors.lightText,
+                            font: {
+                                family: "'Cairo', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        titleFont: { family: "'Cairo', sans-serif" },
+                        bodyFont: { family: "'Cairo', sans-serif" },
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const landscapeCtx = document.getElementById('landscapeChart')?.getContext('2d');
+            if(landscapeCtx) {
+                new Chart(landscapeCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['قنوات ذات توجه سياسي', 'إعلام الدولة الرسمي', 'قنوات مستقلة (نظرياً)'],
+                        datasets: [{
+                            label: 'توزيع التأثير',
+                            data: [75, 15, 10],
+                            backgroundColor: [chartColors.primary, chartColors.secondary, 'rgba(91, 192, 190, 0.3)'],
+                            borderColor: '#1C2541',
+                            borderWidth: 4
+                        }]
+                    },
+                    options: { ...defaultChartOptions }
+                });
+            }
+
+            const eastChannelsCtx = document.getElementById('eastChannelsChart')?.getContext('2d');
+            if(eastChannelsCtx) {
+                const originalLabels = ['قناة الحدث الليبية', 'قناة المسار'];
+                const processedLabels = originalLabels.map(wrapText);
+
+                new Chart(eastChannelsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: processedLabels,
+                        datasets: [{
+                            label: 'درجة الانحياز (تقديري)',
+                            data: [90, 85],
+                            backgroundColor: [chartColors.primary, 'rgba(91, 192, 190, 0.6)'],
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        indexAxis: 'y',
+                         scales: {
+                            x: {
+                                grid: { color: 'rgba(58, 80, 107, 0.3)' },
+                                ticks: { 
+                                    color: chartColors.lightText,
+                                    callback: function(value) { return value + '%' }
+                                },
+                                max: 100,
+                                beginAtZero: true
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: chartColors.lightText }
+                            }
+                        },
+                        plugins: {
+                             ...defaultChartOptions.plugins,
+                             legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+            const newsSourceByAgeCtx = document.getElementById('newsSourceByAgeChart')?.getContext('2d');
+            if(newsSourceByAgeCtx) {
+                new Chart(newsSourceByAgeCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: [wrapText('وسائل التواصل الاجتماعي (18-25)'), wrapText('التلفزيون (41+)'), wrapText('بوابات الأخبار أونلاين (26-40)'), wrapText('التلفزيون (26-40)'), wrapText('وسائل التواصل (41+)')],
+                        datasets: [{
+                            label: 'مصدر الأخبار الرئيسي',
+                            data: [45, 30, 25, 20, 15], 
+                            backgroundColor: [chartColors.pieSlice1, chartColors.pieSlice2, chartColors.pieSlice3, chartColors.pieSlice4, 'rgba(58, 80, 107, 0.5)'],
+                            borderColor: '#1C2541',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    ...defaultChartOptions.plugins.legend.labels,
+                                    padding: 15,
+                                    boxWidth: 12
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const mediaTrustCtx = document.getElementById('mediaTrustChart')?.getContext('2d');
+            if(mediaTrustCtx) {
+                const trustLabels = [wrapText('تلفزيون محلي (موجه)'), wrapText('تلفزيون دولي'), wrapText('وسائل التواصل الاجتماعي'), wrapText('إذاعة محلية'), wrapText('صحف ورقية (نادرة)')];
+                new Chart(mediaTrustCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: trustLabels,
+                        datasets: [{
+                            label: 'مستوى الثقة (من 10)',
+                            data: [4.5, 6.0, 3.5, 5.0, 2.5], 
+                            backgroundColor: chartColors.primary,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                         scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: chartColors.lightText }
+                            },
+                            y: {
+                                grid: { color: 'rgba(58, 80, 107, 0.3)' },
+                                ticks: { color: chartColors.lightText },
+                                max: 10,
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                             ...defaultChartOptions.plugins,
+                             legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+
+            const biasAnalysisModal = document.getElementById('biasAnalysisModal');
+            const analyzeBiasButton = document.getElementById('analyzeBiasButton');
+            const closeBiasModalButton = document.getElementById('closeBiasModal');
+            const triggerBiasAnalysisButton = document.getElementById('triggerBiasAnalysis');
+            const biasAnalysisResultDiv = document.getElementById('biasAnalysisResult');
+
+            analyzeBiasButton?.addEventListener('click', () => {
+                biasAnalysisModal.classList.remove('hidden');
+                biasAnalysisResultDiv.innerHTML = ''; 
+            });
+            closeBiasModalButton?.addEventListener('click', () => biasAnalysisModal.classList.add('hidden'));
+            
+            triggerBiasAnalysisButton?.addEventListener('click', async () => {
+                biasAnalysisResultDiv.innerHTML = '<div class="flex justify-center items-center"><div class="loader"></div><p class="ml-2">جاري التحليل بواسطة Gemini...</p></div>';
+                
+                const prompt = "حلل التحيز في العنوان الإخباري التالي المنسوب لقناة ليبيا الأحرار: 'موجة غضب شعبية عارمة تجتاح المدن الكبرى تنديدًا بالسياسات الاقتصادية الأخيرة، ومطالبات واسعة بتغيير جذري.'";
+                
+                try {
+                    let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; 
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+
+                    const mockApiResponse = {
+                        candidates: [{
+                            content: {
+                                parts: [{
+                                    text: "تحليل تجريبي للتحيز: \n- العنوان يستخدم لغة قوية وعاطفية مثل 'غضب عارم' و 'تجتاح' مما قد يهدف إلى تضخيم الحدث.\n- عبارة 'مطالبات واسعة بتغيير جذري' قد تشير إلى تبني وجهة نظر معينة دون توضيح حجم هذه المطالبات أو تنوع الآراء الأخرى.\n- يفتقر العنوان إلى تفاصيل محددة حول السياسات الاقتصادية أو طبيعة التغيير الجذري المطلوب، مما قد يترك انطباعًا عامًا بدلاً من تقديم معلومات متوازنة.\n- بشكل عام، يظهر العنوان ميلاً نحو إثارة المشاعر وتوجيه الرأي العام نحو فكرة وجود استياء واسع النطاق."
+                                }]
+                            }
+                        }]
+                    };
+                    
+                    if (mockApiResponse.candidates && mockApiResponse.candidates.length > 0 &&
+                        mockApiResponse.candidates[0].content && mockApiResponse.candidates[0].content.parts &&
+                        mockApiResponse.candidates[0].content.parts.length > 0) {
+                        const text = mockApiResponse.candidates[0].content.parts[0].text;
+                        biasAnalysisResultDiv.innerHTML = `<p class="whitespace-pre-line">${text.replace(/\n/g, '<br>')}</p>`;
+                    } else {
+                         biasAnalysisResultDiv.innerHTML = '<p>عفواً، لم نتمكن من الحصول على تحليل. (محاكاة خطأ)</p>';
+                    }
+
+                } catch (error) {
+                    console.error("Error in simulated API call:", error);
+                    biasAnalysisResultDiv.innerHTML = '<p>حدث خطأ أثناء محاولة التحليل. (محاكاة خطأ)</p>';
+                }
+            });
+
+
+            const askGeminiModal = document.getElementById('askGeminiModal');
+            const askGeminiButton = document.getElementById('askGeminiButton');
+            const closeAskModalButton = document.getElementById('closeAskModal');
+            const userQueryInput = document.getElementById('userQueryInput');
+            const submitUserQueryButton = document.getElementById('submitUserQuery');
+            const geminiResponseDiv = document.getElementById('geminiResponse');
+
+            askGeminiButton?.addEventListener('click', () => {
+                askGeminiModal.classList.remove('hidden');
+                geminiResponseDiv.innerHTML = '';
+                userQueryInput.value = '';
+            });
+            closeAskModalButton?.addEventListener('click', () => askGeminiModal.classList.add('hidden'));
+
+            submitUserQueryButton?.addEventListener('click', async () => {
+                const userQuery = userQueryInput.value.trim();
+                if (!userQuery) {
+                    geminiResponseDiv.innerHTML = '<p>الرجاء إدخال سؤالك أولاً.</p>';
+                    return;
+                }
+                geminiResponseDiv.innerHTML = '<div class="flex justify-center items-center"><div class="loader"></div><p class="ml-2">يقوم Gemini بتحليل سؤالك...</p></div>';
+                
+                const prompt = `بصفتك خبيرًا في تحليل الإعلام، قم بتحليل السؤال التالي حول الإعلام الليبي وقدم رؤى موجزة: "${userQuery}"`;
+
+                try {
+                    let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                    const payload = { contents: chatHistory };
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    await new Promise(resolve => setTimeout(resolve, 2000)); 
+
+                    const mockApiResponse = {
+                        candidates: [{
+                            content: {
+                                parts: [{
+                                    text: `تحليل تجريبي لسؤالك: "${userQuery}"\n\nيشير سؤالك إلى نقطة حيوية في فهم ديناميكيات الإعلام الليبي. بناءً على التحليل (التجريبي)، يمكن القول بأن:\n\n1.  **الشفافية المحدودة:** غالبًا ما تكون مصادر تمويل القنوات غير معلنة بوضوح، مما يفتح الباب أمام التكهنات حول الأجندات الخفية.\n2.  **تأثير الاستقطاب:** الانقسام السياسي الحاد في ليبيا ينعكس بشكل مباشر على الخطاب الإعلامي، حيث تميل كل قناة لخدمة مصالح الطرف الذي تنتمي إليه أو يمولها.\n3.  **دور القوة الناعمة:** بعض الجهات الخارجية تستخدم الإعلام كأداة للقوة الناعمة، بهدف التأثير على الرأي العام وتوجيه مسار الأحداث بما يخدم مصالحها الاستراتيجية.\n\nلفهم أعمق، يُنصح بالنظر في دراسات مقارنة لتحليل محتوى القنوات الرئيسية وتتبع أنماط التغطية للأحداث المفصلية.`
+                                }]
+                            }
+                        }]
+                    };
+
+                    if (mockApiResponse.candidates && mockApiResponse.candidates.length > 0 &&
+                        mockApiResponse.candidates[0].content && mockApiResponse.candidates[0].content.parts &&
+                        mockApiResponse.candidates[0].content.parts.length > 0) {
+                        const text = mockApiResponse.candidates[0].content.parts[0].text;
+                        geminiResponseDiv.inne\\\\\\\\\\\\\\\\\\\sxrHTML = `<p class="whitespace-pre-line">${text.replace(/\n/g, '<br>')}</p>`;
+                    } else {
+                        geminiResponseDiv.innerHTML = '<p>عفواً، لم نتمكن من الحصول على تحليل لسؤالك. (محاكاة خطأ)</p>';
+                    }
+
+                } catch (error) {
+                    console.error("Error in simulated API call for user query:", error);
+                    geminiResponseDiv.innerHTML = '<p>حدث خطأ أثناء محاولة تحليل سؤالك. (محاكاة خطأ)</p>';
+                }
+            });
+
+        });
+    </script>
+    
+    </body>
+</html>
