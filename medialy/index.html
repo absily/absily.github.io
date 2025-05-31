@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -609,7 +609,7 @@
                         mockApiResponse.candidates[0].content && mockApiResponse.candidates[0].content.parts &&
                         mockApiResponse.candidates[0].content.parts.length > 0) {
                         const text = mockApiResponse.candidates[0].content.parts[0].text;
-                        geminiResponseDiv.inne\\\\\\\\\\\\\\\\\\\sxrHTML = `<p class="whitespace-pre-line">${text.replace(/\n/g, '<br>')}</p>`;
+                        geminiResponseDiv.innerHTML = `<p class="whitespace-pre-line">${text.replace(/\n/g, '<br>')}</p>`;
                     } else {
                         geminiResponseDiv.innerHTML = '<p>عفواً، لم نتمكن من الحصول على تحليل لسؤالك. (محاكاة خطأ)</p>';
                     }
