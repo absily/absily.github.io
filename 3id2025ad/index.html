@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدونة عبدالسلام شليبك: تهنئة عيد الأضحى</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* إعادة تعيين Box-sizing لكل العناصر لضمان حسابات عرض وارتفاع متسقة */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* تعريف الخط الأساسي للجسم */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* لضمان ملء الشاشة بالكامل ومنع التمرير الأفقي غير المرغوب فيه */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden; /* لمنع أي تمرير أفقي غير مرغوب فيه */
+        }
+        /* تحسين التخطيط الرئيسي لـ body للتوسيط المرن و الهوامش الآمنة */
+        body {
+            display: flex;
+            flex-direction: column; /* للسماح بالتمرير إذا كان المحتوى أطول من الشاشة */
+            align-items: center;
+            justify-content: flex-start; /* البدء من الأعلى بدلاً من المنتصف تماماً */
+            min-height: 100vh; /* التأكد من أن الجسم يملأ ارتفاع الشاشة بالكامل */
+            padding: 2rem 1rem; /* هامش رأسي 2rem وجانبي 1rem حول المجلة على جميع الشاشات */
+            background-color: #f9fafb; /* لون خلفية خفيف جداً */
+        }
+
+        /* تحسين تناسق النص على الشاشات الصغيرة جداً */
+        .magazine-text p {
+            font-size: clamp(0.8rem, 3.5vw, 1.15rem); /* حجم خط متكيف أكثر للجوّال، قيمة دنيا أصغر */
+            line-height: 1.75; /* تحسين تباعد الأسطر للقراءة */
+        }
+        .magazine-text p:first-child {
+            font-size: clamp(0.95rem, 4vw, 1.4rem); /* حجم خط متكيف للفقرة الأولى، قيمة دنيا أصغر */
+            font-weight: 600; /* جعل الفقرة الأولى أكثر جرأة */
+        }
+        /* تحسين حجم العنوان في الرأس */
+        .magazine-header {
+            font-size: clamp(1.3rem, 5vw, 2.5rem); /* حجم خط متكيف للرأس، قيمة دنيا أصغر */
+            letter-spacing: 0.05em; /* تباعد الأحرف لإضفاء مظهر مجلة */
+            font-weight: 700; /* وزن خط ثقيل للعنوان */
+        }
+        /* لضمان أن الرابط في الهيدر لا يغير من تصميمه */
+        .magazine-header a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* لضمان أن الصورة لن تتجاوز حجم الشاشة الأبوية على أي حال */
+        .magazine-image img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* إزالة المساحة البيضاء الزائدة أسفل الصورة */
+            object-fit: cover; /* تغطية المساحة المتاحة مع الحفاظ على الأبعاد */
+            width: 100%; /* تأكيد ملء العرض المتاح في حاوية الـ flex */
+        }
+
+        /* تأثير تحوم خفيف على حاوية المجلة */
+        .magazine-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        .magazine-container {
+            transition: all 0.3s ease-in-out;
+            flex-shrink: 0; /* منع الحاوية من التقلص */
+        }
+
+        /* تنسيق الأزرار الجديدة */
+        .gemini-button {
+            background-color: #4CAF50; /* لون أخضر */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* حواف دائرية بالكامل */
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-shrink: 0; /* منع الزر من الانكماش */
+            width: 100%; /* على الجوال، الزر يملأ العرض */
+            text-align: center; /* توسيط النص داخل الزر */
+        }
+
+        .gemini-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .gemini-button:active {
+            transform: translateY(0);
+        }
+
+        .input-field {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            width: 100%; /* تأكد من أن الحقل يملأ العرض المتاح على الجوال */
+            max-width: 300px; /* الحد الأقصى للعرض على الشاشات الكبيرة */
+            font-size: 1rem;
+            margin-bottom: 1rem; /* مسافة أسفل الحقل على الجوال */
+            text-align: right; /* محاذاة النص لليمين */
+        }
+
+        .response-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            color: #374151;
+            font-style: italic;
+            text-align: right; /* محاذاة النص لليمين */
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* تحسين استجابة مجموعة الإدخال والزر على الشاشات المختلفة */
+        .input-button-group {
+            display: flex; /* استخدام flexbox */
+            flex-direction: column; /* عمودي على الشاشات الصغيرة افتراضياً */
+            align-items: stretch; /* لجعل العناصر تمتد عرضياً */
+            gap: 1rem; /* مسافة بين العناصر */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .input-button-group {
+                flex-direction: row; /* أفقي على الشاشات الأكبر */
+                align-items: center;
+                justify-content: center;
+                gap: 1rem; /* مسافة بين العناصر */
+            }
+            .input-field {
+                width: auto; /* السماح للعرض التلقائي عندما تكون في صف واحد */
+                flex-grow: 1; /* السماح لحقل الإدخال بالنمو لملء المساحة */
+                margin-bottom: 0; /* إزالة الهامش السفلي في التخطيط الأفقي */
+            }
+            .gemini-button {
+                width: auto; /* الزر يأخذ عرضه الطبيعي في التخطيط الأفقي */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- حاوية المجلة الرئيسية -->
+    <div class="magazine-container bg-white shadow-2xl rounded-2xl max-w-screen-xl w-full mx-auto overflow-hidden flex flex-col ring-1 ring-gray-100 my-auto">
+        <!-- رأس المجلة -->
+        <header class="magazine-header bg-indigo-800 text-white py-6 px-8 text-center rounded-t-2xl">
+            <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer">مدونة عبدالسلام شليبك</a>
+        </header>
+
+        <!-- محتوى المجلة (الصورة والنص) -->
+        <main class="magazine-content flex flex-col md:flex-row gap-8 p-8 text-right items-center">
+            <!-- قسم الصورة -->
+            <div class="magazine-image flex-1 w-full md:w-auto">
+                <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH6xqYow_Qq7cIt3P0ex6YMcsC_gEBZqjf-JgEN4QMluTeOz-Uxll1-bwFeiEGKNH9QyTE8-Nk7wP1CrfO-cofK-HFqaD9jIlQ0QWZirLInG8m1Wn_BUIcAAPYvHECWgn4ckQh4BavIvafvCbSakR-WS5WRUfOz52y9Gyo1fsJnG3M8faNgry72o2HQpei/s16000/sR99099900000000099hlll.png"
+                    alt="صورة تهنئة عيد الأضحى"
+                    class="rounded-lg shadow-xl"
+                    onerror="this.onerror=null;this.src='https://placehold.co/700x500/E0E0E0/333333?text=Image+Not+Available';"
+                >
+            </div>
+            <!-- قسم النص -->
+            <div class="magazine-text flex-1 text-gray-700">
+                <p class="text-gray-900 mb-5">عِيدُ أَضْحى مُبَارَكٌ، نُهْدِي إلَيْكُم أَطْيَبَ التَّهَانِي وَأَصْدَقَ التَّمَنِّيَات، أَعَادَهُ اللهُ عَلَيْكُمْ بِالصِّحَّةِ وَالعَافِيَةِ، وَغَفَرَ ذُنُوبَكُمْ، وَتَقَبَّلَ طَاعَاتِكُمْ، وَجَعَلَ أَيَّامَكُمْ أَمْنًا وَسُرُورًا.</p>
+                <p class="font-semibold text-indigo-700 mt-6">تَهنِئةٌ خَالِصَةٌ مِن "مُدَوَّنَةِ عَبدِالسَّلَام مُصْطَفَى شَلِيبَك"</p>
+                <p class="mt-4">كُلُّ عَامٍ وَأَنْتُمْ إِلَى اللهِ أَقْرَبُ، وَعِيدُكُمْ سَعِيدٌ.</p>
+
+                <!-- قسم توليد التهنئة الشخصية بواسطة Gemini API -->
+                <div class="mt-10 pt-8 border-t-2 border-dashed border-gray-200">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 text-center">✨ تهنئة عيد الأضحى المخصصة لك ✨</h3>
+                    <div class="input-button-group">
+                        <input type="text" id="nameInput" placeholder="أدخل اسمك هنا" class="input-field" aria-label="أدخل اسمك لتوليد التهنئة">
+                        <button id="generateGreetingBtn" class="gemini-button">
+                            توليد التهنئة ✨
+                            <span id="loadingSpinner" class="loading-spinner hidden"></span>
+                        </button>
+                    </div>
+                    <div id="greetingOutput" class="response-box hidden" role="alert">
+                        <!-- مكان عرض التهنئة المولدة -->
+                        ستظهر تهنئتك هنا...
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- تذييل المجلة -->
+        <footer class="magazine-footer bg-indigo-50 text-indigo-700 py-4 px-8 text-center text-sm rounded-b-2xl">
+            جميع الحقوق محفوظة &copy; 2025
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameInput = document.getElementById('nameInput');
+            const generateGreetingBtn = document.getElementById('generateGreetingBtn');
+            const greetingOutput = document.getElementById('greetingOutput');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            // دالة لجلب التهنئة من نموذج Gemini API
+            async function generateEidGreeting(name) {
+                loadingSpinner.classList.remove('hidden'); // إظهار مؤشر التحميل
+                greetingOutput.classList.add('hidden'); // إخفاء مربع النتيجة مؤقتًا
+                greetingOutput.textContent = 'جاري توليد تهنئتك...'; // رسالة انتظار
+
+                let chatHistory = [];
+                // بناء البرومبت (الطلب) لنموذج اللغة
+                const prompt = `اكتب تهنئة عيد أضحى قصيرة ومؤثرة باللغة العربية لشخص اسمه "${name}". اجعلها مليئة بالمشاعر الإيجابية وتمنيات الخير للعيد.`;
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // سيتم توفير مفتاح API تلقائيًا في بيئة Canvas
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`API error: ${response.status} - ${errorData.error.message || 'Unknown error'}`);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        greetingOutput.textContent = text;
+                        greetingOutput.classList.remove('hidden'); // إظهار مربع النتيجة
+                    } else {
+                        greetingOutput.textContent = 'عذراً، لم أتمكن من توليد التهنئة. يرجى المحاولة مرة أخرى.';
+                        greetingOutput.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error('حدث خطأ أثناء الاتصال بـ Gemini API:', error);
+                    greetingOutput.textContent = `حدث خطأ: ${error.message}. يرجى المحاولة مرة أخرى.`;
+                    greetingOutput.classList.remove('hidden');
+                } finally {
+                    loadingSpinner.classList.add('hidden'); // إخفاء مؤشر التحميل
+                }
+            }
+
+            // إضافة مستمع الحدث لزر توليد التهنئة
+            generateGreetingBtn.addEventListener('click', () => {
+                const name = nameInput.value.trim();
+                if (name) {
+                    generateEidGreeting(name);
+                } else {
+                    greetingOutput.textContent = 'الرجاء إدخال اسم لتوليد التهنئة.';
+                    greetingOutput.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
