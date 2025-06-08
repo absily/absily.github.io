@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انفوجرافيك: فجوة الرواتب في العالم العربي 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 450px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 500px;
+            }
+        }
+        .flowchart-node {
+            border-color: #00A6FB;
+            background-color: white;
+            color: #1f2937;
+            transition: all 0.3s ease;
+        }
+        .flowchart-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flowchart-arrow {
+            color: #00A6FB;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-2">فجوة الرواتب في العالم العربي</h1>
+            <p class="text-xl md:text-2xl text-gray-700">نظرة تحليلية على متوسط الدخل لعام 2025</p>
+        </header>
+
+        <section id="regional-landscape" class="mb-16">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">المشهد الإقليمي: تفاوت هائل في الدخل</h2>
+                <p class="text-gray-600 mb-8 text-center max-w-3xl mx-auto">
+                    يكشف تقرير <a href="https://countrycassette.com/average-monthly-salary-by-country-2023/" target="_blank" class="text-blue-600 hover:underline">Countrycassette</a> لعام 2025 عن تباين اقتصادي كبير بين الدول العربية. بينما تتصدر دول الخليج القائمة بمتوسط رواتب هو الأعلى عالميًا، تواجه دول أخرى في المنطقة تحديات اقتصادية جمّة تنعكس في ضعف متوسط الدخول بشكل ملحوظ.
+                </p>
+                <div class="chart-container">
+                    <canvas id="regionalSalariesChart"></canvas>
+                </div>
+                <p class="text-center text-gray-500 mt-4 text-sm">متوسط الراتب الشهري الصافي بالدولار الأمريكي ($)</p>
+            </div>
+        </section>
+
+        <section id="libya-spotlight" class="mb-16">
+             <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">تحت المجهر: الحالة الليبية</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="md:col-span-1 bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center">
+                    <p class="text-lg text-gray-600 mb-2">متوسط الراتب الشهري في ليبيا</p>
+                    <p class="text-6xl font-extrabold" style="color: #EA3546;">$275</p>
+                    <p class="text-lg text-gray-600 mt-2">ما يعادل ~1340 دينار ليبي</p>
+                    <p class="mt-4 text-gray-500">هذا الرقم يضع ليبيا في المرتبة 11 من أصل 13 دولة عربية شملها التقرير.</p>
+                </div>
+
+                <div class="md:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-center">تفاوت الدخل بين القطاعين العام والخاص</h3>
+                     <p class="text-gray-600 mb-6 text-center max-w-xl mx-auto">
+                        المتوسط العام يخفي فروقات كبيرة. رواتب القطاع الخاص، خاصة في الشركات الكبرى، تتجاوز بشكل ملحوظ متوسط الرواتب في القطاع العام، مما يعكس انقسامًا في سوق العمل.
+                    </p>
+                    <div class="chart-container" style="max-height: 350px;">
+                        <canvas id="libyaSectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cost-of-living" class="mb-16">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">معضلة تكلفة المعيشة</h2>
+                <p class="text-gray-600 mb-8 text-center max-w-3xl mx-auto">
+                    عند مقارنة متوسط الدخل بتكاليف المعيشة الأساسية، تتضح الأزمة الحقيقية. تكلفة استئجار شقة صغيرة في العاصمة طرابلس قد تستهلك الراتب الشهري بالكامل أو معظمه، مما يترك القليل لتغطية باقي ضروريات الحياة.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 p-6 bg-gray-100 rounded-xl">
+                    <div class="text-center">
+                        <p class="text-xl font-bold mb-2">متوسط الدخل الشهري</p>
+                        <span class="text-7xl">💰</span>
+                        <p class="text-2xl font-bold mt-2">$275</p>
+                    </div>
+                    <div class="text-4xl font-bold" style="color: #F86624;">vs</div>
+                    <div class="text-center">
+                        <p class="text-xl font-bold mb-2">إيجار شقة (غرفة واحدة)</p>
+                        <div class="flex justify-center gap-4">
+                           <span class="text-7xl">🏢</span>
+                           <span class="text-7xl opacity-50">🏢</span>
+                        </div>
+                        <p class="text-2xl font-bold mt-2">$100 - $310</p>
+                        <p class="text-xs text-gray-500">(500 - 1500 دينار)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recommendations" class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">الطريق نحو المستقبل: توصيات للإصلاح</h2>
+            <p class="text-gray-600 mb-10 text-center max-w-3xl mx-auto">
+                لمعالجة هذه الأزمة الهيكلية، توصي الجهات المحلية والدولية بحزمة من الإصلاحات الاقتصادية العاجلة التي تهدف إلى تحسين مستوى المعيشة وتحقيق استقرار اقتصادي مستدام.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 text-center relative">
+                <div class="absolute top-1/2 left-0 right-0 h-1 bg-blue-200 -translate-y-1/2 -z-10 hidden lg:block"></div>
+
+                <div class="flex flex-col items-center">
+                    <div class="flowchart-node w-full p-6 rounded-2xl border-2 shadow-md relative">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white">1</div>
+                        <h4 class="font-bold text-lg mt-6">إعادة هيكلة الرواتب</h4>
+                        <p class="text-sm text-gray-500 mt-2">تعديل سلم الرواتب في القطاع العام ليعكس الواقع المعيشي وتكاليف الحياة المتزايدة.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="flowchart-node w-full p-6 rounded-2xl border-2 shadow-md relative">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white">2</div>
+                        <h4 class="font-bold text-lg mt-6">تحفيز الاستثمار الخاص</h4>
+                        <p class="text-sm text-gray-500 mt-2">خلق بيئة جاذبة للاستثمار في القطاع الخاص لتوفير وظائف ذات رواتب تنافسية.</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <div class="flowchart-node w-full p-6 rounded-2xl border-2 shadow-md relative">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white">3</div>
+                        <h4 class="font-bold text-lg mt-6">تحسين البيئة التشريعية</h4>
+                        <p class="text-sm text-gray-500 mt-2">سن قوانين تشجع الشركات على دفع رواتب عادلة وتضمن حقوق الموظفين.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                     <div class="flowchart-node w-full p-6 rounded-2xl border-2 shadow-md relative">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold border-4 border-white">4</div>
+                        <h4 class="font-bold text-lg mt-6">تعزيز الشفافية</h4>
+                        <p class="text-sm text-gray-500 mt-2">تطبيق معايير الشفافية في التوظيف والإنفاق الحكومي لمكافحة الفساد المالي والإداري.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center pt-8 border-t">
+             <p class="text-gray-600 mb-4">رغم الثروات الطبيعية، إلا أن موقع ليبيا المتأخر يسلط الضوء على أزمة اقتصادية واجتماعية تتطلب حلولاً عميقة ومستدامة.</p>
+            <p class="text-xs text-gray-400">
+                المصادر: <a href="https://countrycassette.com/average-monthly-salary-by-country-2023/" target="_blank" class="text-blue-600 hover:underline">Countrycassette</a>, WageCentre, BDEEX, Numbeo, Reddit (2024)
+            </p>
+            <div class="mt-4 flex flex-col items-center justify-center">
+                <a href="https://www.absi.cc" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600 transition duration-300">
+                    <img src="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif"
+                         alt="شعار مدونة عبدالسلام شليبك"
+                         title="شعار مدونة عبدالسلام شليبك"
+                         class="w-10 h-10 rounded-full ml-2 object-cover"
+                         onerror="this.onerror=null;this.src='https://placehold.co/40x40/cccccc/000000?text=شعار';">
+                    <span class="text-sm font-semibold">من مدونة عبدالسلام شليبك</span>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const salaryData = [
+                { country: 'قطر', salary: 3973, flag: '🇶🇦' },
+                { country: 'الإمارات', salary: 3502, flag: '🇦🇪' },
+                { country: 'الكويت', salary: 2025, flag: '🇰🇼' },
+                { country: 'السعودية', salary: 2001, flag: '🇸🇦' },
+                { country: 'فلسطين', salary: 633, flag: '🇵🇸' },
+                { country: 'الأردن', salary: 619, flag: '🇯🇴' },
+                { country: 'العراق', salary: 537, flag: '🇮🇶' },
+                { country: 'لبنان', salary: 502, flag: '🇱🇧' },
+                { country: 'المغرب', salary: 393, flag: '🇲🇦' },
+                { country: 'تونس', salary: 303, flag: '🇹🇳' },
+                { country: 'ليبيا', salary: 275, flag: '🇱🇾' },
+                { country: 'الجزائر', salary: 267, flag: '🇩🇿' },
+                { country: 'مصر', salary: 137, flag: '🇪🇬' }
+            ];
+
+            const regionalCtx = document.getElementById('regionalSalariesChart').getContext('2d');
+            new Chart(regionalCtx, {
+                type: 'bar',
+                data: {
+                    labels: salaryData.map(d => `${d.flag} ${d.country}`),
+                    datasets: [{
+                        label: 'متوسط الراتب الشهري',
+                        data: salaryData.map(d => d.salary),
+                        backgroundColor: salaryData.map(d => d.country === 'ليبيا' ? '#EA3546' : '#00A6FB'),
+                        borderColor: salaryData.map(d => d.country === 'ليبيا' ? '#EA3546' : '#00A6FB'),
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#e5e7eb'
+                            },
+                             ticks: {
+                                font: {
+                                    family: "'Cairo', sans-serif"
+                                },
+                                callback: function(value) {
+                                    return '$' + value;
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                             ticks: {
+                                font: {
+                                    family: "'Cairo', sans-serif",
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            rtl: true,
+                            textDirection: 'rtl',
+                            titleFont: { family: "'Cairo', sans-serif" },
+                            bodyFont: { family: "'Cairo', sans-serif" },
+                            callbacks: {
+                                title: tooltipTitleCallback,
+                                label: function(context) {
+                                    return `متوسط الراتب: $${context.parsed.x}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const libyaSectorCtx = document.getElementById('libyaSectorChart').getContext('2d');
+            new Chart(libyaSectorCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['القطاع الخاص (شركات كبرى)', 'القطاع العام'],
+                    datasets: [{
+                        data: [410, 240],
+                        backgroundColor: ['#F9C80E', '#662E9B'],
+                        borderColor: '#ffffff',
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                           position: 'bottom',
+                           labels: {
+                               font: {
+                                   family: "'Cairo', sans-serif",
+                                   size: 14
+                               },
+                               padding: 20
+                           }
+                        },
+                        tooltip: {
+                            rtl: true,
+                            textDirection: 'rtl',
+                            titleFont: { family: "'Cairo', sans-serif" },
+                            bodyFont: { family: "'Cairo', sans-serif" },
+                            callbacks: {
+                                title: tooltipTitleCallback,
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += `$${context.parsed}`;
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
