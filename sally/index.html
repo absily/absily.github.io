@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -56,7 +56,7 @@
         <section id="regional-landscape" class="mb-16">
             <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">المشهد الإقليمي: تفاوت هائل في الدخل</h2>
-                <p class="text-gray-600 mb-8 text-center max-w-3xl mx-auto">
+                <p class="text-gray-600 mb-4 text-center max-w-3xl mx-auto">
                     يكشف تقرير <a href="https://countrycassette.com/average-monthly-salary-by-country-2023/" target="_blank" class="text-blue-600 hover:underline">Countrycassette</a> لعام 2025 عن تباين اقتصادي كبير بين الدول العربية. بينما تتصدر دول الخليج القائمة بمتوسط رواتب هو الأعلى عالميًا، تواجه دول أخرى في المنطقة تحديات اقتصادية جمّة تنعكس في ضعف متوسط الدخول بشكل ملحوظ.
                 </p>
                 <div class="chart-container">
@@ -188,26 +188,26 @@
             };
 
             const salaryData = [
-                { country: 'قطر', salary: 3973, flag: '🇶🇦' },
-                { country: 'الإمارات', salary: 3502, flag: '🇦🇪' },
-                { country: 'الكويت', salary: 2025, flag: '🇰🇼' },
-                { country: 'السعودية', salary: 2001, flag: '🇸🇦' },
-                { country: 'فلسطين', salary: 633, flag: '🇵🇸' },
-                { country: 'الأردن', salary: 619, flag: '🇯🇴' },
-                { country: 'العراق', salary: 537, flag: '🇮🇶' },
-                { country: 'لبنان', salary: 502, flag: '🇱🇧' },
-                { country: 'المغرب', salary: 393, flag: '🇲🇦' },
-                { country: 'تونس', salary: 303, flag: '🇹🇳' },
-                { country: 'ليبيا', salary: 275, flag: '🇱🇾' },
-                { country: 'الجزائر', salary: 267, flag: '🇩🇿' },
-                { country: 'مصر', salary: 137, flag: '🇪🇬' }
+                { country: 'قطر', salary: 3973 },
+                { country: 'الإمارات', salary: 3502 },
+                { country: 'الكويت', salary: 2025 },
+                { country: 'السعودية', salary: 2001 },
+                { country: 'فلسطين', salary: 633 },
+                { country: 'الأردن', salary: 619 },
+                { country: 'العراق', salary: 537 },
+                { country: 'لبنان', salary: 502 },
+                { country: 'المغرب', salary: 393 },
+                { country: 'تونس', salary: 303 },
+                { country: 'ليبيا', salary: 275 },
+                { country: 'الجزائر', salary: 267 },
+                { country: 'مصر', salary: 137 }
             ];
 
             const regionalCtx = document.getElementById('regionalSalariesChart').getContext('2d');
             new Chart(regionalCtx, {
                 type: 'bar',
                 data: {
-                    labels: salaryData.map(d => `${d.flag} ${d.country}`),
+                    labels: salaryData.map(d => d.country),
                     datasets: [{
                         label: 'متوسط الراتب الشهري',
                         data: salaryData.map(d => d.salary),
