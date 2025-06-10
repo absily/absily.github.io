@@ -231,6 +231,19 @@
                     تم تجميع المعلومات من تقارير إخبارية وأرشيفات حكومية متاحة للعموم، بما في ذلك:
                     أرشيف وزارة الخارجية الأمريكية، أرشيف البيت الأبيض، BBC News, Associated Press, NPR, Al Jazeera, Anadolu Agency, ومصادر إخبارية ليبية وعربية أخرى.
                 </p>
+                <div class="mt-4 flex items-center justify-center gap-4 flex-wrap">
+                    <div class="flex items-center justify-center gap-2">
+                        <span>👁️</span>
+                        <span>عدد الزوار:</span>
+                        <span id="visitor-count" class="font-bold">...</span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h4 class="font-bold text-base text-gray-700 mb-2">زوارنا حول العالم</h4>
+                    <a href="https://www.free-website-hit-counter.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://www.free-website-hit-counter.com/bin/my-counter.png?id=1418860" border="0" alt="visitor counter">
+                    </a>
+                </div>
                 <p class="mt-4">آخر تحديث للبيانات: يونيو 2025</p>
             </div>
         </footer>
@@ -295,6 +308,17 @@
                     plugins: defaultTooltipCallback.plugins
                 }
             });
+
+            // Visitor Counter
+            const countElement = document.getElementById('visitor-count');
+            fetch('https://api.countapi.xyz/hit/absi.cc/usalibyainfographic')
+                .then(response => response.json())
+                .then(data => {
+                    countElement.textContent = data.value;
+                })
+                .catch(() => {
+                    countElement.textContent = 'N/A';
+                });
         });
     </script>
 
