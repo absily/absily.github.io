@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انفوجرافيك: تاريخ قيود السفر الأمريكية على ليبيا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem;
+            right: -0.5rem;
+            transform: translateX(50%);
+            width: 1rem;
+            height: 1rem;
+            border-radius: 9999px;
+            background-color: #FFC700;
+            border: 2px solid #004FFF;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 1.25rem;
+            right: 0;
+            bottom: 1.25rem;
+            width: 4px;
+            background-color: #00E4FF;
+            transform: translateX(50%);
+        }
+        .shadow-text {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="relative text-white rounded-xl overflow-hidden shadow-2xl mb-16 h-96 flex flex-col justify-center items-center text-center p-4">
+            <div class="absolute inset-0 z-0">
+                <img src="https://absily.github.io/usalibya.png" alt="غلاف يصور العلاقات الأمريكية الليبية" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+            </div>
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-6xl font-black mb-2 shadow-text">مسار العلاقات الأمريكية الليبية</h1>
+                <p class="text-xl md:text-2xl shadow-text">نظرة تاريخية على قرارات حظر السفر</p>
+            </div>
+        </header>
+
+        <main>
+            
+            <section id="intro" class="mb-16">
+                <div class="text-center bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-[#004FFF] mb-4"> قصة متقلبة</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        مرت العلاقات بين الولايات المتحدة وليبيا بمنعطفات حادة على مدى العقود الماضية، وكان السفر أحد أبرز ساحات هذا التوتر. بدءًا من عقوبات صارمة في الثمانينيات، مرورًا بفترة من الانفراج، وصولًا إلى العودة لسياسات الحظر في العصر الحديث، يعكس هذا المسار تغيرات سياسية عميقة. يستعرض هذا الانفوجرافيك المحطات الرئيسية لهذه القرارات وتأثيرها.
+                    </p>
+                </div>
+            </section>
+
+            <section id="reagan-era" class="mb-16">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-center text-[#A500FF] mb-8">حقبة ريغان: بداية التصعيد (الثمانينيات)</h2>
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-3">خط زمني للأحداث الرئيسية</h3>
+                            <p class="mb-6 text-gray-600">اتخذت إدارة الرئيس ريغان خطوات غير مسبوقة ردًا على اتهامات بدعم ليبيا للإرهاب الدولي، مما أدى إلى عزلة شبه كاملة.</p>
+                            <div class="relative pr-8">
+                                <div class="timeline-line"></div>
+                                <div class="timeline-item relative pb-8">
+                                    <h4 class="text-xl font-bold text-[#004FFF]">ديسمبر 1981</h4>
+                                    <p class="text-gray-700">🛂 إلغاء صلاحية جوازات السفر الأمريكية للسفر إلى ليبيا، في إشارة قوية لتدهور العلاقات.</p>
+                                </div>
+                                <div class="timeline-item relative pb-8">
+                                    <h4 class="text-xl font-bold text-[#004FFF]">يناير 1986</h4>
+                                    <p class="text-gray-700">💸 فرض عقوبات اقتصادية شاملة وحظر كامل على التجارة والسفر، وتجميد الأصول الليبية.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center p-4">
+                            <div class="bg-white p-4 rounded-md shadow-lg transform -rotate-3 transition-transform hover:rotate-0 hover:scale-105">
+                                 <img src="https://absily.github.io/usalibya80s.png" alt="صورة فنية تمثل العلاقات الأمريكية الليبية في الثمانينيات" class="rounded-sm">
+                                 <p class="text-center text-sm text-gray-600 mt-2 font-mono">"The Reagan Doctrine" - Circa 1986</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="normalization" class="mb-16">
+                 <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-center text-[#FF005C] mb-8">الانفراج ورفع العقوبات (2004)</h2>
+                    <div class="text-center">
+                        <p class="max-w-3xl mx-auto text-lg text-gray-700 mb-8">مع بداية الألفية، أدت تغيرات في السياسة الليبية، أبرزها التخلي عن برامج أسلحة الدمار الشامل، إلى تحسن تدريجي في العلاقات ورفع للعقوبات التي دامت لعقود.</p>
+                        <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0">
+                             <div class="flex flex-col items-center p-4 text-center">
+                                <div class="w-24 h-24 rounded-full bg-[#FF005C] text-white flex items-center justify-center text-4xl mb-2">①</div>
+                                <h3 class="font-bold text-lg">تغير السياسة الليبية</h3>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-300 md:w-24 md:h-2"></div>
+                            <div class="flex flex-col items-center p-4 text-center">
+                                <div class="w-24 h-24 rounded-full bg-[#FFC700] text-white flex items-center justify-center text-4xl mb-2">②</div>
+                                <h3 class="font-bold text-lg">استجابة أمريكية</h3>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-300 md:w-24 md:h-2"></div>
+                            <div class="flex flex-col items-center p-4 text-center">
+                                <div class="w-24 h-24 rounded-full bg-[#00E4FF] text-white flex items-center justify-center text-4xl mb-2">③</div>
+                                <h3 class="font-bold text-lg">رفع الحظر (2004)</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="modern-bans" class="mb-16">
+                 <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-center text-[#004FFF] mb-8">العصر الحديث: عودة سياسات الحظر</h2>
+                    <p class="max-w-3xl mx-auto text-center text-lg text-gray-700 mb-8">عادت قيود السفر مرة أخرى في عهد إدارة الرئيس ترامب، ثم أُلغيت في عهد الرئيس بايدن، لتعود مجددًا في يونيو 2025، مما يوضح الطبيعة المتقلبة للسياسات.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="chart-container h-[400px] md:h-auto">
+                            <canvas id="bansComparisonChart"></canvas>
+                        </div>
+                         <div>
+                            <h3 class="text-2xl font-bold mb-4">مقارنة نطاق الحظر</h3>
+                            <p class="text-gray-600 mb-6">يُظهر الرسم البياني اتساع نطاق الحظر الأخير (2025) مقارنة بالحظر الأول (2017). الرقم يمثل عدد الدول المشمولة بالكامل في كل قرار.</p>
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-[#004FFF]">
+                                <h4 class="font-bold text-lg">نقاط رئيسية:</h4>
+                                <ul class="list-disc list-inside mt-2 text-gray-700">
+                                    <li><span class="font-bold">2017:</span> الحظر استهدف 7 دول في البداية.</li>
+                                    <li><span class="font-bold">2021:</span> الرئيس بايدن يلغي الحظر.</li>
+                                    <li><span class="font-bold">2025:</span> حظر جديد وأوسع يشمل 12 دولة.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="current-status" class="mb-16 bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <h3 class="text-3xl font-bold text-center mb-8 text-red-600">تحديث: الوضع الحالي (يونيو 2025)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="order-2 md:order-1">
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-900 px-4 py-3 shadow-md rounded-b mb-6" role="alert">
+                             <p class="font-bold">حظر سفر شامل</p>
+                             <p class="text-sm">اعتبارًا من 9 يونيو 2025، تم تفعيل حظر يمنع مواطني ليبيا و11 دولة أخرى من الحصول على تأشيرات جديدة.</p>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4">الدول المشمولة بالحظر:</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/ly.png" alt="علم ليبيا" class="w-5 h-auto rounded-sm"><span>ليبيا</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/af.png" alt="علم أفغانستان" class="w-5 h-auto rounded-sm"><span>أفغانستان</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/sd.png" alt="علم السودان" class="w-5 h-auto rounded-sm"><span>السودان</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/so.png" alt="علم الصومال" class="w-5 h-auto rounded-sm"><span>الصومال</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/ye.png" alt="علم اليمن" class="w-5 h-auto rounded-sm"><span>اليمن</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/ir.png" alt="علم إيران" class="w-5 h-auto rounded-sm"><span>إيران</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/mm.png" alt="علم ميانمار" class="w-5 h-auto rounded-sm"><span>ميانمار</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/td.png" alt="علم تشاد" class="w-5 h-auto rounded-sm"><span>تشاد</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/cg.png" alt="علم الكونغو" class="w-5 h-auto rounded-sm"><span>الكونغو</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/gq.png" alt="علم غينيا الاستوائية" class="w-5 h-auto rounded-sm"><span>غينيا إ.</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/er.png" alt="علم إريتريا" class="w-5 h-auto rounded-sm"><span>إريتريا</span></div>
+                            <div class="p-2 bg-gray-100 rounded-lg font-semibold flex items-center justify-center gap-2 text-sm"><img src="https://flagcdn.com/w40/ht.png" alt="علم هايتي" class="w-5 h-auto rounded-sm"><span>هايتي</span></div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 flex items-center justify-center p-4">
+                        <div class="bg-gray-800 p-3 rounded-lg shadow-xl border-4 border-gray-300">
+                             <img src="https://absily.github.io/trampusa25.png" alt="صورة فنية تمثل حظر السفر لعام 2025" class="rounded-sm w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <div class="flex flex-col items-center justify-center gap-4 mb-6">
+                <a href="http://www.absi.cc" target="_blank" rel="noopener noreferrer">
+                    <img src="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif" alt="شعار مدونة عبدالسلام شليبك" class="h-16 w-auto">
+                </a>
+                <p class="text-gray-600">
+                    <a href="http://www.absi.cc" target="_blank" rel="noopener noreferrer" class="hover:text-[#004FFF] transition-colors">من مدونة عبدالسلام شليبك</a>
+                </p>
+            </div>
+            <div class="text-gray-500 text-sm">
+                <h4 class="font-bold text-base text-gray-700 mb-2">مصادر المعلومات</h4>
+                <p class="max-w-3xl mx-auto">
+                    تم تجميع المعلومات من تقارير إخبارية وأرشيفات حكومية متاحة للعموم، بما في ذلك:
+                    أرشيف وزارة الخارجية الأمريكية، أرشيف البيت الأبيض، BBC News, Associated Press, NPR, Al Jazeera, Anadolu Agency, ومصادر إخبارية ليبية وعربية أخرى.
+                </p>
+                <p class="mt-4">آخر تحديث للبيانات: يونيو 2025</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wrapLabel = (str, maxWidth) => {
+                if (typeof str !== 'string' || str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                let lines = [];
+                let currentLine = words[0];
+
+                for (let i = 1; i < words.length; i++) {
+                    if (currentLine.length + words[i].length + 1 < maxWidth) {
+                        currentLine += ' ' + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const defaultTooltipCallback = {
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+            
+            const bansComparisonCtx = document.getElementById('bansComparisonChart').getContext('2d');
+            new Chart(bansComparisonCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['حظر 2017 (7 دول)', 'حظر 2025 (12 دولة)'],
+                    datasets: [{
+                        label: 'عدد الدول المشمولة',
+                        data: [7, 12],
+                        backgroundColor: ['#00E4FF', '#004FFF'],
+                        borderColor: ['#FFFFFF'],
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: defaultTooltipCallback.plugins
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
