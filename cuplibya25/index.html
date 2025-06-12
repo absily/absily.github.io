@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنفوجرافيك: بطولة كأس ليبيا لكرة السلة على الكراسي المتحركة 2025</title>
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:image" content="https://absily.github.io/bas25tri.jpg">
+    <meta property="og:title" content="بطولة كأس ليبيا لكرة السلة على الكراسي المتحركة 2025">
+    <meta property="og:description" content="انفوجرافيك تفاعلي لبطولة كأس ليبيا لكرة السلة على الكراسي المتحركة للعام 2025، يتضمن تفاصيل المباريات، الأندية المشاركة، والجهات المنظمة.">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .section-title {
+            font-weight: 900;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            color: #475569;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .match-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            white-space: nowrap;
+        }
+        .match-table th, .match-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .match-table th {
+            background-color: #0284c7;
+            color: white;
+            font-weight: 700;
+            text-align: right;
+        }
+        .match-table tbody tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        .match-table tbody tr:hover {
+            background-color: #e2e8f0;
+        }
+        .match-table .vs-cell {
+            text-align: center;
+            font-weight: 700;
+            color: #f97316;
+        }
+        .day-heading {
+            background-color: #facc15;
+            color: #1e293b;
+            font-weight: 900;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-size: 1.25rem;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .logo-container img {
+            max-width: 200px; /* Increased max-width for larger logo */
+            width: 80%; /* Fluid width for responsiveness */
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1); /* Added pulse animation */
+        }
+        @media (min-width: 768px) {
+            .logo-container img {
+                max-width: 250px; /* Even larger on desktop */
+            }
+        }
+
+        /* Keyframes for the pulse animation */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-sky-600 text-white text-center p-8 shadow-lg">
+        <div class="logo-container">
+            <a href="https://absily.github.io/bas25tri.jpg" target="_blank" rel="noopener noreferrer">
+                <img src="https://absily.github.io/bas25tri.jpg" alt="شعار البطولة" onerror="this.onerror=null;this.src='https://placehold.co/200x200/cccccc/333333?text=Logo';" class="rounded-full">
+            </a>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-2">بطولة كأس ليبيا لكرة السلة على الكراسي المتحركة 2025</h1>
+        <p class="text-lg md:text-xl font-semibold">22 - 26 يونيو 2025 | القاعة الكبرى بالمدينة الرياضية، طرابلس</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="key-facts" class="my-12">
+            <h2 class="section-title">حقائق سريعة عن البطولة</h2>
+            <p class="section-subtitle">إحصائيات هامة تسلط الضوء على حجم ومشاركة بطولة كأس ليبيا لكرة السلة على الكراسي المتحركة.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-sky-500">
+                    <p class="text-6xl font-black text-sky-600">6</p>
+                    <p class="text-xl font-bold mt-2">أندية مشاركة</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-orange-500">
+                    <p class="text-6xl font-black text-orange-600">34</p>
+                    <p class="text-xl font-bold mt-2">مباراة تنافسية</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                    <p class="text-6xl font-black text-yellow-600">2</p>
+                    <p class="text-xl font-bold mt-2">فئات للبطولة (5x5 و 3x3)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clubs" class="my-16">
+            <h2 class="section-title">الأندية المشاركة</h2>
+            <p class="section-subtitle">ستة أندية من مختلف أنحاء ليبيا تتنافس على لقب الكأس، مما يعكس الشغف والإرادة في رياضة كرة السلة على الكراسي المتحركة.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 text-center">
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <p class="font-bold text-lg">نادي طرابلس</p>
+                    <p class="text-sm text-slate-500">طرابلس</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <p class="font-bold text-lg">نادي التضامن</p>
+                    <p class="text-sm text-slate-500">طرابلس</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <p class="font-bold text-lg">نادي التضامن</p>
+                    <p class="text-sm text-slate-500">مصراتة</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <p class="font-bold text-lg">نادي بنغازي</p>
+                    <p class="text-sm text-slate-500">بنغازي</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <p class="font-bold text-lg">نادي المرج</p>
+                    <p class="text-sm text-slate-500">المرج</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <p class="font-bold text-lg">نادي إرادة جبل</p>
+                    <p class="text-sm text-slate-500">البيضاء</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="participation-rules" class="my-16 text-center bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">شروط وضوابط المشاركة للأندية</h2>
+            <p class="text-slate-600 mb-4">يمكنكم الاطلاع على اللوائح التنظيمية الخاصة بالمشاركة في البطولة لضمان الالتزام بكافة الشروط والمعايير.</p>
+            <a href="https://absily.github.io/cuproulsly.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md">
+                عرض شروط المشاركة (ملف PDF)
+            </a>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-16">
+            <section id="matches-per-day" class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-center mb-1">توزيع المباريات على الأيام</h3>
+                <p class="text-slate-600 text-center mb-4">يعرض الرسم البياني عدد المباريات المقامة في كل يوم من أيام البطولة، مع وصول المنافسة إلى ذروتها في اليوم الرابع.</p>
+                <div class="chart-container">
+                    <canvas id="matchesPerDayChart"></canvas>
+                </div>
+            </section>
+
+            <section id="category-breakdown" class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-center mb-1">المنافسات حسب الفئة</h3>
+                <p class="text-slate-600 text-center mb-4">توضح البيانات أن البطولة توفر توازنًا كبيرًا بين منافسات 5x5 التقليدية ومنافسات 3x3 السريعة والمثيرة.</p>
+                <div class="chart-container">
+                    <canvas id="categoryBreakdownChart"></canvas>
+                </div>
+            </section>
+        </div>
+
+        <section id="past-event-image" class="my-16">
+            <h2 class="section-title">من أرشيف البطولات السابقة</h2>
+            <div class="bg-white p-6 rounded-xl shadow-lg text-center flex flex-col items-center">
+                <img src="https://absily.github.io/cup21.jpg" alt="صورة من بطولة ليبيا لكرة السلة على الكراسي المتحركة 2021" onerror="this.onerror=null;this.src='https://placehold.co/400x250/cccccc/333333?text=Image+Not+Found';" class="w-full max-w-xl h-auto rounded-lg shadow-md mb-4">
+                <p class="text-lg font-semibold text-slate-700">
+                    صورة من بطولة ليبيا لكرة السلة على الكراسي المتحركة | 2021
+                </p>
+            </div>
+        </section>
+
+        <section id="full-schedule" class="my-16">
+            <h2 class="section-title">الجدول الزمني الكامل للمباريات</h2>
+            <p class="section-subtitle">تفاصيل المباريات المجدولة على مدار أيام البطولة، بما في ذلك الأوقات، الفئات، والأندية المتنافسة.</p>
+            <p class="text-sm text-center text-red-600 font-bold mb-4">
+                تنويه: يرجى العلم أن توقيت المباريات قد يتغير حسب الظروف الطارئة التي قد تطرأ على البطولة.
+            </p>
+
+            <div class="table-container">
+                <div class="day-heading">اليوم الأول: 22 يونيو 2025 (فئة 5x5)</div>
+                <table class="match-table bg-white">
+                    <thead>
+                        <tr>
+                            <th>الوقت</th>
+                            <th>المباراة #</th>
+                            <th>الفئة</th>
+                            <th>المجموعة الأولى</th>
+                            <th></th>
+                            <th>المجموعة الثانية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>08:00 ص</td><td>1</td><td>5v5</td><td>نادي التضامن - مصراتة</td><td class="vs-cell">VS</td><td>نادي بنغازي</td></tr>
+                        <tr><td>10:00 ص</td><td>2</td><td>5v5</td><td>نادي طرابلس</td><td class="vs-cell">VS</td><td>نادي التضامن - طرابلس</td></tr>
+                        <tr><td>12:00 م</td><td>3</td><td>5v5</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي إرادة جبل - البيضاء</td></tr>
+                        <tr><td>04:00 م</td><td>4</td><td>5v5</td><td>نادي التضامن - طرابلس</td><td class="vs-cell">VS</td><td>نادي التضامن - مصراتة</td></tr>
+                        <tr><td>06:00 م</td><td>5</td><td>5v5</td><td>نادي إرادة جبل - البيضاء</td><td class="vs-cell">VS</td><td>نادي بنغازي</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <div class="day-heading">اليوم الثاني: 23 يونيو 2025 (فئة 5x5)</div>
+                <table class="match-table bg-white">
+                    <thead>
+                        <tr>
+                            <th>الوقت</th>
+                            <th>المباراة #</th>
+                            <th>الفئة</th>
+                            <th>المجموعة الأولى</th>
+                            <th></th>
+                            <th>المجموعة الثانية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>08:00 ص</td><td>6</td><td>5v5</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي طرابلس</td></tr>
+                        <tr><td>10:00 ص</td><td>7</td><td>5v5</td><td>نادي التضامن - مصراتة</td><td class="vs-cell">VS</td><td>نادي إرادة جبل - البيضاء</td></tr>
+                        <tr><td>12:00 م</td><td>8</td><td>5v5</td><td>نادي التضامن - طرابلس</td><td class="vs-cell">VS</td><td>نادي المرج</td></tr>
+                        <tr><td>04:00 م</td><td>9</td><td>5v5</td><td>نادي بنغازي</td><td class="vs-cell">VS</td><td>نادي طرابلس</td></tr>
+                        <tr><td>06:00 م</td><td>10</td><td>5v5</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي التضامن - مصراتة</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <div class="day-heading">اليوم الثالث: 24 يونيو 2025 (فئة 5x5)</div>
+                <table class="match-table bg-white">
+                    <thead>
+                        <tr>
+                            <th>الوقت</th>
+                            <th>المباراة #</th>
+                            <th>الفئة</th>
+                            <th>المجموعة الأولى</th>
+                            <th></th>
+                            <th>المجموعة الثانية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>08:00 ص</td><td>11</td><td>5v5</td><td>نادي طرابلس</td><td class="vs-cell">VS</td><td>نادي إرادة جبل - البيضاء</td></tr>
+                        <tr><td>10:00 ص</td><td>12</td><td>5v5</td><td>نادي بنغازي</td><td class="vs-cell">VS</td><td>نادي التضامن - طرابلس</td></tr>
+                        <tr><td>12:00 م</td><td>13</td><td>5v5</td><td>نادي التضامن - مصراتة</td><td class="vs-cell">VS</td><td>نادي طرابلس</td></tr>
+                        <tr><td>04:00 م</td><td>14</td><td>5v5</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي بنغازي</td></tr>
+                        <tr><td>06:00 م</td><td>15</td><td>5v5</td><td>نادي إرادة جبل - البيضاء</td><td class="vs-cell">VS</td><td>نادي التضامن - طرابلس</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <div class="day-heading">اليوم الرابع: 25 يونيو 2025 (فئة 3x3)</div>
+                <table class="match-table bg-white">
+                    <thead>
+                        <tr>
+                            <th>الوقت</th>
+                            <th>المباراة #</th>
+                            <th>الفئة</th>
+                            <th>المجموعة الأولى</th>
+                            <th></th>
+                            <th>المجموعة الثانية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>08:00 ص</td><td>1</td><td>3x3</td><td>نادي التضامن - مصراتة</td><td class="vs-cell">VS</td><td>نادي بنغازي</td></tr>
+                        <tr><td>08:20 ص</td><td>2</td><td>3x3</td><td>نادي طرابلس</td><td class="vs-cell">VS</td><td>نادي التضامن - طرابلس</td></tr>
+                        <tr><td>08:40 ص</td><td>3</td><td>3x3</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي إرادة جبل - البيضاء</td></tr>
+                        <tr><td>09:00 ص</td><td>4</td><td>3x3</td><td>نادي التضامن - طرابلس</td><td class="vs-cell">VS</td><td>نادي التضامن - مصراتة</td></tr>
+                        <tr><td>09:20 ص</td><td>5</td><td>3x3</td><td>نادي إرادة جبل - البيضاء</td><td class="vs-cell">VS</td><td>نادي بنغازي</td></tr>
+                        <tr><td>09:40 ص</td><td>6</td><td>3x3</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي طرابلس</td></tr>
+                        <tr><td>10:00 ص</td><td>7</td><td>3x3</td><td>نادي التضامن - مصراتة</td><td class="vs-cell">VS</td><td>نادي إرادة جبل - البيضاء</td></tr>
+                        <tr><td>10:20 ص</td><td>8</td><td>3x3</td><td>نادي التضامن - طرابلس</td><td class="vs-cell">VS</td><td>نادي المرج</td></tr>
+                        <tr><td>10:40 ص</td><td>9</td><td>3x3</td><td>نادي بنغازي</td><td class="vs-cell">VS</td><td>نادي طرابلس</td></tr>
+                        <tr><td>11:00 ص</td><td>10</td><td>3x3</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي التضامن - مصراتة</td></tr>
+                        <tr><td>11:20 ص</td><td>11</td><td>3x3</td><td>نادي طرابلس</td><td class="vs-cell">VS</td><td>نادي إرادة جبل - البيضاء</td></tr>
+                        <tr><td>11:40 ص</td><td>12</td><td>3x3</td><td>نادي بنغازي</td><td class="vs-cell">VS</td><td>نادي التضامن - طرابلس</td></tr>
+                        <tr><td>12:00 م</td><td>13</td><td>3x3</td><td>نادي التضامن - مصراتة</td><td class="vs-cell">VS</td><td>نادي طرابلس</td></tr>
+                        <tr><td>12:20 م</td><td>14</td><td>3x3</td><td>نادي المرج</td><td class="vs-cell">VS</td><td>نادي بنغازي</td></tr>
+                        <tr><td>12:40 م</td><td>15</td><td>3x3</td><td>نادي إرادة جبل - البيضاء</td><td class="vs-cell">VS</td><td>نادي التضامن - طرابلس</td></tr>
+                        <tr><td>01:30 م</td><td>16</td><td>النهائي</td><td>متصدر المجموعة 1</td><td class="vs-cell">VS</td><td>متصدر المجموعة 2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <div class="day-heading">اليوم الخامس: 26 يونيو 2025 (النهائيات)</div>
+                <table class="match-table bg-white">
+                    <thead>
+                        <tr>
+                            <th>الوقت</th>
+                            <th>المباراة #</th>
+                            <th>الفئة</th>
+                            <th>المجموعة الأولى</th>
+                            <th></th>
+                            <th>المجموعة الثانية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>10:00 ص</td><td>18</td><td>5v5-5/6</td><td>الترتيب الخامس</td><td class="vs-cell">VS</td><td>الترتيب السادس</td></tr>
+                        <tr><td>12:00 م</td><td>19</td><td>البرونزية - 5v5</td><td>الخاسر من النصف النهائي 1</td><td class="vs-cell">VS</td><td>الخاسر من النصف النهائي 2</td></tr>
+                        <tr><td>02:00 م</td><td>20</td><td>الذهبية - 5v5</td><td>الفائز من النصف النهائي 1</td><td class="vs-cell">VS</td><td>الفائز من النصف النهائي 2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="my-8 text-center">
+                 <h3 class="text-2xl font-bold mb-2">الحفل الختامي والتكريم</h3>
+                 <p class="text-slate-600">سيقام في تمام الساعة 04:00 مساءً يوم 26 يونيو 2025</p>
+             </div>
+        </section>
+
+        <section id="organizers" class="my-16 text-center">
+             <h2 class="section-title">التنظيم والرعاية</h2>
+             <p class="section-subtitle">تقام هذه البطولة بفضل جهود مشتركة ودعم كريم من المؤسسات الرياضية والإنسانية الرائدة في ليبيا.</p>
+             <div class="flex flex-wrap justify-center items-center gap-8">
+                 <div class="p-4">
+                     <h4 class="font-bold text-lg">تنظيم وإشراف</h4>
+                     <p class="text-slate-700">
+                         <a href="https://www.facebook.com/libyawb" target="_blank" rel="noopener noreferrer" class="text-sky-700 hover:underline">
+                             اللجنة الفنية العليا لكرة السلة على الكراسي المتحركة
+                         </a>
+                     </p>
+                     <p class="text-slate-700">
+                         <a href="https://www.facebook.com/paralympicly" target="_blank" rel="noopener noreferrer" class="text-sky-700 hover:underline">
+                             اللجنة البارالمبية الليبية
+                         </a>
+                     </p>
+                 </div>
+                 <div class="p-4">
+                     <h4 class="font-bold text-lg text-orange-600">برعاية</h4>
+                     <p class="text-slate-700 text-xl">الصليب الأحمر</p>
+                 </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white text-center p-8 mt-12">
+        <h3 class="text-2xl font-bold mb-2">📣 كونوا جزءًا من الحدث!</h3>
+        <p class="max-w-2xl mx-auto">ندعو وسائل الإعلام والجمهور الرياضي الكريم للحضور ومساندة الأبطال. إن وجودكم يشكل دعماً حقيقياً ويعكس الروح الرياضية والتحدي والإصرار.</p>
+        <p class="text-sm mt-4 text-slate-400">تصميم: 
+            <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">عبدالسلام شليبك</a> - مكتب إعلام 
+            <a href="https://www.facebook.com/paralympicly" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">اللجنة البارالمبية الليبية</a>
+        </p>
+    </footer>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+        
+        const sharedChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            family: "'Cairo', sans-serif",
+                            size: 14,
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    titleFont: {
+                        family: "'Cairo', sans-serif",
+                    },
+                    bodyFont: {
+                             family: "'Cairo', sans-serif",
+                        }
+                    }
+                },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            family: "'Cairo', sans-serif",
+                        }
+                    }
+                },
+                x: {
+                     ticks: {
+                        font: {
+                            family: "'Cairo', sans-serif",
+                            size: 12,
+                        }
+                    }
+                }
+            }
+        };
+
+        const matchesPerDayCtx = document.getElementById('matchesPerDayChart').getContext('2d');
+        const matchesPerDayChart = new Chart(matchesPerDayCtx, {
+            type: 'bar',
+            data: {
+                labels: ['اليوم الأول', 'اليوم الثاني', 'اليوم الثالث', 'اليوم الرابع', 'اليوم الخامس'],
+                datasets: [{
+                    label: 'عدد المباريات',
+                    data: [5, 5, 5, 16, 3],
+                    backgroundColor: [
+                        'rgba(2, 132, 199, 0.7)',
+                        'rgba(2, 132, 199, 0.7)',
+                        'rgba(2, 132, 199, 0.7)',
+                        'rgba(249, 115, 22, 0.7)',
+                        'rgba(250, 204, 21, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgb(2, 132, 199)',
+                        'rgb(2, 132, 199)',
+                        'rgb(2, 132, 199)',
+                        'rgb(249, 115, 22)',
+                        'rgb(250, 204, 21)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: sharedChartOptions
+        });
+
+        const categoryBreakdownCtx = document.getElementById('categoryBreakdownChart').getContext('2d');
+        const categoryBreakdownChart = new Chart(categoryBreakdownCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['مباريات 5x5', 'مباريات 3x3'],
+                datasets: [{
+                    label: 'توزيع المباريات',
+                    data: [18, 16],
+                    backgroundColor: [
+                        'rgba(2, 132, 199, 0.8)',
+                        'rgba(249, 115, 22, 0.8)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+             options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                         labels: {
+                            font: {
+                                family: "'Cairo', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        titleFont: {
+                            family: "'Cairo', sans-serif",
+                        },
+                        bodyFont: {
+                             family: "'Cairo', sans-serif",
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
