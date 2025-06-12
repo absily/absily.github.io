@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -123,6 +123,23 @@
                 transform: scale(1.05);
             }
         }
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -134,7 +151,12 @@
             </a>
         </div>
         <h1 class="text-4xl md:text-5xl font-extrabold mb-2">بطولة كأس ليبيا لكرة السلة على الكراسي المتحركة 2025</h1>
-        <p class="text-lg md:text-xl font-semibold">22 - 26 يونيو 2025 | القاعة الكبرى بالمدينة الرياضية، طرابلس</p>
+        <p class="text-lg md:text-xl font-semibold">
+            22 - 26 يونيو 2025 | 
+            <a href="https://maps.app.goo.gl/nDje43vWtxLD4uYk6" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">
+                القاعة الكبرى بالمدينة الرياضية، طرابلس
+            </a>
+        </p>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
@@ -195,6 +217,14 @@
             <a href="https://absily.github.io/cuproulsly.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md">
                 عرض شروط المشاركة (ملف PDF)
             </a>
+        </section>
+
+        <section id="location-map" class="my-16">
+            <h2 class="section-title">موقع البطولة على الخريطة</h2>
+            <p class="section-subtitle">يمكنكم العثور على موقع القاعة الكبرى بالمدينة الرياضية في طرابلس عبر الخريطة التفاعلية أدناه.</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3419.006423984107!2d13.166347999999999!3d32.8906979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13a89047970d473b%3A0xc3f3c4d7f7e9a8f4!2sMartyrs%20Square!5e0!3m2!1sen!2sly!4v1718302000000!5m2!1sen!2sly" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </section>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-16">
@@ -390,10 +420,14 @@
     <footer class="bg-slate-800 text-white text-center p-8 mt-12">
         <h3 class="text-2xl font-bold mb-2">📣 كونوا جزءًا من الحدث!</h3>
         <p class="max-w-2xl mx-auto">ندعو وسائل الإعلام والجمهور الرياضي الكريم للحضور ومساندة الأبطال. إن وجودكم يشكل دعماً حقيقياً ويعكس الروح الرياضية والتحدي والإصرار.</p>
-        <p class="text-sm mt-4 text-slate-400">تصميم: 
-            <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">عبدالسلام شليبك</a> - مكتب إعلام 
-            <a href="https://www.facebook.com/paralympicly" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">اللجنة البارالمبية الليبية</a>
-        </p>
+        <div class="mt-4 text-sm text-slate-400">
+            <p>للتواصل: 0913799808 (واتساب) | 0913212127</p>
+            <p>بريد إلكتروني: <a href="mailto:Wheelchairbasketball@paralympic.ly" class="text-sky-300 hover:underline">Wheelchairbasketball@paralympic.ly</a></p>
+            <p class="mt-2">تصميم: 
+                <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">عبدالسلام شليبك</a> - مكتب إعلام 
+                <a href="https://www.facebook.com/paralympicly" target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">اللجنة البارالمبية الليبية</a>
+            </p>
+        </div>
     </footer>
 
     <script>
