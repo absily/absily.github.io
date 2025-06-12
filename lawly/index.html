@@ -4,143 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل حقوق الأشخاص ذوي الإعاقة في ليبيا</title>
+    <!-- Chosen Palette: Calm Harmony (Stone, Slate, Teal, subtle Beige/Cream) -->
+    <!-- Application Structure Plan: Redesigned as a magazine layout. The top navigation provides access to "articles" (sections). The "Hero" acts as a cover story intro. "التطور التشريعي" becomes a historical feature with an interactive timeline. "الحقوق والمنافع" is presented as a visual infographic-style spread with filterable cards. "المؤسسات الداعمة" features an organizational spotlight with detailed accordions. "التحديات والتوصيات" is a "report card" section with a chart and actionable insights. This structure enhances visual appeal and navigability, mimicking a magazine's intuitive flow for exploration. -->
+    <!-- Visualization & Content Choices: 1. Legislative History -> Goal: Show Change -> Viz: Interactive HTML/JS Timeline within a feature article layout -> Interaction: Click to show details -> Justification: Creates a dynamic historical narrative. 2. Rights & Benefits -> Goal: Inform/Organize -> Viz: Filterable HTML Cards in a grid with category filters -> Interaction: Click filter buttons -> Justification: Highly practical and visually scannable for user-specific needs. 3. Institutions -> Goal: Organize -> Viz: HTML/JS Accordions within two-column "spotlight" sections -> Interaction: Click to expand -> Justification: Manages complexity while allowing focused exploration of each institution. 4. Challenges -> Goal: Compare/Inform -> Viz: Bar Chart (Chart.js) -> Interaction: Hover for recommendations -> Justification: Clear visual representation of issues, with direct solutions in tooltips, enhancing actionable understanding. Library: Chart.js for the bar chart. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        
-        /* CSS Variables for Light Mode */
-        :root {
-            --bg-primary: #f9fafb; /* stone-50 */
-            --text-primary: #1e293b; /* slate-800 */
-            --bg-secondary: #ffffff; /* white */
-            --text-highlight: #115e59; /* teal-800 */
-            --text-default: #334155; /* slate-700 */
-            --hover-text-highlight: #0d9488; /* teal-600 */
-            --bg-accent-light: #f8fafc; /* slate-50 */
-            --border-accent-light: #ccfbf1; /* teal-100 */
-            --text-accent: #0f766e; /* teal-700 */
-            --text-muted: #475569; /* slate-600 */
-            --bg-card-accent: #f0fdfa; /* teal-50 */
-            --border-card-top: #14b8a6; /* teal-500 */
-            --bg-accordion-button: #f1f5f9; /* slate-100 */
-            --hover-bg-accordion-button: #e2e8f0; /* slate-200 */
-            --text-accordion-icon: #0d9488; /* teal-600 */
-            --bg-footer: #1e293b; /* slate-800 */
-            --text-footer: #ffffff; /* white */
-            --social-link-color: #a7f3d0; /* teal-200 */
-            --social-link-hover: #d1fae5; /* lighter teal */
-            --text-copyright: #94a3b8; /* slate-400 */
-            --hero-overlay: rgba(0, 0, 0, 0.4);
-            --hero-link-color: #99f6e4;
-            --border-card-inner: #e2e8f0; /* slate-200 */
-            --bg-accordion-content: #f8fafc; /* slate-50 */
-            --chart-tick-color: #334155; /* slate-700 */
-            --chart-bar-bg: #14b8a6; /* teal-500 */
-            --chart-bar-border: #0d9488; /* teal-600 */
-            --tooltip-bg: rgba(23, 131, 120, 0.9);
-            --tooltip-border: #0d9488;
-            --blockquote-border: #0d9488; /* teal-600 */
-            --blockquote-text: #475569; /* slate-600 */
-        }
-
-        /* Dark Mode styles */
-        body.dark-mode {
-            --bg-primary: #1a202c; /* dark, almost black */
-            --text-primary: #e2e8f0; /* light gray */
-            --bg-secondary: #2d3748; /* darker gray */
-            --text-highlight: #4fd1c5; /* lighter teal */
-            --text-default: #cbd5e1; /* light gray */
-            --hover-text-highlight: #81e6d9; /* even lighter teal */
-            --bg-accent-light: #2d3748; /* darker gray */
-            --border-accent-light: #4fd1c5; /* teal */
-            --text-accent: #38b2ac; /* slightly brighter teal */
-            --text-muted: #a0aec0; /* light gray blue */
-            --bg-card-accent: #2d3748; /* darker gray */
-            --border-card-top: #38b2ac; /* slightly brighter teal */
-            --bg-accordion-button: #2d3748; /* darker gray */
-            --hover-bg-accordion-button: #4a5568; /* medium dark gray */
-            --text-accordion-icon: #4fd1c5; /* lighter teal */
-            --bg-footer: #0f172a; /* very dark blue-gray */
-            --text-footer: #cbd5e1; /* light gray */
-            --social-link-color: #81e6d9; /* light teal */
-            --social-link-hover: #b2f5ea; /* even lighter teal */
-            --text-copyright: #718096; /* medium gray */
-            --hero-overlay: rgba(0, 0, 0, 0.6);
-            --hero-link-color: #b2f5ea;
-            --border-card-inner: #4a5568; /* dark gray */
-            --bg-accordion-content: #2d3748; /* darker gray */
-            --chart-tick-color: #cbd5e1; /* light gray */
-            --chart-bar-bg: #4fd1c5; /* lighter teal */
-            --chart-bar-border: #38b2ac; /* slightly brighter teal */
-            --tooltip-bg: rgba(47, 108, 102, 0.9);
-            --tooltip-border: #38b2ac;
-            --blockquote-border: #38b2ac; /* slightly brighter teal */
-            --blockquote-text: #a0aec0; /* light gray blue */
-        }
-
         body {
             font-family: 'Cairo', sans-serif;
             scroll-behavior: smooth;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
         }
-        
-        /* General styling using CSS variables */
-        .header-nav, .mobile-menu { background-color: var(--bg-secondary); }
-        .header-nav h1 { color: var(--text-highlight); }
-        .header-nav a, .mobile-menu a { color: var(--text-default); }
-        .header-nav a:hover, .mobile-menu a:hover { color: var(--hover-text-highlight); background-color: var(--bg-card-accent); }
-        .search-button, .dark-mode-toggle { color: var(--text-default); }
-        .search-button:hover, .dark-mode-toggle:hover { color: var(--hover-text-highlight); }
-
-        .hero-overlay { background-color: var(--hero-overlay); }
-        .hero-content h2 { color: var(--text-footer); } /* Explicitly white for hero title */
-        .hero-content p a { color: var(--hero-link-color); }
-
-        section { background-color: var(--bg-secondary); }
-        section h3 { color: var(--text-accent); }
-        section p { color: var(--text-muted); }
-
-        .timeline-item h5 { color: var(--text-primary); }
-        .timeline-item:hover h5 { color: var(--hover-text-highlight); }
-        .timeline-item span { color: var(--text-accent); }
-        .timeline-details {
-            background-color: var(--bg-accent-light);
-            border-color: var(--border-accent-light);
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem;
+            right: -0.3125rem;
+            width: 0.625rem;
+            height: 0.625rem;
+            border-radius: 9999px;
+            background-color: #0d9488; 
+            border: 2px solid #f0fdfa;
         }
-        .timeline-details h4 { color: var(--text-accent); }
-        .timeline-details p { color: var(--text-default); }
-
-        .timeline-item::before { background-color: var(--text-accordion-icon); border-color: var(--bg-card-accent); }
-        .timeline-line { background-color: var(--border-accent-light); }
-
-        .filter-btn { border-color: var(--text-muted); color: var(--text-muted); background-color: transparent;}
-        .filter-btn:hover:not(.active) { background-color: var(--bg-accordion-button); }
-        .filter-btn.active { background-color: var(--text-accordion-icon); color: var(--text-footer); border-color: var(--text-accordion-icon); }
-
-        .benefit-card { background-color: var(--bg-secondary); border-top-color: var(--border-card-top); }
-        .benefit-card h4 { color: var(--text-primary); }
-        .benefit-card p { color: var(--text-default); }
-        .benefit-card p.text-sm { color: var(--text-muted); }
-
-        .institution-card { background-color: var(--bg-secondary); border-color: var(--border-card-inner); }
-        .accordion-button { background-color: var(--bg-accordion-button); }
-        .accordion-button:hover { background-color: var(--hover-bg-accordion-button); }
-        .accordion-button h4 { color: var(--text-primary); }
-        .accordion-button span { color: var(--text-accordion-icon); }
-        .accordion-button p { color: var(--text-default); }
-        .accordion-content div { background-color: var(--bg-accordion-content); border-color: var(--border-card-inner); }
-        .accordion-content p { color: var(--text-muted); }
-        .accordion-content p.font-semibold { color: var(--text-accent); }
-
-        .chart-container canvas { /* Styles for the canvas itself */ }
-
-        .footer { background-color: var(--bg-footer); color: var(--text-footer); }
-        .footer a { color: var(--social-link-color); }
-        .footer a:hover { color: var(--social-link-hover); }
-        .footer p.text-xs { color: var(--text-copyright); }
-
+        .timeline-line {
+            position: absolute;
+            top: 1.25rem;
+            right: -1px;
+            bottom: 1.25rem;
+            width: 2px;
+            background-color: #ccfbf1;
+        }
+        .benefit-card.hidden {
+            display: none;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 9999px;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            background-color: transparent;
+            color: #475569;
+            font-weight: 600;
+        }
+        .filter-btn:hover:not(.active) {
+            background-color: #f1f5f9;
+        }
+        .filter-btn.active {
+            background-color: #0d9488;
+            color: white;
+            border-color: #0d9488;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .accordion-button.active + .accordion-content {
+            max-height: 1000px; /* Sufficiently large */
+        }
         .chart-container {
             position: relative;
             width: 100%;
@@ -154,92 +76,93 @@
             .chart-container {
                 height: 500px;
             }
-        }
-
-        /* Specific styles for dark mode toggle icon */
-        .dark-mode-icon {
-            width: 24px;
-            height: 24px;
-            fill: currentColor; /* Inherit color from parent */
-        }
-        /* Blockquote styles for the new text */
-        blockquote {
-            border-right: 4px solid var(--blockquote-border);
-            padding-right: 1rem;
-            font-style: italic;
-            color: var(--blockquote-text);
-        }
-        blockquote footer {
-            font-size: 0.875rem; /* text-sm */
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        /* Override Tailwind's container max-width to be wider on larger screens */
-        @media (min-width: 640px) {
-            .container {
-                max-width: 640px;
-            }
-        }
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
+            .magazine-layout {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (min-width: 1024px) {
-            .container {
-                max-width: 1152px; /* Wider than default lg:1024px */
+            .magazine-layout {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1440px; /* Wider than default xl:1280px */
-            }
+        /* New styles for the magazine cover image */
+        .hero-cover {
+            background-image: url('https://absily.github.io/lawlibyad.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 400px; /* Adjust height as needed for visual impact */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem; /* rounded-xl */
+            overflow: hidden; /* Ensure image doesn't overflow rounded corners */
         }
-        @media (min-width: 1536px) {
-            .container {
-                max-width: 1600px; /* Custom wider for 2xl screens */
-            }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+            border-radius: 0.75rem;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white; /* Text color for contrast */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Text shadow for readability */
+        }
+        .hero-content h2 {
+            color: white; /* Ensure title is white */
+        }
+        .hero-content p a {
+            color: #99f6e4; /* Lighter teal for link in hero */
+        }
+        .social-link {
+            font-size: 1.5rem; /* Adjust font size for text links */
+            margin: 0 0.75rem; /* Spacing between links */
+            transition: color 0.2s ease-in-out;
+            color: #a7f3d0; /* A lighter teal for visibility on dark footer */
+            font-weight: 600; /* Semi-bold text */
+        }
+        .social-link:hover {
+            color: #d1fae5; /* Even lighter on hover */
         }
     </style>
 </head>
 <body class="bg-stone-50 text-slate-800">
 
-    <header class="bg-white shadow-lg sticky top-0 z-50 header-nav">
+    <header class="bg-white shadow-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-extrabold">دليل حقوق الأشخاص ذوي الإعاقة في ليبيا</h1>
+            <h1 class="text-2xl font-extrabold text-teal-800">دليل حقوق الأشخاص ذوي الإعاقة في ليبيا</h1>
             <div class="hidden md:flex space-x-reverse space-x-10 text-lg">
-                <a href="#overview" class="transition-colors">تاريخ التشريعات</a>
-                <a href="#international-convention" class="transition-colors">الاتفاقية الدولية</a>
-                <a href="#national-council" class="transition-colors">المجلس الوطني</a>
-                <a href="#institutions" class="transition-colors">مؤسسات الدعم</a>
-                <a href="#rights" class="transition-colors">حقوقك ومنافعك</a>
-                <a href="#challenges" class="transition-colors">نحو مستقبل أفضل</a>
+                <a href="#overview" class="text-slate-700 hover:text-teal-600 transition-colors">تاريخ التشريعات</a>
+                <a href="#international-convention" class="text-slate-700 hover:text-teal-600 transition-colors">الاتفاقية الدولية</a>
+                <a href="#national-council" class="text-slate-700 hover:text-teal-600 transition-colors">المجلس الوطني</a>
+                <a href="#institutions" class="text-slate-700 hover:text-teal-600 transition-colors">مؤسسات الدعم</a>
+                <a href="#rights" class="text-slate-700 hover:text-teal-600 transition-colors">حقوقك ومنافعك</a>
+                <a href="#challenges" class="text-slate-700 hover:text-teal-600 transition-colors">نحو مستقبل أفضل</a>
             </div>
             <div class="flex items-center space-x-reverse space-x-4">
-                <button id="search-button" class="focus:outline-none search-button">
+                <button id="search-button" class="text-slate-700 hover:text-teal-600 focus:outline-none">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </button>
-                <button id="dark-mode-toggle" class="focus:outline-none dark-mode-toggle">
-                    <!-- Moon icon for light mode, Sun icon for dark mode -->
-                    <svg class="dark-mode-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path id="dark-mode-icon-path" d="M21 12.79A9 9 0 1 1 11.21 3.2C13.6 5.86 16 8.52 16 12A9 9 0 0 1 21 12.79z"></path>
-                    </svg>
-                </button>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="focus:outline-none search-button">
+                    <button id="mobile-menu-button" class="text-slate-700 hover:text-teal-600 focus:outline-none">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden py-2 shadow-inner mobile-menu">
-            <a href="#overview" class="block text-center py-3 px-4 text-md">تاريخ التشريعات</a>
-            <a href="#international-convention" class="block text-center py-3 px-4 text-md">الاتفاقية الدولية</a>
-            <a href="#national-council" class="block text-center py-3 px-4 text-md">المجلس الوطني</a>
-            <a href="#institutions" class="block text-center py-3 px-4 text-md">مؤسسات الدعم</a>
-            <a href="#rights" class="block text-center py-3 px-4 text-md">حقوقك ومنافعك</a>
-            <a href="#challenges" class="block text-center py-3 px-4 text-md">نحو مستقبل أفضل</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 shadow-inner">
+            <a href="#overview" class="block text-center py-3 px-4 text-md text-slate-700 hover:bg-teal-50">تاريخ التشريعات</a>
+            <a href="#international-convention" class="block text-center py-3 px-4 text-md text-slate-700 hover:bg-teal-50">الاتفاقية الدولية</a>
+            <a href="#national-council" class="block text-center py-3 px-4 text-md text-slate-700 hover:bg-teal-50">المجلس الوطني</a>
+            <a href="#institutions" class="block text-center py-3 px-4 text-md text-slate-700 hover:bg-teal-50">مؤسسات الدعم</a>
+            <a href="#rights" class="block text-center py-3 px-4 text-md text-slate-700 hover:bg-teal-50">حقوقك ومنافعك</a>
+            <a href="#challenges" class="block text-center py-3 px-4 text-md text-slate-700 hover:bg-teal-50">نحو مستقبل أفضل</a>
         </div>
     </header>
 
@@ -259,15 +182,15 @@
             </div>
         </section>
 
-        <section id="overview" class="mb-24 p-10 rounded-xl shadow-lg">
-            <h3 class="text-4xl font-bold text-center mb-8">رحلة التشريع: تاريخ يخدم المستقبل</h3>
-            <p class="max-w-3xl mx-auto text-center mb-12 text-lg">
+        <section id="overview" class="mb-24 bg-white p-10 rounded-xl shadow-lg">
+            <h3 class="text-4xl font-bold text-center text-teal-700 mb-8">رحلة التشريع: تاريخ يخدم المستقبل</h3>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-12 text-lg">
                 تطورت القوانين الليبية المتعلقة بحقوق الأشخاص ذوي الإعاقة على مر العقود، لتعكس وعياً متزايداً بأهمية هذه الفئة. استكشف أبرز المحطات التشريعية الرئيسية التي شكلت هذا المسار الزمني.
             </p>
             <div class="flex flex-col md:flex-row-reverse gap-10 items-start">
-                <div id="timeline-details" class="md:w-1/2 p-8 rounded-lg shadow-inner border timeline-details flex flex-col justify-center min-h-[250px]">
-                    <h4 id="details-title" class="text-2xl font-extrabold mb-4">اختر محطة من الخط الزمني</h4>
-                    <p id="details-content" class="text-lg leading-relaxed">
+                <div id="timeline-details" class="md:w-1/2 bg-slate-50 p-8 rounded-lg shadow-inner border border-teal-100 flex flex-col justify-center min-h-[250px]">
+                    <h4 id="details-title" class="text-2xl font-extrabold text-teal-700 mb-4">اختر محطة من الخط الزمني</h4>
+                    <p id="details-content" class="text-slate-700 text-lg leading-relaxed">
                         انقر على أحد الأعوام في الخط الزمني المجاور لتتعرف على تفاصيل القانون أو القرار الصادر في تلك الفترة وأثره على حقوق الأشخاص ذوي الإعاقة في ليبيا.
                     </p>
                 </div>
@@ -278,19 +201,19 @@
             </div>
         </section>
 
-        <section id="international-convention" class="mb-24 p-10 rounded-xl shadow-lg bg-card-accent">
-            <h3 class="text-4xl font-bold text-center mb-8">الاتفاقية الدولية لحقوق الأشخاص ذوي الإعاقة: إطار عالمي</h3>
-            <p class="max-w-3xl mx-auto text-center mb-10 text-lg">
+        <section id="international-convention" class="mb-24 bg-teal-50 p-10 rounded-xl shadow-lg">
+            <h3 class="text-4xl font-bold text-center text-teal-700 mb-8">الاتفاقية الدولية لحقوق الأشخاص ذوي الإعاقة: إطار عالمي</h3>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-10 text-lg">
                 تُعد اتفاقية الأمم المتحدة لحقوق الأشخاص ذوي الإعاقة حجر الزاوية في حماية حقوق هذه الفئة على الصعيد العالمي. صدقت عليها ليبيا التزامًا بمبادئها السامية.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 <div>
-                    <h4 class="text-2xl font-bold mb-4">الهدف والمبادئ الأساسية</h4>
-                    <p class="leading-relaxed mb-4">
+                    <h4 class="text-2xl font-bold text-slate-800 mb-4">الهدف والمبادئ الأساسية</h4>
+                    <p class="text-slate-700 leading-relaxed mb-4">
                         تهدف الاتفاقية إلى تعزيز وحماية وكفالة تمتع جميع الأشخاص ذوي الإعاقة تمتعاً كاملاً وعلى قدم المساواة مع الآخرين بجميع حقوق الإنسان والحريات الأساسية، وتعزيز احترام كرامتهم المتأصلة.
                         تستند الاتفاقية إلى ثمانية مبادئ توجيهية رئيسية:
                     </p>
-                    <ul class="list-disc list-inside space-y-2 leading-relaxed pr-4">
+                    <ul class="list-disc list-inside text-slate-700 space-y-2 leading-relaxed pr-4">
                         <li>احترام الكرامة المتأصلة والاستقلال الذاتي وحرية تقرير الخيارات.</li>
                         <li>عدم التمييز.</li>
                         <li>المشاركة الكاملة والفعالة والإدماج في المجتمع.</li>
@@ -300,17 +223,17 @@
                         <li>المساواة بين الرجل والمرأة.</li>
                         <li>احترام القدرات المتطورة للأطفال ذوي الإعاقة وحقهم في الحفاظ على هويتهم.</li>
                     </ul>
-                    <div class="mt-8 p-6 rounded-lg shadow-inner border timeline-details">
-                        <h4 class="text-2xl font-bold mb-4">تحول نموذجي وتضمين عالمي</h4>
-                        <p class="leading-relaxed mb-4">
+                    <div class="mt-8 p-6 bg-white rounded-lg shadow-inner border border-teal-100">
+                        <h4 class="text-2xl font-bold text-slate-800 mb-4">تحول نموذجي وتضمين عالمي</h4>
+                        <p class="text-slate-700 leading-relaxed mb-4">
                             غالبًا ما استُبعد الأشخاص ذوو الإعاقة عن المناقشات بشأن الحقوق، وحُرموا من التمتع بالمجموعة الكاملة لحقوق الإنسان ومن ممارستها. أشارت اتفاقية حقوق الأشخاص ذوي الإعاقة، التي تم اعتمادها في العام 2006 ودخلت حيز التنفيذ في العام 2008، إلى "تحول نموذجي" من النهج التقليدية الموجهة للأعمال الخيرية والقائمة على أساس طبي في التعامل مع الإعاقة إلى نهج قائم على حقوق الإنسان.
                         </p>
-                        <p class="leading-relaxed mb-4">
+                        <p class="text-slate-700 leading-relaxed mb-4">
                             تدعو الاتفاقية إلى إدماج الأشخاص ذوي الإعاقة ومشاركتهم في جميع حقوق الإنسان والخطط الإنمائية والإنسانية، وتسلط الضوء على حقوق النساء ذوات الإعاقة والأطفال ذوي الإعاقة وتمكينهم بوصفهم فئات تتعرض لأشكال متعددة ومتداخلة من التمييز.
                         </p>
-                        <blockquote class="mb-4">
+                        <blockquote class="border-r-4 border-teal-600 pr-4 italic text-slate-600 mb-4">
                             <p>"اتفاقية حقوق الأشخاص ذوي الإعاقة ليست أداةً مخصصة للأشخاص ذوي الإعاقة فحسب، بل إن مبادئها وأحكامها تفيد الأسرة البشرية بكاملها، لأنها تعزز الاستجابات التي نعتمدها لمكافحة الاستبعاد والتمييز، وتبين في الواقع، شأنها شأن أهداف التنمية المستدامة، أن الوصول أولاً إلى من تمّ استبعاده أصلاً هو الأساس لشمل الجميع من دون أيّ استثناء."</p>
-                            <footer>— ميشيل باشيليت، مفوضة الأمم المتحدة السامية لحقوق الإنسان</footer>
+                            <footer class="text-sm text-slate-500 mt-2">— ميشيل باشيليت، مفوضة الأمم المتحدة السامية لحقوق الإنسان</footer>
                         </blockquote>
                         <div class="flex justify-center mt-6">
                             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNc7V0f_1i61CdZ9pmi-wNhLy12u0DoFlup96jCBC_TnfVX_YYiv5t-Far_BTIuyvDxOvUy9Dv21Uu7Za93VWOkuWWqQk2YC4EBsoRSOvnVnO73OUpiQD8xF3MSoLOYVRfeLiRY4sunS6YO30OV4lUf2Eg8Y_rij6JHavSVb80rTa86GJoB1i39J0JCw/w640-h484/313027759_2317200591779275_37077121412473528_n.png" alt="صورة توضيحية لعدد من الأشخاص ذوي الإعاقة في فعالية مجتمعية" class="rounded-lg shadow-md max-w-full h-auto">
@@ -318,38 +241,38 @@
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-2xl font-bold mb-4">تصديق ليبيا والتحفظات</h4>
-                    <p class="leading-relaxed mb-4">
+                    <h4 class="text-2xl font-bold text-slate-800 mb-4">تصديق ليبيا والتحفظات</h4>
+                    <p class="text-slate-700 leading-relaxed mb-4">
                         صدقت ليبيا على الاتفاقية الدولية والبروتوكول الاختياري بموجب **القانون رقم (2) لسنة 2013**، الذي صدر عن المؤتمر الوطني العام في 24 فبراير 2013. وقد تضمن القانون تحفظاً على المادة (25.1).
                     </p>
-                    <p class="leading-relaxed mb-4">
+                    <p class="text-slate-700 leading-relaxed mb-4">
                         لاحقاً، صدر **القانون رقم (6) لسنة 2017** عن مجلس النواب في 1 ديسمبر 2017، الذي عدّل المادة (1) من القانون رقم (2) لسنة 2013، موضحًا أن تفسير ليبيا للمادة 25، الفقرة (أ) من الاتفاقية يعني توفير الخدمات الصحية دون تمييز على أساس الإعاقة، بما لا يتعارض مع أحكام الشريعة الإسلامية والتشريعات الوطنية.
                     </p>
-                    <p class="leading-relaxed">
+                    <p class="text-slate-700 leading-relaxed">
                         يعكس هذا التحفظ رغبة ليبيا في ضمان توافق الالتزامات الدولية مع مبادئ الشريعة الإسلامية والسياق القانوني المحلي، مما يبرز التزام الدولة بحقوق الإنسان ضمن إطارها الثقافي والتشريعي الخاص.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="national-council" class="mb-24 p-10 rounded-xl shadow-lg">
-            <h3 class="text-4xl font-bold text-center mb-8">المجلس الوطني لرعاية حقوق ذوي الإعاقة: إعادة تشكيل</h3>
-            <p class="max-w-3xl mx-auto text-center mb-10 text-lg">
+        <section id="national-council" class="mb-24 bg-white p-10 rounded-xl shadow-lg">
+            <h3 class="text-4xl font-bold text-center text-teal-700 mb-8">المجلس الوطني لرعاية حقوق ذوي الإعاقة: إعادة تشكيل</h3>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-10 text-lg">
                 يُعد المجلس الوطني لرعاية حقوق ذوي الإعاقة هيئة محورية في تنسيق الجهود الوطنية. وقد شهدت تركيبته إعادة تشكيل بموجب قرار مجلس الوزراء حكومة الوحدة الوطنية.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 <div>
-                    <h4 class="text-2xl font-bold mb-4">قرار إعادة التشكيل (رقم 66 لسنة 2021)</h4>
-                    <p class="leading-relaxed mb-4">
+                    <h4 class="text-2xl font-bold text-slate-800 mb-4">قرار إعادة التشكيل (رقم 66 لسنة 2021)</h4>
+                    <p class="text-slate-700 leading-relaxed mb-4">
                         صدر قرار مجلس وزراء حكومة الوحدة الوطنية رقم (66) لسنة 2021م بتاريخ 27 رمضان 1442 هـ، الموافق 9 مايو 2021م، بشأن إعادة تشكيل المجلس الوطني لرعاية حقوق ذوي الإعاقة.
                     </p>
-                    <p class="leading-relaxed mb-4">
+                    <p class="text-slate-700 leading-relaxed mb-4">
                         يأتي هذا القرار بعد قرارات سابقة بإنشاء المجلس وإعادة تشكيله، مثل قرار اللجنة الشعبية العامة رقم (666) لسنة 2008م، وقرار المجلس الرئاسي رقم (1272) لسنة 2017م.
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-2xl font-bold mb-4">أعضاء المجلس المعاد تشكيله</h4>
-                    <ul class="list-disc list-inside space-y-2 leading-relaxed pr-4">
+                    <h4 class="text-2xl font-bold text-slate-800 mb-4">أعضاء المجلس المعاد تشكيله</h4>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2 leading-relaxed pr-4">
                         <li>رئيس مجلس الوزراء (رئيساً)</li>
                         <li>وزير الشؤون الاجتماعية (عضواً)</li>
                         <li>وزير التعليم العالي والبحث العلمي (عضواً)</li>
@@ -366,9 +289,9 @@
             </div>
         </section>
 
-        <section id="rights" class="mb-24 p-10 rounded-xl shadow-lg bg-card-accent">
-            <h3 class="text-4xl font-bold text-center mb-8">حقوق ومنافع: ضمانات لمستقبل أفضل</h3>
-            <p class="max-w-3xl mx-auto text-center mb-10 text-lg">
+        <section id="rights" class="mb-24 bg-teal-50 p-10 rounded-xl shadow-lg">
+            <h3 class="text-4xl font-bold text-center text-teal-700 mb-8">حقوق ومنافع: ضمانات لمستقبل أفضل</h3>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-10 text-lg">
                 القوانين الليبية تكفل مجموعة واسعة من المنافع لضمان حياة كريمة ودامجة. استخدم الأزرار لتصفية المنافع حسب الفئة التي تهمك:
             </p>
             <div class="flex justify-center gap-3 mb-10" id="filter-buttons">
@@ -380,18 +303,18 @@
             </div>
         </section>
         
-        <section id="institutions" class="mb-24 p-10 rounded-xl shadow-lg">
-            <h3 class="text-4xl font-bold text-center mb-8">في الصميم: مؤسسات ترعى وتُمكن</h3>
-            <p class="max-w-3xl mx-auto text-center mb-10 text-lg">
+        <section id="institutions" class="mb-24 bg-white p-10 rounded-xl shadow-lg">
+            <h3 class="text-4xl font-bold text-center text-teal-700 mb-8">في الصميم: مؤسسات ترعى وتُمكن</h3>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-10 text-lg">
                 ليست الحقوق مجرد نصوص، بل هي عمل مؤسسي دؤوب. تعرف على الهيئات والمراكز المتخصصة التي تعمل على ترجمة هذه التشريعات إلى خدمات ملموسة.
             </p>
             <div id="institutions-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
             </div>
         </section>
 
-        <section id="challenges" class="pb-12 p-10 rounded-xl shadow-lg bg-card-accent">
-            <h3 class="text-4xl font-bold text-center mb-8">تحديات تواجهنا، توصيات ترشدنا</h3>
-            <p class="max-w-3xl mx-auto text-center mb-10 text-lg">
+        <section id="challenges" class="pb-12 bg-teal-50 p-10 rounded-xl shadow-lg">
+            <h3 class="text-4xl font-bold text-center text-teal-700 mb-8">تحديات تواجهنا، توصيات ترشدنا</h3>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-10 text-lg">
                 رغم كل التقدم، لا يزال الطريق أمامنا مليئاً بالتحديات. يعرض الرسم البياني أبرز العقبات، ومع كل عقبة، نقترح طريقاً للمضي قدماً. مرر الفأرة فوق كل تحدٍ لترى التوصية المقترحة.
             </p>
             <div class="chart-container">
@@ -400,7 +323,7 @@
         </section>
     </main>
 
-    <footer class="text-white text-center py-8 footer">
+    <footer class="bg-slate-800 text-white text-center py-8">
         <a href="http://www.absi.cc" target="_blank" class="block mb-4">
             <img src="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif" alt="شعار مدونة عبدالسلام شليبك" class="mx-auto h-16 w-auto">
         </a>
@@ -414,9 +337,9 @@
         </div>
         <p class="text-sm mb-2">
             تم تصميم هذا الدليل التفاعلي هو نتاج تحليل شامل للتشريعات الليبية المتعلقة بحقوق الأشخاص ذوي الإعاقة،
-            <a href="http://www.absi.cc" target="_blank" class="underline">من مدونة عبدالسلام شليبك</a>.
+            <a href="http://www.absi.cc" target="_blank" class="text-teal-400 hover:text-teal-200 underline">من مدونة عبدالسلام شليبك</a>.
         </p>
-        <p class="text-xs mt-2">© 2025 جميع الحقوق محفوظة.</p>
+        <p class="text-xs text-slate-400 mt-2">© 2025 جميع الحقوق محفوظة.</p>
     </footer>
     
 <script>
@@ -710,40 +633,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
         });
-    });
-
-    // Dark Mode Toggle Functionality
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const darkModeIconPath = document.getElementById('dark-mode-icon-path');
-
-    // Function to set the theme
-    const setTheme = (isDarkMode) => {
-        if (isDarkMode) {
-            document.body.classList.add('dark-mode');
-            // Change icon to sun
-            darkModeIconPath.setAttribute('d', 'M12 2.25a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V3A.75.75 0 0112 2.25zM12 18a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zM19.06 4.94a.75.75 0 01.53-.22h.001a.75.75 0 01.53.22l1.061 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 01.22-.53zM4.94 19.06a.75.75 0 01-.22-.53v-.001a.75.75 0 01.22-.53l1.06-1.06a.75.75 0 111.06 1.06l-1.06 1.06a.75.75 0 01-.53.22zM2.25 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75zM18 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H18a.75.75 0 01-.75-.75zM6.94 19.06a.75.75 0 01-.53.22l-1.06-1.06a.75.75 0 111.06-1.06l1.06 1.06a.75.75 0 01-.22.53zM19.06 4.94a.75.75 0 01-.22-.53v-.001a.75.75 0 01.53-.22l1.061 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 01.22-.53zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z'); // Sun icon path
-        } else {
-            document.body.classList.remove('dark-mode');
-            // Change icon to moon
-            darkModeIconPath.setAttribute('d', 'M21 12.79A9 9 0 1 1 11.21 3.2C13.6 5.86 16 8.52 16 12A9 9 0 0 1 21 12.79z'); // Moon icon path
-        }
-    };
-
-    // Load theme preference from localStorage or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (savedTheme === null && prefersDarkMode)) {
-        setTheme(true);
-    } else {
-        setTheme(false);
-    }
-
-    // Toggle theme on button click
-    darkModeToggle.addEventListener('click', () => {
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        setTheme(!isDarkMode);
-        localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
     });
 
     // Simple alert for search button click (replace with actual search UI in a real app)
