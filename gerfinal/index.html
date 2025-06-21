@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملخص بطولة العالم لكرة السلة على الكراسي المتحركة تحت 23 سنة 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta property="og:title" content="ملخص بطولة العالم IWBF لكرة السلة على الكراسي المتحركة تحت 23 سنة 2025">
+    <meta property="og:description" content="استكشف الإنفوجرافيك التفاعلي لبطولة العالم IWBF لكرة السلة على الكراسي المتحركة تحت 23 سنة 2025، بما في ذلك النهائي المثير، وأداء النجوم، والنتائج البارزة.">
+    <meta property="og:image" content="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif">
+    <meta property="og:url" content="https://www.absi.cc/2025/06/iwbf-23.html">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #232946;
+            color: #B8C1EC;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#FF8906] mb-2 text-shadow">بطولة العالم 2025 تحت 23 سنة</h1>
+            <p class="text-xl md:text-2xl font-bold text-white">ملخص لواحدة من أكثر بطولات كرة السلة على الكراسي المتحركة إثارة</p>
+        </header>
+
+        <main class="space-y-12">
+
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                <h2 class="text-3xl font-bold text-center mb-1 text-[#FF8906]">النهائي الكبير: عودة أسطورية</h2>
+                <p class="text-center mb-6 max-w-3xl mx-auto">في مواجهة جمعت بين الفريق الألماني الذي لم يُهزم و الفريق التركي الجريء، شهدت المباراة النهائية عودة مذهلة حسمت اللقب في الدقائق الأخيرة.</p>
+                <div class="flex justify-center items-center space-x-4 md:space-x-8 text-white font-black text-center">
+                    <div class="flex items-center space-x-4">
+                        <img src="https://flagcdn.com/w80/de.png" alt="علم ألمانيا" class="w-12 h-8 md:w-20 md:h-12 rounded-md object-cover">
+                        <span class="text-2xl md:text-4xl">ألمانيا</span>
+                    </div>
+                    <div class="text-5xl md:text-7xl text-[#FF8906] text-shadow">
+                        71 - 66
+                    </div>
+                    <div class="flex items-center space-x-4">
+                         <span class="text-2xl md:text-4xl">تركيا</span>
+                        <img src="https://flagcdn.com/w80/tr.png" alt="علم تركيا" class="w-12 h-8 md:w-20 md:h-12 rounded-md object-cover">
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <h3 class="text-2xl font-bold text-center text-white mb-4">تحليل سير المباراة: قصة شوطين</h3>
+                     <p class="text-center mb-6 max-w-3xl mx-auto">تقدمت تركيا بقوة في الشوط الأول بفارق وصل إلى 13 نقطة، لكن صمود ألمانيا المذهل في الشوط الثاني قلب المباراة رأساً على عقب.</p>
+                    <div class="chart-container">
+                        <canvas id="finalMatchChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#FF8906]">نجوم النهائي</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-white">جوليان لاميرينغ</h3>
+                        <p class="text-[#B8C1EC] mb-4">قاد العودة الألمانية بتسجيله 36 نقطة</p>
+                        <div class="chart-container h-80">
+                            <canvas id="player1Radar"></canvas>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-white">أونور أيهان إيروغلو</h3>
+                        <p class="text-[#B8C1EC] mb-4">أداء بطولي لتركيا مع دبل-دبل رائع</p>
+                        <div class="chart-container h-80">
+                            <canvas id="player2Radar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                 <h2 class="text-3xl font-bold text-center mb-6 text-[#FF8906]">الطريق إلى المجد</h2>
+                 <p class="text-center mb-8 max-w-3xl mx-auto">نظرة على مسار الفرق الأربعة الأولى في الأدوار الإقصائية وكيف وصلت إلى مواجهاتها النهائية.</p>
+                 <div class="flex flex-col items-center text-white font-semibold">
+                    <div class="flex flex-col md:flex-row justify-center items-center md:space-x-16 lg:space-x-32 w-full">
+                        <div class="flex flex-col items-center w-full md:w-auto">
+                            <h3 class="font-bold text-lg mb-2 border-b-2 border-[#FF8906]">نصف النهائي</h3>
+                            <div class="bg-white/10 p-3 rounded-lg text-center mb-4 w-4/5 md:w-64">ألمانيا <span class="text-[#FF8906] font-bold">تتغلب على</span> أستراليا</div>
+                            <div class="bg-white/10 p-3 rounded-lg text-center w-4/5 md:w-64">تركيا <span class="text-[#FF8906] font-bold">تتغلب على</span> بريطانيا</div>
+                        </div>
+                        <div class="hidden md:block text-5xl text-[#B8C1EC]">&rarr;</div>
+                        <div class="block md:hidden text-4xl text-[#B8C1EC] my-4">&darr;</div>
+                         <div class="flex flex-col items-center w-full md:w-auto">
+                            <h3 class="font-bold text-lg mb-2 border-b-2 border-[#FF8906]">المباريات النهائية</h3>
+                            <div class="bg-yellow-500/20 p-3 rounded-lg text-center mb-4 w-4/5 md:w-64">النهائي: <span class="font-bold">ألمانيا</span> ضد <span class="font-bold">تركيا</span></div>
+                            <div class="bg-orange-500/20 p-3 rounded-lg text-center w-4/5 md:w-64">البرونزية: <span class="font-bold">بريطانيا</span> ضد <span class="font-bold">أستراليا</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#FF8906]">المعركة على البرونزية</h2>
+                 <p class="text-center mb-8 max-w-3xl mx-auto">استعادت بريطانيا توازنها بعد خسارة نصف النهائي لتنتزع الميدالية البرونزية من أستراليا في مباراة قوية شهدت تألق نجوم الفريقين.</p>
+                <div class="text-center text-white text-3xl font-bold mb-6">
+                    بريطانيا <span class="text-[#FF8906]">67 - 60</span> أستراليا
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-center text-white mb-4">مقارنة بين أبرز اللاعبين</h3>
+                    <div class="chart-container">
+                        <canvas id="bronzeMatchChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#FF8906]">مواجهات أخرى بارزة</h2>
+                <p class="text-center mb-8 max-w-3xl mx-auto">البطولة لم تقتصر على النهائيات، بل شهدت مواجهات قوية أظهرت عمق المنافسة العالمية.</p>
+                <div class="chart-container">
+                    <canvas id="otherResultsChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#FF8906]">الترتيب النهائي</h2>
+                <ol class="text-center space-y-3 text-2xl font-bold text-white">
+                    <li class="flex justify-center items-center">🥇 <span class="mx-3">ألمانيا</span> (أبطال العالم)</li>
+                    <li class="flex justify-center items-center">🥈 <span class="mx-3">تركيا</span> (الميدالية الفضية)</li>
+                    <li class="flex justify-center items-center">🥉 <span class="mx-3">بريطانيا</span> (الميدالية البرونزية)</li>
+                    <li class="flex justify-center items-center">4. <span class="mx-3">أستراليا</span></li>
+                </ol>
+            </section>
+
+            <section class="bg-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/20">
+                <h2 class="text-3xl font-bold text-center mb-6 text-[#FF8906]">تغطية إضافية للبطولة</h2>
+                <p class="text-center mb-8 max-w-3xl mx-auto">للمزيد من التفاصيل حول بطولة العالم IWBF تحت 23 عامًا 2025، يمكنك زيارة التدوينة الكاملة.</p>
+                <div class="relative w-full h-[500px] rounded-lg overflow-hidden">
+                    <iframe src="https://www.absi.cc/2025/06/iwbf-23.html" class="absolute inset-0 w-full h-full border-0 rounded-lg"></iframe>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-white/20">
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 mb-4">
+                <p class="text-[#B8C1EC] text-lg">
+                    <a href="http://www.absi.cc" target="_blank" class="text-[#FF8906] hover:underline flex items-center justify-center space-x-2">
+                        <img src="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif" alt="شعار مدونة عبدالسلام شليبك" class="h-8 w-8 object-contain">
+                        <span class="ml-2">مدونة عبدالسلام شليبك</span>
+                    </a>
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.absi.cc%2F2025%2F06%2Fiwbf-23.html&quote=ملخص%20بطولة%20العالم%20IWBF%20لكرة%20السلة%20على%20الكراسي%20المتحركة%20تحت%2023%20سنة%202025" target="_blank" class="text-[#B8C1EC] hover:text-[#FF8906] text-3xl" title="شارك على فيسبوك">
+                        📘
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.absi.cc%2F2025%2F06%2Fiwbf-23.html&text=ملخص%20بطولة%20العالم%20IWBF%20لكرة%20السلة%20على%20الكراسي%20المتحركة%20تحت%2023%20سنة%202025&hashtags=كرة_السلة_على_الكراسي_المتحركة,IWBF" target="_blank" class="text-[#B8C1EC] hover:text-[#FF8906] text-3xl" title="شارك على تويتر">
+                        🐦
+                    </a>
+                </div>
+            </div>
+            <p class="text-[#B8C1EC] mt-2">ملخص بطولة العالم IWBF للرجال تحت 23 سنة 2025.</p>
+        </footer>
+    </div>
+
+    <script>
+        const FONT_COLOR = '#FFFFFE';
+        const GRID_COLOR = 'rgba(184, 193, 236, 0.3)';
+
+        function wrapLabel(str, maxWidth) {
+            if (typeof str !== 'string' || str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const SHARED_CHART_OPTIONS = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: FONT_COLOR,
+                        font: {
+                            size: 14,
+                            family: "'Cairo', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    titleFont: { family: "'Cairo', sans-serif" },
+                    bodyFont: { family: "'Cairo', sans-serif" },
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: FONT_COLOR, font: { family: "'Cairo', sans-serif" } },
+                    grid: { color: GRID_COLOR }
+                },
+                x: {
+                    ticks: { color: FONT_COLOR, font: { family: "'Cairo', sans-serif" } },
+                    grid: { color: GRID_COLOR }
+                }
+            }
+        };
+        
+        const finalMatchCtx = document.getElementById('finalMatchChart').getContext('2d');
+        new Chart(finalMatchCtx, {
+            type: 'line',
+            data: {
+                labels: ['بداية المباراة', 'نهاية الشوط الأول', 'نهاية الربع الثالث', 'نهاية المباراة'],
+                datasets: [{
+                    label: 'ألمانيا',
+                    data: [0, 31, 51, 71],
+                    borderColor: '#FF8906',
+                    backgroundColor: 'rgba(255, 137, 6, 0.5)',
+                    fill: true,
+                    tension: 0.1
+                }, {
+                    label: 'تركيا',
+                    data: [0, 44, 56, 66],
+                    borderColor: '#E1627D',
+                    backgroundColor: 'rgba(225, 98, 125, 0.5)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: SHARED_CHART_OPTIONS
+        });
+
+        const player1RadarCtx = document.getElementById('player1Radar').getContext('2d');
+        new Chart(player1RadarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['النقاط', 'متابعات', 'تمريرات حاسمة'],
+                datasets: [{
+                    label: 'جوليان لاميرينغ',
+                    data: [36, 6, 4], 
+                    backgroundColor: 'rgba(255, 137, 6, 0.4)',
+                    borderColor: '#FF8906',
+                    pointBackgroundColor: '#FF8906'
+                }]
+            },
+            options: { ...SHARED_CHART_OPTIONS, scales: { r: { angleLines: { color: GRID_COLOR }, grid: { color: GRID_COLOR }, pointLabels: { color: FONT_COLOR, font: { size: 14, family: "'Cairo', sans-serif" } }, ticks: { backdropColor: '#232946', color: FONT_COLOR } } } }
+        });
+
+        const player2RadarCtx = document.getElementById('player2Radar').getContext('2d');
+        new Chart(player2RadarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['النقاط', 'متابعات', 'تمريرات حاسمة'],
+                datasets: [{
+                    label: 'أونور أيهان إيروغلو',
+                    data: [26, 7, 10],
+                    backgroundColor: 'rgba(225, 98, 125, 0.4)',
+                    borderColor: '#E1627D',
+                    pointBackgroundColor: '#E1627D'
+                }]
+            },
+            options: { ...SHARED_CHART_OPTIONS, scales: { r: { angleLines: { color: GRID_COLOR }, grid: { color: GRID_COLOR }, pointLabels: { color: FONT_COLOR, font: { size: 14, family: "'Cairo', sans-serif" } }, ticks: { backdropColor: '#232946', color: FONT_COLOR } } } }
+        });
+
+        const bronzeMatchCtx = document.getElementById('bronzeMatchChart').getContext('2d');
+        new Chart(bronzeMatchCtx, {
+            type: 'bar',
+            data: {
+                labels: ['النقاط', 'المتابعات'],
+                datasets: [{
+                    label: 'أوسكار نايت (بريطانيا)',
+                    data: [26, 9],
+                    backgroundColor: '#B8C1EC',
+                    borderColor: '#FFFFFE',
+                    borderWidth: 1
+                }, {
+                    label: 'جايلين براون (أستراليا)',
+                    data: [25, 18],
+                    backgroundColor: '#E1627D',
+                    borderColor: '#FFFFFE',
+                    borderWidth: 1
+                }]
+            },
+            options: { ...SHARED_CHART_OPTIONS, indexAxis: 'y' }
+        });
+        
+        const otherResultsCtx = document.getElementById('otherResultsChart').getContext('2d');
+        new Chart(otherResultsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['اليابان ضد كوريا', 'اليابان ضد كندا', 'أمريكا ضد فرنسا', 'إسبانيا ضد الأرجنتين', 'البرازيل ضد إيطاليا'],
+                datasets: [{
+                    label: 'فارق النقاط في الفوز',
+                    data: [32, 9, 8, 16, 3],
+                    backgroundColor: [
+                        '#FF8906',
+                        '#E1627D',
+                        '#B8C1EC',
+                        '#ffc600',
+                        '#62E1C9'
+                    ],
+                }]
+            },
+            options: { ...SHARED_CHART_OPTIONS, indexAxis: 'y' }
+        });
+        
+    </script>
+</body>
+</html>
