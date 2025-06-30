@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انفوجرافيك: واقع رياسة رفعات القوة في ليبيا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Constrain max width for charts */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; /* Base height for charts */
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px; /* Slightly taller on larger screens */
+            }
+        }
+        .flow-arrow::after {
+            content: '↓';
+            font-size: 2.5rem; /* Larger arrow */
+            color: #FF6361; /* Vibrant red from palette */
+            font-weight: bold;
+        }
+        .kpi-card {
+            background-color: #FFFFFF;
+            border-bottom: 8px solid #003F5C; /* Stronger bottom border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2), 0 6px 10px -3px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #003F5C; /* Primary blue for headings */
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 1rem; /* More rounded corners */
+            padding: 2rem; /* More padding */
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1); /* Stronger shadow */
+            margin-bottom: 2.5rem; /* More space between sections */
+        }
+        .hero-section {
+            background: linear-gradient(to right, #003F5C, #58508D); /* Gradient from palette */
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 2.5rem;
+        }
+        .callout-box {
+            background-color: #FFFCEF; /* Lighter yellow/cream for callout */
+            border-right: 6px solid #FFA600; /* Orange border for emphasis */
+        }
+        .feature-item {
+            background-color: #EEF2FF; /* Light blue for list items */
+            border-left: 4px solid #003F5C; /* Strong border for emphasis */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 hero-section">
+            <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight" style="color:#FFEB3B;">المنتخب الليبي لرفعات القوة</h1>
+            <p class="text-2xl md:text-3xl font-light opacity-90">رحلة نحو العالمية: تحديات وطموحات</p>
+            <p class="text-base md:text-lg mt-4 max-w-2xl mx-auto opacity-80">تحليل معمق لمشاركة المنتخب الليبي في بطولة العالم بمصر، ومناقشة أوجه الشفافية، فجوة الأداء، والمسار المطلوب للتطوير الفني والإداري.</p>
+        </header>
+
+        <main>
+            <section id="announcement" class="section-card">
+                <h2 class="text-4xl font-bold mb-8 text-center" style="color:#BC5090;">المشاركة الدولية: الأرقام الأساسية</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="kpi-card rounded-lg shadow-xl p-8">
+                        <div class="text-6xl font-extrabold mb-2" style="color:#BC5090;">13</div>
+                        <p class="mt-2 text-xl font-semibold text-gray-700">رياضياً ورياضية</p>
+                        <p class="text-sm text-gray-500 mt-1">يمثلون ليبيا في البطولة</p>
+                    </div>
+                    <div class="kpi-card rounded-lg shadow-xl p-8">
+                        <div class="text-5xl font-extrabold mb-2" style="color:#FF6361;">متنوعة</div>
+                        <p class="mt-2 text-xl font-semibold text-gray-700">الفئات العمرية</p>
+                        <p class="text-sm text-gray-500 mt-1">من ناشئين لروكي وعظماء</p>
+                    </div>
+                    <div class="kpi-card rounded-lg shadow-xl p-8">
+                         <div class="text-5xl font-extrabold mb-2" style="color:#FFA600;">49-97 <span class="text-3xl">كجم</span></div>
+                        <p class="mt-2 text-xl font-semibold text-gray-700">تغطية الأوزان</p>
+                        <p class="text-sm text-gray-500 mt-1">مشاركة في مختلف الفئات</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="transparency" class="section-card md:col-span-2">
+                 <h2 class="text-4xl font-bold mb-6 text-center" style="color:#58508D;">تحديات الشفافية وآليات الاختيار</h2>
+                 <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">الإعلان عن القائمة الرسمية للمنتخب لم يُرفق بأي أرقام تأهيلية أو معايير اختيار واضحة. هذا الغموض يطرح تساؤلات جدية حول الأسس الفنية والإدارية التي تم عليها انتقاء اللاعبين، ويفتح الباب أمام مطالبات بشفافية أكبر.</p>
+                 <div class="callout-box p-6 rounded-lg shadow-md" role="alert">
+                    <p class="font-bold text-xl text-yellow-800 mb-2">ملاحظة تنظيمية هامة</p>
+                    <p class="text-lg text-yellow-700">تمنيت من الجهة المشرفة على بطولات الأندية أن تلتزم بفرض زي رياضي موحد لكل نادٍ. من شأن ذلك أن يعزز الصورة الاحترافية للرياضة المحلية ويضيف بعداً تنظيمياً وجمالياً للمسابقات.</p>
+                </div>
+            </section>
+
+            <section id="performance-gap" class="section-card md:col-span-2">
+                <h2 class="text-4xl font-bold mb-6 text-center" style="color:#003F5C;">فجوة الأداء: مقارنة مع المستويات العالمية</h2>
+                <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">مقارنة الأرقام المتوقعة من المشاركين الليبيين مع الأرقام القياسية العالمية في رياضة رفعات القوة البارالمبية تكشف عن فجوة كبيرة في المستوى الفني، مما يثير تساؤلات حول الجاهزية الحقيقية للمنافسة على هذا المستوى الدولي.</p>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+                 <p class="text-center mt-6 text-base text-gray-600">يوضح الرسم البياني الفارق بين الأرقام القياسية العالمية في فئات الوزن المختلفة (بالكيلوجرام) والأداء المتوقع من اللاعبين الليبيين. هذه الفجوة تؤكد الحاجة الملحة لخطط تطوير مستدامة.</p>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section id="stagnation" class="section-card">
+                    <h2 class="text-4xl font-bold mb-6 text-center" style="color:#FF6361;">ركود التمثيل: لماذا تتكرر الأسماء؟</h2>
+                    <p class="text-center text-lg text-gray-700 mb-8">غياب الوجوه الجديدة عن المنتخب الوطني وتكرار نفس الأسماء لسنوات، يشير إلى خلل في آليات اكتشاف المواهب وتوسيع قاعدة اللعبة على مستوى المدن الليبية كافة.</p>
+                    <div class="flex flex-col items-center text-center space-y-6">
+                        <div class="w-full p-6 bg-gray-50 rounded-xl shadow-inner border-t-4 border-gray-300">
+                            <h3 class="font-bold text-xl mb-2" style="color:#58508D;">تكرار الأسماء القديمة</h3>
+                            <p class="text-gray-700">الاستمرارية دون تغيير في هيكل الفريق</p>
+                        </div>
+                        <div class="flow-arrow my-2"></div>
+                        <div class="w-full p-6 bg-red-50 border-t-4 border-red-400 rounded-xl shadow-inner">
+                            <h3 class="font-bold text-xl text-red-700 mb-2">خلل في اكتشاف المواهب</h3>
+                            <p class="text-gray-700">عدم ظهور وجوه جديدة في الساحة الرياضية</p>
+                        </div>
+                        <div class="flow-arrow my-2"></div>
+                         <div class="w-full p-6 bg-gray-50 rounded-xl shadow-inner border-t-4 border-gray-300">
+                            <h3 class="font-bold text-xl mb-2" style="color:#58508D;">حاجة لتوسيع القاعدة</h3>
+                            <p class="text-gray-700">ضمان عدالة التوزيع الجغرافي وفتح المجال</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="legacy" class="section-card text-center">
+                    <h2 class="text-4xl font-bold mb-6" style="color:#FFA600;">إرث ليبيا الرياضي: إنجاز وحيد ينتظر التكرار</h2>
+                    <p class="text-center text-lg text-gray-700 mb-8">تمتلك ليبيا تاريخاً في هذه الرياضة، حيث أحرز الرباع عبد الرحيم خليفة الزوي ميدالية برونزية تاريخية في الألعاب البارالمبية بسيدني عام 2000. إنجاز لم ينجح أحد في تكراره حتى الآن.</p>
+                    <div class="p-8 rounded-lg kpi-card bg-gradient-to-br from-blue-50 to-blue-100">
+                        <div class="text-7xl mb-4">🥉</div>
+                        <h3 class="text-3xl font-bold mb-2" style="color:#003F5C;">عبد الرحيم خليفة الزوي</h3>
+                        <p class="text-5xl font-black my-4" style="color:#BC5090;">2000</p>
+                        <p class="text-xl text-gray-800">الميدالية البرونزية الوحيدة لليبيا في تاريخ الألعاب الأولمبية والبارالمبية معًا. رمز للإمكانات غير المستغلة.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <section id="recommendations" class="section-card">
+                <h2 class="text-4xl font-bold mb-8 text-center" style="color:#003F5C;">خارطة طريق للتطوير: ما الذي نحتاجه فعلاً؟</h2>
+                <p class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto">رياضة رفعات القوة في ليبيا لا تحتاج فقط إلى مشاركة رمزية، بل تتطلب استراتيجية شاملة ترتكز على أسس علمية وإدارية قوية لتحقيق التميز العالمي.</p>
+                <div class="space-y-6">
+                    <div class="feature-item flex items-start space-x-4 space-x-reverse p-4 rounded-lg shadow-sm">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl">1</div>
+                        <p class="text-xl font-medium text-gray-800">برامج تدريبية متكاملة تراعي المعايير الدولية الحديثة.</p>
+                    </div>
+                    <div class="feature-item flex items-start space-x-4 space-x-reverse p-4 rounded-lg shadow-sm">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl">2</div>
+                        <p class="text-xl font-medium text-gray-800">بطولات محلية مؤهِّلة تعتمد على نتائج وأرقام شفافة ومعايير واضحة.</p>
+                    </div>
+                    <div class="feature-item flex items-start space-x-4 space-x-reverse p-4 rounded-lg shadow-sm">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl">3</div>
+                        <p class="text-xl font-medium text-gray-800">فرص متكافئة وعادلة لاكتشاف المواهب من جميع مناطق ليبيا.</p>
+                    </div>
+                    <div class="feature-item flex items-start space-x-4 space-x-reverse p-4 rounded-lg shadow-sm">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl">4</div>
+                        <p class="text-xl font-medium text-gray-800">دعم علمي وطبي وتغذوي متخصص يلبي احتياجات رياضيي رفعات القوة.</p>
+                    </div>
+                    <div class="feature-item flex items-start space-x-4 space-x-reverse p-4 rounded-lg shadow-sm">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl">5</div>
+                        <p class="text-xl font-medium text-gray-800">إدارة رياضية محترفة تؤمن بالتخطيط طويل المدى، بعيداً عن الحلول المؤقتة.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-12 py-8 border-t-4 border-gray-300 bg-gray-50 rounded-t-lg">
+            <p class="text-gray-700 flex flex-col items-center justify-center text-lg font-medium">
+                <a href="https://www.absi.cc" target="_blank" class="text-blue-700 hover:text-blue-900 transition-colors duration-300 font-bold mb-3">من مدونة عبدالسلام شليبك</a>
+                <a href="https://www.absi.cc" target="_blank" class="block">
+                    <img src="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif" alt="شعار عبدالسلام شليبك" class="h-20 w-auto object-contain mx-auto shadow-md rounded-md">
+                </a>
+                <p class="text-sm text-gray-500 mt-4">نُثمن كل جهد يُبذل لتمثيل ليبيا دولياً، ونسعى لتطوير رياضي حقيقي ومستدام.</p>
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceData = {
+            labels: [
+                'فئة 88 كجم (رجال)',
+                'فئة 97 كجم (رجال)',
+                'فئة 49 كجم (رجال)',
+                'معدل السيدات'
+            ],
+            datasets: [{
+                label: 'الرقم القياسي العالمي (كجم)',
+                data: [240, 251, 212, 140], 
+                backgroundColor: [
+                    'rgba(0, 63, 92, 0.8)', /* Primary Blue */
+                    'rgba(88, 80, 141, 0.8)', /* Purple-ish Blue */
+                    'rgba(188, 80, 144, 0.8)', /* Pink-ish Purple */
+                    'rgba(255, 99, 97, 0.8)', /* Red-ish Orange */
+                ],
+                borderColor: [
+                    '#003F5C',
+                    '#58508D',
+                    '#BC5090',
+                    '#FF6361',
+                ],
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: performanceData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'الوزن المرفوع (كجم)',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: '#003F5C'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            color: '#333'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'مقارنة الأداء مع الأرقام القياسية العالمية',
+                        font: {
+                            size: 20,
+                            weight: 'bold'
+                        },
+                        color: '#003F5C',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        },
+                        backgroundColor: 'rgba(0, 63, 92, 0.9)',
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 14
+                        },
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
