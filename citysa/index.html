@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنفوجرافيك: المدن الأمريكية الأكثر سهولة في الوصول والتنقل</title>
+
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="إنفوجرافيك: المدن الأمريكية الأكثر سهولة في الوصول والتنقل">
+    <meta property="og:description" content="اكتشف المدن الأمريكية الرائدة في توفير سهولة الوصول والتنقل للجميع، مع تحليل شامل للبيانات والمعايير التي تجعلها وجهات شاملة.">
+    <meta property="og:image" content="https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_5050,h_2840/c_fill,w_2160,ar_16:9,f_auto,q_auto,g_auto/images%2FGettyImages%2Fmmsport%2Fmentalfloss%2F01jz3220tvx17pg2sx5m.jpg">
+    <meta property="og:url" content="http://www.yourwebsite.com/accessible-cities-infographic-ar"> <!-- Replace with your actual deployed URL -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f0f4f8; /* Very light blue/gray for a fresh look */
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eff7 100%); /* Subtle gradient */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+            padding: 1rem; /* Add some padding inside the container */
+            border-radius: 0.75rem; /* Rounded corners for charts */
+            background-color: #ffffff; /* White background for charts */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Enhanced shadow */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .rtl-grid {
+            direction: rtl;
+        }
+        h1, h2, h3 {
+            font-weight: 900;
+        }
+        .card-shadow {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Stronger shadow for cards */
+            transition: transform 0.2s ease-in-out;
+        }
+        .card-shadow:hover {
+            transform: translateY(-5px);
+        }
+        .responsive-iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 0.75rem;
+        }
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 py-8 rounded-lg bg-[#003f5c] text-white shadow-xl">
+            <img src="https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_5050,h_2840/c_fill,w_2160,ar_16:9,f_auto,q_auto,g_auto/images%2FGettyImages%2Fmmsport%2Fmentalfloss%2F01jz3220tvx17pg2sx5m.jpg" 
+                 alt="صورة لمدينة ديترويت تظهر ممشى نهري ميسّر" 
+                 class="w-full h-64 md:h-96 object-cover rounded-t-lg mb-6"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1280x720/cccccc/333333?text=صورة+غير+متوفرة';">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">المدن الأكثر سهولة في الوصول والتنقل في أمريكا</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90">تحليل مرئي للمدن التي تضع الشمولية في مقدمة أولوياتها، بناءً على بيانات دقيقة حول البنية التحتية والمعالم السياحية.</p>
+        </header>
+
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-4 text-center">كيف تم التقييم؟</h2>
+                <p class="text-center text-gray-600 mb-8">استند التقييم الذي أجراه موقع "واندر" على مجموعة من العوامل الأساسية لتحديد درجة سهولة الوصول في كل مدينة.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="flex flex-col items-center p-4 rounded-lg bg-[#e6eff7]">
+                        <div class="text-5xl mb-3 text-[#7a5195]">♿</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#7a5195]">المعالم السياحية</h3>
+                        <p class="text-gray-700">نسبة المواقع والمعالم المهيأة لاستقبال مستخدمي الكراسي المتحركة.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 rounded-lg bg-[#e6eff7]">
+                         <div class="text-5xl mb-3 text-[#bc5090]">🏞️</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#bc5090]">مسارات الطبيعة</h3>
+                        <p class="text-gray-700">النسبة المئوية للمسارات الطبيعية والمساحات الخضراء الميسّرة.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 rounded-lg bg-[#e6eff7]">
+                        <div class="text-5xl mb-3 text-[#ef5675]">🚆</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#ef5675]">النقل العام</h3>
+                        <p class="text-gray-700">عدد محطات النقل العام المتوافقة مع معايير ADA لكل 100 ألف نسمة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">نظرة على المدن الثلاث الأوائل</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 rtl-grid">
+
+                <div class="bg-white rounded-lg card-shadow p-6 flex flex-col items-center text-center">
+                    <div class="text-6xl font-black text-[#ffa600] mb-2">#1</div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#003f5c]">ديترويت، ميشيغان</h3>
+                    <div class="chart-container h-64 max-h-64 mb-4">
+                        <canvas id="detroitChart"></canvas>
+                    </div>
+                    <p class="text-gray-700">تتصدر ديترويت القائمة بفضل النسبة العالية لمساراتها الطبيعية الميسّرة، والتي تبلغ <span class="font-bold text-[#ffa600]">61.5%</span>، بالإضافة إلى معاييرها الممتازة في محطات النقل العام.</p>
+                </div>
+
+                <div class="bg-white rounded-lg card-shadow p-6 flex flex-col items-center text-center">
+                    <div class="text-6xl font-black text-[#ff764a]">#2</div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#003f5c]">بالتيمور، ماريلاند</h3>
+                    <div class="chart-container h-64 max-h-64 mb-4">
+                        <canvas id="baltimoreChart"></canvas>
+                    </div>
+                    <p class="text-gray-700">تبرز بالتيمور بنسبة <span class="font-bold text-[#ff764a]">41%</span> من معالمها السياحية المهيأة للكراسي المتحركة ودرجة سهولة مشي تبلغ 64 من 100.</p>
+                </div>
+
+                <div class="bg-white rounded-lg card-shadow p-6 flex flex-col items-center text-center">
+                    <div class="text-6xl font-black text-[#ef5675]">#3</div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#003f5c]">سياتل، واشنطن</h3>
+                    <div class="w-full p-4 flex flex-col justify-center items-center h-64 mb-4 rounded-lg bg-[#e6eff7] card-shadow">
+                        <div class="text-7xl font-black text-[#ef5675]">16.02</div>
+                        <p class="text-xl text-gray-600 mt-2">محطة نقل عام لكل 100 ألف نسمة</p>
+                    </div>
+                    <p class="text-gray-700">تتميز سياتل بأحد أعلى معدلات محطات النقل العام المجهزة في البلاد، مما يعزز من مكانتها كمدينة صديقة للجميع.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+             <div class="bg-white rounded-lg card-shadow p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-2 text-center">التصنيف الكامل للمدن الأكثر سهولة في الوصول</h2>
+                <p class="text-center text-gray-600 mb-8">مقارنة بين المدن بناءً على درجتها الموحدة النهائية من 10.</p>
+                <div class="chart-container h-[500px] md:h-[600px] max-h-[600px]">
+                    <canvas id="rankingChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-2 text-center">مقارنة بين نقاط القوة للمدن الرائدة</h2>
+                 <p class="text-center text-gray-600 mb-8">لكل مدينة نقاط قوة فريدة. يوضح الرسم البياني التالي كيف تتفوق المدن الثلاث الأولى في معايير مختلفة.</p>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#003f5c] mb-4 text-center">مقالات ذات صلة</h2>
+                <p class="text-center text-gray-600 mb-8">استكشف المزيد من المواضيع المتعلقة بالشمولية وسهولة الوصول من مدونة عبدالسلام شليبك.</p>
+                <div class="responsive-iframe-container">
+                    <iframe src="https://www.absi.cc/2025/07/blog-post_10.html" 
+                            title="تدوينة من مدونة عبدالسلام شليبك"
+                            allowfullscreen>
+                        <p>متصفحك لا يدعم الإطارات المضمنة (iframes). يمكنك زيارة المقال مباشرة عبر الرابط: 
+                            <a href="https://www.absi.cc/2025/07/blog-post_10.html" target="_blank" class="text-[#003f5c] hover:underline">https://www.absi.cc/2025/07/blog-post_10.html</a>
+                        </p>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p class="text-gray-600">إن الاستثمار في البنية التحتية الشاملة ليس مجرد التزام قانوني، بل هو أساس لمجتمع عادل ومترابط يضمن للجميع حق التنقل والاستكشاف بحرية وكرامة.</p>
+            <p class="text-sm text-gray-500 mt-2 flex items-center justify-center gap-2">
+                من مدونة 
+                <a href="http://www.absi.cc" target="_blank" class="text-[#003f5c] hover:underline hover:text-[#ff764a] flex items-center gap-1">
+                    <img src="https://absily.wordpress.com/wp-content/uploads/2019/01/absssggif-1.gif" 
+                         alt="شعار مدونة عبدالسلام شليبك" 
+                         class="w-8 h-8 rounded-full inline-block"
+                         onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/333333?text=شعار';">
+                    عبدالسلام شليبك
+                </a>
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const defaultChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                family: "'Tajawal', sans-serif",
+                                size: 14,
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        bodyFont: {
+                            family: "'Tajawal', sans-serif",
+                        },
+                        titleFont: {
+                            family: "'Tajawal', sans-serif",
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                family: "'Tajawal', sans-serif",
+                            }
+                        },
+                         grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                family: "'Tajawal', sans-serif",
+                            }
+                        },
+                         grid: {
+                            color: '#e0e0e0',
+                            borderDash: [5, 5]
+                        }
+                    }
+                }
+            };
+            
+            const defaultPieOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                           font: {
+                                family: "'Tajawal', sans-serif",
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                         bodyFont: {
+                            family: "'Tajawal', sans-serif",
+                        },
+                        titleFont: {
+                            family: "'Tajawal', sans-serif",
+                        }
+                    }
+                }
+            };
+
+            const detroitCtx = document.getElementById('detroitChart').getContext('2d');
+            new Chart(detroitCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['مسارات طبيعية ميسّرة', 'غير ميسّرة'],
+                    datasets: [{
+                        label: 'نسبة المسارات الطبيعية',
+                        data: [61.54, 38.46],
+                        backgroundColor: ['#ffa600', '#dddddd'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: defaultPieOptions
+            });
+
+            const baltimoreCtx = document.getElementById('baltimoreChart').getContext('2d');
+            new Chart(baltimoreCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['معالم سياحية ميسّرة', 'غير ميسّرة'],
+                    datasets: [{
+                        label: 'نسبة المعالم السياحية',
+                        data: [41, 59],
+                        backgroundColor: ['#ff764a', '#dddddd'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: defaultPieOptions
+            });
+
+            const rankingCtx = document.getElementById('rankingChart').getContext('2d');
+            new Chart(rankingCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'ديترويت', 'بالتيمور', 'سياتل', 'هيوستن', 'دالاس', 'دنفر',
+                        'لويزفيل', 'ناشفيل', 'واشنطن العاصمة', 'سان أنطونيو', 'سان فرانسيسكو'
+                    ],
+                    datasets: [{
+                        label: 'درجة سهولة الوصول (من 10)',
+                        data: [9.70, 9.61, 9.55, 9.45, 9.40, 9.31, 9.26, 9.21, 9.06, 8.91, 8.91],
+                        backgroundColor: [
+                            '#003f5c', '#374c80', '#7a5195', '#bc5090', '#ef5675', 
+                            '#ff764a', '#ffa600', '#003f5c', '#374c80', '#7a5195', '#bc5090'
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { ...defaultChartOptions.scales.x, suggestedMax: 10 },
+                        y: { ...defaultChartOptions.scales.y }
+                    },
+                    plugins: {
+                        ...defaultChartOptions.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+            
+            const radarCtx = document.getElementById('radarChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['الدرجة الإجمالية', 'المعالم السياحية', 'مسارات الطبيعة', 'سهولة المشي', 'النقل العام'],
+                    datasets: [
+                        {
+                            label: 'ديترويت',
+                            data: [9.7, 6.5, 9.8, 7.0, 9.5],
+                            fill: true,
+                            backgroundColor: 'rgba(255, 166, 0, 0.2)',
+                            borderColor: '#ffa600',
+                            pointBackgroundColor: '#ffa600',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#ffa600'
+                        }, {
+                            label: 'بالتيمور',
+                            data: [9.61, 8.2, 7.0, 9.2, 8.5],
+                            fill: true,
+                            backgroundColor: 'rgba(255, 118, 74, 0.2)',
+                            borderColor: '#ff764a',
+                            pointBackgroundColor: '#ff764a',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#ff764a'
+                        },
+                        {
+                            label: 'سياتل',
+                            data: [9.55, 7.5, 7.8, 8.0, 9.9],
+                            fill: true,
+                            backgroundColor: 'rgba(239, 86, 117, 0.2)',
+                            borderColor: '#ef5675',
+                            pointBackgroundColor: '#ef5675',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#ef5675'
+                        }
+                    ]
+                },
+                options: {
+                    ...defaultChartOptions,
+                     scales: {
+                        r: {
+                            angleLines: { color: '#e0e0e0' },
+                            grid: { color: '#e0e0e0' },
+                            pointLabels: {
+                                font: {
+                                    family: "'Tajawal', sans-serif",
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                color: '#003f5c'
+                            },
+                            ticks: {
+                                backdropColor: '#f0f4f8',
+                                color: '#374c80'
+                            },
+                            suggestedMin: 5,
+                            suggestedMax: 10
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
