@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنفوغرافيك الدوري التنشيطي للكرة الطائرة جلوس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'El Messiri', 'Noto Sans Arabic', sans-serif;
+            background-color: #1A202C;
+            color: #E2E8F0;
+        }
+        .card {
+            background-color: #2D3748;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        .fade-in-down {
+            animation: fadeInDown 1s ease-in-out;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="المستقبل بنغازي بطلاً للدوري التنشيطي للكرة الطائرة جلوس">
+    <meta property="og:description" content="إنجاز تاريخي في قلب الرياضة الليبية، وتتويج الأبطال في الدوري التنشيطي للكرة الطائرة جلوس الذي استمر لستة أشهر.">
+    <meta property="og:image" content="https://absily.github.io/mus25.jpg">
+    <meta property="og:url" content="https://www.absi.cc">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="المستقبل بنغازي بطلاً للدوري التنشيطي للكرة الطائرة جلوس">
+    <meta name="twitter:description" content="إنجاز تاريخي في قلب الرياضة الليبية، وتتويج الأبطال في الدوري التنشيطي للكرة الطائرة جلوس الذي استمر لستة أشهر.">
+    <meta name="twitter:image" content="https://absily.github.io/mus25.jpg">
+    
+</head>
+<body class="p-8">
+
+    <div class="max-w-5xl mx-auto space-y-12">
+
+        <header class="text-center fade-in-down">
+            <h1 class="text-4xl md:text-6xl font-black text-gray-100 leading-tight">المستقبل بنغازي بطلاً للدوري التنشيطي للكرة الطائرة جلوس</h1>
+            <p class="text-xl md:text-2xl text-gray-400 mt-4 font-bold">إنجاز تاريخي في قلب الرياضة الليبية</p>
+        </header>
+        
+        <!-- Image as Magazine Cover Section -->
+        <section class="p-4 md:p-8 card fade-in-down" style="animation-delay: 0.2s;">
+            <h2 class="text-2xl md:text-3xl font-black text-center text-yellow-400 mb-6">تتويج الأبطال</h2>
+            <div class="flex justify-center items-center">
+                <img src="https://absily.github.io/mus25.jpg" alt="صورة تتويج فريق المستقبل بنغازي" 
+                     class="w-full rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-105" 
+                     style="max-width: 600px; height: auto;">
+            </div>
+        </section>
+
+        <!-- Final Standings Section -->
+        <section class="p-8 md:p-12 card fade-in-down" style="animation-delay: 0.4s;">
+            <h2 class="text-3xl font-black text-center text-gray-100 mb-8">الترتيب النهائي للدوري</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                
+                <!-- 1st Place -->
+                <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 border-4 border-yellow-400 p-6 rounded-3xl flex flex-col items-center justify-center text-gray-900 font-bold">
+                    <span class="text-6xl mb-4">🏆</span>
+                    <h3 class="text-2xl font-extrabold">المركز الأول</h3>
+                    <p class="text-xl font-black">المستقبل بنغازي</p>
+                    <p class="text-md mt-1">19 نقطة</p>
+                </div>
+
+                <!-- 2nd Place -->
+                <div class="bg-gradient-to-br from-gray-400 to-gray-500 border-4 border-gray-300 p-6 rounded-3xl flex flex-col items-center justify-center text-gray-900 font-bold">
+                    <span class="text-6xl mb-4">🥈</span>
+                    <h3 class="text-2xl font-extrabold">المركز الثاني</h3>
+                    <p class="text-xl font-black">الإخلاص ترهونة</p>
+                    <p class="text-md mt-1">14 نقطة</p>
+                </div>
+
+                <!-- 3rd Place -->
+                <div class="bg-gradient-to-br from-yellow-800 to-yellow-900 border-4 border-yellow-700 p-6 rounded-3xl flex flex-col items-center justify-center text-gray-100 font-bold">
+                    <span class="text-6xl mb-4">🥉</span>
+                    <h3 class="text-2xl font-extrabold">المركز الثالث</h3>
+                    <p class="text-xl font-black">التضامن مصراتة</p>
+                    <p class="text-md mt-1">13 نقطة</p>
+                </div>
+                
+                <!-- 4th Place -->
+                <div class="bg-gradient-to-br from-gray-700 to-gray-800 border-4 border-gray-600 p-6 rounded-3xl flex flex-col items-center justify-center text-gray-100 font-bold">
+                    <span class="text-6xl mb-4">🏅</span>
+                    <h3 class="text-2xl font-extrabold">المركز الرابع</h3>
+                    <p class="text-xl font-black">الإرادة صبراتة</p>
+                    <p class="text-md mt-1">نقطتان</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Key Facts Section -->
+        <section class="p-8 md:p-12 card fade-in-down" style="animation-delay: 0.6s;">
+            <h2 class="text-3xl font-black text-center text-gray-100 mb-8">أبرز محطات الدوري</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                
+                <!-- Duration -->
+                <div class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl border border-gray-700">
+                    <span class="text-5xl text-yellow-500 mb-3">🗓️</span>
+                    <p class="text-xl font-bold text-gray-200">6 أشهر</p>
+                    <p class="text-sm text-gray-400">من التنافس الشديد</p>
+                </div>
+
+                <!-- Locations -->
+                <div class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl border border-gray-700">
+                    <span class="text-5xl text-yellow-500 mb-3">🌍</span>
+                    <p class="text-xl font-bold text-gray-200">3 تجمعات</p>
+                    <p class="text-sm text-gray-400 text-right leading-relaxed">
+                        - صبراتة: 23 إلى 26 يناير 2025<br>
+                        - بنغازي: 8 إلى 11 مايو 2025<br>
+                        - مصراتة: 7 إلى 11 أغسطس 2025
+                    </p>
+                </div>
+
+                <!-- Goal -->
+                <div class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl border border-gray-700">
+                    <span class="text-5xl text-yellow-500 mb-3">🎯</span>
+                    <p class="text-xl font-bold text-gray-200">الهدف الأسمى</p>
+                    <p class="text-sm text-gray-400">انتقاء لاعبين للمنتخب الوطني</p>
+                </div>
+
+                <!-- Equipment -->
+                <div class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl border border-gray-700">
+                    <span class="text-5xl text-yellow-500 mb-3">🏐</span>
+                    <p class="text-xl font-bold text-gray-200">كرة معتمدة</p>
+                    <p class="text-sm text-gray-400">أول بطولة تستخدم كرة مولتن</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- New Section: Unique Achievement -->
+        <section class="p-8 md:p-12 card fade-in-down" style="animation-delay: 0.8s;">
+            <h2 class="text-3xl font-black text-center text-gray-100 mb-8">خطوة نوعية وإنجاز فريد</h2>
+            <div class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl border border-gray-700">
+                <img src="https://absily.github.io/she3ar.jpg" alt="شعار البطولة" class="w-32 h-auto mx-auto mb-4 rounded-full shadow-lg">
+                <span class="text-5xl text-yellow-500 mb-3">✨</span>
+                <p class="text-xl font-bold text-gray-200 text-center leading-relaxed">
+                    تأتي هذه البطولة كخطوة نوعية، حيث تُنظم لأول مرة ضمن تحالف أندية، وتُعد خارج إطار اللجنة البارالمبية الليبية، مما يعكس الجهود المستقلة للأندية في تعزيز وتطوير رياضة الكرة الطائرة جلوس على المستوى الوطني.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Ceremony Section -->
+        <section class="p-8 md:p-12 card fade-in-down" style="animation-delay: 1s;">
+            <h2 class="text-3xl font-black text-center text-gray-100 mb-8">حفل الختام والتكريم</h2>
+            <div class="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-2xl border border-gray-700">
+                <span class="text-5xl text-yellow-500 mb-3">🎖️</span>
+                <p class="text-xl font-bold text-gray-200 text-center leading-relaxed">
+                    تم تكريم الفرق واللاعبين المتميزين في حفل ختام نظمته اللجنة التسييرية الليبية لاتحاد الكرة الطائرة جلوس، باستضافة نادي التضامن مصراتة لذوي الإعاقة.
+                </p>
+            </div>
+        </section>
+
+        <!-- Image Sections -->
+        <section class="p-8 md:p-12 card fade-in-down" style="animation-delay: 1.2s;">
+            <h2 class="text-3xl font-black text-center text-gray-100 mb-8">صور من البطولة (الجزء الأول)</h2>
+            <div class="flex justify-center items-center">
+                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmscdly%2Fposts%2Fpfbid0JFeayQQzMiW7pFyqwT9fYgoDQHKs6tcawyrtNsULmUrdgcwAxc2mnN58V9MAGTMCl&show_text=true&width=500" 
+                        width="500" height="760" style="border:none;overflow:hidden" scrolling="no" frameborder="0" 
+                        allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" class="rounded-xl">
+                </iframe>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 card fade-in-down" style="animation-delay: 1.4s;">
+            <h2 class="text-3xl font-black text-center text-gray-100 mb-8">صور من البطولة (الجزء الثاني)</h2>
+            <div class="flex justify-center items-center">
+                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02gFYoNiShEFmHjpPN2UeqCTZqux7pnfArjGWX5rkoENBzkSrZBBzpV1WGAM1oYefMl%26id%3D61572565255293&show_text=true&width=500" 
+                        width="500" height="695" style="border:none;overflow:hidden" scrolling="no" frameborder="0" 
+                        allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" class="rounded-xl">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- New Footer Section -->
+        <footer class="p-8 md:p-12 card text-center fade-in-down" style="animation-delay: 1.6s;">
+            <a href="https://www.absi.cc" target="_blank" class="text-2xl font-black text-yellow-400 mt-4 block">مقدم من مدونة عبدالسلام شليبك</a>
+            <p class="text-xl text-gray-300 font-medium mt-2">تحية خاصة للجهود المبذولة في تغطية هذا الحدث الرياضي الهام.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
