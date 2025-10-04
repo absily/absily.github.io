@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اللجنة البارالمبية الدولية: الهيكل، المكونات، وآلية الانتخاب</title>
+    
+    <!-- Social Media Meta Tags (Open Graph & Twitter Cards) -->
+    <meta property="og:title" content="اللجنة البارالمبية الدولية: الهيكل، المكونات، وآلية الانتخاب">
+    <meta property="og:description" content="نظرة شاملة على الهيئة العالمية المسؤولة عن الإشراف على الحركة البارالمبية وتنظيم الألعاب البارالمبية الصيفية والشتوية.">
+    <meta property="og:image" content="https://absily.github.io/989png.png">
+    <meta property="og:url" content="https://www.absi.cc/ipc-structure"> <!-- يمكنك تغيير هذا الرابط للرابط الفعلي للصفحة -->
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="اللجنة البارالمبية الدولية: الهيكل، المكونات، وآلية الانتخاب">
+    <meta name="twitter:description" content="نظرة شاملة على الهيئة العالمية المسؤولة عن الإشراف على الحركة البارالمبية وتنظيم الألعاب البارالمبية الصيفية والشتوية.">
+    <meta name="twitter:image" content="https://absily.github.io/989png.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Applying the custom font */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+            padding-top: 64px; /* Add padding to body to offset fixed navbar */
+        }
+        /* Style for accordion content to have a smooth transition */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Adjust as needed */
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Site Title -->
+                <a href="#" class="text-lg font-bold text-blue-800">اللجنة البارالمبية الدولية</a>
+
+                <!-- Desktop Menu & Search -->
+                <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+                    <a href="#intro" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">نظرة عامة</a>
+                    <a href="#assembly" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">الجمعية العمومية</a>
+                    <a href="#board" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">مجلس الإدارة</a>
+                    <a href="#committees" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">اللجان</a>
+                    <a href="#libya" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition">عضوية ليبيا</a>
+                    <div class="relative">
+                        <input id="search-input" type="search" placeholder="ابحث هنا..." class="w-48 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+             <div class="relative p-4">
+                <input id="mobile-search-input" type="search" placeholder="ابحث هنا..." class="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <a href="#intro" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">نظرة عامة</a>
+            <a href="#assembly" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">الجمعية العمومية</a>
+            <a href="#board" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">مجلس الإدارة</a>
+            <a href="#committees" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">اللجان المتخصصة</a>
+            <a href="#libya" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">عضوية ليبيا</a>
+        </div>
+    </nav>
+
+
+    <!-- Header Section -->
+    <header class="relative text-white shadow-lg h-80 md:h-96 flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://absily.github.io/989png.png');">
+        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay -->
+        <div class="relative z-10 container mx-auto px-6 py-12">
+            <img src="https://www.paralympic.org/static-assets/images/logo.png?v=" alt="شعار اللجنة البارالمبية الدولية" class="w-48 h-auto mx-auto mb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold">اللجنة البارالمبية الدولية (IPC)</h1>
+            <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto">الهيئة العالمية المشرفة على الحركة البارالمبية وتنظيم الألعاب البارالمبية.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 md:px-6 py-12">
+
+        <!-- Introduction Section -->
+        <section id="intro" class="mb-12 bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-600 searchable-section">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">نظرة عامة</h2>
+            <p class="text-lg leading-relaxed">
+                تُعد اللجنة البارالمبية الدولية (IPC) الهيئة العالمية المسؤولة عن الإشراف على الحركة البارالمبية. تأسست عام 1989 ومقرها في بون – ألمانيا، وتضم في عضويتها أكثر من 180 لجنة بارالمبية وطنية. تهدف اللجنة إلى تعزيز مشاركة الأشخاص ذوي الإعاقة في الرياضة، ضمان تكافؤ الفرص، وتشجيع القيم الإنسانية والروح الرياضية عالميًا.
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Right Column for main chapters -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Chapter 1: General Assembly -->
+                <section id="assembly" class="bg-white p-6 rounded-xl shadow-md transition-shadow hover:shadow-lg searchable-section">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 p-2 rounded-full mr-4">🔹</span>
+                        الفصل الأول: الجمعية العمومية
+                    </h3>
+                    <p class="mb-4 text-gray-600">تُعد الجمعية العمومية السلطة العليا في اللجنة، وتضم جميع الأعضاء، وهي المسؤولة عن رسم التوجهات العامة للحركة البارالمبية.</p>
+                    <ul class="space-y-3 list-inside">
+                        <li class="flex items-start"><span class="text-blue-500 font-bold mr-2 mt-1">✓</span> انتخاب رئيس اللجنة وأعضاء مجلس الإدارة.</li>
+                        <li class="flex items-start"><span class="text-blue-500 font-bold mr-2 mt-1">✓</span> المصادقة على التقارير السنوية والخطط الاستراتيجية.</li>
+                        <li class="flex items-start"><span class="text-blue-500 font-bold mr-2 mt-1">✓</span> اعتماد الميزانية والبيانات المالية.</li>
+                        <li class="flex items-start"><span class="text-blue-500 font-bold mr-2 mt-1">✓</span> مناقشة وتعديل النظام الأساسي واللوائح.</li>
+                        <li class="flex items-start"><span class="text-blue-500 font-bold mr-2 mt-1">✓</span> اتخاذ القرارات بشأن قبول أو تعليق عضوية اللجان.</li>
+                    </ul>
+                </section>
+
+                <!-- Chapter 2: Governing Board -->
+                <section id="board" class="bg-white p-6 rounded-xl shadow-md transition-shadow hover:shadow-lg searchable-section">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span class="bg-green-100 text-green-800 p-2 rounded-full mr-4">🔹</span>
+                        الفصل الثاني: مجلس الإدارة
+                    </h3>
+                    <p class="mb-4 text-gray-600">الهيئة التنفيذية العليا التي تُدير أعمال اللجنة. يتكون من الرئيس، نائب الرئيس، و10 أعضاء لمدة أربع سنوات قابلة للتجديد مرة واحدة.</p>
+                     <ul class="space-y-3 list-inside">
+                        <li class="flex items-start"><span class="text-green-500 font-bold mr-2 mt-1">✓</span> تنفيذ قرارات الجمعية العمومية.</li>
+                        <li class="flex items-start"><span class="text-green-500 font-bold mr-2 mt-1">✓</span> الإشراف على الشؤون الإدارية والمالية والفنية.</li>
+                        <li class="flex items-start"><span class="text-green-500 font-bold mr-2 mt-1">✓</span> تمثيل اللجنة أمام المنظمات العالمية.</li>
+                        <li class="flex items-start"><span class="text-green-500 font-bold mr-2 mt-1">✓</span> متابعة تطبيق القواعد والمعايير البارالمبية.</li>
+                        <li class="flex items-start"><span class="text-green-500 font-bold mr-2 mt-1">✓</span> دعم وتطوير البرامج الرياضية للأشخاص ذوي الإعاقة.</li>
+                    </ul>
+                </section>
+                
+                <!-- Chapter 3: Specialized Committees -->
+                <section id="committees" class="bg-white p-6 rounded-xl shadow-md searchable-section">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span class="bg-red-100 text-red-800 p-2 rounded-full mr-4">🔹</span>
+                        الفصل الثالث: اللجان المتخصصة
+                    </h3>
+                    <p class="mb-6 text-gray-600">تعمل هذه اللجان تحت إشراف مجلس الإدارة، وتضم خبراء ورياضيين لضمان سير العمل الفني والتنظيمي وفق أعلى المعايير.</p>
+                    
+                    <div id="accordion-container" class="space-y-4">
+                        <!-- Committee Item -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full text-right p-4 bg-gray-100 hover:bg-gray-200 focus:outline-none flex justify-between items-center font-semibold">
+                                لجنة الرياضيين (Athletes’ Council)
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-600 border-t">تمثل الرياضيين وتقدم المشورة بشأن قضاياهم، وتضمن إشراكهم في عملية صنع القرار.</p>
+                            </div>
+                        </div>
+                        <!-- Committee Item -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full text-right p-4 bg-gray-100 hover:bg-gray-200 focus:outline-none flex justify-between items-center font-semibold">
+                                لجنة التصنيف (Classification Committee)
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-600 border-t">تضع وتحدث معايير التصنيف حسب نوع الإعاقة لضمان عدالة المنافسة.</p>
+                            </div>
+                        </div>
+                        <!-- Committee Item -->
+                         <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full text-right p-4 bg-gray-100 hover:bg-gray-200 focus:outline-none flex justify-between items-center font-semibold">
+                                لجنة الأخلاقيات والانضباط
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-600 border-t">تحقق في القضايا السلوكية وتتابع الالتزام بقواعد النزاهة والشفافية.</p>
+                            </div>
+                        </div>
+                        <!-- Committee Item -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full text-right p-4 bg-gray-100 hover:bg-gray-200 focus:outline-none flex justify-between items-center font-semibold">
+                                لجنة مكافحة المنشطات
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-600 border-t">تتعاون مع (WADA) وتشرف على الفحوصات والتوعية باللعب النظيف.</p>
+                            </div>
+                        </div>
+                        <!-- Committee Item -->
+                         <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full text-right p-4 bg-gray-100 hover:bg-gray-200 focus:outline-none flex justify-between items-center font-semibold">
+                                لجنة المساواة والتنوع
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-600 border-t">تعمل لضمان تمثيل جميع الفئات دون تمييز وتعزز مشاركة المرأة والأقليات.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Chapter 6: Conclusion -->
+                <section id="conclusion" class="bg-white p-6 rounded-xl shadow-md transition-shadow hover:shadow-lg searchable-section">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 p-2 rounded-full mr-4">🔹</span>
+                        الفصل السادس
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        تمثل اللجنة البارالمبية الدولية نموذجًا عالميًا في الحوكمة الرياضية والشفافية، حيث تجمع بين التمثيل الدولي الواسع والتنظيم الدقيق. من خلال فروعها ولجانها المتخصصة، تواصل اللجنة أداء دورها الريادي في تمكين الرياضيين ونشر قيم المساواة والاحترام عبر الرياضة.
+                    </p>
+                </section>
+                
+            </div>
+            
+            <!-- Left Column for other chapters -->
+            <div class="space-y-8">
+
+                <!-- Chapter 4: Election Process -->
+                <section id="election" class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 searchable-section">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">🔹 الفصل الرابع: آلية الانتخاب</h3>
+                    <p class="mb-4 text-gray-600">يتم انتخاب الرئيس وأعضاء مجلس الإدارة خلال اجتماع الجمعية العمومية مرة كل أربع سنوات.</p>
+                    <ul class="space-y-3">
+                        <li><strong class="text-green-700">التصويت:</strong> لكل لجنة وطنية صوت واحد، ويجري التصويت بشكل سري.</li>
+                        <li><strong class="text-green-700">التجديد:</strong> يمكن إعادة انتخاب الرئيس أو الأعضاء لمرة واحدة فقط.</li>
+                        <li><strong class="text-green-700">الإشراف:</strong> تشرف لجنة مستقلة على العملية لضمان النزاهة.</li>
+                        <li><strong class="text-green-700">الشروط:</strong> يجب على المترشحين تلبية شروط الخبرة والالتزام والنزاهة.</li>
+                    </ul>
+                </section>
+                
+                <!-- Chapter 5: Libya's Membership -->
+                <section id="libya" class="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-500 searchable-section">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">🔹 الفصل الخامس: عضوية ليبيا</h3>
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgT5H8ZlZtPUmFIwk_2NPsDeKem7SyOabIXmFj16FrApt3h8jxP4UxK6BtSqsboR5Lm_j5EomnsQXe3xTUseSu7Z13dTdOSpgGmZMCL75XyY6a3F3dczQ761zUF_xEVMKTOhAgEi9TlTWOztrnbH4oLE7N-8U-QTWDhuyq0xVJw72ZepJIJcPBnQm3LmiSl=s306" alt="شعار اللجنة البارالمبية الليبية" class="w-32 h-auto mx-auto my-4 rounded-full shadow-sm">
+                    <p class="mb-4 text-gray-600">تمثل اللجنة البارالمبية الليبية عضوًا فاعلًا في الجمعية العمومية، وتشارك في جميع الاجتماعات التي تحدد السياسات العالمية.</p>
+                    <p class="mt-4 mb-4 text-gray-700 bg-red-50 p-4 rounded-lg border-r-4 border-red-300">
+                        الجدير بالذكر أنه تم تغيير مسمى "الاتحاد العام الليبي لرياضات ذوي الاحتياجات الخاصة" إلى <strong>اللجنة البارالمبية الليبية</strong> بموجب قرار رقم 273 لسنة 2007.
+                    </p>
+                    <p class="font-semibold mb-2 text-red-800">تساهم ليبيا في:</p>
+                    <ul class="space-y-2 list-disc list-inside text-gray-700">
+                       <li>التصويت على انتخاب رئيس وأعضاء مجلس الإدارة.</li>
+                       <li>تقديم مقترحات لتحسين برامج الرياضة.</li>
+                       <li>دعم مبادرات المساواة والتمثيل الرياضي.</li>
+                    </ul>
+                    <p class="mt-4 text-gray-600">
+                        تُعدّ مبادئ النظام الأساسي للجنة البارالمبية الدولية مرجعًا أساسيًا ينبغي على اللجان البارالمبية الوطنية، بما في ذلك اللجنة البارالمبية الليبية، الاستفادة منه في تطوير أنظمتها الداخلية.
+                    </p>
+                    <p class="mt-2 text-gray-600">
+                        فاتباع معايير الحوكمة والشفافية والمساءلة يعزز ثقة الرياضيين والجمهور، ويضمن أن تكون القرارات المنتخبة نزيهة وتمثل مصلحة الحركة البارالمبية الوطنية.
+                    </p>
+                    <p class="mt-2 text-gray-600">
+                        كما يُسهم الالتزام بهذه المبادئ في تحسين إدارة الموارد، وتوسيع المشاركة، وضمان العدالة في التمثيل بين الجنسين والفئات الرياضية المختلفة، وهو ما يشكّل ركيزة أساسية للنهوض برياضة الأشخاص ذوي الإعاقة على المستوى الوطني.
+                    </p>
+                </section>
+            </div>
+            
+        </div>
+        <div id="no-results" class="hidden text-center text-gray-500 mt-8 text-xl">
+            <p>لا توجد نتائج مطابقة لبحثك.</p>
+        </div>
+
+        <!-- Embedded Blog Post Section -->
+        <section id="blog-embed" class="mt-12 bg-white p-6 md:p-8 rounded-xl shadow-md border-t-4 border-gray-300 searchable-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">تدوينة ذات صلة</h2>
+            <div class="border rounded-lg overflow-hidden shadow-inner">
+                 <iframe 
+                    class="w-full h-[600px] md:h-[800px]" 
+                    src="https://www.absi.cc/2025/10/blog-post.html" 
+                    title="تدوينة من مدونة عبدالسلام شليبك" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-4 text-center">
+            <p>جميع الحقوق محفوظة &copy; 2025 <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="hover:underline">لمدونة عبدالسلام شليبك</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('span');
+                    content.classList.toggle('open');
+                    icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+            });
+
+            // Mobile menu toggle
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            const sections = document.querySelectorAll('.searchable-section');
+            const noResultsMessage = document.getElementById('no-results');
+
+            const performSearch = (event) => {
+                const searchTerm = event.target.value.toLowerCase().trim();
+                let sectionsFound = 0;
+
+                sections.forEach(section => {
+                    const sectionText = section.textContent.toLowerCase();
+                    if (sectionText.includes(searchTerm)) {
+                        section.style.display = 'block';
+                        sectionsFound++;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // Also hide/show the parent grid containers if they become empty
+                const mainGrid = document.querySelector('.grid');
+                const rightColumn = mainGrid.querySelector('.lg\\:col-span-2');
+                const leftColumn = mainGrid.querySelector('.space-y-8:not(.lg\\:col-span-2)');
+
+                const rightVisible = rightColumn.querySelector('.searchable-section[style*="display: block"]');
+                const leftVisible = leftColumn.querySelector('.searchable-section[style*="display: block"]');
+                
+                rightColumn.style.display = rightVisible ? 'block' : 'none';
+                leftColumn.style.display = leftVisible ? 'block' : 'none';
+
+
+                if (sectionsFound > 0) {
+                    noResultsMessage.classList.add('hidden');
+                } else {
+                    noResultsMessage.classList.remove('hidden');
+                }
+            };
+            
+            searchInput.addEventListener('keyup', performSearch);
+            mobileSearchInput.addEventListener('keyup', performSearch);
+
+        });
+    </script>
+
+</body>
+</html>
+
+
