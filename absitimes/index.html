@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNSMIL Meeting Report - The Libyan Forum</title>
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for a classic newspaper look (Playfair Display for serif, Lato for sans-serif) --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Apply custom fonts */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+
+        /* Classic serif font for headlines and main body */
+        .font-newspaper-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Article body styling for columns */
+        .article-body {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.9; /* leading-loose */
+            color: #374151; /* text-gray-700 */
+        }
+
+        /* Prevent paragraphs from breaking badly between columns */
+        .article-body p {
+            /* break-inside: avoid-column; */ /* No longer needed for single column */
+            margin-bottom: 1.5rem; /* space-y-6 */
+        }
+        
+        /* Remove special styling for the whole first paragraph */
+        /* .article-body p:first-of-type { ... } */
+
+        /* Add Drop Cap style for the first letter of the first paragraph */
+        .article-body p:first-of-type::first-letter {
+            font-size: 4.5rem; /* 72px */
+            font-weight: 700;
+            color: #111827; /* text-gray-900 */
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.5rem; /* 8px */
+            margin-top: 0.25rem; /* 4px */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Blog Link Moved Outside -->
+    <!-- 
+    <nav class="text-center py-4">
+        <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="text-base font-sans font-semibold text-blue-600 hover:text-blue-800 transition-colors uppercase tracking-wider">
+            Blog
+        </a>
+    </nav>
+    -->
+
+    <!-- Page container simulating a newspaper page --><div class="max-w-6xl mx-auto bg-white shadow-lg my-8 p-6 md:p-12">
+        
+        <!-- Newspaper header (simple) --><header class="border-b-2 border-black pb-6 mb-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-newspaper-serif font-bold text-gray-900 tracking-tight">absi times</h1>
+            <p class="text-sm text-gray-500 mt-2">Monday, November 3, 2025 | International Edition</p>
+            <!-- Blog Link Removed From Here -->
+            <!-- 
+            <nav class="mt-4">
+                <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="text-base font-sans font-semibold text-blue-600 hover:text-blue-800 transition-colors uppercase tracking-wider">
+                    Blog
+                </a>
+            </nav>
+            -->
+        </header>
+
+        <!-- Article --><main>
+            <article>
+                <!-- Section/Category title --><p class="text-base font-bold text-red-700 uppercase tracking-wider">Libyan Affairs</p>
+                
+                <!-- Main Headline --><h1 class="text-4xl md:text-5xl font-newspaper-serif font-bold my-3 text-gray-900 leading-tight">
+                    Disability Advocates Meet UN Mission, Demand "Genuine and Effective Representation"
+                </h1>
+                
+                <!-- Sub-headline --><p class="font-sans text-xl text-gray-600 mt-2 mb-6">
+                    Consultative meeting in Tripoli focuses on "implementation gap" and political participation challenges.
+                </p>
+
+                <!-- Author and Date info --><div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 border-y border-gray-200 py-4 mb-8 gap-4 sm:gap-0">
+                    <div>
+                        <p class="font-sans font-semibold text-gray-800 text-lg">Special Report</p>
+                        <p class="font-sans text-sm text-gray-500">Published November 3, 2025</p>
+                    </div>
+                    
+                    <!-- Author and Social Links -->
+                    <div class="flex items-center space-x-4">
+                        <span class="font-sans font-semibold text-gray-800 text-lg">Abdusalam Shlebak</span>
+                        
+                        <!-- X (Twitter) Icon -->
+                        <a href="https://x.com/absily" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900" aria-label="X (Twitter) profile">
+                            <span class="sr-only">X (Twitter)</span>
+                            <svg class="h-6 w-6 fill-current" viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6902H306.615L611.412 515.685L658.88 583.579L1055.08 1150.31H892.476L569.165 687.828Z"/></svg>
+                        </a>
+                        
+                        <!-- Facebook Icon -->
+                        <a href="https://facebook.com/absily" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600" aria-label="Facebook profile">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.294h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Main Image --><figure class="my-8">
+                    <img src="https://substackcdn.com/image/fetch/$s_!kxng!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa166bce5-fa80-49ff-b57e-e92021dabe7c_1200x695.png"
+                         alt="UNSMIL officials engaging with representatives of persons with disabilities in Libya" 
+                         class="w-full h-auto object-cover rounded shadow"
+                         onerror="this.src='https://placehold.co/1200x800/e2e8f0/64748b?text=Error+Loading+Image'; this.onerror=null;">
+                    <figcaption class="text-sm text-gray-600 font-sans mt-2 text-center px-4">
+                        Officials from the UN Support Mission in Libya (UNSMIL) engaging with representatives of organizations for persons with disabilities. Photo by UNSMIL / Elizabeth Stuart.
+                    </figcaption>
+                </figure>
+
+                <!-- Article Body (single column) --><div class="article-body">
+                    <p>
+                        In response to an official invitation from the United Nations Support Mission in Libya (UNSMIL), I participated on Monday, November 3, 2025, in a high-level consultative meeting held at the mission’s headquarters in Tripoli. The meeting brought together representatives of organizations for persons with disabilities with the Special Representative of the Secretary-General, Ms. Hanna Tetteh, and her Deputy for Political Affairs, Ms. Stephanie Khoury.
+                    </p>
+                    <p>
+                        I participated in this important meeting via the “Zoom” platform, as the meeting was dedicated to listening to the visions and demands of the disability community in Libya, and our perspectives on the priorities for political participation, especially in the context of the structured dialogue process facilitated by the mission.
+                    </p>
+                    <p>
+                        During the discussion, we, as representatives, emphasized that the biggest challenge lies not in legal texts or international agreements, but in the actual “implementation gap” of the rights of persons with disabilities in public and private life.
+                    </p>
+
+                    <!-- Second Image Added Here -->
+                    <figure class="my-8">
+                        <img src="https://substackcdn.com/image/fetch/$s_!Uf29!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff0dfb25c-6bf4-4364-8fc9-cc0ab2f13d43_1024x1024.png"
+                             alt="Screenshot from the virtual consultative meeting" 
+                             class="w-full h-auto object-cover rounded shadow"
+                             onerror="this.src='https://placehold.co/1024x1024/e2e8f0/64748b?text=Error+Loading+Image'; this.onerror=null;">
+                        <figcaption class="text-sm text-gray-600 font-sans mt-2 text-center px-4">
+                            A screenshot from the high-level consultative meeting, which was held virtually via Zoom.
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        We stressed the imperative of moving towards “genuine and effective representation” for persons with disabilities in all national tracks and elected bodies, including Parliament and municipal councils. We called for the drafting of a joint working charter with the mission to establish clear criteria ensuring the fruitful participation of persons with disabilities in the upcoming structured dialogue. We also paid great attention to the need to empower women and youth with disabilities to ensure their effective inclusion in decision-making circles.
+                    </p>
+                    <p>
+                        For her part, Ms. Hanna Tetteh affirmed the mission’s commitment to promoting inclusive participation. She highlighted the importance of involving persons with disabilities in all aspects of national life, including the “structured dialogue” process, which is a fundamental component of the political roadmap and represents one of the pillars the mission seeks to strengthen in the next phase.
+                    </p>
+                    <p>
+                        For me, this participation was a valuable opportunity to convey our voice directly to the highest levels of the United Nations in Libya, and an affirmation that disability issues are an integral part of building Libya’s democratic future. They are an inherent part of the nation’s social fabric, and their involvement in political participation is important and necessary. Any national dialogue will not be complete or successful unless it includes the voices of persons with disabilities as “key partners,” not just “recipients” of services. At the same time, persons with disabilities must also deepen their understanding of the concepts of democracy and peaceful dialogue to ensure the effectiveness of this partnership. As a note for the future, we hope that upcoming meetings will be more organized with adherence to a clear agenda, as it was observed that the discussion sometimes deviated from its designated topic, perhaps due to the large number of participants.
+                    </p>
+                </div>
+            </article>
+        </main>
+        
+        <!-- Footer --><footer class="border-t border-gray-300 mt-12 pt-6 text-center">
+            <div class="flex flex-col items-center gap-2">
+                <!-- Blog link added to footer -->
+                <a href="https://www.absi.cc" target="_blank" rel="noopener noreferrer" class="text-base font-sans font-semibold text-blue-600 hover:text-blue-800 transition-colors uppercase tracking-wider">
+                    Blog
+                </a>
+                <!-- Copyright link -->
+                <a href="https://absily.substack.com/" target="_blank" rel="noopener noreferrer" class="text-xs text-gray-500 hover:text-gray-800 transition-colors">
+                    &copy; 2025 absi times. All rights reserved.
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
