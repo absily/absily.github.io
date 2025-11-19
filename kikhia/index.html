@@ -1,9 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ========================================== -->
+    <!--      بداية إعدادات المشاركة (Meta Tags)    -->
+    <!--      هنا الحل لمشكلة ظهور الصور والوصف     -->
+    <!-- ========================================== -->
     <title>منصور الكيخيا: إرث إنساني</title>
+    <meta name="description" content="القصة الكاملة للدبلوماسي الليبي الذي غير مسار حقوق ذوي الإعاقة عالمياً.">
+
+    <!-- Facebook / WhatsApp / LinkedIn (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://absily.github.io/kikhia/">
+    <meta property="og:title" content="منصور الكيخيا: مهندس اليوم العالمي لذوي الإعاقة">
+    <meta property="og:description" content="تعرف على قصة الدبلوماسي الليبي منصور الكيخيا، صاحب مقترح السنة الدولية للمعوقين في الأمم المتحدة، وإرثه الإنساني الخالد.">
+    <meta property="og:image" content="https://absily.github.io/masur.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://absily.github.io/kikhia/">
+    <meta name="twitter:title" content="منصور الكيخيا: مهندس اليوم العالمي لذوي الإعاقة">
+    <meta name="twitter:description" content="تعرف على قصة الدبلوماسي الليبي منصور الكيخيا، صاحب مقترح السنة الدولية للمعوقين في الأمم المتحدة.">
+    <meta name="twitter:image" content="https://absily.github.io/masur.jpg">
+    <!-- ========================================== -->
+
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -71,26 +93,6 @@
             useEffect(() => {
                 setIsVisible(true);
                 
-                const metaTags = [
-                    { property: 'og:title', content: 'منصور الكيخيا: مهندس اليوم العالمي لذوي الإعاقة' },
-                    { property: 'og:description', content: 'القصة الكاملة للدبلوماسي الليبي الذي غير مسار حقوق ذوي الإعاقة عالمياً.' },
-                    { property: 'og:image', content: elKikhiaImage },
-                    { property: 'og:type', content: 'website' },
-                    { name: 'twitter:card', content: 'summary_large_image' },
-                    { name: 'twitter:image', content: elKikhiaImage },
-                ];
-                document.title = "منصور الكيخيا: إرث إنساني";
-                metaTags.forEach(tag => {
-                    let element = tag.property ? document.querySelector(`meta[property="${tag.property}"]`) : document.querySelector(`meta[name="${tag.name}"]`);
-                    if (!element) {
-                        element = document.createElement('meta');
-                        if (tag.property) element.setAttribute('property', tag.property);
-                        if (tag.name) element.setAttribute('name', tag.name);
-                        document.head.appendChild(element);
-                    }
-                    element.setAttribute('content', tag.content);
-                });
-
                 const handleScroll = () => {
                     const sections = ['hero', 'bio', 'initiative', 'motivation', 'timeline', 'tragedy', 'jihan', 'full-story', 'legacy'];
                     const scrollPosition = window.scrollY + 300;
