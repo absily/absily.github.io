@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
     // IMPORTANT: PASTE YOUR GOOGLE SCRIPT WEB APP URL BELOW
     // ---------------------------------------------------------
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweqQKJ18SdloPCQQJfFFU9Yn0JR-LNSIpTbBQhXTK280cBbXyz23aM6SiZO5sZLq7I/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfzkcEMur4GsdfnLYwWXfaec143sTseusyqhnKjhRWGdkBoIOLphZ50Vso7hwjGA2Q/exec';
     // Example: 'https://script.google.com/macros/s/AKfycbx.../exec'
     // ---------------------------------------------------------
 
@@ -108,12 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
             url.searchParams.append('email', form.email.value);
             url.searchParams.append('disability_type', form.disability_type.value);
 
+            // Prepare data for Body as well (Double assurance)
+            const formData = new URLSearchParams();
+            formData.append('name', form.name.value);
+            formData.append('email', form.email.value);
+            formData.append('disability_type', form.disability_type.value);
+
             await fetch(url, {
                 method: 'POST',
-                mode: 'no-cors', // This is key for simple Google Script POSTs from client
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                },
+                body: formData.toString()
             });
 
             // Since we use no-cors, we can't check response.ok. We assume it went through.

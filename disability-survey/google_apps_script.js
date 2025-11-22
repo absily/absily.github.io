@@ -23,16 +23,14 @@ function doPost(e) {
     var email = params.email;
     var disability_type = params.disability_type;
 
-    // Simple validation
-    if (!name || !email || !disability_type) {
-        return ContentService.createTextOutput(JSON.stringify({ "result": "error", "message": "Missing data" })).setMimeType(ContentService.MimeType.JSON);
-    }
+    // Relaxed validation for debugging
+    // Instead of returning error, we will save whatever we get, or "Missing"
+    var finalName = name || "Missing Name";
+    var finalEmail = email || "Missing Email";
+    var finalDisability = disability_type || "Missing Type";
 
     // Append data
-    sheet.appendRow([new Date(), name, email, disability_type]);
+    sheet.appendRow([new Date(), finalName, finalEmail, finalDisability]);
 
-    // Return success
-    // Note: When using 'no-cors' in fetch, the browser won't see this JSON response, 
-    // but it's good practice to return it for other clients or debugging.
-    return ContentService.createTextOutput(JSON.stringify({ "result": "success", "message": "Data saved successfully" })).setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ "result": "success", "message": "Data saved" })).setMimeType(ContentService.MimeType.JSON);
 }
