@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshBtn = document.getElementById('refreshCaptcha');
     const captchaInput = document.getElementById('captchaInput');
 
-    // PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE
-    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+    // ---------------------------------------------------------
+    // IMPORTANT: PASTE YOUR GOOGLE SCRIPT WEB APP URL BELOW
+    // ---------------------------------------------------------
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweqQKJ18SdloPCQQJfFFU9Yn0JR-LNSIpTbBQhXTK280cBbXyz23aM6SiZO5sZLq7I/exec';
+    // Example: 'https://script.google.com/macros/s/AKfycbx.../exec'
+    // ---------------------------------------------------------
 
     let captchaText = '';
 
