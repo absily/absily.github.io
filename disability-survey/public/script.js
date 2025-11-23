@@ -124,4 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(updateTime, 1000);
     updateTime(); // Initial call
+
+    // Disclaimer Dismiss Logic
+    const closeDisclaimerBtn = document.getElementById('closeDisclaimer');
+    const disclaimerBanner = document.getElementById('disclaimerBanner');
+
+    if (closeDisclaimerBtn && disclaimerBanner) {
+        closeDisclaimerBtn.addEventListener('click', () => {
+            disclaimerBanner.style.opacity = '0';
+            setTimeout(() => {
+                disclaimerBanner.style.display = 'none';
+            }, 300); // Wait for transition if any, or just remove
+        });
+    }
 });

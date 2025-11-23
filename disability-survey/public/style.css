@@ -45,6 +45,8 @@ body {
     max-width: 500px;
     animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    /* Center inline elements like time display */
 }
 
 /* Header & Logo Styles */
@@ -101,6 +103,8 @@ header p {
 /* Form Styles */
 .form-group {
     margin-bottom: 20px;
+    text-align: right;
+    /* Reset text align for form inputs */
 }
 
 label {
@@ -287,18 +291,64 @@ footer a:hover {
     padding: 8px 15px;
     border-radius: 20px;
     display: inline-block;
-    /* Center the inline-block in the parent flex/block container */
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Ensure container centers the time display */
-.container {
-    text-align: center;
-    /* This helps center inline-block children like .time-display if not flex */
+/* Disclaimer Banner */
+.disclaimer-banner {
+    background-color: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #fdba74;
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(234, 88, 12, 0.1);
+    animation: slideDown 0.5s ease-out;
 }
 
-/* Reset text-align for form elements to ensure they look right */
-.form-group {
-    text-align: right;
+.disclaimer-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.disclaimer-banner i {
+    font-size: 1.2rem;
+}
+
+.close-disclaimer {
+    background: none;
+    border: none;
+    color: #c2410c;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-disclaimer:hover {
+    background-color: rgba(194, 65, 12, 0.1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
