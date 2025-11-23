@@ -59,85 +59,47 @@ document.addEventListener('DOMContentLoaded', () => {
     generateCaptcha();
     refreshBtn.addEventListener('click', generateCaptcha);
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    let submitted = false;
 
+    form.addEventListener('submit', (e) => {
         // Validate Captcha
         if (captchaInput.value.toUpperCase() !== captchaText) {
+            e.preventDefault(); // Stop submission if captcha is wrong
             messageDiv.textContent = 'رمز التحقق غير صحيح';
             messageDiv.classList.remove('hidden');
             messageDiv.className = 'message error';
             return;
         }
 
-        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-            messageDiv.textContent = 'خطأ: لم يتم إعداد رابط Google Script بعد.';
-            messageDiv.classList.remove('hidden');
-            messageDiv.className = 'message error';
-            return;
-        }
+        // If Captcha is correct, we let the form submit naturally to the iframe.
+        // We just update the UI to show "Sending..."
 
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerText;
         submitBtn.disabled = true;
         submitBtn.innerText = 'جاري الإرسال...';
         messageDiv.classList.add('hidden');
+        submitted = true;
+    });
 
-        // Create FormData for Google Sheets
-        // We use URLSearchParams to send as x-www-form-urlencoded or just append to URL
-        // Google Apps Script doPost(e) handles parameters well.
-        const formData = new FormData();
-        formData.append('name', form.name.value);
-        formData.append('email', form.email.value);
-        formData.append('disability_type', form.disability_type.value);
+    // Listen for the iframe to load (which means response came back)
+    const iframe = document.getElementById('hidden_iframe');
+    iframe.addEventListener('load', () => {
+        if (submitted) {
+            const submitBtn = form.querySelector('button[type="submit"]');
 
-        try {
-            // Using no-cors mode because Google Scripts redirects and CORS can be tricky.
-            // However, with no-cors we can't read the response JSON.
-            // Standard practice for simple forms is to assume success if no network error,
-            // or use a hidden iframe, or use a proxy. 
-            // For this simple task, we will try standard fetch. If CORS fails, we might need a workaround.
-            // Actually, Google Apps Script Web Apps *do* support CORS if you return the right headers,
-            // but the redirect (302) often causes issues in fetch.
-            // The most reliable way for simple static sites is often sending data and assuming success,
-            // or using ContentService.createTextOutput with JSONP (older way).
-            // Let's try standard fetch with redirect: 'follow'.
-
-            const url = new URL(GOOGLE_SCRIPT_URL);
-            url.searchParams.append('name', form.name.value);
-            url.searchParams.append('email', form.email.value);
-            url.searchParams.append('disability_type', form.disability_type.value);
-
-            // Prepare data for Body as well (Double assurance)
-            const formData = new URLSearchParams();
-            formData.append('name', form.name.value);
-            formData.append('email', form.email.value);
-            formData.append('disability_type', form.disability_type.value);
-
-            await fetch(url, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: formData.toString()
-            });
-
-            // Since we use no-cors, we can't check response.ok. We assume it went through.
+            // Show success message
             messageDiv.textContent = 'تم إرسال البيانات بنجاح';
             messageDiv.classList.remove('hidden');
             messageDiv.className = 'message success';
+
+            // Reset form
             form.reset();
             generateCaptcha();
 
-        } catch (error) {
-            console.error(error);
-            messageDiv.textContent = 'حدث خطأ أثناء الاتصال بالخادم';
-            messageDiv.classList.remove('hidden');
-            messageDiv.className = 'message error';
-        } finally {
+            // Reset button
             submitBtn.disabled = false;
-            submitBtn.innerText = originalBtnText;
+            submitBtn.innerText = 'إرسال البيانات';
+            submitted = false;
         }
     });
 });
