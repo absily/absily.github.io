@@ -18,27 +18,22 @@
 }
 
 body {
-    font-family: 'Tajawal', sans-serif;
-    /* Fallback background */
-    background-color: #1e293b;
-    /* Premium Background Image with Overlay */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('background.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    color: var(--text-color);
     display: flex;
     justify-content: center;
-    /* Centered Layout */
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    font-family: 'Tajawal', sans-serif;
+    background-image: url('background_logo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container {
     /* Glassmorphism Effect */
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.4);
     /* High Transparency */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -256,4 +251,23 @@ footer a {
 footer a:hover {
     color: var(--primary-dark);
     text-decoration: underline;
+}
+
+/* Social Media Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.social-icon {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
