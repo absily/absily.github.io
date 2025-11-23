@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
     // IMPORTANT: PASTE YOUR GOOGLE SCRIPT WEB APP URL BELOW
     // ---------------------------------------------------------
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfzkcEMur4GsdfnLYwWXfaec143sTseusyqhnKjhRWGdkBoIOLphZ50Vso7hwjGA2Q/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzmU8nW7MpeAZbDDnAxJywqA5k6eC-duv86bN_RYK4Povs7DGJs6oCB1HjOZMPvFYFV0g/exec';
     // Example: 'https://script.google.com/macros/s/AKfycbx.../exec'
     // ---------------------------------------------------------
 

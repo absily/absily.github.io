@@ -9,28 +9,41 @@
 // 9. Click "Deploy"
 // 10. Copy the "Web App URL" and paste it into public/script.js
 
+// Handle GET requests (for testing in browser)
+function doGet(e) {
+    return handleRequest(e);
+}
+
+// Handle POST requests (from the form)
 function doPost(e) {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    return handleRequest(e);
+}
 
-    // Check if headers exist, if not add them
-    if (sheet.getLastRow() === 0) {
-        sheet.appendRow(["Timestamp", "Name", "Email", "Disability Type"]);
+function handleRequest(e) {
+    try {
+        var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+        // Log the event for debugging
+        Logger.log(JSON.stringify(e));
+
+        // Check if headers exist, if not add them
+        if (sheet.getLastRow() === 0) {
+            sheet.appendRow(["Timestamp", "Name", "Email", "Disability Type"]);
+        }
+
+        var params = e.parameter || {};
+
+        var name = params.name || "Test Name";
+        var email = params.email || "test@email.com";
+        var disability_type = params.disability_type || "Test Type";
+
+        // Append data
+        sheet.appendRow([new Date(), name, email, disability_type]);
+
+        return ContentService.createTextOutput(JSON.stringify({ "result": "success", "message": "Data saved" })).setMimeType(ContentService.MimeType.JSON);
+
+    } catch (error) {
+        Logger.log("Error: " + error.toString());
+        return ContentService.createTextOutput(JSON.stringify({ "result": "error", "message": error.toString() })).setMimeType(ContentService.MimeType.JSON);
     }
-
-    var params = e.parameter;
-
-    var name = params.name;
-    var email = params.email;
-    var disability_type = params.disability_type;
-
-    // Relaxed validation for debugging
-    // Instead of returning error, we will save whatever we get, or "Missing"
-    var finalName = name || "Missing Name";
-    var finalEmail = email || "Missing Email";
-    var finalDisability = disability_type || "Missing Type";
-
-    // Append data
-    sheet.appendRow([new Date(), finalName, finalEmail, finalDisability]);
-
-    return ContentService.createTextOutput(JSON.stringify({ "result": "success", "message": "Data saved" })).setMimeType(ContentService.MimeType.JSON);
 }
