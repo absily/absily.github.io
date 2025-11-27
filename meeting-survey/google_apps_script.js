@@ -1,11 +1,27 @@
 // This script should be put in a Google Apps Script project attached to a Google Sheet.
 
+function doGet(e) {
+    return ContentService.createTextOutput(JSON.stringify({
+        'result': 'success',
+        'message': 'Server is running. Send a POST request to submit data.'
+    })).setMimeType(ContentService.MimeType.JSON);
+}
+
 function doPost(e) {
     var lock = LockService.getScriptLock();
-    lock.tryLock(10000);
+    // Wait for up to 30 seconds for other processes to finish.
+    lock.tryLock(30000);
 
     try {
         var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+        // Ensure postData exists
+        if (!e || !e.postData || !e.postData.contents) {
+            return ContentService.createTextOutput(JSON.stringify({
+                'result': 'error',
+                'message': 'No data received'
+            })).setMimeType(ContentService.MimeType.JSON);
+        }
 
         // Parse the incoming JSON data
         var data = JSON.parse(e.postData.contents);
@@ -35,20 +51,26 @@ function doPost(e) {
 
         return ContentService.createTextOutput(JSON.stringify({ 'result': 'success' })).setMimeType(ContentService.MimeType.JSON);
 
-    } catch (e) {
-        return ContentService.createTextOutput(JSON.stringify({ 'result': 'error', 'error': e })).setMimeType(ContentService.MimeType.JSON);
+    } catch (error) {
+        return ContentService.createTextOutput(JSON.stringify({
+            'result': 'error',
+            'message': error.toString()
+        })).setMimeType(ContentService.MimeType.JSON);
     } finally {
         lock.releaseLock();
     }
 }
 
 function isIpAlreadyRegistered(sheet, ip) {
-    if (!ip || ip === 'Unknown') return false; // Allow unknown IPs to proceed (or block if preferred)
+    if (!ip || ip === 'Unknown') return false;
 
     var data = sheet.getDataRange().getValues();
+    if (data.length <= 1) return false; // Only headers or empty
+
     // Assuming IP is in column 2 (index 1)
     for (var i = 1; i < data.length; i++) {
-        if (data[i][1] == ip) {
+        // Check if row has enough columns
+        if (data[i].length > 1 && data[i][1] == ip) {
             return true;
         }
     }

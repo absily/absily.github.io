@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhnf1cyE8cmD-7Cw23abtlR9_lMwo__wZ0Ujqf8zRV8C60Nrd2KywAs_8Zs0_6W1gfEg/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMj4SfQtHtNGEQpZVBRrgk4P4AFkax4aHU_tag7BxzmLSsk1Q06qwIBKbO3hygpQsv_w/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('surveyForm');
