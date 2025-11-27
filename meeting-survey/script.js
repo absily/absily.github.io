@@ -89,26 +89,20 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                redirect: 'follow',
+                mode: 'no-cors',
                 headers: {
                     "Content-Type": "text/plain;charset=utf-8",
                 },
                 body: JSON.stringify(data)
             })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.result === 'error') {
-                        throw new Error(result.message);
-                    }
+                .then(() => {
+                    // With no-cors, we get an opaque response and cannot read the result.
+                    // We assume success if the request completes.
                     completeSubmission();
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    if (error.message.includes('Duplicate IP')) {
-                        alert('عذراً، لا يمكن التسجيل أكثر من مرة من نفس الجهاز/الشبكة.');
-                    } else {
-                        alert('حدث خطأ أثناء الإرسال: ' + error.message);
-                    }
+                    alert('حدث خطأ أثناء الإرسال: ' + error.message);
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span>إرسال الاستبيان</span><i class="fa-solid fa-paper-plane"></i>';
                 });
