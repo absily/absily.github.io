@@ -89,6 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             fetch(SCRIPT_URL, {
                 method: 'POST',
+                redirect: 'follow',
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
                 body: JSON.stringify(data)
             })
                 .then(response => response.json())
@@ -103,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (error.message.includes('Duplicate IP')) {
                         alert('عذراً، لا يمكن التسجيل أكثر من مرة من نفس الجهاز/الشبكة.');
                     } else {
-                        alert('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.');
+                        alert('حدث خطأ أثناء الإرسال: ' + error.message);
                     }
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span>إرسال الاستبيان</span><i class="fa-solid fa-paper-plane"></i>';
