@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwWMGo34WM9PJzwrqJvKv5NloOo2ytgnerb1EHTbDe9KJmXRE4G5pYtQiOivNRns566g/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhnf1cyE8cmD-7Cw23abtlR9_lMwo__wZ0Ujqf8zRV8C60Nrd2KywAs_8Zs0_6W1gfEg/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('surveyForm');
@@ -89,20 +89,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     "Content-Type": "text/plain;charset=utf-8",
                 },
                 body: JSON.stringify(data)
             })
-                .then(() => {
-                    // With no-cors, we get an opaque response and cannot read the result.
-                    // We assume success if the request completes.
-                    completeSubmission();
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        completeSubmission();
+                    } else {
+                        throw new Error(data.message || 'Unknown error');
+                    }
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    alert('حدث خطأ أثناء الإرسال: ' + error.message);
+                    if (error.message === 'Duplicate IP') {
+                        alert('عذراً، لا يمكن إرسال الاستبيان أكثر من مرة من نفس الشبكة.');
+                    } else {
+                        alert('حدث خطأ أثناء الإرسال: ' + error.message);
+                    }
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span>إرسال الاستبيان</span><i class="fa-solid fa-paper-plane"></i>';
                 });
