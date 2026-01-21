@@ -778,6 +778,8 @@
         let postsLimit = 10;
         let postsUnsubscribe = null;
         let pendingDelete = null; // MOVED HERE FOR SAFETY
+        let fetchError = null; // To store fetch errors
+
 
         // *** SECURITY: ADD YOUR EMAIL HERE ***
         const ADMIN_EMAILS = ["ibloggerly@gmail.com"];
@@ -1029,6 +1031,13 @@
         function renderList() {
             const container = document.getElementById('feed-container');
             if (!container) return;
+
+            // SHOW ERROR IF EXISTS
+            if (fetchError) {
+                container.innerHTML = `<div class="empty-state" style="color:red;">${fetchError}</div>`;
+                return;
+            }
+
             if (postsData.length === 0) { container.innerHTML = '<div class="empty-state">كن أول من ينشر هنا!</div>'; return; }
 
             let html = '';
@@ -1323,13 +1332,23 @@
 
         listenToConfig(); // Load Design
 
-        if (targetPostId) {
-            // LOAD SINGLE POST
-            loadSinglePost(targetPostId);
-        } else {
-            // LOAD FULL FEED
-            listenToFeed();
-        }
+        // AUTH LISTENER & DATA LOADING TRIGGER
+        let dataLoaded = false;
+
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            renderApp();
+
+            // Prevent multiple loads, but insure it runs once auth is ready
+            if (!dataLoaded || targetPostId) {
+                if (targetPostId) {
+                    loadSinglePostV2(targetPostId);
+                } else {
+                    listenToFeed();
+                }
+                dataLoaded = true;
+            }
+        });
 
         async function loadSinglePost(id) {
             const appEl = document.getElementById('feed-container');
@@ -1356,7 +1375,8 @@
 
         // SHARE LOGIC
         window.openShareModal = (id) => {
-            const baseUrl = window.location.origin + window.location.pathname;
+            // Ensure we use the correct encoded URL
+            const baseUrl = window.location.href.split('?')[0];
             const directLink = `${baseUrl}?id=${id}`;
             const embedCode = `<iframe src="${directLink}&embed=true" width="100%" height="600" frameborder="0" style="border-radius:12px; border:1px solid #eee;"></iframe>`;
 
@@ -1379,12 +1399,42 @@
         // REPLACE ALL ALERTS
         window.alert = window.showCustomAlert;
 
-        onAuthStateChanged(auth, (user) => {
-            currentUser = user;
-            renderApp();
-        });
+        // V2 LOADER (Inside Module)
+        async function loadSinglePostV2(id) {
+            console.log("Loading single post V2:", id);
+            try {
+                const docRef = doc(db, "posts", id);
+                if (postsUnsubscribe) postsUnsubscribe();
+
+                postsUnsubscribe = onSnapshot(docRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        postsData = [{ id: docSnap.id, ...docSnap.data() }];
+                        fetchError = null;
+                        renderList();
+                        setTimeout(() => {
+                            const lm = document.getElementById('load-more-container');
+                            if (lm) lm.style.display = 'none';
+                        }, 100);
+                    } else {
+                        postsData = [];
+                        fetchError = "❌ عذراً، هذا الموضوع غير موجود أو تم حذفه.";
+                        renderList();
+                    }
+                }, (error) => {
+                    fetchError = "خطأ: " + error.message;
+                    renderList();
+                });
+            } catch (e) {
+                fetchError = 'حدث خطأ: ' + e.message;
+                renderList();
+            }
+        }
+
+
 
     </script>
 </body>
+
+</html>
 
 </html>
