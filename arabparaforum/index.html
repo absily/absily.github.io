@@ -1044,7 +1044,8 @@
                 });
                 // alert("تم التصويت بنجاح! شكراً لمشاركتك 🎉", true); // Optional success msg
             } catch (e) {
-                alert(e);
+                if (typeof e === 'string') showCustomAlert(e);
+                else handleFirebaseError(e);
             }
         };
 
@@ -1223,7 +1224,9 @@
                 document.getElementById('lock-comments').checked = false;
                 document.getElementById('btn-toggle-poll').classList.remove('active');
                 document.querySelectorAll('.poll-opt-input').forEach(i => i.value = "");
-            } catch (e) { alert("حدث خطأ: " + e.message); }
+                document.getElementById('btn-toggle-poll').classList.remove('active');
+                document.querySelectorAll('.poll-opt-input').forEach(i => i.value = "");
+            } catch (e) { handleFirebaseError(e); }
             postBtn.disabled = false;
             postBtn.innerText = 'نشر 🚀';
         };
@@ -1253,7 +1256,10 @@
                     transaction.update(postRef, { comments: comments });
                 });
                 input.value = ""; // Clear input
-            } catch (e) { alert(e); }
+            } catch (e) {
+                if (typeof e === 'string') showCustomAlert(e);
+                else handleFirebaseError(e);
+            }
         };
 
         // --- DELETE SYSTEM ---
@@ -1410,6 +1416,16 @@
             document.getElementById('share-embed').value = embedCode;
             document.getElementById('share-modal').style.display = 'flex';
         };
+
+        // --- ERROR HANDLER ---
+        function handleFirebaseError(e) {
+            console.error(e);
+            if (e.code === 'permission-denied' || e.message.includes('permission-denied')) {
+                showCustomAlert("⛔ خطأ صلاحيات: يجب تحديث قواعد الأمان (Rules) في Firebase Console للسماح للزوار بالمشاركة.");
+            } else {
+                showCustomAlert("حدث خطأ: " + e.message);
+            }
+        }
 
         // --- CUSTOM ALERT SYSTEM ---
         window.showCustomAlert = (msg, isSuccess = false) => {
