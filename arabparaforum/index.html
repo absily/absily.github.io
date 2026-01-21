@@ -306,8 +306,6 @@
             }
         }
 
-
-
         .post-header {
             display: flex;
             justify-content: space-between;
@@ -473,6 +471,140 @@
             color: #777;
             padding: 40px;
         }
+
+        /* --- POLL STYLES --- */
+        .poll-container {
+            margin-top: 15px;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .poll-option {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .poll-option:hover {
+            border-color: var(--primary-color);
+            background: #f0f7ff;
+        }
+
+        .poll-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 86, 179, 0.1);
+            z-index: -1;
+            transition: width 0.5s ease;
+        }
+
+        .poll-meta {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        /* New Composer Inputs */
+        .input-title {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #f0f2f5;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+        }
+
+        .input-title:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .poll-creator-area {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .poll-input-row {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .poll-input-row input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .btn-toggle-poll {
+            background: none;
+            border: 1px solid #ddd;
+            color: #666;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        .btn-toggle-poll.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .topic-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        /* --- EMBED MODE --- */
+        body.embed-mode {
+            background: transparent;
+            padding: 0;
+        }
+
+        .embed-mode .app-container {
+            padding: 0;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .embed-mode #site-header,
+        .embed-mode .auth-bar,
+        .embed-mode .composer,
+        .embed-mode .app-footer,
+        .embed-mode .post-header button {
+            display: none !important;
+        }
+
+        .embed-mode .post-card {
+            box-shadow: none;
+            border: 1px solid #eee;
+            margin: 0;
+            border-radius: 0;
+        }
     </style>
 </head>
 
@@ -493,6 +625,9 @@
             <!-- Admin Toggle (Injected via JS if Admin) -->
             <div id="admin-controls-area"></div>
         </header>
+
+        <!-- CUSTOM BANNER AREA -->
+        <div id="banner-container" style="margin-bottom: 20px; text-align: center;"></div>
 
         <!-- App Interface -->
         <div id="app">
@@ -543,6 +678,18 @@
                 <label>اللون الرئيسي للموقع (لون التمييز)</label>
                 <input type="color" id="config-color" value="#0056b3" style="height:50px; cursor:pointer;">
             </div>
+            <div class="input-group" style="display:flex; align-items:center; gap:10px; margin-top:20px;">
+                <input type="checkbox" id="config-guests" style="width:20px; height:20px;">
+                <label for="config-guests" style="margin:0; font-size:14px; cursor:pointer;">✅ السماح للزوار بالنشر
+                    (Guest Posting)</label>
+            </div>
+
+            <div class="input-group" style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
+                <label>مساحة إعلانية / كود مخصص (HTML)</label>
+                <textarea id="config-banner" placeholder="<div>كود إعلان أو صورة...</div>"
+                    style="width:100%; height:80px; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:monospace; direction:ltr;"></textarea>
+                <small style="color:#888;">يمكنك وضع كود Adsense أو HTML أو صور هنا.</small>
+            </div>
             <div class="modal-footer">
                 <button class="btn-cancel" onclick="closeSettings()">إلغاء</button>
                 <button class="btn-save" onclick="saveSettings()">حفظ التعديلات</button>
@@ -550,10 +697,62 @@
         </div>
     </div>
 
+    <!-- DELETE CONFIRMATION MODAL -->
+    <div id="delete-modal" class="modal-overlay" style="z-index:10000;">
+        <div class="modal" style="text-align:center; max-width:320px; padding:30px;">
+            <div style="font-size:40px; margin-bottom:10px;">🗑️</div>
+            <h3 style="border:none; margin-bottom:10px;">هل أنت متأكد؟</h3>
+            <p style="margin-bottom:25px; color:#666; font-size:14px;">لا يمكن التراجع عن عملية الحذف هذه.</p>
+            <div class="modal-footer" style="justify-content:center; gap:15px; margin-top:0;">
+                <button class="btn-cancel" onclick="closeDeleteModal()" style="padding:10px 20px;">إلغاء</button>
+                <button class="btn-save" id="btn-confirm-delete" style="background:#e53e3e; padding:10px 20px;"
+                    onclick="executeDelete()">نعم، حذف</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- GENERIC ALERT MODAL -->
+    <div id="alert-modal" class="modal-overlay" style="z-index:10002;">
+        <div class="modal" style="text-align:center; max-width:320px; padding:30px;">
+            <div id="alert-icon" style="font-size:40px; margin-bottom:10px;">🔔</div>
+            <p id="alert-message" style="margin-bottom:25px; color:#333; font-size:16px; font-weight:bold;"></p>
+            <div class="modal-footer" style="justify-content:center; margin-top:0;">
+                <button class="btn-save" onclick="document.getElementById('alert-modal').style.display='none'"
+                    style="width:100%;">موافق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHARE MODAL -->
+    <div id="share-modal" class="modal-overlay" style="z-index:10001;">
+        <div class="modal">
+            <h3>🔗 مشاركة الموضوع</h3>
+            <div class="input-group">
+                <label>رابط مباشر:</label>
+                <input type="text" id="share-link" readonly onclick="this.select()">
+            </div>
+            <div class="input-group">
+                <label>كود التضمين (Embed):</label>
+                <textarea id="share-embed" readonly onclick="this.select()"
+                    style="width:100%; height:80px; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:monospace; direction:ltr; font-size:12px;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel"
+                    onclick="document.getElementById('share-modal').style.display='none'">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FIREBASE SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, deleteDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, deleteDoc, doc, setDoc, limit, runTransaction, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         // *** CONFIG ***
@@ -571,15 +770,15 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
         const googleProvider = new GoogleAuthProvider();
-        const facebookProvider = new FacebookAuthProvider();
-        const twitterProvider = new TwitterAuthProvider();
 
         // STATE
         let currentUser = null;
         let postsData = [];
-        let appConfig = { title: "Paralympic بالعربي", logo: "", desc: "مساحة للنقاش" }; // Defaults
+        let appConfig = { title: "Paralympic بالعربي", logo: "", desc: "مساحة للنقاش", allowGuests: false }; // Defaults
+        let postsLimit = 10;
+        let postsUnsubscribe = null;
+        let pendingDelete = null; // MOVED HERE FOR SAFETY
 
-        // *** SECURITY: ADD YOUR EMAIL HERE ***
         // *** SECURITY: ADD YOUR EMAIL HERE ***
         const ADMIN_EMAILS = ["ibloggerly@gmail.com"];
 
@@ -591,17 +790,27 @@
                 if (docSnap.exists()) appConfig = docSnap.data();
                 renderHeader();
 
+                // RENDER BANNER
+                const bannerEl = document.getElementById('banner-container');
+                if (appConfig.bannerHtml) {
+                    bannerEl.innerHTML = appConfig.bannerHtml;
+                    bannerEl.style.display = 'block';
+                } else {
+                    bannerEl.style.display = 'none';
+                    bannerEl.innerHTML = '';
+                }
+
+                renderApp(); // Re-render to show/hide composer based on new config
+
                 // APPLY DYNAMIC THEME COLOR
                 if (appConfig.themeColor) {
                     document.documentElement.style.setProperty('--primary-color', appConfig.themeColor);
-                    // Lighter hover variant (simple brightness logic or fixed offset)
                     document.documentElement.style.setProperty('--primary-hover', appConfig.themeColor);
                 }
             });
         }
 
         function renderHeader() {
-            // 1. Header Content
             const container = document.getElementById('header-content');
             if (appConfig.logo && appConfig.logo.trim() !== '') {
                 container.innerHTML = `<img src="${appConfig.logo}" class="logo-img" alt="${appConfig.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='⚠️ رابط الصورة معطوب'">`;
@@ -609,40 +818,41 @@
                 container.innerHTML = `<div class="site-title-text">${appConfig.title}</div>`;
             }
 
-            // 2. Admin Button (SECURED)
+            // ADMIN BUTTON
             const adminArea = document.getElementById('admin-controls-area');
-            if (currentUser && ADMIN_EMAILS.includes(currentUser.email)) {
-                adminArea.innerHTML = `<button class="admin-settings-btn" onclick="openSettings()">⚙️ إعدادات التصميم</button>`;
+            const isAdmin = currentUser && ADMIN_EMAILS.includes(currentUser.email);
+
+            if (isAdmin) {
+                adminArea.innerHTML = `<button class="admin-settings-btn" onclick="openSettings()">⚙️ إعدادات المنتدى</button>`;
             } else {
                 adminArea.innerHTML = '';
             }
-
-            const subTitleEl = document.querySelector('.app-subtitle');
-            if (subTitleEl) subTitleEl.innerText = appConfig.desc;
         }
 
-        // ...
-
+        // --- 4. ADMIN & SETTINGS HANDLERS ---
         // --- 4. ADMIN & SETTINGS HANDLERS ---
         window.openSettings = () => {
             document.getElementById('config-title').value = appConfig.title || '';
             document.getElementById('config-logo').value = appConfig.logo || '';
             document.getElementById('config-desc').value = appConfig.desc || '';
             document.getElementById('config-color').value = appConfig.themeColor || '#0056b3';
+            document.getElementById('config-guests').checked = appConfig.allowGuests || false;
+            document.getElementById('config-banner').value = appConfig.bannerHtml || '';
             document.getElementById('settings-modal').style.display = 'flex';
         };
 
         window.closeSettings = () => { document.getElementById('settings-modal').style.display = 'none'; };
 
         window.saveSettings = async () => {
-            // SECURITY CHECK
             if (!currentUser || !ADMIN_EMAILS.includes(currentUser.email)) return alert("عذراً، هذه الصلاحية للمدراء فقط! ⛔");
 
             const newConfig = {
                 title: document.getElementById('config-title').value,
                 logo: document.getElementById('config-logo').value,
                 desc: document.getElementById('config-desc').value,
-                themeColor: document.getElementById('config-color').value
+                themeColor: document.getElementById('config-color').value,
+                allowGuests: document.getElementById('config-guests').checked,
+                bannerHtml: document.getElementById('config-banner').value
             };
 
             const btn = document.querySelector('#settings-modal .btn-save');
@@ -651,14 +861,15 @@
             try {
                 await setDoc(doc(db, "config", "main"), newConfig);
                 window.closeSettings();
-                alert("تم حفظ التصميم والألوان بنجاح! 🎨✅");
-            } catch (e) { alert("حدث خطأ: " + e.message); }
+                alert("تم حفظ الإعدادات! 👌");
+            } catch (e) { alert("خطأ: " + e.message); }
             btn.innerText = 'حفظ التعديلات';
         };
 
         // --- 2. MAIN APP RENDER ---
         function renderApp() {
             const appEl = document.getElementById('app');
+            const canPost = currentUser || appConfig.allowGuests;
 
             appEl.innerHTML = `
         <div class="auth-bar">
@@ -680,15 +891,42 @@
             `}
         </div>
 
+        ${canPost ? `
         <div class="composer">
-            <textarea id="post-input" placeholder="اكتب شيئاً..."></textarea>
-            <div class="composer-footer">
+            <input id="post-title" class="input-title" placeholder="عنوان الموضوع (اختياري)..." maxlength="60">
+            <textarea id="post-input" placeholder="اكتب تفاصيل الموضوع هنا..."></textarea>
+            
+            <div id="poll-creator" class="poll-creator-area">
+                <div style="font-weight:bold; margin-bottom:5px; font-size:13px;">📊 خيارات التصويت:</div>
+                <div id="poll-options-container">
+                    <div class="poll-input-row"><input class="poll-opt-input" placeholder="الخيار الأول"></div>
+                    <div class="poll-input-row"><input class="poll-opt-input" placeholder="الخيار الثاني"></div>
+                </div>
+                <button onclick="addPollOption()" style="background:#eee; border:none; padding:5px 10px; border-radius:5px; font-size:12px; cursor:pointer; width:100%; margin-top:5px;">+ أضف خياراً آخر</button>
+            </div>
+
+            <div class="composer-footer" style="justify-content: space-between; align-items: center;">
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <button id="btn-toggle-poll" class="btn-toggle-poll" onclick="togglePollCreator()">📊 إضافة تصويت</button>
+                    <div style="display:flex; align-items:center;">
+                        <input type="checkbox" id="lock-comments" style="width:16px; height:16px;">
+                        <label for="lock-comments" style="margin-right:5px; font-size:12px; color:#666; cursor:pointer;">🔒 غلق التعليقات</label>
+                    </div>
+                </div>
                 <button id="btn-post" class="btn-post">نشر 🚀</button>
             </div>
+        </div>` : `
+        <div class="composer" style="text-align:center; color:#666; padding:30px;">
+            🔒 <strong>يجب عليك تسجيل الدخول للمشاركة في النقاش</strong>
         </div>
+        `}
 
         <div id="feed-container">
             <div style="text-align:center;color:#888;">جاري التحميل...</div>
+        </div>
+        
+        <div id="load-more-container" style="text-align:center; margin: 20px 0; display:none;">
+            <button onclick="loadMorePosts()" style="padding:10px 30px; background:white; border:1px solid #ddd; border-radius:20px; cursor:pointer;">عرض المزيد من الأرشيف 📂</button>
         </div>
         
         <footer class="app-footer">
@@ -697,25 +935,96 @@
         </footer>
     `;
 
-            // Events
             if (document.getElementById('btn-login-google')) document.getElementById('btn-login-google').onclick = () => signInWithPopup(auth, googleProvider);
-
-
             if (document.getElementById('btn-logout')) document.getElementById('btn-logout').onclick = () => signOut(auth);
             if (document.getElementById('btn-post')) document.getElementById('btn-post').onclick = submitPost;
 
-            renderList(); // Render posts
-            renderHeader(); // Re-render header to catch admin button
+            renderList();
+            renderHeader();
         }
 
         // --- 3. POSTS Logic ---
         function listenToFeed() {
-            onSnapshot(query(collection(db, "posts"), orderBy("createdAt", "desc")), (snapshot) => {
+            if (postsUnsubscribe) postsUnsubscribe();
+
+            const q = query(collection(db, "posts"), orderBy("createdAt", "desc"), limit(postsLimit));
+
+            postsUnsubscribe = onSnapshot(q, (snapshot) => {
                 postsData = [];
                 snapshot.forEach(docSnap => postsData.push({ id: docSnap.id, ...docSnap.data() }));
                 renderList();
+
+                const loadMoreBtn = document.getElementById('load-more-container');
+                if (loadMoreBtn) loadMoreBtn.style.display = postsData.length >= postsLimit ? 'block' : 'none';
+                if (document.querySelector('#load-more-container button'))
+                    document.querySelector('#load-more-container button').innerText = "عرض المزيد من الأرشيف 📂";
             });
         }
+
+        window.loadMorePosts = () => {
+            postsLimit += 10;
+            const btn = document.querySelector('#load-more-container button');
+            if (btn) btn.innerText = "جاري جلب الأرشيف...";
+            listenToFeed();
+        };
+
+        // --- COMMENT LOGIC ---
+        window.submitComment = async (postId) => {
+            if (!currentUser) return alert("سجل دخولك للتعليق! 💬");
+            const input = document.getElementById('comment-input-' + postId);
+            const text = input.value.trim();
+            if (!text) return;
+
+            const postRef = doc(db, "posts", postId);
+            const newComment = {
+                text: text,
+                author: currentUser.displayName,
+                uid: currentUser.uid,
+                photoURL: currentUser.photoURL,
+                createdAt: Date.now() // Client side timestamp
+            };
+
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const postDoc = await transaction.get(postRef);
+                    if (!postDoc.exists()) throw "الموضوع محذوف!";
+                    const data = postDoc.data();
+                    const comments = data.comments ? [...data.comments, newComment] : [newComment];
+                    transaction.update(postRef, { comments: comments });
+                });
+                input.value = ""; // Clear input
+            } catch (e) { alert(e); }
+        };
+
+        window.vote = async (postId, optionId) => {
+            if (!currentUser) return alert("سجل دخولك لتتمكن من التصويت! 🗳️");
+            const postRef = doc(db, "posts", postId);
+
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const postDoc = await transaction.get(postRef);
+                    if (!postDoc.exists()) throw "الموضوع محذوف!";
+
+                    const data = postDoc.data();
+                    if (data.voters && data.voters.includes(currentUser.uid)) {
+                        throw "لقد قمت بالتصويت مسبقاً! ✅";
+                    }
+
+                    const newOptions = data.pollOptions.map(opt => {
+                        if (opt.id === optionId) return { ...opt, votes: opt.votes + 1 };
+                        return opt;
+                    });
+
+                    const newVoters = data.voters ? [...data.voters, currentUser.uid] : [currentUser.uid];
+
+                    transaction.update(postRef, { pollOptions: newOptions, voters: newVoters });
+                });
+            } catch (e) {
+                alert(e);
+            }
+        };
+
+
 
         function renderList() {
             const container = document.getElementById('feed-container');
@@ -724,12 +1033,65 @@
 
             let html = '';
             postsData.forEach(data => {
-                // ADMIN LOGIC (SECURED)
                 const isAdmin = currentUser && ADMIN_EMAILS.includes(currentUser.email);
                 const isMyPost = currentUser && data.uid === currentUser.uid;
-                const canDelete = isMyPost || isAdmin; // Only Admin or Owner can delete
+                const canDelete = isMyPost || isAdmin;
+                const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('en-GB') : '...';
 
-                const date = data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('ar-EG') : '...';
+                // Poll Rendering Logic
+                let pollHtml = '';
+                if (data.type === 'poll' && data.pollOptions) {
+                    const totalVotes = data.pollOptions.reduce((acc, curr) => acc + curr.votes, 0);
+                    const userVoted = currentUser && data.voters && data.voters.includes(currentUser.uid);
+
+                    pollHtml = `<div class="poll-container">`;
+                    data.pollOptions.forEach(opt => {
+                        const percent = totalVotes === 0 ? 0 : Math.round((opt.votes / totalVotes) * 100);
+                        pollHtml += `
+                        <div class="poll-option" onclick="vote('${data.id}', ${opt.id})">
+                             <div class="poll-bar" style="width:${percent}%"></div>
+                             <span style="font-weight:bold;">${escapeHtml(opt.text)}</span>
+                             <span style="font-size:12px; color:#555;">${percent}% (${opt.votes})</span>
+                        </div>`;
+                    });
+                    if (userVoted) pollHtml += `<div class="poll-meta">✅ لقد قمت بالتصويت - إجمالي الأصوات: ${totalVotes}</div>`;
+                    else pollHtml += `<div class="poll-meta">🗳️ اضغط على خيار للتصويت - إجمالي الأصوات: ${totalVotes}</div>`;
+                    pollHtml += `</div>`;
+                }
+
+                // Comments HTML Generation
+                let commentsHtml = '';
+                const comments = data.comments || [];
+                if (comments.length > 0) {
+                    commentsHtml = '<div class="comments-section" style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">';
+                    comments.forEach((c, index) => {
+                        const canDeleteComment = currentUser && (c.uid === currentUser.uid || isAdmin);
+                        commentsHtml += `
+                        <div class="comment" style="display:flex; gap:10px; margin-bottom:8px; font-size:13px; align-items: flex-start;">
+                            <img src="${c.photoURL}" style="width:24px; height:24px; border-radius:50%; margin-top: 4px;">
+                            <div style="flex:1;">
+                                <div style="background:#f0f2f5; padding:8px 12px; border-radius:12px; display:inline-block;">
+                                    <div style="font-weight:bold; font-size:12px;">${escapeHtml(c.author)}</div>
+                                    <div>${escapeHtml(c.text)}</div>
+                                </div>
+                            </div>
+                            ${canDeleteComment ? `<button onclick="deleteComment('${data.id}', ${index})" style="color:#ccc; background:none; border:none; cursor:pointer;" title="حذف التعليق">x</button>` : ''}
+                        </div>`;
+                    });
+                    commentsHtml += '</div>';
+                }
+
+                // Comment Input Area
+                let commentInputHtml = '';
+                if (data.allowComments !== false) { // Default to true if undefined
+                    commentInputHtml = `
+                     <div class="comment-box" style="display:flex; gap:5px; margin-top:10px;">
+                         <input id="comment-input-${data.id}" placeholder="أضف تعليقاً..." style="flex:1; padding:8px; border:1px solid #ddd; border-radius:20px; font-size:13px;">
+                         <button onclick="submitComment('${data.id}')" style="background:none; color:var(--primary-color); font-weight:bold;">نشر</button>
+                     </div>`;
+                } else {
+                    commentInputHtml = `<div style="margin-top:10px; color:#888; font-size:12px; text-align:center;">🔒 قام الكاتب بغلق التعليقات لهذا الموضوع</div>`;
+                }
 
                 html += `
           <div class="post-card">
@@ -741,36 +1103,185 @@
                            <div class="post-time">${date}</div>
                       </div>
                   </div>
-                  ${canDelete ? `<button onclick="window.deleteItem('${data.id}')" class="btn-delete" title="حذف">&times;</button>` : ''}
+                  <div style="display:flex; gap:10px;">
+                     <button onclick="openShareModal('${data.id}')" class="btn-delete" style="color:#0056b3; font-size:16px;" title="مشاركة">🔗</button>
+                     ${canDelete ? `<button onclick="window.deleteItem('${data.id}')" class="btn-delete" title="حذف">&times;</button>` : ''}
+                  </div>
               </div>
+              
+              ${data.title ? `<h3 class="topic-title">${escapeHtml(data.title)}</h3>` : ''}
               <div class="post-content">${escapeHtml(data.text)}</div>
+              ${pollHtml}
+              ${commentsHtml}
+              ${commentInputHtml}
           </div>`;
             });
             container.innerHTML = html;
         }
 
-        async function submitPost() {
-            const text = document.getElementById('post-input').value.trim();
-            if (!text) return;
-            document.getElementById('btn-post').disabled = true;
+        // --- POLL UI HANDLER ---
+        window.togglePollCreator = () => {
+            const area = document.getElementById('poll-creator');
+            const btn = document.getElementById('btn-toggle-poll');
+            const isHidden = area.style.display === 'none' || area.style.display === '';
+            area.style.display = isHidden ? 'block' : 'none';
+            if (isHidden) btn.classList.add('active'); else btn.classList.remove('active');
+        };
+
+        window.addPollOption = () => {
+            const container = document.getElementById('poll-options-container');
+            const div = document.createElement('div');
+            div.className = 'poll-input-row';
+            div.innerHTML = `<input class="poll-opt-input" placeholder="خيار إضافي...">`;
+            container.appendChild(div);
+        };
+
+        window.submitPost = async () => {
+            if (!currentUser && !appConfig.allowGuests) return alert("يجب تسجيل الدخول أولاً! 🔒");
+
+            const textInput = document.getElementById('post-input');
+            const titleInput = document.getElementById('post-title');
+            const text = textInput.value.trim();
+            const title = titleInput.value.trim();
+
+            const pollArea = document.getElementById('poll-creator');
+            const isPollActive = pollArea.style.display === 'block';
+            let pollOptions = [];
+
+            if (isPollActive) {
+                const inputs = document.querySelectorAll('.poll-opt-input');
+                inputs.forEach((input, index) => {
+                    if (input.value.trim() !== "") {
+                        pollOptions.push({ id: index, text: input.value.trim(), votes: 0 });
+                    }
+                });
+                if (pollOptions.length < 2 && text.length > 0) return alert("الاستفتاء يجب أن يحتوي على خيارين على الأقل! 📊");
+            }
+
+            if (text.length === 0 && pollOptions.length === 0) return alert("الرجاء كتابة محتوى للموضوع! ✍️");
+
+            const postBtn = document.getElementById('btn-post');
+            postBtn.disabled = true;
+            postBtn.innerText = 'جاري النشر...';
 
             try {
-                const u = currentUser;
-                await addDoc(collection(db, "posts"), {
-                    text,
-                    author: u ? u.displayName : "زائر",
-                    uid: u ? u.uid : "guest",
-                    photoURL: u ? u.photoURL : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png",
-                    createdAt: serverTimestamp()
+                const newPost = {
+                    title: title,
+                    text: text,
+                    // Handle Guest Identity
+                    author: currentUser ? currentUser.displayName : "زائر 👤",
+                    uid: currentUser ? currentUser.uid : "guest_" + Date.now(),
+                    photoURL: currentUser ? currentUser.photoURL : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png",
+                    createdAt: serverTimestamp(),
+                    type: (isPollActive && pollOptions.length >= 2) ? 'poll' : 'text',
+                    pollOptions: pollOptions,
+                    voters: [],
+                    allowComments: !document.getElementById('lock-comments').checked,
+                    comments: []
+                };
+
+                await addDoc(collection(db, "posts"), newPost);
+
+                textInput.value = "";
+                titleInput.value = "";
+                pollArea.style.display = 'none';
+                document.getElementById('lock-comments').checked = false;
+                document.getElementById('btn-toggle-poll').classList.remove('active');
+                document.querySelectorAll('.poll-opt-input').forEach(i => i.value = "");
+            } catch (e) { alert("حدث خطأ: " + e.message); }
+            postBtn.disabled = false;
+            postBtn.innerText = 'نشر 🚀';
+        };
+
+        window.submitComment = async (postId) => {
+            if (!currentUser) return alert("سجل دخولك للتعليق! 💬");
+            const input = document.getElementById('comment-input-' + postId);
+            const text = input.value.trim();
+            if (!text) return;
+
+            const postRef = doc(db, "posts", postId);
+            const newComment = {
+                id: "c" + Date.now() + Math.random().toString(36).substr(2, 5), // Unique ID
+                text: text,
+                author: currentUser.displayName,
+                uid: currentUser.uid,
+                photoURL: currentUser.photoURL,
+                createdAt: Date.now()
+            };
+
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const postDoc = await transaction.get(postRef);
+                    if (!postDoc.exists()) throw "الموضوع محذوف!";
+                    const data = postDoc.data();
+                    const comments = data.comments ? [...data.comments, newComment] : [newComment];
+                    transaction.update(postRef, { comments: comments });
                 });
-                document.getElementById('post-input').value = '';
-            } catch (e) { alert(e.message); }
-            document.getElementById('btn-post').disabled = false;
-        }
+                input.value = ""; // Clear input
+            } catch (e) { alert(e); }
+        };
 
+        // --- DELETE SYSTEM ---
+        // pendingDelete is defined in global state now
 
+        window.deleteItem = (id) => {
+            console.log("Request delete post:", id);
+            pendingDelete = { id, type: 'post' };
+            openDeleteModal("حذف الموضوع؟");
+        };
 
-        // PROFILE FUNCTIONS
+        window.deleteComment = (postId, commentIndex) => {
+            console.log("Request delete comment index:", postId, commentIndex);
+            pendingDelete = { postId, commentIndex, type: 'comment' };
+            openDeleteModal("حذف التعليق؟");
+        };
+
+        window.openDeleteModal = (title) => {
+            document.querySelector('#delete-modal h3').innerText = title;
+            document.getElementById('delete-modal').style.display = 'flex';
+        };
+
+        window.closeDeleteModal = () => {
+            document.getElementById('delete-modal').style.display = 'none';
+            pendingDelete = null;
+        };
+
+        window.executeDelete = async () => {
+            console.log("Executing delete for:", pendingDelete);
+            if (!pendingDelete) return alert("خطأ: لا يوجد عنصر للحذف!");
+
+            const btn = document.getElementById('btn-confirm-delete');
+            const originalText = btn.innerText;
+            btn.innerText = 'جاري الحذف...';
+            btn.disabled = true;
+
+            try {
+                if (pendingDelete.type === 'post') {
+                    await deleteDoc(doc(db, "posts", pendingDelete.id));
+                    console.log("Post deleted");
+                }
+                else if (pendingDelete.type === 'comment') {
+                    const { postId, commentIndex } = pendingDelete;
+                    const postRef = doc(db, "posts", postId);
+                    await runTransaction(db, async (transaction) => {
+                        const postDoc = await transaction.get(postRef);
+                        if (!postDoc.exists()) throw "الموضوع غير موجود";
+                        const data = postDoc.data();
+                        // Filter by Index
+                        const newComments = (data.comments || []).filter((_, i) => i !== commentIndex);
+                        transaction.update(postRef, { comments: newComments });
+                    });
+                    console.log("Comment deleted by index");
+                }
+                closeDeleteModal();
+            } catch (e) {
+                console.error("Delete error:", e);
+                alert("حدث خطأ أثناء الحذف: " + e.message);
+            }
+            btn.innerText = originalText;
+            btn.disabled = false;
+        };
+
         window.openProfileSettings = () => {
             if (!currentUser) return;
             document.getElementById('profile-name').value = currentUser.displayName;
@@ -798,14 +1309,76 @@
             btn.innerText = 'حفظ التغييرات';
         }
 
-
-
-        window.deleteItem = async (id) => { if (confirm("حذف؟")) await deleteDoc(doc(db, "posts", id)); };
+        // window.deleteItem is now handled above in DELETE SYSTEM
         function escapeHtml(t) { return t ? t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''; }
 
         // --- 5. INITIALIZATION ---
+
+        // CHECK URL PARAMS FOR DEEP LINKING
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetPostId = urlParams.get('id');
+        const isEmbed = urlParams.get('embed');
+
+        if (isEmbed) document.body.classList.add('embed-mode');
+
         listenToConfig(); // Load Design
-        listenToFeed();   // Load Posts
+
+        if (targetPostId) {
+            // LOAD SINGLE POST
+            loadSinglePost(targetPostId);
+        } else {
+            // LOAD FULL FEED
+            listenToFeed();
+        }
+
+        async function loadSinglePost(id) {
+            const appEl = document.getElementById('feed-container');
+            appEl.innerHTML = '<div style="text-align:center; margin-top:50px;">جاري تحميل الموضوع...</div>';
+
+            try {
+                const docRef = doc(db, "posts", id);
+                // Subscribe to single document for real-time updates (votes/comments)
+                postsUnsubscribe = onSnapshot(docRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        postsData = [{ id: docSnap.id, ...docSnap.data() }];
+                        renderList();
+                        // Hide load more in single view
+                        const lm = document.getElementById('load-more-container');
+                        if (lm) lm.style.display = 'none';
+                    } else {
+                        appEl.innerHTML = '<div style="text-align:center; padding:50px;">❌ هذا الموضوع محذوف أو غير موجود.</div>';
+                    }
+                });
+            } catch (e) {
+                appEl.innerHTML = 'حدث خطأ: ' + e.message;
+            }
+        }
+
+        // SHARE LOGIC
+        window.openShareModal = (id) => {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const directLink = `${baseUrl}?id=${id}`;
+            const embedCode = `<iframe src="${directLink}&embed=true" width="100%" height="600" frameborder="0" style="border-radius:12px; border:1px solid #eee;"></iframe>`;
+
+            document.getElementById('share-link').value = directLink;
+            document.getElementById('share-embed').value = embedCode;
+            document.getElementById('share-modal').style.display = 'flex';
+        };
+
+        // --- CUSTOM ALERT SYSTEM ---
+        window.showCustomAlert = (msg, isSuccess = false) => {
+            const modal = document.getElementById('alert-modal');
+            const icon = document.getElementById('alert-icon');
+            const text = document.getElementById('alert-message');
+
+            icon.innerText = isSuccess ? '🎉' : '🔔';
+            text.innerText = msg;
+            modal.style.display = 'flex';
+        };
+
+        // REPLACE ALL ALERTS
+        window.alert = window.showCustomAlert;
+
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
             renderApp();
