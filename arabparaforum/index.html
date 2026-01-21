@@ -1072,17 +1072,21 @@
                 // Poll Rendering Logic
                 let pollHtml = '';
                 if (data.type === 'poll' && data.pollOptions) {
-                    const totalVotes = data.pollOptions.reduce((acc, curr) => acc + curr.votes, 0);
-                    const userVoted = currentUser && data.voters && data.voters.includes(currentUser.uid);
+                    const totalVotes = data.pollOptions.reduce((acc, curr) => acc + (curr.votes || 0), 0);
+
+                    // Identify the voter (User ID or Guest ID)
+                    const voterId = currentUser ? currentUser.uid : localStorage.getItem('guest_voter_id');
+                    const userVoted = data.voters && voterId && data.voters.includes(voterId);
 
                     pollHtml = `<div class="poll-container">`;
                     data.pollOptions.forEach(opt => {
-                        const percent = totalVotes === 0 ? 0 : Math.round((opt.votes / totalVotes) * 100);
+                        const votes = opt.votes || 0;
+                        const percent = totalVotes === 0 ? 0 : Math.round((votes / totalVotes) * 100);
                         pollHtml += `
                         <div class="poll-option" onclick="vote('${data.id}', ${opt.id})">
                              <div class="poll-bar" style="width:${percent}%"></div>
                              <span style="font-weight:bold;">${escapeHtml(opt.text)}</span>
-                             <span style="font-size:12px; color:#555;">${percent}% (${opt.votes})</span>
+                             <span style="font-size:12px; color:#555;">${percent}% (${votes})</span>
                         </div>`;
                     });
                     if (userVoted) pollHtml += `<div class="poll-meta">✅ لقد قمت بالتصويت - إجمالي الأصوات: ${totalVotes}</div>`;
