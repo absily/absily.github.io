@@ -1,0 +1,815 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="site.title">عبدالسلام شليبك | ناشط حقوق الإعاقة</title>
+    <meta name="description" content="الموقع الرسمي لعبدالسلام شليبك - ناشط حقوق الإعاقة، مؤسس، مدون" data-i18n-meta="site.desc">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="assets/logo.jpg" alt="عبدالسلام شليبك" class="logo-img" data-i18n-alt="img.logoAlt">
+                    <span class="logo-text" data-i18n="logo.name">عبدالسلام</span>
+                </a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span><span></span><span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#about" class="nav-link" data-i18n="nav.about">عنّي</a></li>
+                    <li><a href="#skills" class="nav-link" data-i18n="nav.skills">مهاراتي</a></li>
+                    <li><a href="#journey" class="nav-link" data-i18n="nav.journey">رحلتي</a></li>
+                    <li><a href="#initiatives" class="nav-link" data-i18n="nav.initiatives">مبادراتي</a></li>
+                    <li><a href="#courses" class="nav-link" data-i18n="nav.courses">الدورات</a></li>
+                    <li><a href="#gallery" class="nav-link" data-i18n="nav.gallery">معرض الصور</a></li>
+                    <li><a href="#blog" class="nav-link" data-i18n="nav.blog">المدونة</a></li>
+                    <li><a href="#contact" class="nav-link" data-i18n="nav.contact">تواصل</a></li>
+                    <li><button class="nav-search-btn" id="searchToggle" aria-label="بحث" data-i18n-aria="search.ariaLabel"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button></li>
+                    <li class="lang-row">
+                        <button class="lang-btn active" data-lang="ar" title="العربية">🇱🇾 AR</button>
+                        <button class="lang-btn" data-lang="en" title="English">🇬🇧 EN</button>
+                        <button class="lang-btn" data-lang="sr" title="Српски">🇷🇸 SR</button>
+                        <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪 DE</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="container">
+            <input type="search" id="searchInput" placeholder="ابحث هنا..." class="search-input" data-i18n-placeholder="search.placeholder" aria-label="كلمة البحث" data-i18n-aria="search.inputAria">
+            <button class="search-close" id="searchClose" aria-label="إغلاق البحث" data-i18n-aria="search.closeAria"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-pulse"></span>
+                    <span data-i18n="hero.badge">#أكون_أو_لا_أكون</span>
+                </div>
+                <h1 class="hero-title">
+                    <span data-i18n="hero.firstName">عبدالسلام</span> <span class="gradient-text" data-i18n="hero.lastName">شليبك</span>
+                    <span class="hero-title-sub" data-i18n="hero.subtitle" data-searchable="true">ناشط حقوق الإعاقة | مؤسس | مدون</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero.desc" data-searchable="true">
+                    ناشط في مجال حقوق الأشخاص ذوي الإعاقة، مؤسس مبادرات رقمية وحقوقية.
+                    أؤمن بأن الإرادة تصنع المستحيل.
+                    شعاري: <strong>أكون أو لا أكون</strong>.
+                </p>
+                <div class="hero-actions">
+                    <a href="#about" class="btn btn-primary btn-lg" data-i18n="hero.btnStory">اقرأ قصتي</a>
+                    <a href="#initiatives" class="btn btn-outline btn-lg" data-i18n="hero.btnInit">مبادراتي</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://x.com/absily" class="social-link" aria-label="Twitter" data-i18n-aria="social.twitter" target="_blank">𝕏</a>
+                    <a href="https://linkedin.com/in/absily" class="social-link" aria-label="LinkedIn" data-i18n-aria="social.linkedin" target="_blank">in</a>
+                    <a href="https://facebook.com/absily" class="social-link" aria-label="Facebook" data-i18n-aria="social.facebook" target="_blank">f</a>
+                    <a href="https://instagram.com/absily" class="social-link" aria-label="Instagram" data-i18n-aria="social.instagram" target="_blank"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="https://youtube.com/@janzourom" class="social-link" aria-label="YouTube" data-i18n-aria="social.youtube" target="_blank"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="4"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="https://www.tiktok.com/@absily" class="social-link" aria-label="TikTok" data-i18n-aria="social.tiktok" target="_blank"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.82a4.84 4.84 0 0 1-1-.13z"/></svg></a>
+                    <a href="https://t.me/absily" class="social-link" aria-label="Telegram" data-i18n-aria="social.telegram" target="_blank"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-photo-frame">
+                    <div class="hero-photo">
+                        <img src="assets/logo.jpg" alt="عبدالسلام شليبك" class="hero-photo-img" data-i18n-alt="img.heroAlt">
+                    </div>
+                    <div class="hero-quote-card">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                        <span class="hero-quote-text" data-i18n="hero.quote" data-searchable="true">الإعاقة ليست عائقاً</span>
+                    </div>
+                    <div class="hero-milestone m1">
+                        <span class="milestone-num">1971</span>
+                        <span class="milestone-label" data-i18n="hero.label1" data-searchable="true">جنزور</span>
+                    </div>
+                    <div class="hero-milestone m2">
+                        <span class="milestone-num">2004</span>
+                        <span class="milestone-label" data-i18n="hero.label2" data-searchable="true">أول موقع</span>
+                    </div>
+                    <div class="hero-milestone m3">
+                        <span class="milestone-num">54</span>
+                        <span class="milestone-label" data-i18n="hero.label3" data-searchable="true">عاماً</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="about.tag">عنّي</span>
+                <h2 class="section-title" data-i18n="about.title">رحلة من <span class="gradient-text">التحدي إلى الأمل</span></h2>
+                <p class="section-desc" data-i18n="about.desc">من هنا بدأت قصتي...</p>
+            </div>
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <img src="assets/profile.png" alt="عبدالسلام شليبك" class="about-img" data-i18n-alt="img.aboutAlt">
+                </div>
+                <div class="about-content">
+                    <h3 class="about-name" data-i18n="about.name" data-searchable="true">ناشط حقوق الإعاقة | مؤسس | مدون</h3>
+                    <p class="about-text" data-i18n="about.p1" data-searchable="true">
+                        وُلدت في <strong>23 أكتوبر 1971</strong> في <strong>جنزور - المشاشطة</strong>. 
+                        الأشهر الستة الأولى من حياتي كانت نقطة تحول، حيث تعرضت لحمى شديدة أدت 
+                        لإصابتي بشلل الأطفال، مما فرض عليّ تحدياً صحياً مبكراً.
+                    </p>
+                    <p class="about-text" data-i18n="about.p2" data-searchable="true">
+                        في عام <strong>1976</strong>، وبسن الخامسة، سافرت إلى <strong>بلغراد</strong> في رحلة علاجية 
+                        استمرت ست سنوات، حيث درست الابتدائية هناك وأصبحت اللغة الصربية جزءاً من هويتي.
+                    </p>
+                    <p class="about-text" data-i18n="about.p3" data-searchable="true">
+                        عدت إلى ليبيا عام <strong>1983</strong>، ثم إلى <strong>فيينا</strong> لفترة علاج قصيرة. 
+                        عند استقراري في الوطن، واجهت واقعاً صعباً: غياب البنية التحتية والتعليم المدمج 
+                        لذوي الإعاقة. لم أستسلم، بل صنعت مدرستي الخاصة من خلال البرامج الوثائقية 
+                        والتعليمية مثل "افتح يا سمسم".
+                    </p>
+                    <p class="about-text" data-i18n="about.p4" data-searchable="true">
+                        في <strong>2004</strong>، أطلقت أول موقع لي <strong>"جنزور ماي هوم"</strong>. 
+                        ومن هناك انطلقت إلى عالم المنتديات ثم التواصل الاجتماعي. عملت مصمماً وناشطاً، 
+                        وتركت بصمتي في اللجنة البارالمبية والأولمبياد الخاص الليبي.
+                    </p>
+                    <p class="about-text" data-i18n="about.p5" data-searchable="true">
+                        اليوم، من <strong>برمنغهام</strong>، أواصل رحلتي في الدفاع عن حقوق الإنسان 
+                        والإعاقة، مؤمناً بأن <strong style="color: var(--primary-light);">الإرادة تصنع المستحيل</strong>.
+                    </p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="info.name" data-searchable="true">الاسم</span>
+                            <span class="info-value" data-i18n="info.valName" data-searchable="true">عبدالسلام شليبك</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="info.birth" data-searchable="true">تاريخ الميلاد</span>
+                            <span class="info-value" data-i18n="info.valBirth" data-searchable="true">23 أكتوبر 1971</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="info.place" data-searchable="true">مكان الولادة</span>
+                            <span class="info-value" data-i18n="info.valPlace" data-searchable="true">جنزور - المشاشطة، طرابلس</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="info.residence" data-searchable="true">الإقامة</span>
+                            <span class="info-value" data-i18n="info.valRes" data-searchable="true">برمنغهام</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="info.langs" data-searchable="true">لغات</span>
+                            <span class="info-value" data-i18n="info.valLangs" data-searchable="true">العربية، الصربية، الإنجليزية، الألمانية</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-i18n="info.motto" data-searchable="true">الشعار</span>
+                            <span class="info-value" data-i18n="info.valMotto" data-searchable="true">أكون أو لا أكون</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills & Professional Profile -->
+    <section class="skills-cv" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="skills.tag" data-searchable="true">مهاراتي وخبراتي المهنية</span>
+                <h2 class="section-title" data-i18n="skills.title" data-searchable="true">البروفايل المهني <span class="gradient-text">& المهارات</span></h2>
+                <p class="section-desc" data-i18n="skills.desc" data-searchable="true">نظرة عامة على مسيرتي التقنية، مهاراتي العملية، وإتقاني للغات منذ عام 2004</p>
+            </div>
+            <div class="skills-cv-wrapper">
+                <!-- Left Column: Professional Summary Card -->
+                <div class="cv-summary-card" data-aos="fade-up">
+                    <div class="cv-summary-img">
+                        <img src="assets/absiskil.png" alt="عبدالسلام شليبك - مهارات" data-i18n-alt="img.skillsAlt">
+                    </div>
+                    <h3 class="cv-summary-title" data-i18n="skills.profileTitle" data-searchable="true">من أنا؟</h3>
+                    <p class="cv-summary-p" data-i18n="skills.p1" data-searchable="true">أنا مطور ومصمم مواقع إلكترونية أمتلك خبرة طويلة في مجال تصميم وتطوير وإدارة المواقع الإلكترونية منذ عام 2004، حيث كانت بدايتي بإطلاق أول موقع إلكتروني لي تحت اسم "جنزور ماي هوم". خلال مسيرتي اكتسبت خبرة واسعة في تطوير المواقع باستخدام WordPress و Joomla، بالإضافة إلى إدارة المواقع وتحسين أدائها وتجربة المستخدم.</p>
+                    <p class="cv-summary-p" data-i18n="skills.p2" data-searchable="true">أمتلك مهارات احترافية في تصميم المواقع الإلكترونية الحديثة وإنشاء واجهات عصرية ومتجاوبة مع جميع الأجهزة، إلى جانب خبرة في التصميم الجرافيكي وتصميم الهويات البصرية والإعلانات الرقمية.</p>
+                    <p class="cv-summary-p" data-i18n="skills.p3" data-searchable="true">كما لدي خبرة جيدة في إدارة حسابات مواقع التواصل الاجتماعي، وإنشاء المحتوى الرقمي، وتنظيم الحملات التسويقية الإلكترونية، إضافة إلى خبرة في المونتاج وتحرير الفيديو والصوت والعمل على إنتاج محتوى احترافي.</p>
+                    <p class="cv-summary-p" data-i18n="skills.p4" data-searchable="true">وأستخدم تقنيات الذكاء الاصطناعي في برمجة وتصميم المواقع الإلكترونية وتطوير الحلول الرقمية الحديثة لتقديم خدمات متطورة تلبي احتياجات العملاء والشركات.</p>
+                    <div class="about-video-wrap" style="margin-top:24px">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1598972024503913%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                </div>
+
+                <!-- Right Column: Skills Grid & Language Proficiency -->
+                <div class="cv-skills-langs">
+                    <!-- Professional Skills Cards -->
+                    <div class="skills-showcase" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="skills-section-title" data-i18n="skills.skillsTitle" data-searchable="true">المهارات والخبرات العملية</h3>
+                        <div class="skills-bars-grid">
+                            <!-- Skill 1 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">🌐</span>
+                                    <span class="skill-item-name" data-i18n="skills.s1" data-searchable="true">تطوير وإدارة مواقع WordPress و Joomla</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+                            </div>
+                            <!-- Skill 2 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">💻</span>
+                                    <span class="skill-item-name" data-i18n="skills.s2" data-searchable="true">تصميم وتطوير المواقع الإلكترونية الحديثة</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <!-- Skill 3 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">⚙️</span>
+                                    <span class="skill-item-name" data-i18n="skills.s3" data-searchable="true">إدارة المواقع وتحسين الأداء وتجربة المستخدم</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+                            </div>
+                            <!-- Skill 4 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">📱</span>
+                                    <span class="skill-item-name" data-i18n="skills.s4" data-searchable="true">إدارة حسابات مواقع التواصل الاجتماعي</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                            <!-- Skill 5 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">📣</span>
+                                    <span class="skill-item-name" data-i18n="skills.s5" data-searchable="true">إنشاء المحتوى الرقمي والتسويق الإلكتروني</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                            <!-- Skill 6 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">🎨</span>
+                                    <span class="skill-item-name" data-i18n="skills.s6" data-searchable="true">التصميم الجرافيكي والهويات البصرية</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+                            </div>
+                            <!-- Skill 7 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">🎬</span>
+                                    <span class="skill-item-name" data-i18n="skills.s7" data-searchable="true">المونتاج وتحرير الفيديو والصوت</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 82%;"></div></div>
+                            </div>
+                            <!-- Skill 8 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">🧠</span>
+                                    <span class="skill-item-name" data-i18n="skills.s8" data-searchable="true">استخدام تقنيات الذكاء الاصطناعي في البرمجة والتصميم</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <!-- Skill 9 -->
+                            <div class="skill-item-card">
+                                <div class="skill-item-header">
+                                    <span class="skill-item-icon">📊</span>
+                                    <span class="skill-item-name" data-i18n="skills.s9" data-searchable="true">إدارة المشاريع والمحتوى الرقمي</span>
+                                </div>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Languages Section -->
+                    <div class="langs-showcase" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="skills-section-title" data-i18n="skills.langsTitle" data-searchable="true">إتقان اللغات والتواصل</h3>
+                        <div class="langs-showcase-grid">
+                            <!-- Language 1 -->
+                            <div class="lang-showcase-item">
+                                <div class="lang-showcase-badge">🇱🇾</div>
+                                <h4 class="lang-showcase-name" data-i18n="skills.l1" data-searchable="true">العربية: اللغة الأم</h4>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 100%;"></div></div>
+                            </div>
+                            <!-- Language 2 -->
+                            <div class="lang-showcase-item">
+                                <div class="lang-showcase-badge">🇩🇪</div>
+                                <h4 class="lang-showcase-name" data-i18n="skills.l2" data-searchable="true">الألمانية: مستوى جيد في التحدث والتواصل</h4>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 75%;"></div></div>
+                            </div>
+                            <!-- Language 3 -->
+                            <div class="lang-showcase-item">
+                                <div class="lang-showcase-badge">🇬🇧</div>
+                                <h4 class="lang-showcase-name" data-i18n="skills.l3" data-searchable="true">الإنجليزية: مستوى جيد في التحدث والتواصل</h4>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+                            </div>
+                            <!-- Language 4 -->
+                            <div class="lang-showcase-item">
+                                <div class="lang-showcase-badge">🇷🇸</div>
+                                <h4 class="lang-showcase-name" data-i18n="skills.l4" data-searchable="true">الصربية: مستوى جيد في التحدث والتواصل</h4>
+                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Journey / Timeline -->
+    <section class="experience" id="journey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="journey.tag">رحلتي</span>
+                <h2 class="section-title" data-i18n="journey.title">محطات من <span class="gradient-text">مسيرتي</span></h2>
+                <p class="section-desc" data-i18n="journey.desc">من التحدي إلى الأمل - رحلة حياة</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-i18n="journey.t1.date" data-searchable="true">23 أكتوبر 1971</span>
+                        <h3 class="timeline-title" data-i18n="journey.t1.title" data-searchable="true">الولادة</h3>
+                        <span class="timeline-company" data-i18n="journey.t1.company" data-searchable="true">جنزور - المشاشطة</span>
+                        <p class="timeline-desc" data-i18n="journey.t1.desc" data-searchable="true">وُلدت في جنزور. الأشهر الستة الأولى كانت نقطة تحول حيث تعرضت لحمى شديدة أدت لإصابتي بشلل الأطفال.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">1976 - 1982</span>
+                        <h3 class="timeline-title" data-i18n="journey.t2.title" data-searchable="true">العلاج والتعليم في بلغراد</h3>
+                        <span class="timeline-company" data-i18n="journey.t2.company" data-searchable="true">بلغراد</span>
+                        <p class="timeline-desc" data-i18n="journey.t2.desc" data-searchable="true">سافرت إلى بلغراد في رحلة علاجية استمرت ست سنوات. درست الابتدائية هناك وأصبحت اللغة الصربية جزءاً من هويتي.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">1983</span>
+                        <h3 class="timeline-title" data-i18n="journey.t3.title" data-searchable="true">العودة إلى ليبيا والعلاج في فيينا</h3>
+                        <span class="timeline-company" data-i18n="journey.t3.company" data-searchable="true">ليبيا - فيينا</span>
+                        <p class="timeline-desc" data-i18n="journey.t3.desc" data-searchable="true">عدت إلى ليبيا ثم سافرت إلى فيينا لفترة علاج قصيرة. عند الاستقرار في الوطن، واجهت غياب البنية التحتية لذوي الإعاقة.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-i18n="journey.t4.date" data-searchable="true">الثمانينيات والتسعينيات</span>
+                        <h3 class="timeline-title" data-i18n="journey.t4.title" data-searchable="true">التعليم الذاتي</h3>
+                        <span class="timeline-company" data-i18n="journey.t4.company" data-searchable="true">ليبيا</span>
+                        <p class="timeline-desc" data-i18n="journey.t4.desc" data-searchable="true">صنعت مدرستي الخاصة من خلال البرامج الوثائقية والتعليمية مثل "افتح يا سمسم"، لم أستسلم لغياب التعليم المدمج.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2004</span>
+                        <h3 class="timeline-title" data-i18n="journey.t5.title" data-searchable="true">البداية الرقمية</h3>
+                        <span class="timeline-company" data-i18n="journey.t5.company" data-searchable="true">عالم الإنترنت</span>
+                        <p class="timeline-desc" data-i18n="journey.t5.desc" data-searchable="true">أطلقت أول موقع لي "جنزور ماي هوم". انطلقت إلى عالم المنتديات ثم التواصل الاجتماعي، مصمماً وناشطاً.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date" data-i18n="journey.t6.date" data-searchable="true">العقد الأخير</span>
+                        <h3 class="timeline-title" data-i18n="journey.t6.title" data-searchable="true">العمل المؤسسي والنضال</h3>
+                        <span class="timeline-company" data-i18n="journey.t6.company" data-searchable="true">ليبيا - برمنغهام</span>
+                        <p class="timeline-desc" data-i18n="journey.t6.desc" data-searchable="true">تركت بصمتي في اللجنة البارالمبية والأولمبياد الخاص الليبي. واليوم من برمنغهام أواصل الدفاع عن حقوق الإنسان والإعاقة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses & Conferences -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="courses.tag">مسيرتي المهنية</span>
+                <h2 class="section-title" data-i18n="courses.title" data-searchable="true">دورات <span class="gradient-text">ومؤتمرات</span></h2>
+                <p class="section-desc" data-i18n="courses.desc" data-searchable="true">محطات علمية ومهنية في مسيرة النضال</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card" data-year="2009">
+                    <span class="course-year">2009</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c1.title" data-searchable="true">المؤتمر الأول للمرأة ذات الإعاقة بالمغرب العربي</h3>
+                        <span class="course-location" data-i18n="courses.c1.loc" data-searchable="true">طرابلس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2009">
+                    <span class="course-year">2009</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c2.title" data-searchable="true">مؤتمر سياسات التعامل مع الإعاقات الذهنية بالوطن العربي</h3>
+                        <span class="course-location" data-i18n="courses.c2.loc" data-searchable="true">بنغازي</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2010">
+                    <span class="course-year">2010</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c3.title" data-searchable="true">مرافق إعلامي لموقع اللجنة البارالمبية - بطولة العالم لكرة الجلوس</h3>
+                        <span class="course-location" data-i18n="courses.c3.loc" data-searchable="true">أوكلاهوما، الولايات المتحدة</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2010">
+                    <span class="course-year">2010</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c4.title" data-searchable="true">دورة في إدارة المحتوى (لوحة التحكم جملة)</h3>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2011">
+                    <span class="course-year">2011</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://www.absi.ly/munich/" target="_blank" rel="noopener" data-i18n="courses.c5.title" data-searchable="true">رحلة ميونخ الثقافية مع الشباب المتفوقين على مستوى ليبيا</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c5.loc" data-searchable="true">ميونخ</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2011">
+                    <span class="course-year">2011</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c6.title" data-searchable="true">مرافق إعلامي للجنة البارالمبية الليبية - الملتقى الدولي لألعاب القوى</h3>
+                        <span class="course-location" data-i18n="courses.c6.loc" data-searchable="true">تونس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2012">
+                    <span class="course-year">2012</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2012/06/02/in-sharjah/" target="_blank" rel="noopener" data-i18n="courses.c7.title">ملتقى المنال للإعاقة والإعلام الاجتماعي</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c7.loc">الشارقة</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2012">
+                    <span class="course-year">2012</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2012/10/18/paralympics2010/" target="_blank" rel="noopener" data-i18n="courses.c8.title">مرافق إعلامي لألعاب البارالمبية</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c8.loc">لندن</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2013">
+                    <span class="course-year">2013</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://www.facebook.com/pg/3bsily/photos/?tab=album&album_id=683143818396519" target="_blank" rel="noopener" data-i18n="courses.c9.title">الدورة الأخيرة للصحافة الإلكترونية (فرانس24)</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2013">
+                    <span class="course-year">2013</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c10.title" data-searchable="true">مشرف موقع ليبيا بلوق - مدونات ليبية</h3>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2013">
+                    <span class="course-year">2013</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2013/11/15/kulalampur/" target="_blank" rel="noopener" data-i18n="courses.c11.title">مرافق إعلامي - بطولة آسيا المفتوحة لرفعات القوة</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c11.loc">كوالالمبور، ماليزيا</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2014">
+                    <span class="course-year">2014</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c12.title" data-searchable="true">الملتقى المغاربي حول مشروع القيادة للأشخاص ذوي الإعاقة</h3>
+                        <span class="course-location" data-i18n="courses.c12.loc" data-searchable="true">حمامات، تونس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2015">
+                    <span class="course-year">2015</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2015/02/15/2jakarta/" target="_blank" rel="noopener" data-i18n="courses.c13.title">مؤتمر الحوار الإقليمي الثالث لإدماج الأشخاص ذوي الإعاقة في المشاركة الانتخابية</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c13.loc">جاكارتا</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2015">
+                    <span class="course-year">2015</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c14.title" data-searchable="true">ورشة عمل حول السوشيال ميديا</h3>
+                        <span class="course-location" data-i18n="courses.c14.loc" data-searchable="true">اسطنبول</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2015">
+                    <span class="course-year">2015</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2015/11/11/iwbf/" target="_blank" rel="noopener" data-i18n="courses.c15.title">بطولة أفريقيا لكرة السلة على الكراسي</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c15.loc">الجزائر</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2016">
+                    <span class="course-year">2016</span>
+                    <div class="course-body">
+                        <h3 class="course-title" data-i18n="courses.c16.title" data-searchable="true">ورشة عمل حول دور وسائل الإعلام في صياغة الدستور</h3>
+                        <span class="course-location" data-i18n="courses.c16.loc" data-searchable="true">تونس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2016">
+                    <span class="course-year">2016</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="http://absily.eu5.org/Techcamp/" target="_blank" rel="noopener" data-i18n="courses.c17.title">مخيم تيك كامب ليبيا</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c17.loc">تونس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2016">
+                    <span class="course-year">2016</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2016/03/26/accessibilityweb/" target="_blank" rel="noopener" data-i18n="courses.c18.title">ورشة عمل لتعزيز إمكانية وسهولة الوصول للموقع الإلكتروني</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c18.loc">تونس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2016">
+                    <span class="course-year">2016</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2017/04/26/mediabridge/" target="_blank" rel="noopener" data-i18n="courses.c19.title">دورة تدريبية حول إعداد المدربين في مجال حقوق الأشخاص ذوي الإعاقة</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                        <span class="course-location" data-i18n="courses.c19.loc">تونس</span>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2017">
+                    <span class="course-year">2017</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://absily.wordpress.com/2017/04/26/mediabridge/" target="_blank" rel="noopener" data-i18n="courses.c20.title">دور الإعلام في تعزيز مشاركة الأشخاص ذوي الإعاقة</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2020">
+                    <span class="course-year">2020</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://www.absi.cc/2020/12/blog-post_23.html" target="_blank" rel="noopener" data-i18n="courses.c21.title">اليوم العربي للأشخاص ذوي الإعاقة - مجمع ليبيا للدراسات المتقدمة</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                    </div>
+                </div>
+                <div class="course-card" data-year="2024">
+                    <span class="course-year">2024</span>
+                    <div class="course-body">
+                        <h3 class="course-title"><a href="https://www.absi.cc/2024/09/2024_29.html" target="_blank" rel="noopener" data-i18n="courses.c22.title">مدرسة ليبيا لحوكمة الإنترنت: قضايا ذوي الإعاقة وإمكانية الوصول</a><svg class="course-link-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="gallery.tag">صور من المسيرة</span>
+                <h2 class="section-title" data-i18n="gallery.title">ذكريات <span class="gradient-text">الرحلة</span></h2>
+                <p class="section-desc" data-i18n="gallery.desc" data-searchable="true">لحظات خالدة من مسيرة التحدي والأمل</p>
+            </div>
+            <div class="gallery-mosaic" id="galleryMosaic"></div>
+        </div>
+    </section>
+
+    <!-- Initiatives -->
+    <section class="initiatives" id="initiatives">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="initiatives.tag">مبادراتي</span>
+                <h2 class="section-title" data-i18n="initiatives.title" data-searchable="true">مبادرات <span class="gradient-text">أحدثت فرقاً</span></h2>
+                <p class="section-desc" data-i18n="initiatives.desc" data-searchable="true">مشاريع ومبادرات حقيقية أسستها وساهمت فيها لتمكين الأشخاص ذوي الإعاقة</p>
+            </div>
+            <div class="initiatives-grid">
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c1.title" data-searchable="true">مدونة absi.cc</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c1.desc" data-searchable="true">منصة إلكترونية لنشر الوعي بحقوق الأشخاص ذوي الإعاقة في ليبيا والعالم. أكثر من 100 مقال منذ 2009.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c1.tag" data-searchable="true">إعلامي</span>
+                    <a href="https://www.absi.cc" target="_blank" class="initiative-link">absi.cc</a>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c2.title" data-searchable="true">اللجنة البارالمبية الليبية</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c2.desc" data-searchable="true">عضو مكتب الإعلام ومصمم الموقع الرسمي منذ 2008. مرافق إعلامي في بطولات عالمية.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c2.tag" data-searchable="true">رياضي</span>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c3.title" data-searchable="true">الأولمبياد الخاص الليبي</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c3.desc" data-searchable="true">عضو مكتب الإعلام، المساهمة في تغطية الفعاليات الرياضية لذوي الإعاقة الذهنية.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c3.tag" data-searchable="true">رياضي</span>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c4.title" data-searchable="true">موقع "جنزور ماي هوم"</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c4.desc" data-searchable="true">أول موقع إلكتروني شخصي أطلقته عام 2004، نقطة الانطلاق في العالم الرقمي.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c4.tag" data-searchable="true">رقمي</span>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c5.title" data-searchable="true">حملة التوعية بالإعاقة في المدارس</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c5.desc" data-searchable="true">حملة تطالب بإدراج التوعية بحقوق الإعاقة في المناهج التعليمية الليبية. منشورات على Substack.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c5.tag" data-searchable="true">تعليمي</span>
+                    <a href="https://absily.substack.com/p/disability-awareness-in-libyan-schools" target="_blank" class="initiative-link">Substack</a>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c6.title" data-searchable="true">الحوار مع UNSMIL</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c6.desc" data-searchable="true">مشاركة في اجتماع تشاوري مع بعثة الأمم المتحدة للدعم في ليبيا لضمان تمثيل ذوي الإعاقة.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c6.tag" data-searchable="true">حقوقي</span>
+                    <a href="https://absily.substack.com/p/ensuring-a-seat-at-the-table-disability" target="_blank" class="initiative-link">Substack</a>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c7.title" data-searchable="true">حراك تصحيح المسار</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c7.desc" data-searchable="true">مقترح حقوقي لتسوية مستحقات الإعانة المنزلية المتأخرة للأشخاص ذوي الإعاقة في ليبيا.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c7.tag" data-searchable="true">مناصرة</span>
+                    <a href="https://www.absi.cc/2026/04/blog-post_5.html" target="_blank" class="initiative-link" data-i18n="initiatives.c7.link">التفاصيل</a>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </div>
+                    <h3 class="initiative-title" data-i18n="initiatives.c8.title" data-searchable="true">قناة "جنزور كوم"</h3>
+                    <p class="initiative-desc" data-i18n="initiatives.c8.desc" data-searchable="true">قناة يوتيوب أنتجت أكثر من 70 فيديو عن تحديات الإعاقة، تجارب شخصية، وتوعية شهرية.</p>
+                    <span class="initiative-tag" data-i18n="initiatives.c8.tag" data-searchable="true">إعلامي</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="blog.tag">المدونة</span>
+                <h2 class="section-title" data-i18n="blog.title">أحدث <span class="gradient-text">التدوينات</span></h2>
+                <p class="section-desc" data-i18n="blog.desc" data-searchable="true">أكثر من 100 مقال عن حقوق الأشخاص ذوي الإعاقة منذ 2009</p>
+            </div>
+            <div class="blog-grid" id="blogPosts">
+                <div class="blog-loading" data-i18n="blog.loading" data-searchable="true">جاري تحميل أحدث التدوينات...</div>
+            </div>
+            <div class="blog-footer">
+                <a href="https://www.absi.cc" target="_blank" class="btn btn-outline" data-i18n="blog.allPosts">جميع التدوينات على absi.cc ←</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-block">
+                <div class="quote-mark">"</div>
+                <blockquote data-i18n="quote.text" data-searchable="true">
+                    أكون أو لا أكون.<br>
+                    هذا ليس سؤالاً بالنسبة لي،<br>
+                    بل إعلان وجود وإرادة.
+                </blockquote>
+                <div class="quote-author" data-i18n="quote.author" data-searchable="true">— عبدالسلام شليبك</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="contact.tag">تواصل</span>
+                <h2 class="section-title" data-i18n="contact.title">تواصل <span class="gradient-text">معي</span></h2>
+                <p class="section-desc" data-i18n="contact.desc" data-searchable="true">للمشاركة، التعاون، أو مجرد كلمة تشجيع</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </span>
+                        <div>
+                            <span class="contact-label" data-i18n="contact.emailLabel" data-searchable="true">البريد الإلكتروني</span>
+                            <span class="contact-value">me@absi.ly</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">𝕏</span>
+                        <div>
+                            <span class="contact-label" data-i18n="contact.xLabel" data-searchable="true">منصة X</span>
+                            <span class="contact-value">@absily</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <div>
+                            <span class="contact-label" data-i18n="contact.residenceLabel" data-searchable="true">الإقامة</span>
+                            <span class="contact-value" data-i18n="contact.residenceVal" data-searchable="true">برمنغهام</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                        </span>
+                        <div>
+                            <span class="contact-label" data-i18n="contact.mottoLabel" data-searchable="true">الشعار</span>
+                            <span class="contact-value" data-i18n="contact.mottoVal" data-searchable="true">#أكون_أو_لا_أكون</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbdbgoyq" method="POST">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="الاسم" class="form-input" data-i18n-placeholder="contact.namePlaceholder" required>
+                        <input type="email" name="email" placeholder="البريد الإلكتروني" class="form-input" data-i18n-placeholder="contact.emailPlaceholder" required>
+                    </div>
+                    <input type="text" name="subject" placeholder="الموضوع" class="form-input" data-i18n-placeholder="contact.subjectPlaceholder" required>
+                    <textarea name="message" placeholder="رسالتك..." class="form-input form-textarea" data-i18n-placeholder="contact.messagePlaceholder" rows="5" required></textarea>
+                    <input type="hidden" name="_gotcha" style="display:none!important">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="hidden" name="_next" value="https://absi.ly">
+                    <button type="submit" class="btn btn-primary btn-lg" data-i18n="contact.submitBtn">إرسال الرسالة</button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="assets/logo.jpg" alt="عبدالسلام شليبك" class="logo-img" data-i18n-alt="img.logoAlt">
+                        <span class="logo-text" data-i18n="logo.name">عبدالسلام</span>
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc" data-searchable="true">ناشط حقوق الإعاقة | مؤسس | مدون<br>شعاري: أكون أو لا أكون</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#about" data-i18n="nav.about" data-searchable="true">عنّي</a>
+                    <a href="#skills" data-i18n="nav.skills" data-searchable="true">مهاراتي</a>
+                    <a href="#journey" data-i18n="nav.journey" data-searchable="true">رحلتي</a>
+                    <a href="#initiatives" data-i18n="nav.initiatives" data-searchable="true">مبادراتي</a>
+                    <a href="#gallery" data-i18n="nav.gallery" data-searchable="true">معرض الصور</a>
+                    <a href="#blog" data-i18n="nav.blog" data-searchable="true">المدونة</a>
+                    <a href="#contact" data-i18n="nav.contact" data-searchable="true">تواصل</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://x.com/absily" aria-label="Twitter" data-i18n-aria="social.twitter" target="_blank">𝕏</a>
+                    <a href="https://linkedin.com/in/absily" aria-label="LinkedIn" data-i18n-aria="social.linkedin" target="_blank">in</a>
+                    <a href="https://facebook.com/absily" aria-label="Facebook" data-i18n-aria="social.facebook" target="_blank">f</a>
+                    <a href="https://instagram.com/absily" aria-label="Instagram" data-i18n-aria="social.instagram" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="https://www.tiktok.com/@absily" aria-label="TikTok" data-i18n-aria="social.tiktok" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.82a4.84 4.84 0 0 1-1-.13z"/></svg></a>
+                    <a href="https://t.me/absily" aria-label="Telegram" data-i18n-aria="social.telegram" target="_blank"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright" data-searchable="true">&copy; 2026 عبدالسلام شليبك. جميع الحقوق محفوظة.</p>
+                <p data-i18n="footer.motto" data-searchable="true">الإرادة تصنع المستحيل</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-nav lightbox-prev">&#8249;</button>
+        <button class="lightbox-nav lightbox-next">&#8250;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-img" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى" data-i18n-aria="backToTop.aria">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18,15 12,9 6,15"/></svg>
+    </button>
+
+    <!-- Accessibility -->
+    <div class="acc-wrapper" id="accWrapper">
+        <button class="acc-toggle" id="accToggle" aria-label="قائمة الوصول" data-i18n-aria="acc.ariaLabel">
+            ♿
+        </button>
+        <div class="acc-panel" id="accPanel">
+            <div class="acc-header" data-i18n="acc.header">قائمة الوصول</div>
+            <div class="acc-group">
+                <button class="acc-btn" data-action="font-plus" data-i18n="acc.fontPlus" data-searchable="true">🔤 تكبير الخط</button>
+                <button class="acc-btn" data-action="font-minus" data-i18n="acc.fontMinus" data-searchable="true">🔤 تصغير الخط</button>
+            </div>
+            <div class="acc-group">
+                <button class="acc-btn" data-action="contrast" data-i18n="acc.contrast" data-searchable="true">🌓 تباين عالي</button>
+                <button class="acc-btn" data-action="grayscale" data-i18n="acc.grayscale" data-searchable="true">⚫ أبيض وأسود</button>
+            </div>
+            <div class="acc-group">
+                <button class="acc-btn acc-light-btn" data-action="lightmode" data-i18n="acc.light" data-searchable="true">☀️ فاتح</button>
+            </div>
+            <div class="acc-group">
+                <button class="acc-btn acc-reset" data-action="reset" data-i18n="acc.reset" data-searchable="true">🔄 إعادة ضبط</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
